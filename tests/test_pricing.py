@@ -1,6 +1,6 @@
 import pytest
 
-from libraryclaim.config import Locale
+from libraryclaim.config import Locale, Settings
 from libraryclaim.fx import get_rate
 from libraryclaim.pricing import listing_matches_book, price_book, price_item, robust_prices
 from libraryclaim.review import Assertion, appraisal_reasons, excluded, says_print
@@ -213,3 +213,62 @@ def test_no_credentials_means_no_calls_and_an_honest_note():
     assert i.status == "range" and i.quote is None and "not configured" in i.note and web.calls == []
     # Art still defaults to appraisal without credentials.
     assert price_item(web, "", US, "art", "portrait", is_art=True).status == "needs_appraisal"
+
+
+# SerpApi: eBay's listings through SerpApi when eBay's developer programme isn't available.
+
+def serp(prices_by_cond, title="Dune Frank Herbert paperback"):
+    def route(url, params, headers):
+        assert params["engine"] == "ebay" and params["buying_format"] == "BIN" and params["api_key"] == "sk"
+        cond = "new" if params["LH_ItemCondition"] == "1000" else "used"
+        assert cond == "new" or "4000" in params["LH_ItemCondition"]   # used covers Very Good, Good, ...
+        return {"organic_results": [{"title": title, "price": {"raw": f"${v}", "extracted": v}, "link": "https://www.ebay.com/itm/1"}
+                                    for v in prices_by_cond.get((params["ebay_domain"], cond), ())]}
+    return route
+
+
+def test_serpapi_prices_new_and_used_with_the_same_rules():
+    from libraryclaim.pricing import SerpApi
+    web = FakeWeb({"serpapi.com/search": serp({("ebay.com", "new"): (18, 19, 20, 21), ("ebay.com", "used"): (6, 7, 8)})})
+    p = price_book(web, SerpApi("sk"), US, "Dune", "Frank Herbert")
+    assert p.replacement.amount == 19.5 and p.used.amount == 7
+    assert "via SerpApi" in p.replacement.source and "ebay.com/sch" in p.replacement.url
+
+
+def test_serpapi_second_country_uses_that_countrys_site_and_currency():
+    from libraryclaim.pricing import SerpApi
+    web = FakeWeb({"serpapi.com/search": serp({("ebay.co.uk", "new"): (9, 10, 11), ("ebay.co.uk", "used"): (4, 5, 6)})})
+    p = price_book(web, SerpApi("sk"), GB, "Dune", "Frank Herbert")
+    assert p.replacement.currency == "GBP" and p.replacement.amount == 10 and not p.replacement.converted
+
+
+def test_serpapi_skips_price_ranges_and_junk():
+    from libraryclaim.pricing import SerpApi
+
+    def route(url, params, headers):
+        return {"organic_results": [
+            {"title": "Dune Herbert", "price": {"from": {"extracted": 5}, "to": {"extracted": 40}}},   # variations
+            {"title": "Dune Herbert", "price": {"from": {"extracted": 12}, "to": {"extracted": 12}}},
+            {"title": "Dune Herbert", "price": {"extracted": 11}}, {"title": "Dune Herbert", "price": {"extracted": 13}},
+            {"title": "Dune Herbert", "price": "n/a"}, None, "x"]}
+    p = price_book(FakeWeb({"serpapi.com/search": route}), SerpApi("sk"), US, "Dune")
+    assert p.replacement.amount == 12 and p.replacement.n_listings == 3
+
+
+def test_price_token_prefers_ebay_then_serpapi_then_nothing():
+    from libraryclaim.pricing import SerpApi
+    assert Settings(locale=US).price_token() == ""
+    t = Settings(locale=US, serpapi_key="sk").price_token()
+    assert isinstance(t, SerpApi) and t == "sk"
+
+
+def test_preflight_reports_serpapi_quota(monkeypatch):
+    import httpx
+    from libraryclaim import preflight
+    monkeypatch.setattr(httpx, "get", lambda *a, **k: httpx.Response(200, json={"plan_searches_left": 240}))
+    c = preflight.prices(Settings(locale=US, serpapi_key="sk"))
+    assert c.status == preflight.OK and "240 searches left" in c.detail
+    monkeypatch.setattr(httpx, "get", lambda *a, **k: httpx.Response(200, json={"plan_searches_left": 40}))
+    assert preflight.prices(Settings(locale=US, serpapi_key="sk")).status == preflight.WARN
+    monkeypatch.setattr(httpx, "get", lambda *a, **k: httpx.Response(200, json={"error": "Invalid API key."}))
+    assert preflight.prices(Settings(locale=US, serpapi_key="bad")).status == preflight.FAIL

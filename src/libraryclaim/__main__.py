@@ -13,7 +13,6 @@ from .depth import DepthPro
 from .fetch import Fetcher
 from .pipeline import Deps, run_pipeline
 from . import report
-from .pricing import ebay_token
 from .schema import ClaimPacket
 from .second_country import price_second_country
 from .vision import Meter, cached, gemini_model
@@ -50,11 +49,9 @@ def main(argv=None) -> int:
         meta.update(country=settings.locale.country, currency=settings.locale.currency)
         meta_path.write_text(json.dumps(meta, indent=2))
 
-    token = ""
-    if settings.ebay_client_id and settings.ebay_client_secret:
-        token = ebay_token(settings.ebay_client_id, settings.ebay_client_secret)
-    else:
-        print("eBay keys not set: every book and item will be left unpriced", file=sys.stderr)
+    token = settings.price_token()
+    if not token:
+        print("no price source (eBay or SerpApi key): every book and item will be left unpriced", file=sys.stderr)
 
     meter = Meter(MODEL_PRICES)
     vision = gemini_model(settings.google_api_key, settings.vision_model, meter=meter)
@@ -85,8 +82,7 @@ def reprice(args) -> int:
     settings = Settings.from_env()
     packet_path = args.sweep / "claim_packet.json"
     packet = ClaimPacket.model_validate_json(packet_path.read_text())
-    token = ebay_token(settings.ebay_client_id, settings.ebay_client_secret) \
-        if settings.ebay_client_id and settings.ebay_client_secret else ""
+    token = settings.price_token()
     packet.second_country = price_second_country(packet, Locale.parse(args.country, args.currency),
                                                  Fetcher(cache_dir=REPO_ROOT / "data/cache/http"), token, args.books)
     packet_path.write_text(packet.model_dump_json(indent=2))

@@ -72,11 +72,22 @@ class Settings:
     google_books_key: str = ""
     ebay_client_id: str = ""
     ebay_client_secret: str = ""
+    serpapi_key: str = ""
     live_model: str = "gemini-3.8-live"
     vision_model: str = "gemini-3.8-flash"
     vision_escalation_model: str = "gemini-3.1-pro-preview"
     appraisal_threshold: float = 150.0
     marker_size_cm: float = 15.0
+
+    def price_token(self) -> str:
+        """eBay's own API when its keys are set, else eBay through SerpApi, else none (lines stay unpriced)."""
+        if self.ebay_client_id and self.ebay_client_secret:
+            from .pricing import ebay_token
+            return ebay_token(self.ebay_client_id, self.ebay_client_secret)
+        if self.serpapi_key:
+            from .pricing import SerpApi
+            return SerpApi(self.serpapi_key)
+        return ""
 
     @classmethod
     def from_env(cls) -> Settings:
@@ -88,6 +99,7 @@ class Settings:
             google_books_key=env("GOOGLE_BOOKS_API_KEY", ""),
             ebay_client_id=env("EBAY_CLIENT_ID", ""),
             ebay_client_secret=env("EBAY_CLIENT_SECRET", ""),
+            serpapi_key=env("SERPAPI_API_KEY", ""),
             live_model=env("LIVE_MODEL", "gemini-3.8-live"),
             vision_model=env("VISION_MODEL", "gemini-3.8-flash"),
             vision_escalation_model=env("VISION_ESCALATION_MODEL", "gemini-3.1-pro-preview"),

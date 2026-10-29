@@ -31,7 +31,6 @@ from ..config import MODEL_PRICES, REPO_ROOT, Settings
 from ..depth import DepthPro
 from ..fetch import Fetcher
 from ..pipeline import Deps
-from ..pricing import ebay_token
 from ..vision import Meter, gemini_model
 from .agent import dispatch, live_config
 from .session import LiveSweep
@@ -47,8 +46,7 @@ DEPTH = DepthPro()  # one model for the whole server; loading it takes a few sec
 
 def real_deps(settings: Settings) -> Deps:
     meter = Meter(MODEL_PRICES)
-    token = ebay_token(settings.ebay_client_id, settings.ebay_client_secret) \
-        if settings.ebay_client_id and settings.ebay_client_secret else ""
+    token = settings.price_token()
     return Deps(vision=gemini_model(settings.google_api_key, settings.vision_model, meter=meter),
                 escalate=gemini_model(settings.google_api_key, settings.vision_escalation_model, meter=meter, timeout_s=15),
                 get_json=Fetcher(cache_dir=REPO_ROOT / "data/cache/http"), ebay_token=token,

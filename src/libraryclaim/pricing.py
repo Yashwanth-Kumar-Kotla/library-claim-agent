@@ -81,8 +81,44 @@ def site_search_url(market: str, query: str, condition: str) -> str:
     return f"https://{EBAY_SITES.get(market, 'www.ebay.com')}/sch/i.html?_nkw={quote_plus(query)}&LH_ItemCondition={cond}&LH_BIN=1"
 
 
+class SerpApi(str):
+    """A SerpApi key, passed where an eBay OAuth token would go: the same eBay searches, through
+    SerpApi's eBay engine, for when eBay's own developer programme is not available."""
+
+
+SERPAPI = "https://serpapi.com/search"
+# eBay condition ids. Used books are listed as Like New, Very Good, Good or Acceptable, rarely plain "Used".
+CONDITION_IDS = {"new": "1000", "used": "2750|3000|4000|5000|6000"}
+
+
+def serpapi_listings(get_json: GetJson, key: str, market: str, q: str, condition: str, category: str | None):
+    currency = next(c for m, c in EBAY_MARKETS.values() if m == market)
+    params = {"engine": "ebay", "_nkw": q, "ebay_domain": EBAY_SITES[market].removeprefix("www."),
+              "LH_ItemCondition": CONDITION_IDS[condition], "buying_format": "BIN", "_ipg": 60, "api_key": key}
+    if category:
+        params["category_id"] = category
+    resp = get_json(SERPAPI, params)
+    data = resp.data if isinstance(resp.data, dict) else {}
+    out = []
+    for it in data.get("organic_results") or []:
+        if not isinstance(it, dict):
+            continue
+        price = it.get("price") if isinstance(it.get("price"), dict) else {}
+        if "from" in price or "to" in price:
+            lo, hi = (price.get("from") or {}).get("extracted"), (price.get("to") or {}).get("extracted")
+            value = lo if lo == hi else None  # a price range is a multi-variation listing: no single price
+        else:
+            value = price.get("extracted")
+        if not isinstance(value, (int, float)):
+            continue
+        out.append(Listing(str(it.get("title", "")), float(value), currency, str(it.get("link", ""))))
+    return out, resp
+
+
 def ebay_listings(get_json: GetJson, token: str, market: str, *, q: str = "", gtin: str = "",
                   condition: str, category: str | None = None):
+    if isinstance(token, SerpApi):
+        return serpapi_listings(get_json, token, market, gtin or q, condition, category)
     params = {"limit": 50, "filter": f"buyingOptions:{{FIXED_PRICE}},conditions:{{{condition.upper()}}}"}
     if gtin:
         params["gtin"] = gtin
@@ -130,7 +166,8 @@ def quote_from(listings: list[Listing], currency: str, resp, market: str, query:
     q = statistics.quantiles(prices, n=4) if len(prices) >= 4 else [min(prices), 0, max(prices)]
     return Quote(
         amount=round(statistics.median(prices), 2), currency=currency,
-        source=f"eBay {market.removeprefix('EBAY_')}: median asking price of {len(prices)} {condition} fixed-price listings",
+        source=(f"eBay {market.removeprefix('EBAY_')}{' (via SerpApi)' if 'serpapi.com' in resp.url else ''}: "
+                f"median asking price of {len(prices)} {condition} fixed-price listings"),
         url=site_search_url(market, query, condition), retrieved_at=resp.retrieved_at, n_listings=len(prices),
         condition=CONDITION_ASSUMED[condition], low=round(q[0], 2), high=round(q[-1], 2), api_url=resp.url,
     )

@@ -60,13 +60,29 @@ def books(s: Settings) -> Check:
 
 def prices(s: Settings) -> Check:
     if not (s.ebay_client_id and s.ebay_client_secret):
-        return Check("Prices (eBay)", WARN, "no eBay keys: every line will be left unpriced (allowed, but costs the pricing score)")
+        if s.serpapi_key:
+            return serpapi(s)
+        return Check("Prices", WARN, "no eBay or SerpApi key: every line will be left unpriced (allowed, but costs the pricing score)")
     try:
         from .pricing import ebay_token
         ebay_token(s.ebay_client_id, s.ebay_client_secret)
         return Check("Prices (eBay)", OK, "token issued")
     except Exception as exc:  # noqa: BLE001
         return Check("Prices (eBay)", FAIL, f"token request failed: {str(exc)[:120]}")
+
+
+def serpapi(s: Settings) -> Check:
+    """SerpApi's account endpoint is free (it doesn't use a search) and says how many searches are left."""
+    import httpx
+    try:
+        j = httpx.get("https://serpapi.com/account", params={"api_key": s.serpapi_key}, timeout=10).json()
+    except Exception as exc:  # noqa: BLE001
+        return Check("Prices (SerpApi)", FAIL, f"unreachable: {str(exc)[:100]}")
+    if "error" in j:
+        return Check("Prices (SerpApi)", FAIL, f"key rejected: {j['error'][:100]}")
+    left = j.get("plan_searches_left", j.get("total_searches_left"))
+    status = OK if isinstance(left, int) and left >= 150 else WARN
+    return Check("Prices (SerpApi)", status, f"{left} searches left this month (a 60-book sweep needs about 150; replays are free)")
 
 
 def depth() -> Check:
