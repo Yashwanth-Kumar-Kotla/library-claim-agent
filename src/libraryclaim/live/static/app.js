@@ -17,7 +17,9 @@ function tagged(tag, buf) { const out = new Uint8Array(buf.byteLength + 1); out[
 
 function listenForOrientation(permission) {
   const on = () => window.addEventListener("deviceorientation", (e) => {
-    if (e.alpha !== null) orientation = { alpha: e.alpha, beta: e.beta, gamma: e.gamma };
+    if (e.alpha === null) return;
+    orientation = { alpha: e.alpha, beta: e.beta, gamma: e.gamma };
+    if (scan.on) scanMotion(orientation, e.timeStamp);
   });
   if (!permission) { on(); return; }                 // Android and desktop: no prompt needed
   permission.then((state) => (state === "granted" ? on() : status("Motion access denied: room size won't be measured.")))
@@ -92,6 +94,7 @@ function startFrames() {
         both.set(new Uint8Array(head), 0);
         both.set(new Uint8Array(jpeg), 12);
         send(tagged("G", both.buffer));
+        if (scan.on) scanAdd(pose);                  // the ring counts exactly the frames the server measures from
       } else send(tagged(tag, jpeg));
     }, "image/jpeg", quality);
   };
@@ -128,14 +131,13 @@ function showSession() {
   }, 1000));
 }
 
-function place(text, scan = false) {
+function place(text, scanning = false) {
   const el = $("place");
   if (!text) { el.hidden = true; $("frame").hidden = true; return; }
   el.textContent = text;
-  el.classList.toggle("scan", scan);
+  el.classList.toggle("scan", scanning);
   el.hidden = false;
-  $("frame").hidden = false;
-  $("frame").classList.toggle("scan", scan);
+  $("frame").hidden = scanning;               // the turn has its own guide
 }
 
 const shelfName = (s) => `Bookcase ${s[0]} · shelf ${s.slice(1)}`;
@@ -152,13 +154,14 @@ function onEvent(m) {
   }
   else if (m.type === "row_open") place(shelfName(m.shelf));
   else if (m.type === "row_closed" || m.type === "row_rejected") place(null);
-  else if (m.type === "scan_open") place("Measuring the room · turn slowly", true);
-  else if (m.type === "scan_closed") place(null);
+  else if (m.type === "scan_open") { place("Measuring the room", true); scanShow(); }
+  else if (m.type === "scan_closed" || m.type === "scan_rejected") { place(null); scanHide(); }
   else if (m.type === "book") upsert(m.id, m, "book");
   else if (m.type === "item") upsert(m.id, m, "item");
   else if (m.type === "done") {
     status("Claim packet ready");
     place(null);
+    scanHide();
     $("report").href = m.report; $("report").hidden = false;
     $("end").hidden = true;
     $("sheet").classList.add("open");
@@ -226,4 +229,96 @@ function stopAll() {
   micNode?.disconnect();
   stream?.getTracks().forEach((t) => t.stop());
   $("end").disabled = true;
+}
+
+// ---- room turn guide ----
+// Drawn from the phone's own orientation, so it reacts at once; the agent only hears when the turn
+// is complete or has stalled. Sector, level and tilt rules match session.py (scan_coverage).
+const BINS = 16, SECTOR = 360 / BINS, LEVEL = 20, TILT = 25, NEED = 300, FAST = 45;   // degrees, deg/s
+const scan = { on: false };
+const wrap = (d) => ((d + 540) % 360) - 180;                  // signed difference in (-180, 180]
+const PHONE = '<svg viewBox="0 0 26 44"><rect x="2" y="2" width="22" height="40" rx="5" fill="none" stroke="currentColor" stroke-width="2.5"/><line x1="10" y1="37" x2="16" y2="37" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>';
+
+function arc(i) {                // sector i drawn anticlockwise from the top: turning left raises alpha
+  const pt = (deg) => { const r = (deg - 90) * Math.PI / 180; return `${(60 + 50 * Math.cos(r)).toFixed(2)} ${(60 + 50 * Math.sin(r)).toFixed(2)}`; };
+  const a = -(i + 1) * SECTOR + 1.5, b = -i * SECTOR - 1.5;
+  return `M${pt(a)} A50 50 0 0 1 ${pt(b)}`;
+}
+
+function scanShow() {
+  if (!orientation) return;      // no motion sensors: the agent explains, the server says what happened
+  Object.assign(scan, { on: true, bins: new Set(), up: false, down: false, done: false, dir: 0,
+                        hx: 0, hy: 1, speed: 0, last: null, intro: Date.now() + 4000 });
+  $("ringSegs").innerHTML = Array.from({ length: BINS }, (_, i) => `<path class="seg" d="${arc(i)}"/>`).join("");
+  $("scanGuide").className = "scan-guide";
+  $("tilt").hidden = true;
+  for (const a of $("tilt").querySelectorAll(".aim")) a.classList.remove("done");
+  $("scanGuide").hidden = false;
+  requestAnimationFrame(scanDraw);
+}
+
+function scanHide() { scan.on = false; $("scanGuide").hidden = true; }
+
+function scanAdd(p) {
+  if (Math.abs(p.beta - 90) <= LEVEL) scan.bins.add(Math.floor((((p.alpha % 360) + 360) % 360) / SECTOR));
+  scan.up ||= p.beta - 90 >= TILT;
+  scan.down ||= 90 - p.beta >= TILT;
+  if (!scan.done && scan.bins.size * SECTOR >= NEED && scan.up && scan.down) { scan.done = true; chime(); }
+}
+
+function scanMotion(o, t) {      // smoothed heading (no flicker on a wobble) and turning speed
+  const r = o.alpha * Math.PI / 180;
+  scan.hx += 0.25 * (Math.sin(r) - scan.hx);
+  scan.hy += 0.25 * (Math.cos(r) - scan.hy);
+  if (scan.last) {
+    const dt = (t - scan.last.t) / 1000;
+    if (dt > 0 && dt < 0.5) scan.speed += 0.2 * (Math.abs(wrap(o.alpha - scan.last.a)) / dt - scan.speed);
+  }
+  scan.last = { a: o.alpha, t };
+}
+
+function scanDraw() {
+  if (!scan.on) return;
+  const heading = (Math.atan2(scan.hx, scan.hy) * 180 / Math.PI + 360) % 360;
+  const here = Math.floor(heading / SECTOR);
+  $("ringSegs").setAttribute("transform", `rotate(${heading.toFixed(1)} 60 60)`);
+  $("ringSegs").querySelectorAll(".seg").forEach((el, i) => {
+    el.classList.toggle("on", scan.bins.has(i));
+    el.classList.toggle("here", i === here);
+  });
+  const g = $("scanGuide"), covered = scan.bins.size * SECTOR;
+  g.classList.toggle("done", scan.done);
+  g.classList.toggle("fast", !scan.done && scan.speed > FAST);
+
+  // Point to the gaps, keeping one direction while there are gaps that way so it doesn't flip-flop.
+  const gaps = covered >= NEED ? [] : [...Array(BINS).keys()].filter((i) => !scan.bins.has(i)).map((i) => wrap((i + 0.5) * SECTOR - heading));
+  if (!gaps.some((d) => Math.sign(d) === scan.dir)) {
+    scan.dir = gaps.length ? Math.sign(gaps.reduce((a, b) => (Math.abs(b) < Math.abs(a) ? b : a))) : 0;
+  }
+  $("turnL").hidden = scan.dir <= 0 || scan.done;   // alpha grows as the phone turns left
+  $("turnR").hidden = scan.dir >= 0 || scan.done;
+
+  // Tilt comes second: shown once most of the turn is done, so there is one thing to do at a time.
+  $("tilt").hidden = scan.done || !(covered >= 0.8 * NEED || scan.up || scan.down);
+  if (orientation) $("tiltDot").style.top = `${50 - Math.max(-1, Math.min(1, (orientation.beta - 90) / 45)) * 45}%`;
+  const [up, down] = $("tilt").querySelectorAll(".aim");
+  up.classList.toggle("done", scan.up);
+  down.classList.toggle("done", scan.down);
+
+  const mid = scan.done ? "✓" : Date.now() < scan.intro && !scan.bins.size ? PHONE : `${Math.round(covered)}°`;
+  if ($("ringMid").dataset.v !== mid) { $("ringMid").innerHTML = mid; $("ringMid").dataset.v = mid; }
+  requestAnimationFrame(scanDraw);
+}
+
+function chime() {               // iPhone Safari has no vibration, so a short soft tone; vibrate where supported
+  navigator.vibrate?.(40);
+  if (!ctx) return;
+  const osc = ctx.createOscillator(), gain = ctx.createGain();
+  osc.frequency.value = 880;
+  gain.gain.setValueAtTime(0.0001, ctx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.12, ctx.currentTime + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.25);
+  osc.connect(gain).connect(ctx.destination);
+  osc.start();
+  osc.stop(ctx.currentTime + 0.3);
 }

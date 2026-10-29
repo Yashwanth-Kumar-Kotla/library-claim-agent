@@ -43,6 +43,16 @@
 <div id="frame" class="frame" hidden aria-hidden="true"><span></span><span></span><span></span><span></span></div>
 <div id="coach" class="coach" role="status" hidden></div>
 
+<!-- Room turn: the ring fills as the phone faces new directions; the top of the ring is where it faces now -->
+<div id="scanGuide" class="scan-guide" hidden aria-hidden="true">
+  <div class="ring-wrap">
+    <svg class="ring" viewBox="0 0 120 120"><g id="ringSegs"></g><path class="facing" d="M60 3 l5 7 h-10 z"/></svg>
+    <span id="turnL" class="turn l" hidden>‹‹</span><span id="turnR" class="turn r" hidden>››</span>
+    <div id="ringMid" class="ring-mid"></div>
+  </div>
+  <div id="tilt" class="tilt" hidden><span class="aim up"></span><span class="aim down"></span><span id="tiltDot" class="dot"></span></div>
+</div>
+
 <section id="sheet" class="sheet" hidden>
   <button id="handle" class="handle" aria-label="Show or hide the inventory"><span></span></button>
   <div class="voice">

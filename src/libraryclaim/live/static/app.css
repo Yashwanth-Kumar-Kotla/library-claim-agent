@@ -71,11 +71,34 @@ video { position: fixed; inset: 0; width: 100%; height: 100%; object-fit: cover;
 .frame span:nth-child(2) { top: 0; right: 0; border-left: 0; border-bottom: 0; border-radius: 0 8px 0 0; }
 .frame span:nth-child(3) { bottom: 0; left: 0; border-right: 0; border-top: 0; border-radius: 0 0 0 8px; }
 .frame span:nth-child(4) { bottom: 0; right: 0; border-left: 0; border-top: 0; border-radius: 0 0 8px 0; }
-.frame.scan span { border-color: var(--sage); }
 
 .coach { position: fixed; left: 50%; top: calc(100px + var(--safe-t)); transform: translateX(-50%); z-index: 4; max-width: calc(100% - 32px);
   padding: 10px 16px; border-radius: 12px; background: rgba(240,164,83,.94); color: #241404; font-weight: 600; font-size: 14.5px;
   box-shadow: 0 8px 24px -8px rgba(0,0,0,.6); animation: drop .3s ease both; }
+
+/* room turn guide: ring of 16 sectors (top = where the phone faces), turn arrows, tilt bar */
+.scan-guide { position: fixed; left: 50%; top: calc(150px + var(--safe-t)); transform: translateX(-50%); z-index: 2;
+  display: flex; align-items: center; gap: 14px; pointer-events: none; animation: pop .35s ease both; }
+.ring-wrap { position: relative; width: 156px; height: 156px; border-radius: 50%; background: var(--glass);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.ring { width: 100%; height: 100%; display: block; }
+.ring path.seg { fill: none; stroke: rgba(242,237,227,.16); stroke-width: 9; transition: stroke .25s; }
+.ring path.seg.on { stroke: var(--sage); }
+.ring .facing { fill: var(--bone); transition: fill .2s; }
+.scan-guide.fast .ring .facing { fill: var(--amber); }
+.scan-guide.fast .ring path.seg.here { stroke: var(--amber); }
+.scan-guide.done .ring path.seg { stroke: var(--sage); filter: drop-shadow(0 0 4px rgba(159,198,163,.7)); }
+.ring-mid { position: absolute; inset: 0; display: grid; place-items: center; font: 500 22px var(--mono); color: var(--bone); }
+.ring-mid svg { width: 26px; height: 44px; }
+.scan-guide.done .ring-mid { color: var(--sage); font-size: 40px; }
+.turn { position: absolute; top: -6px; font: 600 22px/1 var(--sans); color: var(--brass); animation: nudge 1.2s ease-in-out infinite; }
+.turn.l { left: 22px; } .turn.r { right: 22px; --dir: 1; }
+.tilt { position: relative; width: 14px; height: 120px; border-radius: 7px; background: var(--glass); border: 1px solid var(--line); }
+.tilt .aim { position: absolute; left: -5px; right: -5px; height: 3px; border-radius: 2px; background: rgba(242,237,227,.35); }
+.tilt .aim.up { top: 18px; } .tilt .aim.down { bottom: 18px; }
+.tilt .aim.done { background: var(--sage); box-shadow: 0 0 6px rgba(159,198,163,.8); }
+.tilt .dot { position: absolute; left: 50%; top: 50%; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%;
+  background: var(--bone); transition: top .12s linear; }
 
 /* ---------- bottom sheet ---------- */
 .sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 3; max-height: 46vh; display: flex; flex-direction: column;
@@ -129,4 +152,5 @@ video { position: fixed; inset: 0; width: 100%; height: 100%; object-fit: cover;
 @keyframes slide { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: none; } }
 @keyframes bump { 40% { transform: scale(1.35); } }
 @keyframes eq { 0%, 100% { height: 5px; } 50% { height: 20px; } }
+@keyframes nudge { 50% { transform: translateX(calc(var(--dir, -1) * 4px)); } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
