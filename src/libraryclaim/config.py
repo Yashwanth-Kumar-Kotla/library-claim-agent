@@ -38,8 +38,11 @@ MODEL_PRICES = {
     "gemini-3.1-pro-preview": (2.00, 12.00),
     "gemini-3.1-flash-lite": (0.25, 1.50),
 }
-# Live API is billed per minute of audio/video, not per token here.
-LIVE_USD_PER_MIN = {"audio_in": 0.005, "audio_out": 0.018, "video_in": 0.002}
+# Gemini 3.8 Live, USD per 1M tokens by modality (same source and date as above).
+LIVE_PRICES = {
+    "in": {"TEXT": 0.75, "AUDIO": 3.00, "IMAGE": 1.00, "VIDEO": 1.00},
+    "out": {"TEXT": 4.50, "AUDIO": 12.00},
+}
 
 # Where to look when the policyholder's country has no marketplace of its own.
 FALLBACK_COUNTRY = "US"

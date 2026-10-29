@@ -33,6 +33,7 @@ from ..fetch import Fetcher
 from ..pipeline import Deps
 from ..vision import Meter, gemini_model
 from .agent import dispatch, live_config
+from .usage import usage_entry
 from .session import LiveSweep
 
 log = logging.getLogger("libraryclaim.live")
@@ -130,6 +131,7 @@ async def live(ws: WebSocket) -> None:
 
     sweep = LiveSweep(SWEEPS / sweep_id, app.state.deps(s), s, on_event=emit)
     speaking = {"now": False}   # is the agent's voice currently streaming?
+    spend = {"live": 0.0}       # what the voice agent has cost so far, from the Live API's own usage reports
     shown = {"hint": None}
     emit("session", {"sweep": sweep_id})
     tasks: set[asyncio.Task] = set()
@@ -194,6 +196,10 @@ async def live(ws: WebSocket) -> None:
     async def from_gemini(session):
         while True:
             async for m in session.receive():
+                if m.usage_metadata:
+                    entry = usage_entry(m.usage_metadata)
+                    spend["live"] = round(spend["live"] + entry["usd"], 6)
+                    record({"type": "live_usage", **entry, "live_usd_so_far": spend["live"]})
                 if m.tool_call and m.tool_call.function_calls:
                     for fc in m.tool_call.function_calls:
                         t = asyncio.create_task(run_tool(fc, session))
@@ -234,10 +240,11 @@ async def live(ws: WebSocket) -> None:
         with contextlib.suppress(Exception):
             await ws.send_text(json.dumps({"type": "error", "message": f"live session ended: {exc}"}))
     finally:
+        record({"type": "live_cost", "usd": spend["live"]})
+        # The browser closed or the connection dropped before end_sweep: keep what was captured.
+        # Started before any other await and shielded: the handler is often being cancelled here,
+        # and the worker thread finishes the packet even if this coroutine does not resume.
         if not sweep.ended and sweep.n:
-            # The browser closed or the connection dropped before end_sweep: keep what was captured.
-            # Started before any other await and shielded: the handler is often being cancelled here,
-            # and the worker thread finishes the packet even if this coroutine does not resume.
             def close_out():
                 record({"type": "closed_early", **sweep.end(True, True)})
             with contextlib.suppress(asyncio.CancelledError):
