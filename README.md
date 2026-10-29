@@ -39,6 +39,15 @@ cp .env.example .env    # then fill in the keys below
 Without eBay keys everything runs and every line is marked "price source not configured"; nothing
 is guessed.
 
+### Before a live sweep
+
+```bash
+uv run python -m libraryclaim.preflight   # GO / NO-GO: Gemini credit, keys, depth model, certificate
+```
+
+On the phone, open `https://<lan-ip>:8443/check` first: it confirms the phone reaches the computer and can
+use the camera, microphone and motion sensors.
+
 ### Live sweep on a laptop
 
 ```bash
@@ -182,6 +191,9 @@ Model replies are cached on disk, so re-running a saved sweep while tuning costs
 - Item sizes are the front face only.
 - The voice agent decides when to speak; its patience and pacing are set by instructions and voice
   activity settings, not guaranteed.
+
+How the pieces fit, which model does what, and where scale and prices come from:
+[ARCHITECTURE.md](ARCHITECTURE.md).
 
 ## Layout
 
