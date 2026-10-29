@@ -3,31 +3,64 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f0e0c">
 <title>Library sweep</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/static/app.css">
 </head>
 <body>
-<main>
-  <div class="cam">
-    <video id="video" playsinline muted autoplay></video>
-    <div id="coach" class="coach" hidden></div>
-    <div id="row" class="row-tag" hidden></div>
+<video id="video" playsinline muted autoplay></video>
+<div class="vignette" aria-hidden="true"></div>
+
+<!-- Before the sweep -->
+<section id="intro" class="intro">
+  <div class="intro-card">
+    <p class="eyebrow">Contents claim · home library</p>
+    <h1>Walk the room once.<br><em>We'll do the counting.</em></h1>
+    <ol class="steps">
+      <li><span>1</span>Tape a printed marker to each bookcase.</li>
+      <li><span>2</span>Pan slowly along each shelf when asked.</li>
+      <li><span>3</span>Turn once in the middle of the room.</li>
+    </ol>
+    <button id="start" class="primary">Start the sweep</button>
+    <p class="fineprint">Camera, microphone and motion access stay between this phone and the computer on your network.</p>
   </div>
-  <div id="status" class="status">Tap Start. The camera and microphone stay on this device and the server on your network.</div>
-  <div class="captions">
-    <p id="agent" class="agent"></p>
-    <p id="you" class="you"></p>
+</section>
+
+<!-- During the sweep -->
+<header id="hud" class="hud" hidden>
+  <div class="chip rec"><span class="dot"></span><span id="clock">0:00</span></div>
+  <div id="place" class="chip place" hidden></div>
+  <div class="chip tally" aria-live="polite">
+    <b id="nBooks">0</b><small>books</small>
+    <i></i><b id="nIds">0</b><small>named</small>
+    <i></i><b id="nItems">0</b><small>items</small>
   </div>
-  <div class="buttons">
-    <button id="start">Start</button>
-    <button id="end" disabled>End sweep</button>
+</header>
+
+<div id="frame" class="frame" hidden aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+<div id="coach" class="coach" role="status" hidden></div>
+
+<section id="sheet" class="sheet" hidden>
+  <button id="handle" class="handle" aria-label="Show or hide the inventory"><span></span></button>
+  <div class="voice">
+    <div id="wave" class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <p id="agent" class="agent">Connecting…</p>
   </div>
-  <section class="inventory">
-    <div class="counts"><span id="nBooks">0</span> books · <span id="nIds">0</span> identified · <span id="nItems">0</span> items</div>
-    <a id="report" href="#" target="_blank" hidden>Open claim report</a>
-    <ol id="lines"></ol>
-  </section>
-</main>
+  <p id="you" class="you"></p>
+  <div id="latest" class="latest" aria-live="polite"></div>
+  <div class="drawer">
+    <ol id="lines" class="lines"></ol>
+  </div>
+  <div class="actions">
+    <button id="end" class="ghost" disabled>End sweep</button>
+    <a id="report" class="primary" href="#" target="_blank" hidden>Open the claim report</a>
+  </div>
+  <p id="status" class="status"></p>
+</section>
+
 <script src="/static/app.js"></script>
 </body>
 </html>

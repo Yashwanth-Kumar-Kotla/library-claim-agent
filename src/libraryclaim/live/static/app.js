@@ -8,6 +8,8 @@ const lines = new Map(), state = new Map();   // id -> <li>, id -> {kind, status
 
 $("start").onclick = start;
 $("end").onclick = () => { send(JSON.stringify({ type: "end" })); $("end").disabled = true; status("Finishing the claim packet…"); };
+$("handle").onclick = () => $("sheet").classList.toggle("open");
+let started = 0;
 
 function status(t) { $("status").textContent = t; }
 function send(data) { if (ws && ws.readyState === WebSocket.OPEN) ws.send(data); }
@@ -41,9 +43,10 @@ async function start() {
     return;
   }
   $("video").srcObject = stream;
+  showSession();
   ws = new WebSocket(`${location.protocol === "https:" ? "wss" : "ws"}://${location.host}/ws`);
   ws.binaryType = "arraybuffer";
-  ws.onopen = () => { status("Connected. The assistant will talk you through it."); $("end").disabled = false; startMic(); startFrames(); };
+  ws.onopen = () => { status("Connected"); $("agent").textContent = "Listening…"; $("end").disabled = false; startMic(); startFrames(); };
   ws.onmessage = (ev) => (typeof ev.data === "string" ? onEvent(JSON.parse(ev.data)) : onAudio(ev.data));
   ws.onclose = () => { stopAll(); status("Disconnected."); };
 }
@@ -108,22 +111,57 @@ function onAudio(buf) {                  // tag byte + PCM16 mono 24 kHz from th
   node.start(playAt);
   playAt += audio.duration;
   speaking.push(node);
-  node.onended = () => { speaking = speaking.filter((n) => n !== node); };
+  $("wave").classList.add("on");
+  node.onended = () => {
+    speaking = speaking.filter((n) => n !== node);
+    if (!speaking.length) $("wave").classList.remove("on");
+  };
 }
 
+function showSession() {
+  $("intro").hidden = true;
+  for (const id of ["hud", "sheet"]) $(id).hidden = false;
+  started = Date.now();
+  timers.push(setInterval(() => {
+    const s = Math.floor((Date.now() - started) / 1000);
+    $("clock").textContent = `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+  }, 1000));
+}
+
+function place(text, scan = false) {
+  const el = $("place");
+  if (!text) { el.hidden = true; $("frame").hidden = true; return; }
+  el.textContent = text;
+  el.classList.toggle("scan", scan);
+  el.hidden = false;
+  $("frame").hidden = false;
+  $("frame").classList.toggle("scan", scan);
+}
+
+const shelfName = (s) => `Bookcase ${s[0]} · shelf ${s.slice(1)}`;
+let coachTimer;
+
 function onEvent(m) {
-  if (m.type === "interrupted") { speaking.forEach((n) => n.stop()); speaking = []; playAt = 0; }
+  if (m.type === "interrupted") { speaking.forEach((n) => n.stop()); speaking = []; playAt = 0; $("wave").classList.remove("on"); }
   else if (m.type === "transcript") caption(m.who, m.text);
-  else if (m.type === "coach") { $("coach").textContent = m.text; $("coach").hidden = false; setTimeout(() => ($("coach").hidden = true), 3000); }
-  else if (m.type === "row_open") { $("row").textContent = `Shelf ${m.shelf}`; $("row").hidden = false; }
-  else if (m.type === "row_closed" || m.type === "row_rejected") $("row").hidden = true;
-  else if (m.type === "scan_open") { $("row").textContent = "Measuring the room: turn slowly"; $("row").hidden = false; }
-  else if (m.type === "scan_closed") $("row").hidden = true;
+  else if (m.type === "coach") {
+    $("coach").textContent = m.text[0].toUpperCase() + m.text.slice(1);
+    $("coach").hidden = false;
+    clearTimeout(coachTimer);
+    coachTimer = setTimeout(() => ($("coach").hidden = true), 3200);
+  }
+  else if (m.type === "row_open") place(shelfName(m.shelf));
+  else if (m.type === "row_closed" || m.type === "row_rejected") place(null);
+  else if (m.type === "scan_open") place("Measuring the room · turn slowly", true);
+  else if (m.type === "scan_closed") place(null);
   else if (m.type === "book") upsert(m.id, m, "book");
   else if (m.type === "item") upsert(m.id, m, "item");
   else if (m.type === "done") {
-    status("Claim packet ready.");
+    status("Claim packet ready");
+    place(null);
     $("report").href = m.report; $("report").hidden = false;
+    $("end").hidden = true;
+    $("sheet").classList.add("open");
   } else if (m.type === "error") status(m.message);
 }
 
@@ -135,21 +173,52 @@ function caption(who, text) {
   $(who === "agent" ? "agent" : "you").textContent = buffers[who];
 }
 
+const LABEL = { identified: "named", unidentified: "unread", needs_appraisal: "appraise" };
+
+function describe(m, kind) {
+  if (kind === "item") return [m.description || m.category, m.brand_model || m.category];
+  if (m.title) return [m.title, m.author || ""];
+  return ["Unidentified book", m.spine_height_cm ? `${m.spine_height_cm} cm tall` : "spine not readable"];
+}
+
 function upsert(id, m, kind) {
+  const isNew = !lines.has(id);
   let li = lines.get(id);
   if (!li) { li = document.createElement("li"); lines.set(id, li); $("lines").prepend(li); }
-  const flag = m.status === "needs_appraisal" ? '<span class="flag">needs appraisal</span>' : "";
-  const label = kind === "book" ? (m.title ? `${m.title}${m.author ? " — " + m.author : ""}` : "Unidentified book")
-                                : `${m.category}: ${m.description}`;
-  li.className = m.status === "unidentified" ? "unidentified" : "";
-  li.innerHTML = `<span class="id"></span><span class="t"></span>${flag}`;
-  li.querySelector(".id").textContent = id;
-  li.querySelector(".t").textContent = label;   // textContent: titles come from outside, never as HTML
+  const [main, sub] = describe(m, kind);
+  li.innerHTML = '<span class="id"></span><span class="t"><span></span><small></small></span><span class="tag"></span>';
+  li.querySelector(".id").textContent = id;                 // textContent: titles come from outside, never HTML
+  li.querySelector(".t span").textContent = main;
+  li.querySelector(".t small").textContent = sub;
+  const tag = li.querySelector(".tag");
+  tag.textContent = kind === "item" ? "item" : LABEL[m.status] || m.status;
+  tag.className = `tag ${kind === "item" ? "item" : m.status}`;
+
+  const was = state.get(id);
   state.set(id, { kind, status: m.status });
+  if (isNew || (was && was.status !== m.status && m.status !== "unidentified")) addCard(main, kind === "item" ? m.category : id);
   const all = [...state.values()];
-  $("nBooks").textContent = all.filter((x) => x.kind === "book").length;
-  $("nIds").textContent = all.filter((x) => x.kind === "book" && x.status !== "unidentified").length;
-  $("nItems").textContent = all.filter((x) => x.kind === "item").length;
+  count("nBooks", all.filter((x) => x.kind === "book").length);
+  count("nIds", all.filter((x) => x.kind === "book" && x.status !== "unidentified").length);
+  count("nItems", all.filter((x) => x.kind === "item").length);
+}
+
+function count(id, n) {
+  const el = $(id);
+  if (el.textContent === String(n)) return;
+  el.textContent = n;
+  el.classList.remove("bump"); void el.offsetWidth; el.classList.add("bump");
+}
+
+function addCard(main, sub) {
+  const card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = "<b></b><small></small>";
+  card.querySelector("b").textContent = main;
+  card.querySelector("small").textContent = sub;
+  const row = $("latest");
+  row.prepend(card);
+  while (row.children.length > 6) row.lastChild.remove();
 }
 
 function stopAll() {
