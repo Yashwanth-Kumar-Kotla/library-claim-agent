@@ -27,6 +27,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from google.genai import types
 
+from ..archive import archive_run
 from ..config import MODEL_PRICES, REPO_ROOT, Settings
 from ..depth import DepthPro
 from ..fetch import Fetcher
@@ -244,11 +245,14 @@ async def live(ws: WebSocket) -> None:
         # The browser closed or the connection dropped before end_sweep: keep what was captured.
         # Started before any other await and shielded: the handler is often being cancelled here,
         # and the worker thread finishes the packet even if this coroutine does not resume.
-        if not sweep.ended and sweep.n:
-            def close_out():
+        # Archived last, so the copy has the session log with its final cost line.
+        def close_out():
+            if not sweep.ended and sweep.n:
                 record({"type": "closed_early", **sweep.end(True, True)})
-            with contextlib.suppress(asyncio.CancelledError):
-                await asyncio.shield(asyncio.to_thread(close_out))
+            if sweep.ended:
+                archive_run(sweep.root, "live")
+        with contextlib.suppress(asyncio.CancelledError):
+            await asyncio.shield(asyncio.to_thread(close_out))
         for t in list(tasks):
             t.cancel()
         sender.cancel()

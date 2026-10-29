@@ -8,6 +8,7 @@ import sys
 from dataclasses import replace
 from pathlib import Path
 
+from .archive import archive_run
 from .config import MODEL_PRICES, REPO_ROOT, Locale, Settings
 from .depth import DepthPro
 from .fetch import Fetcher
@@ -75,6 +76,8 @@ def main(argv=None) -> int:
     print(f"{t.book_count} books ({t.books_identified} identified), {len(packet.items)} items, "
           f"{len(packet.review_queue)} review lines -> {args.sweep / 'claim_packet.json'}")
     print(f"model spend this run: ${cost['usd']:.4f}" + ("" if not args.no_cache else " (uncached)"))
+    if kept := archive_run(args.sweep, "replay"):
+        print(f"outputs kept in {kept.relative_to(REPO_ROOT)}")
     return 0
 
 
@@ -89,6 +92,7 @@ def reprice(args) -> int:
     report.write(packet, args.sweep)
     priced = sum(l.replacement_cost.amount is not None for l in packet.second_country.lines)
     print(f"{len(packet.second_country.lines)} books priced for {args.country.upper()}: {priced} with a replacement price")
+    archive_run(args.sweep, "reprice")
     return 0
 
 

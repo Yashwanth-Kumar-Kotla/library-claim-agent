@@ -206,6 +206,8 @@ def test_unknown_tool_and_garbage_frames_do_not_break_the_session(live):
 def test_session_log_and_packet_when_browser_closes(tmp_path, monkeypatch):
     fake = FakeLive()
     monkeypatch.setattr(server, "SWEEPS", tmp_path)
+    archived = []
+    monkeypatch.setattr(server, "archive_run", lambda root, kind: archived.append((root, kind, (root / "out" / "session.jsonl").read_text())))
     server.app.state.settings = Settings(locale=Locale("US", "USD"))
     server.app.state.deps = lambda s: Deps(vision=FakeVision(), get_json=FakeWeb(fake_catalogue()), ebay_token="t")
     server.app.state.connect = lambda s: (lambda config: fake)
@@ -217,13 +219,16 @@ def test_session_log_and_packet_when_browser_closes(tmp_path, monkeypatch):
         # browser gone without end_sweep
         sweep = next(tmp_path.glob("live-*"))
         for _ in range(200):
-            if (sweep / "claim_packet.json").is_file():
+            if archived:
                 break
             time.sleep(0.02)
     assert (sweep / "claim_packet.json").is_file()
     log = [json.loads(l) for l in (sweep / "out" / "session.jsonl").read_text().splitlines()]
     kinds = [e["type"] for e in log]
     assert kinds[0] == "session" and "app_to_agent" in kinds and "closed_early" in kinds
+    # archived once, after the packet and with the session's final cost line in the log
+    [(root, kind, logged)] = archived
+    assert root == sweep and kind == "live" and '"live_cost"' in logged and '"closed_early"' in logged
 
 
 def test_orientation_tagged_frames_reach_the_scan(live):

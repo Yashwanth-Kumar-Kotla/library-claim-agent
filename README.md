@@ -167,6 +167,10 @@ Measured on real runs (Gemini paid tier, October 2026 prices):
 Model replies are cached on disk, so re-running a saved sweep while tuning costs nothing
 (`--no-cache` to measure).
 
+Every live session, replay, re-pricing and scoring copies its outputs (packet, report, scores, timings and
+cost, session log; never frames) to `results/<sweep>/<run>/` and adds a line to `results/index.md`, so runs
+can be compared and nothing is lost when `data/` is cleared.
+
 ## Assumptions
 
 - **Confidently wrong** = books marked identified whose title is not on the shelf, divided by books
@@ -204,4 +208,5 @@ src/libraryclaim/        pipeline: quality, scale, boxes, vision, resolve, prici
 src/libraryclaim/live/   live sweep: session state, agent tools, WebSocket server, phone page
 tests/                   unit and end-to-end tests with synthetic shelves and rooms
 tools/                   markers, ground truth template, offline demo, certificate, photo-to-sweep, live cost probe
+results/                 outputs of every processed sweep, with index.md
 ```

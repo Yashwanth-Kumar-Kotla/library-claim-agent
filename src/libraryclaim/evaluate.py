@@ -17,6 +17,7 @@ from pathlib import Path
 from openpyxl import load_workbook
 from rapidfuzz import fuzz
 
+from .archive import archive_run
 from .resolve import main_title, norm
 from .schema import ClaimPacket
 
@@ -241,6 +242,7 @@ def main(argv=None) -> None:
     write_workbook(truth_path, sweep / "ground_truth_results.xlsx", results, packet, truth)
     print(md)
     print(f"\nworkbook with results: {sweep / 'ground_truth_results.xlsx'}")
+    archive_run(sweep, "eval")
 
 
 if __name__ == "__main__":
