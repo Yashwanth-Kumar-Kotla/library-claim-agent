@@ -159,7 +159,7 @@ Measured on real runs (Gemini paid tier, October 2026 prices):
 |---|---|
 | Vision calls for a 6-shelf batch run | about $0.22 (43 Flash calls, 22 Pro calls) |
 | Vision calls for a short live sweep | about $0.02 to $0.04 |
-| Voice agent | about $0.025 per minute (audio in and out, low-rate video) |
+| Voice agent | $0.14 for a 6-minute session, measured (`tools/live_cost_probe.py`); was $0.29 before capping its context at 20k tokens and sending a frame every 2 s |
 | Packet ready after the sweep ends | about 5 s |
 | Spine detection and reading | about 10 s per shelf, in the background during the sweep |
 | Depth model | about 2.3 s per frame on an M5 MacBook, in the background |
@@ -203,5 +203,5 @@ src/libraryclaim/        pipeline: quality, scale, boxes, vision, resolve, prici
                          room, room_scan, depth, pipeline (streaming), evaluate
 src/libraryclaim/live/   live sweep: session state, agent tools, WebSocket server, phone page
 tests/                   unit and end-to-end tests with synthetic shelves and rooms
-tools/                   markers, ground truth template, offline demo, certificate, photo-to-sweep
+tools/                   markers, ground truth template, offline demo, certificate, photo-to-sweep, live cost probe
 ```

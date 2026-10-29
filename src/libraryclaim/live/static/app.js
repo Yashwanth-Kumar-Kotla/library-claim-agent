@@ -1,7 +1,7 @@
 // Phone side of a sweep: mic and camera up, agent voice down, inventory as it arrives.
 const $ = (id) => document.getElementById(id);
 const HI_RES_MS = 333, HI_RES_W = 1920, HI_Q = 0.85;   // evidence frames: counting, reading, measuring
-const LIVE_MS = 1000, LIVE_W = 768, LIVE_Q = 0.6;      // what the agent sees
+const LIVE_MS = 2000, LIVE_W = 768, LIVE_Q = 0.6;      // what the agent sees: frames are most of its re-billed context
 let ws, stream, ctx, micNode, playAt = 0, speaking = [], timers = [];
 let orientation = null;  // latest {alpha, beta, gamma} from the phone's motion sensors, for room size
 const lines = new Map(), state = new Map();   // id -> <li>, id -> {kind, status}
