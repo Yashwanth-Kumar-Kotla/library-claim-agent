@@ -118,3 +118,15 @@ def test_other_hosts_not_paced():
     for i in range(4):
         f(f"https://api.example.org/{i}")
     assert waits == []
+
+
+def test_api_keys_never_appear_in_errors_or_evidence(tmp_path):
+    from libraryclaim.fetch import redact
+    f, _ = fetcher(lambda req: httpx.Response(200, json={"ok": 1}), tmp_path)
+    ok = f("https://www.googleapis.com/books/v1/volumes", {"q": "dune", "key": "AIzaSECRET123"})
+    assert "SECRET" not in ok.url and "key=REDACTED" in ok.url
+    bad, _ = fetcher(lambda req: httpx.Response(403, json={}))
+    with pytest.raises(FetchError) as e:
+        bad("https://serpapi.com/search", {"engine": "ebay", "api_key": "abc123SECRET"})
+    assert "SECRET" not in str(e.value)       # neither our message nor httpx's own repeats the key
+    assert redact("x?token=t0k&client_secret=s3c&q=ok") == "x?token=REDACTED&client_secret=REDACTED&q=ok"

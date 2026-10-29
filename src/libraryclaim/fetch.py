@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import threading
 import time
 from dataclasses import dataclass
@@ -29,6 +30,15 @@ class GetJson(Protocol):
 
 class FetchError(Exception):
     pass
+
+
+SECRET = re.compile(r"((?:api_)?key|token|client_secret)=([^&\s'\"]+)", re.I)
+
+
+def redact(text: str) -> str:
+    """Request URLs carry API keys; anything that can reach a log, the review queue or the report
+    goes through here first."""
+    return SECRET.sub(r"\1=REDACTED", text)
 
 
 def full_url(url: str, params: dict | None) -> str:
@@ -110,8 +120,8 @@ class Fetcher:
             resp.raise_for_status()
             data = resp.json()
         except (httpx.HTTPError, ValueError) as exc:
-            raise FetchError(f"{target}: {exc}") from exc
-        result = Fetched(data, target, self.now().isoformat(timespec="seconds"))
+            raise FetchError(redact(f"{target}: {exc}")) from exc
+        result = Fetched(data, redact(target), self.now().isoformat(timespec="seconds"))
         if cached:
             cached.parent.mkdir(parents=True, exist_ok=True)
             cached.write_text(json.dumps(result.__dict__))
