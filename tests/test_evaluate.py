@@ -89,3 +89,24 @@ def test_empty_ground_truth_reports_na_not_pass(tmp_path):
     results = score(ClaimPacket(), load_truth(path))
     assert all(r.passed is not True for r in results)
     assert "| Book count |" in as_markdown(results)
+
+
+def test_results_written_next_to_ground_truth_in_a_copy(truth_file, tmp_path):
+    from libraryclaim.evaluate import write_workbook
+    p = packet()
+    p.books[2].status, p.books[2].title = "identified", "Twilight"     # confidently wrong line
+    truth = load_truth(truth_file)
+    out = tmp_path / "with_results.xlsx"
+    before = truth_file.read_bytes()
+    write_workbook(truth_file, out, score(p, truth), p, truth)
+    assert truth_file.read_bytes() == before                           # original untouched
+    wb = load_workbook(out)
+    assert wb.sheetnames[:2] == ["results", "titles_compared"] and "books" in wb.sheetnames
+    rows = list(wb["results"].iter_rows(values_only=True))
+    assert rows[0][0] == "Measure" and any(r[0] == "Book count" and r[3] == "PASS" for r in rows)
+    cmp = list(wb["titles_compared"].iter_rows(values_only=True))
+    assert any(r[4] == "Dune" and r[8] == "yes" for r in cmp)
+    assert any(r[4] == "Faded Thing" and r[8] == "not legible" for r in cmp)
+    assert any(r[7] == "Twilight" and "confidently wrong" in r[8] for r in cmp)
+    write_workbook(out, out, score(p, truth), p, truth)                # re-running replaces, not duplicates
+    assert load_workbook(out).sheetnames.count("results") == 1

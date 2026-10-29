@@ -191,16 +191,56 @@ def as_markdown(results: list[Result]) -> str:
     return "\n".join(lines)
 
 
+def write_workbook(truth_path: Path, out_path: Path, results: list[Result], packet: ClaimPacket, truth: dict) -> None:
+    """A copy of the ground truth workbook with the system's numbers next to it: a results sheet
+    (every pass bar) and each hand-read title beside what the system said. The original is untouched."""
+    from openpyxl.styles import Font, PatternFill
+
+    wb = load_workbook(truth_path)
+    for name in ("results", "titles_compared"):
+        if name in wb.sheetnames:
+            del wb[name]
+    ws = wb.create_sheet("results", 0)
+    ws.append(["Measure", "System vs truth", "Pass bar", "Result", "How it was scored"])
+    fills = {True: "D7F0DC", False: "F8D7DA", None: "EEEEEE"}
+    for r in results:
+        ws.append([r.measure, r.value, r.bar, {True: "PASS", False: "FAIL", None: "n/a"}[r.passed], r.detail])
+        ws.cell(ws.max_row, 4).fill = PatternFill("solid", fgColor=fills[r.passed])
+    for cell in ws[1]:
+        cell.font = Font(bold=True)
+
+    ws = wb.create_sheet("titles_compared", 1)
+    ws.append(["shelf_unit", "row", "position", "legible", "true title", "system line", "system status", "system title", "match"])
+    used = set()
+    for t in truth["books"]:
+        title = t.get("title") or ""
+        hit = next((b for b in packet.books if b.id not in used and b.title and title and same_title(b.title, title)), None)
+        if hit:
+            used.add(hit.id)
+        ws.append([t.get("shelf_unit"), t.get("row"), t.get("position"), t.get("legible"), title,
+                   hit.id if hit else "", hit.status if hit else "", hit.title if hit else "",
+                   "yes" if hit else ("not found" if yes(t.get("legible", "y")) else "not legible")])
+    for b in packet.books:
+        if b.title and b.id not in used and b.status != "unidentified":
+            ws.append(["", "", "", "", "", b.id, b.status, b.title, "NOT ON SHELF (confidently wrong)"])
+    for cell in ws[1]:
+        cell.font = Font(bold=True)
+    wb.save(out_path)
+
+
 def main(argv=None) -> None:
     sweep, truth_path = (Path(a) for a in (argv or sys.argv[1:])[:2])
     packet = ClaimPacket.model_validate_json((sweep / "claim_packet.json").read_text())
     timings_path = sweep / "out" / "timings.json"
     timings = json.loads(timings_path.read_text()) if timings_path.is_file() else None
-    results = score(packet, load_truth(truth_path), timings)
+    truth = load_truth(truth_path)
+    results = score(packet, truth, timings)
     (sweep / "eval.json").write_text(json.dumps([asdict(r) for r in results], indent=2))
     md = as_markdown(results)
     (sweep / "eval.md").write_text(md + "\n")
+    write_workbook(truth_path, sweep / "ground_truth_results.xlsx", results, packet, truth)
     print(md)
+    print(f"\nworkbook with results: {sweep / 'ground_truth_results.xlsx'}")
 
 
 if __name__ == "__main__":
