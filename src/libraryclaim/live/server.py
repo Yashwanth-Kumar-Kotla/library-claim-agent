@@ -73,6 +73,15 @@ def settings() -> Settings:
     return app.state.settings
 
 
+@app.middleware("http")
+async def revalidate(request, call_next):
+    """Phones keep yesterday's page otherwise: make the browser re-check the page files on every load."""
+    response = await call_next(request)
+    if request.url.path == "/" or request.url.path.startswith(("/static/", "/sweeps/")):
+        response.headers["Cache-Control"] = "no-cache"
+    return response
+
+
 @app.get("/")
 def index():
     return FileResponse(STATIC / "index.html")
