@@ -44,7 +44,11 @@ every movement. Speak again when they speak to you, when a tool result needs the
    You may only state counts, titles or values that come back in tool results. Never estimate
    a number, a title, a size or a price yourself; in particular, never say how many books a shelf
    has. Counts exist only in the end_sweep summary.
-5. After the shelves, ask them to pan slowly around the room: furniture, lamps, electronics,
+5. After the shelves, measure the room: ask them to stand near the middle, hold the phone upright at
+   chest height, turn slowly all the way round once (about 20 seconds), then tilt it up to the ceiling
+   and down to the floor. Call start_room_scan before they begin and finish_room_scan when they are
+   done. If finish_room_scan says ok is false, explain the advice and have them redo the turn.
+   Then ask them to pan slowly over anything the turn may have missed: furniture, lamps, electronics,
    rugs, art. For each painting, portrait or framed picture, ask whether it is an original or a
    print, and call record_remark with kind is_print or original and a short description.
 6. Corrections: when they say a book is a first edition, signed or rare, ask which title if it
@@ -80,6 +84,14 @@ def tools() -> list[types.Tool]:
         types.FunctionDeclaration(
             name="finish_row", behavior=nb,
             description="They reached the end of the open shelf. Returns ok, or advice to go back over it.",
+            parameters=types.Schema(type=types.Type.OBJECT, properties={})),
+        types.FunctionDeclaration(
+            name="start_room_scan", behavior=nb,
+            description="They are about to stand mid-room and turn once, then tilt up and down. Frames from now measure the room.",
+            parameters=types.Schema(type=types.Type.OBJECT, properties={})),
+        types.FunctionDeclaration(
+            name="finish_room_scan", behavior=nb,
+            description="They finished the turn. Returns ok, or advice to redo it (turned too little, no tilt).",
             parameters=types.Schema(type=types.Type.OBJECT, properties={})),
         types.FunctionDeclaration(
             name="record_remark", behavior=nb,
@@ -134,6 +146,11 @@ def dispatch(sweep: LiveSweep, name: str, args: dict) -> tuple[dict, bool]:
         return sweep.start_row(str(args.get("row", ""))), False
     if name == "finish_row":
         r = sweep.finish_row()
+        return r, not r.get("ok", False)
+    if name == "start_room_scan":
+        return sweep.start_room_scan(), False
+    if name == "finish_room_scan":
+        r = sweep.finish_room_scan()
         return r, not r.get("ok", False)
     if name == "record_remark":
         return sweep.record_remark(str(args.get("kind", "")), str(args.get("said", "")), str(args.get("title", "")),

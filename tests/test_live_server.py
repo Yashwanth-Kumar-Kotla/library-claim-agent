@@ -224,3 +224,24 @@ def test_session_log_and_packet_when_browser_closes(tmp_path, monkeypatch):
     log = [json.loads(l) for l in (sweep / "out" / "session.jsonl").read_text().splitlines()]
     kinds = [e["type"] for e in log]
     assert kinds[0] == "session" and "app_to_agent" in kinds and "closed_early" in kinds
+
+
+def test_orientation_tagged_frames_reach_the_scan(live):
+    import struct
+    ws, fake, root = live
+    wait_for(ws, "session")
+    fake.push(call("start_room_scan"))
+    wait_for(ws, "scan_open")
+    img = jpeg(textured())
+    for a in range(0, 360, 20):
+        ws.send_bytes(b"G" + struct.pack("<3f", float(a), 90.0, 0.0) + img)
+    frames_saved(root, 18)
+    fake.push(call("finish_room_scan"))
+    msg, _ = wait_for(ws, "tool", lambda m: m["name"] == "finish_room_scan" and m["phase"] == "done")
+    assert msg["result"]["covered_deg"] >= 300 and "tilt" in msg["result"]["advice"]
+    for _ in range(100):
+        if any(r.name == "finish_room_scan" for r in fake.tool_responses):
+            break
+        time.sleep(0.02)
+    r = next(r for r in fake.tool_responses if r.name == "finish_room_scan")
+    assert r.scheduling == types.FunctionResponseScheduling.INTERRUPT  # redo needed while they are still there

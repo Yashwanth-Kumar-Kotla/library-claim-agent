@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import asyncio
 import contextlib
+import struct
 import json
 import logging
 import threading
@@ -27,6 +28,7 @@ from fastapi.staticfiles import StaticFiles
 from google.genai import types
 
 from ..config import MODEL_PRICES, REPO_ROOT, Settings
+from ..depth import DepthPro
 from ..fetch import Fetcher
 from ..pipeline import Deps
 from ..pricing import ebay_token
@@ -40,6 +42,9 @@ SWEEPS = REPO_ROOT / "data" / "sweeps"
 SWEEPS.mkdir(parents=True, exist_ok=True)
 
 
+DEPTH = DepthPro()  # one model for the whole server; loading it takes a few seconds
+
+
 def real_deps(settings: Settings) -> Deps:
     meter = Meter(MODEL_PRICES)
     token = ebay_token(settings.ebay_client_id, settings.ebay_client_secret) \
@@ -47,7 +52,7 @@ def real_deps(settings: Settings) -> Deps:
     return Deps(vision=gemini_model(settings.google_api_key, settings.vision_model, meter=meter),
                 escalate=gemini_model(settings.google_api_key, settings.vision_escalation_model, meter=meter, timeout_s=15),
                 get_json=Fetcher(cache_dir=REPO_ROOT / "data/cache/http"), ebay_token=token,
-                google_books_key=settings.google_books_key, meter=meter)
+                google_books_key=settings.google_books_key, meter=meter, depth=DEPTH)
 
 
 def real_connect(settings: Settings):
@@ -56,7 +61,7 @@ def real_connect(settings: Settings):
     return lambda config: client.aio.live.connect(model=settings.live_model, config=config)
 
 
-app = FastAPI()
+app = FastAPI(on_startup=[lambda: app.state.deps is real_deps and DEPTH.warm_up()])
 app.state.settings = None
 app.state.deps = real_deps        # replaced in tests
 app.state.connect = real_connect  # replaced in tests
@@ -146,8 +151,11 @@ async def live(ws: WebSocket) -> None:
                     await session.send_realtime_input(audio=types.Blob(data=body, mime_type="audio/pcm;rate=16000"))
                 elif tag == b"V":
                     await session.send_realtime_input(video=types.Blob(data=body, mime_type="image/jpeg"))
-                elif tag == b"F":
-                    spoken, screen = await asyncio.to_thread(sweep.add_frame, body)
+                elif tag in (b"F", b"G"):
+                    orientation = None
+                    if tag == b"G" and len(body) > 12:  # G: alpha, beta, gamma as 3 float32, then the JPEG
+                        orientation, body = struct.unpack("<3f", body[:12]), body[12:]
+                    spoken, screen = await asyncio.to_thread(sweep.add_frame, body, orientation)
                     if screen and screen != shown["hint"]:
                         emit("coach", {"text": screen})  # banner only; the agent is not told
                     shown["hint"] = screen
