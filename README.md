@@ -71,6 +71,10 @@ uv run python -m libraryclaim reprice data/sweeps/<sweep> --country GB --currenc
 uv run python -m libraryclaim.evaluate data/sweeps/<sweep> ground_truth/ground_truth.xlsx
 ```
 
+Live sessions save everything needed to replay them: `run` re-processes a live sweep through the
+current pipeline (model replies are cached, so it costs nothing after the first time) and keeps the
+packet the policyholder saw in `out/claim_packet.live.json`.
+
 Every sweep folder keeps its frames, the session log (`out/session.jsonl`: everything said and
 done), each stage's output, timings and cost.
 
@@ -169,8 +173,10 @@ Model replies are cached on disk, so re-running a saved sweep while tuning costs
 ## Known limitations
 
 - Thin spines with no readable text are the most common miss on densely packed shelves.
-- Without a marker in view, spine sizes are not reported and the room scan relies on the depth
-  model's own scale (it can be off by 10 to 25 percent; the review queue says so).
+- Without a marker in view, spine sizes come from the depth model scaled shelf by shelf to the
+  identified books whose published edition heights agree (or a typical book height when too few do),
+  and the room scan relies on the depth model's own scale. On real phone shelves the depth model's
+  scale was off by -25% to +40% depending on the image, which is why the marker is the primary method.
 - A bookcase that reaches the ceiling hides the wall behind it; that wall reads about one bookcase
   depth too close.
 - Item sizes are the front face only.
