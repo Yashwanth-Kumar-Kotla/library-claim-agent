@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Library sweep</title>
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<main>
+  <div class="cam">
+    <video id="video" playsinline muted autoplay></video>
+    <div id="coach" class="coach" hidden></div>
+    <div id="row" class="row-tag" hidden></div>
+  </div>
+  <div id="status" class="status">Tap Start. The camera and microphone stay on this device and the server on your network.</div>
+  <div class="captions">
+    <p id="agent" class="agent"></p>
+    <p id="you" class="you"></p>
+  </div>
+  <div class="buttons">
+    <button id="start">Start</button>
+    <button id="end" disabled>End sweep</button>
+  </div>
+  <section class="inventory">
+    <div class="counts"><span id="nBooks">0</span> books · <span id="nIds">0</span> identified · <span id="nItems">0</span> items</div>
+    <a id="report" href="#" target="_blank" hidden>Open claim report</a>
+    <ol id="lines"></ol>
+  </section>
+</main>
+<script src="/static/app.js"></script>
+</body>
+</html>
