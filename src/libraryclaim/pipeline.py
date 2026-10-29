@@ -46,6 +46,7 @@ from .pricing import price_book, price_item
 from .resolve import Resolution, identify
 from .review import Assertion, appraisal_reasons, excluded, says_print
 from .room import Opening, room_figures
+from .room_scan import Depth, ScanFrame, item_size_cm, measure_room
 from .scale import find_markers, plane_from_marker, shelf_run_cm, spine_size
 from .schema import Book, BookPrice, ClaimPacket, Dimensions, Item, ItemPrice, ReviewEntry, Room, Sweep
 from .segment import row_image
@@ -62,6 +63,7 @@ class Deps:
     escalate: Model | None = None
     google_books_key: str = ""
     meter: Meter | None = None  # real token usage and cost, when the models report it
+    depth: Depth | None = None  # metric depth model: room size from the turn-around scan, item sizes
 
 
 @dataclass
@@ -80,6 +82,7 @@ class ItemJob:
     future: Future
     last_view: int = 0  # index of the most recent room view it was seen in
     note: str = ""
+    raw_size_cm: tuple[float, float] | None = None  # front face from depth, before marker scale correction
 
 
 def load(path: Path, default):
@@ -136,6 +139,9 @@ class SweepRun:
         self.lock = threading.Lock()
         self.rows: list[tuple[str, Future]] = []
         self.takes: dict[str, int] = {}
+        self.marker_images: list = []     # shelf rows with a marker in view: calibrate the depth model's scale
+        self.scan: Future | None = None
+        self.scan_result = None
         self.remarks: list[dict] = []
         self.room_frames: list[Future] = []
         self.books: list[BookJob] = []
@@ -189,6 +195,25 @@ class SweepRun:
             self.room_frames.append(f)
         return f
 
+    def add_room_scan(self, frames: list[ScanFrame]) -> Future:
+        """The turn-around scan: room outline and height from metric depth plus phone orientation.
+        Runs in the background as soon as the turn is done."""
+        def job():
+            if self.deps.depth is None:
+                self.note("room", "no depth model configured; room size not measured")
+                return
+            t0 = time.perf_counter()
+            with self.lock:
+                calib_imgs = list(self.marker_images[:2])
+            calibration = [(img, *self.deps.depth(img)) for img in calib_imgs]
+            try:
+                self.scan_result = measure_room(frames, self.deps.depth, self.settings.marker_size_cm / 100, calibration)
+            except ValueError as exc:
+                self.note("room", f"room scan unusable: {exc}")
+            self.stats.add("room_scan", time.perf_counter() - t0)
+        self.scan = self.pool.submit(self._guard, "room scan", job)
+        return self.scan
+
     def note(self, ref_id: str, reason: str) -> None:
         with self.lock:
             self.review.append(ReviewEntry(ref_id=ref_id, reason=reason))
@@ -222,6 +247,9 @@ class SweepRun:
         if ri.note:
             self.note(shelf, ri.note)
         markers = find_markers(ri.image)
+        if markers:
+            with self.lock:
+                self.marker_images.append(ri.image)
         scale = plane_from_marker(max(markers, key=lambda m: m.side_px), self.settings.marker_size_cm) if markers else None
         if scale is None:
             self.note(shelf, "no scale marker visible in this row; spine sizes not measured")
@@ -331,6 +359,11 @@ class SweepRun:
             return
         seen = detect_items(self.vision, img)
         self.stats.add("items_detect", time.perf_counter() - t0)
+        depth = None
+        if seen and self.deps.depth is not None:
+            t1 = time.perf_counter()
+            depth = self.deps.depth(img)
+            self.stats.add("depth", time.perf_counter() - t1)
         with self.lock:
             self.room_views += 1
             view = self.room_views
@@ -345,6 +378,8 @@ class SweepRun:
                           frame_ref=f"{ref}#xyxy={int(s.box.x0)},{int(s.box.y0)},{int(s.box.x1)},{int(s.box.y1)}",
                           dimensions_cm=Dimensions(), confidence=0.6 if s.brand_model else 0.4)
                 job = ItemJob(it, s, Future(), view)
+                if depth is not None:
+                    job.raw_size_cm = item_size_cm(s.box.as_tuple(), depth[0], depth[1])
                 self.items.append(job)
             job.future = self.pool.submit(self._guard, f"item {iid}", self._price_item, job)
             self.on_event("item", it.model_dump())
@@ -390,6 +425,8 @@ class SweepRun:
             job.future.result()
         for job in list(self.items):
             job.future.result()
+        if self.scan is not None:
+            self.scan.result()
         # A re-captured row replaces the earlier take, which may still have finished last.
         latest = dict(self.takes)
         stale = [j for j in self.books if j.take != latest.get(j.book.shelf, 0)]
@@ -429,9 +466,25 @@ class SweepRun:
                 continue
             if job.note:
                 self.note(job.item.id, job.note)
-            self.note(job.item.id, "dimensions not measured on this capture path")
+            scale = self.scan_result.scale_factor if self.scan_result else 1.0
+            if job.raw_size_cm:
+                w, h = job.raw_size_cm
+                job.item.dimensions_cm = Dimensions(w=round(w * scale), h=round(h * scale))
+                self.note(job.item.id, "approximate size of the front face from monocular depth; depth not measured")
+            else:
+                self.note(job.item.id, "dimensions not measured")
             items.append(job.item)
 
+        if room_geometry is None and self.scan_result is not None:
+            shelving = [(j.item.dimensions_cm.w / 100, j.item.dimensions_cm.h / 100) for j in self.items
+                        if j.item.category == "shelving" and j.item.dimensions_cm.w and j.item in items]
+            room_geometry = self.scan_result.as_room_json(shelving)
+            for n in self.scan_result.notes:
+                self.note("room", n)
+            if room_geometry["height_m"] is None:
+                room_geometry = None
+                self.note("room", "room height not measured, so wall areas cannot be computed; floor outline kept in out/room_scan.json")
+            (self.out / "room_scan.json").write_text(json.dumps(self.scan_result.as_room_json(shelving), indent=2))
         room = self._room(room_geometry)
         sweep = Sweep(**{k: v for k, v in (meta or {}).items() if k in Sweep.model_fields})
         sweep.country, sweep.currency = self.locale.country, self.locale.currency
@@ -532,4 +585,13 @@ def run_pipeline(root: Path, deps: Deps, settings: Settings, on_event=None) -> C
     for row in load(root / "rows.json", []):
         run.add_row(row["shelf"], row.get("frames", []))
     run.add_room_frames(load(root / "room_frames.json", []))
+    scan = load(root / "scan.json", [])
+    if scan:
+        frames = []
+        for f in scan:
+            try:
+                frames.append(ScanFrame(read_image(root, f["ref"]), f["alpha"], f["beta"], f["gamma"], f["ref"]))
+            except FileNotFoundError:
+                run.note("room", f"scan frame {f['ref']} missing")
+        run.add_room_scan(frames)
     return run.finish(load(root / "room.json", None), meta)

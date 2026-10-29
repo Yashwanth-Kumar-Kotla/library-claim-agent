@@ -9,6 +9,7 @@ from dataclasses import replace
 from pathlib import Path
 
 from .config import MODEL_PRICES, REPO_ROOT, Locale, Settings
+from .depth import DepthPro
 from .fetch import Fetcher
 from .pipeline import Deps, run_pipeline
 from .pricing import ebay_token
@@ -58,6 +59,7 @@ def main(argv=None) -> int:
         ebay_token=token,
         google_books_key=settings.google_books_key,
         meter=meter,
+        depth=DepthPro(),  # loaded only if the sweep has a room scan or room views
     )
     packet = run_pipeline(args.sweep, deps, settings)
     t = packet.totals

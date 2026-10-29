@@ -3,6 +3,7 @@
 import json
 
 import cv2
+import numpy as np
 import pytest
 
 from libraryclaim.config import Locale, Settings
@@ -381,3 +382,42 @@ def test_item_seen_again_next_view_in_other_words_is_one_item(tmp_path):
     assert run._same_item(chair2, view=9) is None                   # much later, loose match: a second chair
     assert run._same_item(SeenItem(b, "lighting", "brass floor lamp", "", False), view=9) is run.items[1]  # close match anywhere
     assert run._same_item(SeenItem(b, "furniture", "brass floor lamp", "", False), view=2) is None        # other category
+
+
+def test_room_scan_and_item_sizes_through_the_pipeline(sweep):
+    """A saved turn-around scan (scan.json + frames) gives room figures; room views give item sizes."""
+    import cv2
+    from test_room_scan import RECT, scan
+    root, _ = sweep
+    (root / "room.json").unlink()                       # room must now come from the sweep itself
+    frames, depth = scan(RECT)
+    entries = []
+    for i, f in enumerate(frames):
+        ref = f"frames/scan{i:03d}.png"                 # lossless, so the fake depth can find each frame
+        cv2.imwrite(str(root / ref), f.image)
+        entries.append({"ref": ref, "alpha": f.alpha, "beta": f.beta, "gamma": f.gamma})
+    (root / "scan.json").write_text(json.dumps(entries))
+
+    def fake_depth(img):
+        if img.shape[:2] == (192, 108):
+            return depth(img)
+        return np.full(img.shape[:2], 2.0, np.float32), 800.0   # room views: everything 2 m away
+
+    deps = Deps(vision=FakeVision(), get_json=FakeWeb(fake_catalogue()), ebay_token="t", depth=fake_depth)
+    p = run_pipeline(root, deps, SETTINGS)
+    notes = [r.reason for r in p.review_queue if r.ref_id in ("room", "scan")]
+    assert p.room.floor_area_m2 == pytest.approx(13.02, rel=0.06), notes
+    assert p.room.height_m == pytest.approx(2.5, abs=0.1)
+    assert "turn-around scan" in p.room.scale_method
+    lamp = next(i for i in p.items if i.category == "lighting")
+    assert lamp.dimensions_cm.w and lamp.dimensions_cm.h and lamp.dimensions_cm.d is None
+    assert (root / "out" / "room_scan.json").is_file()
+
+
+def test_no_depth_model_means_room_not_measured_not_guessed(sweep):
+    root, _ = sweep
+    (root / "room.json").unlink()
+    (root / "scan.json").write_text(json.dumps([{"ref": "frames/A1.jpg", "alpha": 0, "beta": 90, "gamma": 0}]))
+    p = run(root)
+    assert p.room.floor_area_m2 is None
+    assert any("no depth model" in r.reason for r in p.review_queue)
