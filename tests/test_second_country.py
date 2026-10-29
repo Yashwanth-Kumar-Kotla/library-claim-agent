@@ -49,5 +49,5 @@ def test_report_shows_the_table_and_totals_ignore_it():
     p = packet()
     p.second_country = price_second_country(p, Locale("GB", "GBP"), FakeWeb({"ebay": gb_listings}), "t")
     html = render(p)
-    assert "Same books priced for GB (GBP)" in html and "GBP 9.00" in html
+    assert "Same books in GB" in html and "GBP 9.00" in html
     assert p.totals.books_replacement_cost == 0  # untouched: totals are only ever computed from the claim's own lines
