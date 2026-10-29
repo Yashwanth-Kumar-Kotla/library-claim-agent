@@ -256,3 +256,58 @@ def test_nudge_when_camera_moves_with_no_shelf_open(live):
     s.start_row("A2")
     clock.t += 60
     assert s.nudge() is None  # a shelf is open
+
+
+def turn(s, clock, headings, beta=90.0):
+    img = jpeg(textured(seed=11))
+    for a in headings:
+        clock.t += 0.33
+        s.add_frame(img, (float(a), beta, 0.0))
+
+
+def test_full_turn_with_tilt_is_accepted_and_saved(live):
+    s, clock, _ = live
+    s.start_room_scan()
+    turn(s, clock, range(0, 360, 10))
+    turn(s, clock, [0], beta=125)
+    turn(s, clock, [0], beta=55)
+    r = s.finish_room_scan()
+    assert r["ok"] and r["covered_deg"] >= 300
+    saved = json.loads((s.root / "scan.json").read_text())
+    assert len(saved) == 38 and {"ref", "alpha", "beta", "gamma"} <= set(saved[0])
+
+
+def test_half_turn_or_no_tilt_asks_for_a_redo(live):
+    s, clock, _ = live
+    s.start_room_scan()
+    turn(s, clock, range(0, 180, 10))
+    r = s.finish_room_scan()
+    assert not r["ok"] and "all the way round" in r["advice"]
+    s.start_room_scan()
+    turn(s, clock, range(0, 360, 10))
+    r = s.finish_room_scan()
+    assert not r["ok"] and "tilt" in r["advice"] and not (s.root / "scan.json").exists()
+
+
+def test_phone_without_orientation_is_told_plainly(live):
+    s, clock, _ = live
+    s.start_room_scan()
+    for _ in range(10):
+        s.add_frame(jpeg(textured()))
+    r = s.finish_room_scan()
+    assert not r["ok"] and "did not share its orientation" in r["advice"]
+
+
+def test_scan_closes_an_open_shelf_and_frames_still_count_as_room_views(live):
+    s, clock, _ = live
+    img = draw_row(ROWS["A1"])[0]
+    s.start_row("A1")
+    for _ in range(3):
+        s.add_frame(jpeg(img))
+    r = s.start_room_scan()
+    assert r["previous_row"]["row"] == "A1"
+    clock.t = 30
+    turn(s, clock, range(0, 360, 10))
+    assert s.room_frames  # the turn also feeds item detection
+    assert s.finish_room_scan()["ok"] is False  # no tilt
+    assert s.finish_room_scan()["ok"] is False and "no room scan is open" in s.finish_room_scan()["error"]

@@ -27,6 +27,7 @@ from ..config import Locale, Settings
 from ..pipeline import Deps, SweepRun
 from ..quality import WORK_WIDTH, FrameQuality, assess, coaching
 from ..review import Assertion
+from ..room_scan import BINS, MIN_COVERAGE_DEG, ScanFrame
 
 ROW_NAME = re.compile(r"^[A-Z][1-9][0-9]?$")
 KEYFRAME_STEP = 0.35        # keep a keyframe each time the camera has moved ~35% of a frame width
@@ -86,6 +87,9 @@ class LiveSweep:
         self.room_travel = float("inf")  # the first room view is always taken
         self.ended = False
         self.row_closed_at = 0.0
+        self.scanning = False
+        self.scan_entries: list[dict] = []   # {"ref", "alpha", "beta", "gamma"} for frames taken during the turn
+        self.orientation_seen = False
         self.last_nudge = -1e9
 
     # ---- locale ----
@@ -102,7 +106,7 @@ class LiveSweep:
 
     # ---- frames ----
 
-    def add_frame(self, jpeg: bytes) -> tuple[str | None, str | None]:
+    def add_frame(self, jpeg: bytes, orientation: tuple[float, float, float] | None = None) -> tuple[str | None, str | None]:
         """Save and score one full-resolution frame. Returns (spoken, screen): a remark for the
         agent to say, which is rare, and a hint for the on-screen banner, which costs nothing."""
         img = cv2.imdecode(np.frombuffer(jpeg, np.uint8), cv2.IMREAD_COLOR)
@@ -120,6 +124,11 @@ class LiveSweep:
         frame = Frame(ref, now - self.t0, q, q.sharpness)
         with self.lock:
             self.prev_gray = gray
+            if orientation is not None:
+                self.orientation_seen = True
+                if self.scanning:
+                    a, b, g = orientation
+                    self.scan_entries.append({"ref": ref, "alpha": a, "beta": b, "gamma": g})
             self.recent.append((now, q))
             while self.recent and now - self.recent[0][0] > SPEAK_WINDOW_S:
                 self.recent.popleft()
@@ -233,6 +242,51 @@ class LiveSweep:
         self.on_event("row_closed", report)
         return report
 
+    # ---- the turn-around scan for room size ----
+
+    def start_room_scan(self) -> dict:
+        with self.lock:
+            closed = self._close_row() if self.row else None
+            self.scanning, self.scan_entries = True, []
+        self.on_event("scan_open", {})
+        out = {"ok": True, "instructions": "stand near the middle of the room, hold the phone upright at chest height, "
+                                          "turn slowly all the way round once, then tilt it up to the ceiling and down to the floor"}
+        if closed:
+            out["previous_row"] = closed
+        return out
+
+    def finish_room_scan(self) -> dict:
+        """Check the turn now, while the policyholder can still redo it, then measure in the background."""
+        with self.lock:
+            if not self.scanning:
+                return {"ok": False, "error": "no room scan is open; call start_room_scan first"}
+            self.scanning = False
+            entries = list(self.scan_entries)
+        if not entries:
+            msg = ("this phone did not share its orientation, so room size cannot be measured; carry on"
+                   if not self.orientation_seen else "no frames were captured during the turn; ask them to do it again")
+            return {"ok": False, "advice": msg}
+        level = {int((e["alpha"] % 360) // (360 / BINS)) for e in entries if abs(e["beta"] - 90) <= 20}
+        covered = len(level) * 360 / BINS
+        up = any(e["beta"] - 90 >= 25 for e in entries)
+        down = any(90 - e["beta"] >= 25 for e in entries)
+        problems = []
+        if covered < MIN_COVERAGE_DEG:
+            problems.append(f"the turn covered about {covered:.0f} degrees; they need to turn all the way round")
+        if not (up and down):
+            problems.append("they did not tilt the phone " + ("up to the ceiling" if not up else "down to the floor"))
+        if problems:
+            return {"ok": False, "covered_deg": covered, "advice": "; ".join(problems) + ". Ask them to redo the turn."}
+        (self.root / "scan.json").write_text(json.dumps(entries, indent=1))
+        frames = []
+        for e in entries:
+            img = cv2.imread(str(self.root / e["ref"]))
+            if img is not None:
+                frames.append(ScanFrame(img, e["alpha"], e["beta"], e["gamma"], e["ref"]))
+        self.run.add_room_scan(frames)
+        self.on_event("scan_closed", {"covered_deg": covered})
+        return {"ok": True, "covered_deg": covered, "frames": len(frames), "note": "room size is being measured"}
+
     # ---- what the policyholder says ----
 
     def record_remark(self, kind: str, said: str, title: str = "", description: str = "", shelf: str = "") -> dict:
@@ -273,6 +327,10 @@ class LiveSweep:
                 return {"ok": False, "error": "sweep already ended"}
             if self.row:
                 self._close_row()
+            scan_open = self.scanning
+        if scan_open:
+            self.finish_room_scan()
+        with self.lock:
             missing = self.gaps()
             if missing and not confirmed:
                 return {"ok": False, "missing_rows": missing,
