@@ -12,7 +12,10 @@ from .config import MODEL_PRICES, REPO_ROOT, Locale, Settings
 from .depth import DepthPro
 from .fetch import Fetcher
 from .pipeline import Deps, run_pipeline
+from . import report
 from .pricing import ebay_token
+from .schema import ClaimPacket
+from .second_country import price_second_country
 from .vision import Meter, cached, gemini_model
 
 
@@ -25,7 +28,15 @@ def main(argv=None) -> int:
     r.add_argument("--currency")
     r.add_argument("--no-cache", action="store_true",
                    help="call the models even for images seen before (use when measuring cost or variance)")
+    rp = sub.add_parser("reprice", help="price the claim's books for a second country (shown in the report, not totalled)")
+    rp.add_argument("sweep", type=Path)
+    rp.add_argument("--country", required=True)
+    rp.add_argument("--currency", required=True)
+    rp.add_argument("--books", type=int, default=10)
     args = ap.parse_args(argv)
+
+    if args.cmd == "reprice":
+        return reprice(args)
 
     settings = Settings.from_env()
     if not settings.google_api_key:
@@ -67,6 +78,21 @@ def main(argv=None) -> int:
     print(f"{t.book_count} books ({t.books_identified} identified), {len(packet.items)} items, "
           f"{len(packet.review_queue)} review lines -> {args.sweep / 'claim_packet.json'}")
     print(f"model spend this run: ${cost['usd']:.4f}" + ("" if not args.no_cache else " (uncached)"))
+    return 0
+
+
+def reprice(args) -> int:
+    settings = Settings.from_env()
+    packet_path = args.sweep / "claim_packet.json"
+    packet = ClaimPacket.model_validate_json(packet_path.read_text())
+    token = ebay_token(settings.ebay_client_id, settings.ebay_client_secret) \
+        if settings.ebay_client_id and settings.ebay_client_secret else ""
+    packet.second_country = price_second_country(packet, Locale.parse(args.country, args.currency),
+                                                 Fetcher(cache_dir=REPO_ROOT / "data/cache/http"), token, args.books)
+    packet_path.write_text(packet.model_dump_json(indent=2))
+    report.write(packet, args.sweep)
+    priced = sum(l.replacement_cost.amount is not None for l in packet.second_country.lines)
+    print(f"{len(packet.second_country.lines)} books priced for {args.country.upper()}: {priced} with a replacement price")
     return 0
 
 

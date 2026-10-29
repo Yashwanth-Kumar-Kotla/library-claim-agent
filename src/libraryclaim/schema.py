@@ -100,6 +100,22 @@ class ReviewEntry(BaseModel):
     reason: str
 
 
+class SecondCountryLine(BaseModel):
+    book_id: str
+    title: str = ""
+    isbn: str = ""
+    replacement_cost: BookPrice = Field(default_factory=BookPrice)
+    used_value: BookPrice = Field(default_factory=BookPrice)
+    note: str = ""
+
+
+class SecondCountry(BaseModel):
+    """The same books priced for another country, to show locale is a setting. Not in the totals."""
+    country: str
+    currency: str
+    lines: list[SecondCountryLine] = Field(default_factory=list)
+
+
 class ClaimPacket(BaseModel):
     sweep: Sweep = Field(default_factory=Sweep)
     room: Room = Field(default_factory=Room)
@@ -107,6 +123,7 @@ class ClaimPacket(BaseModel):
     items: list[Item] = Field(default_factory=list)
     totals: Totals = Field(default_factory=Totals)
     review_queue: list[ReviewEntry] = Field(default_factory=list)
+    second_country: SecondCountry | None = None
 
 
 def compute_totals(packet: ClaimPacket, shelf_run_m: Optional[float] = None) -> Totals:

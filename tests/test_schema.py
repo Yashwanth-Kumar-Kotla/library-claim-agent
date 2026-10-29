@@ -30,4 +30,4 @@ def test_totals_sum_lines_and_exclude_unpriced_and_appraisal():
 def test_empty_fields_serialize_as_unknown_not_zero():
     data = ClaimPacket().model_dump()
     assert data["room"]["floor_area_m2"] is None
-    assert set(data) == {"sweep", "room", "books", "items", "totals", "review_queue"}
+    assert {"sweep", "room", "books", "items", "totals", "review_queue"} <= set(data)  # added fields allowed, none dropped
