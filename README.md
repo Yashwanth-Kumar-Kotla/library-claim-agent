@@ -34,10 +34,11 @@ cp .env.example .env    # then fill in the keys below
 |---|---|---|
 | `GOOGLE_API_KEY` | Gemini: the voice agent, reading spines, finding objects | Google AI Studio |
 | `GOOGLE_BOOKS_API_KEY` | Matching spine text to a specific book | Google Cloud console, Books API |
-| `EBAY_CLIENT_ID`, `EBAY_CLIENT_SECRET` | Prices | developer.ebay.com |
+| `EBAY_CLIENT_ID`, `EBAY_CLIENT_SECRET` | Prices, from eBay's own API | developer.ebay.com |
+| `SERPAPI_API_KEY` | Prices: the same eBay searches through SerpApi, if eBay access isn't available | serpapi.com (free tier: 250 searches a month) |
 
-Without eBay keys everything runs and every line is marked "price source not configured"; nothing
-is guessed.
+Without a price source everything runs and every line is marked "price source not configured";
+nothing is guessed.
 
 ### Before a live sweep
 
@@ -130,7 +131,7 @@ done), each stage's output, timings and cost.
 - **Depth Pro** (Apple, pretrained, run locally): metric depth for room size and item sizes. The
   weights (about 1.9 GB) download from Hugging Face the first time a sweep needs them.
 - **Google Books API, Open Library**: catalogue matching.
-- **eBay Browse API**: prices. **Frankfurter** (ECB reference rates): currency conversion.
+- **eBay listings** (eBay Browse API, or eBay search through **SerpApi**): prices. **Frankfurter** (ECB reference rates): currency conversion.
 - **OpenCV** (ArUco markers, stitching, image quality), **rapidfuzz**, **FastAPI**, **PyTorch** /
   **transformers**, **openpyxl**, **Jinja2**.
 

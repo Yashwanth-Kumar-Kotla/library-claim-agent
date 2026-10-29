@@ -53,7 +53,7 @@ flowchart TD
 
 ## Where prices come from
 
-eBay Browse API in the policyholder's marketplace: replacement = median of new fixed-price listings, used
+eBay listings in the policyholder's marketplace (eBay's Browse API, or the same search through SerpApi): replacement = median of new fixed-price listings, used
 value = median of used listings, found by ISBN first, then by title with lots, study guides and sequels
 filtered out. Fewer than 3 matching listings means no price. A country without its own marketplace is priced
 in the US market and converted at the ECB reference rate (Frankfurter), labelled converted. Every price keeps
