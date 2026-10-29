@@ -1,0 +1,1127 @@
+{
+  "sweep": {
+    "id": "live-20261028-183815",
+    "captured_at": "2026-10-28T23:38:15+00:00",
+    "device": "phone browser",
+    "duration_s": 88.8,
+    "country": "US",
+    "currency": "USD",
+    "capture_path": "browser"
+  },
+  "room": {
+    "length_m": null,
+    "width_m": null,
+    "height_m": null,
+    "floor_area_m2": null,
+    "wall_area_m2": null,
+    "shelved_wall_area_m2": null,
+    "floor_area_ft2": null,
+    "wall_area_ft2": null,
+    "shape_note": "",
+    "scale_method": "",
+    "confidence": 0.0
+  },
+  "books": [
+    {
+      "id": "A1-01",
+      "shelf": "A1",
+      "position": 1,
+      "frame_ref": "out/rows/A1.jpg#xyxy=535,524,865,1383",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-02",
+      "shelf": "A1",
+      "position": 2,
+      "frame_ref": "out/rows/A1.jpg#xyxy=724,518,946,1383",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.723,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-03",
+      "shelf": "A1",
+      "position": 3,
+      "frame_ref": "out/rows/A1.jpg#xyxy=789,513,1048,1383",
+      "status": "identified",
+      "title": "The Science of Self Realization",
+      "author": "A. C. Bhaktivedanta Swami Prabhupāda",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-01",
+      "shelf": "A2",
+      "position": 1,
+      "frame_ref": "out/rows/A2.jpg#xyxy=347,673,567,1348",
+      "status": "identified",
+      "title": "The Full Monty",
+      "author": "Wendy Holden",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-02",
+      "shelf": "A2",
+      "position": 2,
+      "frame_ref": "out/rows/A2.jpg#xyxy=438,611,627,1348",
+      "status": "identified",
+      "title": "Counterfeit Prince of Old Texas, The: Swindling Slaver Monroe Edwards",
+      "author": "Lora-Marie Bernard",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.914,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-03",
+      "shelf": "A2",
+      "position": 3,
+      "frame_ref": "out/rows/A2.jpg#xyxy=574,566,833,1323",
+      "status": "identified",
+      "title": "The Witchwood Crown",
+      "author": "Tad Williams",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    }
+  ],
+  "items": [
+    {
+      "id": "I-01",
+      "category": "shelving",
+      "description": "White multi-tier shelving unit",
+      "brand_model": "",
+      "frame_ref": "frames/00003.jpg#xyxy=0,360,548,1610",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-02",
+      "category": "furniture",
+      "description": "Adjustable wooden top desk with white metal frame",
+      "brand_model": "",
+      "frame_ref": "frames/00003.jpg#xyxy=222,0,1071,1355",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-03",
+      "category": "other",
+      "description": "White plastic waste basket / bin",
+      "brand_model": "",
+      "frame_ref": "frames/00003.jpg#xyxy=880,965,1075,1330",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-04",
+      "category": "electronics",
+      "description": "Computer keyboard",
+      "brand_model": "",
+      "frame_ref": "frames/00003.jpg#xyxy=711,88,1075,556",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-05",
+      "category": "other",
+      "description": "Black wristwatch",
+      "brand_model": "",
+      "frame_ref": "frames/00003.jpg#xyxy=115,551,272,729",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-06",
+      "category": "decor",
+      "description": "Pink and grey flexible toy figure",
+      "brand_model": "",
+      "frame_ref": "frames/00003.jpg#xyxy=425,53,768,230",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-07",
+      "category": "decor",
+      "description": "Blue toy duck",
+      "brand_model": "",
+      "frame_ref": "frames/00003.jpg#xyxy=325,0,433,136",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-08",
+      "category": "electronics",
+      "description": "Power adapter hub / charging dock",
+      "brand_model": "",
+      "frame_ref": "frames/00003.jpg#xyxy=0,322,129,551",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-09",
+      "category": "electronics",
+      "description": "Small keypad / number pad",
+      "brand_model": "",
+      "frame_ref": "frames/00003.jpg#xyxy=211,1271,406,1449",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-10",
+      "category": "electronics",
+      "description": "Digital desk clock showing 18:37",
+      "brand_model": "",
+      "frame_ref": "frames/00018.jpg#xyxy=138,412,321,568",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-11",
+      "category": "decor",
+      "description": "Large black desk mat/mousepad",
+      "brand_model": "",
+      "frame_ref": "frames/00018.jpg#xyxy=318,558,1076,984",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-12",
+      "category": "electronics",
+      "description": "Wireless earbuds case with clip",
+      "brand_model": "",
+      "frame_ref": "frames/00018.jpg#xyxy=120,785,231,938",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-13",
+      "category": "electronics",
+      "description": "Small black cube timer/clock",
+      "brand_model": "",
+      "frame_ref": "frames/00018.jpg#xyxy=450,451,521,549",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-14",
+      "category": "furniture",
+      "description": "Black office chair cushion/backrest",
+      "brand_model": "",
+      "frame_ref": "frames/00018.jpg#xyxy=482,1284,1080,1918",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-15",
+      "category": "furniture",
+      "description": "Small white waste bin",
+      "brand_model": "",
+      "frame_ref": "frames/00018.jpg#xyxy=1,1169,96,1491",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-16",
+      "category": "other",
+      "description": "black and green foam hand grip/exercise roller handle",
+      "brand_model": "",
+      "frame_ref": "frames/00034.jpg#xyxy=193,984,309,1232",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-17",
+      "category": "other",
+      "description": "yellow sticky note pad",
+      "brand_model": "",
+      "frame_ref": "frames/00034.jpg#xyxy=91,1048,393,1294",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-18",
+      "category": "other",
+      "description": "Black small case or device on lower shelf",
+      "brand_model": "",
+      "frame_ref": "frames/00060.jpg#xyxy=521,1582,753,1854",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-19",
+      "category": "other",
+      "description": "Black computer mouse",
+      "brand_model": "",
+      "frame_ref": "frames/00060.jpg#xyxy=2,1616,171,1908",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-20",
+      "category": "electronics",
+      "description": "black electronic accessory/device",
+      "brand_model": "",
+      "frame_ref": "frames/00110.jpg#xyxy=463,1516,669,1789",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-21",
+      "category": "decor",
+      "description": "small floor tile sample or mat",
+      "brand_model": "",
+      "frame_ref": "frames/00123.jpg#xyxy=0,835,255,1240",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-22",
+      "category": "furniture",
+      "description": "blue upholstered couch or chair base",
+      "brand_model": "",
+      "frame_ref": "frames/00135.jpg#xyxy=0,0,450,612",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-23",
+      "category": "furniture",
+      "description": "metal round side table or stool with patterned top",
+      "brand_model": "",
+      "frame_ref": "frames/00135.jpg#xyxy=847,1201,1076,1916",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-24",
+      "category": "shelving",
+      "description": "white wooden shelving unit / bookcase with items inside",
+      "brand_model": "",
+      "frame_ref": "frames/00142.jpg#xyxy=394,0,1080,556",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-25",
+      "category": "furniture",
+      "description": "dark brown or black cabinet/sideboard corner",
+      "brand_model": "",
+      "frame_ref": "frames/00142.jpg#xyxy=2,0,321,631",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-26",
+      "category": "electronics",
+      "description": "black electronics box / keyboard box on shelf",
+      "brand_model": "",
+      "frame_ref": "frames/00144.jpg#xyxy=91,416,679,720",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-27",
+      "category": "electronics",
+      "description": "retail box for a multiport HDMI adapter or hub",
+      "brand_model": "HDMI",
+      "frame_ref": "frames/00151.jpg#xyxy=211,1562,571,1729",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "I-28",
+      "category": "other",
+      "description": "small dark box or package on the shelf",
+      "brand_model": "",
+      "frame_ref": "frames/00151.jpg#xyxy=1,1054,147,1294",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-29",
+      "category": "other",
+      "description": "green plastic detergent bottle",
+      "brand_model": "",
+      "frame_ref": "frames/00151.jpg#xyxy=848,1426,1077,1920",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-30",
+      "category": "electronics",
+      "description": "Blue box containing an electronic adapter or device",
+      "brand_model": "",
+      "frame_ref": "frames/00205.jpg#xyxy=302,1559,644,1697",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    }
+  ],
+  "totals": {
+    "book_count": 6,
+    "books_identified": 4,
+    "books_unidentified": 2,
+    "shelf_run_m": null,
+    "books_replacement_cost": 0.0,
+    "books_used_value": 0.0,
+    "items_replacement_cost_low": 0.0,
+    "items_replacement_cost_high": 0.0,
+    "excluded_from_totals": 36
+  },
+  "review_queue": [
+    {
+      "ref_id": "A1",
+      "reason": "no scale marker visible in this row; spine sizes not measured"
+    },
+    {
+      "ref_id": "A1-01",
+      "reason": "ambiguous: 'Bhagavad-Gita As It Is' vs 'BHAGAVAD GITA AS IT IS [NEPALI LANGUAGE].'"
+    },
+    {
+      "ref_id": "A1-02",
+      "reason": "best match 'Coming Back Alive' below threshold (0.72)"
+    },
+    {
+      "ref_id": "A1-03",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A2",
+      "reason": "no scale marker visible in this row; spine sizes not measured"
+    },
+    {
+      "ref_id": "A2-01",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A2-02",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A2-03",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-01",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-01",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-02",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-02",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-03",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-03",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-04",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-04",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-05",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-05",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-06",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-06",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-07",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-07",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-08",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-08",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-09",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-09",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-10",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-10",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-11",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-11",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-12",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-12",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-13",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-13",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-14",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-14",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-15",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-15",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-16",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-16",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-17",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-17",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-18",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-18",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-19",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-19",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-20",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-20",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-21",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-21",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-22",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-22",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-23",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-23",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-24",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-24",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-25",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-25",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-26",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-26",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-27",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-27",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-28",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-28",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-29",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-29",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-30",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-30",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "room",
+      "reason": "no room geometry captured"
+    }
+  ]
+}

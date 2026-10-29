@@ -1,0 +1,27 @@
+{
+  "seconds": {
+    "segment": 0.033,
+    "detect_read": 0.077,
+    "depth": 16.633,
+    "read": 0.044,
+    "resolve": 0.029,
+    "price": 5.946,
+    "after_sweep": 11.168,
+    "total": 11.168
+  },
+  "slowest_job": {
+    "segment": 0.019,
+    "detect_read": 0.073,
+    "depth": 9.551,
+    "read": 0.014,
+    "resolve": 0.011,
+    "price": 1.558
+  },
+  "model_calls": {
+    "vision": 4
+  },
+  "cost": {
+    "usd": 0,
+    "by_model": {}
+  }
+}

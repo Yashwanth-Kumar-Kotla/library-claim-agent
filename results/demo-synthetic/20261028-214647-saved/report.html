@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contents claim syn-1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f5f0e6;--card:#fbf8f2;--ink:#1d1a15;--soft:#5d564b;--faint:#8f8778;--rule:#e2d9c8;--brass:#a8792a;
+--sage:#3f7a4f;--sage-bg:#e3efe3;--amber:#b0611a;--amber-bg:#f8e7d2;--grey-bg:#ece6da;--rose:#a8453b;
+--serif:"Hanken Grotesk",-apple-system,"Segoe UI",sans-serif;--sans:"Hanken Grotesk",-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--paper:#14120f;--card:#1c1a16;--ink:#eee7da;--soft:#b7ae9e;--faint:#857d6f;--rule:#2e2a23;
+--brass:#d4ad5b;--sage:#9fc6a3;--sage-bg:#1f2d22;--amber:#f0a453;--amber-bg:#33251a;--grey-bg:#26231d;--rose:#e88f86}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 var(--sans);
+background-image:radial-gradient(90% 40% at 100% 0%,color-mix(in srgb,var(--brass) 9%,transparent),transparent 70%)}
+.wrap{max-width:1080px;margin:0 auto;padding:40px 24px 72px}
+a{color:inherit}
+.eyebrow{font:500 11.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin:0 0 14px}
+h1{font:700 clamp(30px,4.6vw,46px)/1.1 var(--serif);letter-spacing:-.025em;margin:0 0 12px}
+h1 em{font-style:normal;color:var(--brass)}
+h2{font:700 21px/1.2 var(--serif);margin:0;letter-spacing:-.015em}
+.meta{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--soft);font:400 13px var(--mono)}
+.meta b{color:var(--ink);font-weight:500}
+section{margin-top:44px}
+.head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:18px;flex-wrap:wrap}
+.head .note{color:var(--faint);font-size:13px}
+
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:16px;overflow:hidden;margin-top:30px}
+.fig{background:var(--card);padding:20px 20px 18px;animation:rise .6s both}
+.fig:nth-child(2){animation-delay:.05s}.fig:nth-child(3){animation-delay:.1s}.fig:nth-child(4){animation-delay:.15s}
+.fig small{display:block;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.fig b{display:block;font:700 30px/1.15 var(--serif);margin:8px 0 4px;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.fig span{color:var(--soft);font-size:13px}
+.fig.alert b{color:var(--amber)}
+.fig b.range{font-size:21px;line-height:1.75;white-space:nowrap}
+
+.split{margin-top:22px}
+.bar{display:flex;height:12px;border-radius:6px;overflow:hidden;background:var(--grey-bg)}
+.bar i{display:block}
+.bar .s-id{background:var(--sage)}.bar .s-ap{background:var(--amber)}.bar .s-un{background:var(--faint);opacity:.45}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;font-size:13px;color:var(--soft)}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:0}
+
+.room{display:grid;grid-template-columns:minmax(220px,340px) 1fr;gap:28px;align-items:start}
+@media(max-width:720px){.room{grid-template-columns:1fr}}
+.plan{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:18px}
+.plan svg{width:100%;height:auto;display:block}
+.plan .wall{fill:color-mix(in srgb,var(--brass) 10%,transparent);stroke:var(--ink);stroke-width:2.5}
+.plan text{font:500 11px var(--mono);fill:var(--soft)}
+.plan .empty{color:var(--faint);font-size:14px;padding:40px 10px;text-align:center}
+dl.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px 22px;margin:0}
+dl.stats div{border-top:1px solid var(--rule);padding-top:10px}
+dt{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+dd{margin:4px 0 0;font:600 21px/1.2 var(--serif);font-variant-numeric:tabular-nums}
+dd small{display:block;font:400 12.5px var(--sans);color:var(--soft)}
+.method{margin-top:16px;color:var(--soft);font-size:13.5px}
+.meter{display:inline-block;width:70px;height:6px;border-radius:3px;background:var(--grey-bg);vertical-align:middle;margin-left:6px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--brass)}
+
+.queue{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+details{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:0 16px}
+summary{list-style:none;cursor:pointer;display:flex;gap:12px;align-items:center;padding:12px 0}
+summary::-webkit-details-marker{display:none}
+summary .ref{font:500 13px var(--mono);min-width:70px}
+summary .first,.one .first{flex:1;min-width:0;color:var(--soft);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.one{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:12px 16px}
+.one .ref{font:500 13px var(--mono);min-width:70px}.one .first{white-space:normal}
+summary .n{font:500 12px var(--mono);color:var(--faint)}
+summary::after{content:"+";font:400 18px var(--mono);color:var(--faint)}
+details[open] summary::after{content:"−"}
+details ul{margin:0 0 14px;padding-left:82px;color:var(--soft);font-size:14px}
+@media(max-width:560px){details ul{padding-left:18px}summary .ref,.one .ref{min-width:0}}
+html,body{overflow-x:hidden}
+details li{margin:4px 0}
+
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.f{border:1px solid var(--rule);background:var(--card);color:var(--soft);border-radius:999px;padding:6px 13px;font:500 13px var(--sans);cursor:pointer}
+.f.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.f b{font-family:var(--mono);font-weight:500;margin-left:4px;opacity:.75}
+.search{margin-left:auto;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:10px;padding:8px 12px;font:14px var(--sans);min-width:200px}
+.scroll{overflow-x:auto;border:1px solid var(--rule);border-radius:14px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:760px}
+th{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint);text-align:left;padding:12px 14px;border-bottom:1px solid var(--rule);position:sticky;top:0;background:var(--card)}
+td{padding:11px 14px;border-bottom:1px solid var(--rule);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.thumb{width:34px;height:52px;object-fit:cover;border-radius:4px;background:var(--grey-bg);display:block}
+.lid{font:400 12.5px var(--mono);color:var(--faint);white-space:nowrap}
+.ttl{font:600 15px/1.3 var(--serif);letter-spacing:-.005em}
+.sub{color:var(--soft);font-size:13px}
+.tag{display:inline-block;font:500 10.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;white-space:nowrap}
+.t-identified,.t-priced{color:var(--sage);background:var(--sage-bg)}
+.t-needs_appraisal{color:var(--amber);background:var(--amber-bg)}
+.t-unidentified,.t-range{color:var(--soft);background:var(--grey-bg)}
+.amt{font-variant-numeric:tabular-nums;white-space:nowrap}
+.src{display:block;font:400 11.5px var(--mono);color:var(--faint);text-decoration-thickness:1px}
+.conv{font:500 10px var(--mono);color:var(--amber);margin-left:6px;text-transform:uppercase}
+.nil{color:var(--faint)}
+.conf{display:inline-block;width:46px;height:5px;border-radius:3px;background:var(--grey-bg);overflow:hidden;vertical-align:middle;margin-right:6px}
+.conf i{display:block;height:100%;background:var(--ink);opacity:.7}
+tr.hide{display:none!important}
+@media(max-width:640px){
+  table.cards{min-width:0}.scroll:has(table.cards){overflow:visible}
+  table.cards tr:first-child{display:none}
+  table.cards tr{display:grid;grid-template-columns:auto 1fr;column-gap:12px;row-gap:4px;padding:14px;border-bottom:1px solid var(--rule)}
+  table.cards tr:last-child{border-bottom:0}
+  table.cards td{display:block;padding:0;border:0;text-align:left}
+  table.cards td{grid-column:2}
+  table.cards td:first-child{grid-column:1;grid-row:1 / span 7}
+  table.cards td[data-l]{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:14px}
+  table.cards td[data-l] .v{text-align:right}
+  table.cards td[data-l]::before{content:attr(data-l);font:500 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);padding-top:3px}
+  table.cards .src{display:inline;margin-left:8px}
+}
+footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--rule);color:var(--faint);font-size:13px;display:grid;gap:6px}
+@keyframes rise{from{transform:translateY(8px)}to{transform:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+@media print{body{background:#fff}.tools,.src{display:none}.scroll{overflow:visible;border:0}section{break-inside:avoid-page}details{break-inside:avoid}}
+</style></head><body><div class="wrap">
+
+<header>
+  <p class="eyebrow">Contents claim · home library</p>
+  <h1>13 books, 3 other items, <em>13.02 m²</em></h1>
+  <div class="meta">
+    <span>Sweep <b>syn-1</b></span><span>2026-10-28T20:00:00Z</span>
+    <span>synthetic</span><span>Values in <b>USD</b> · US</span>
+    <span>150 s sweep</span>
+  </div>
+</header>
+
+<div class="figs">
+  <div class="fig"><small>Books · replacement</small><b>USD 136.50</b><span>used value USD 52.50</span></div>
+  <div class="fig"><small>Other contents</small><b class="range">USD 145.00 – 195.00</b><span>replacement, low to high</span></div>
+  <div class="fig alert"><small>Excluded from totals</small><b>7</b><span>awaiting appraisal or no price found</span></div>
+  <div class="fig alert"><small>For the adjuster</small><b>10</b><span>lines with review notes</span></div>
+</div>
+
+
+<div class="split">
+  <div class="bar">
+    <i class="s-id" style="width:61.54%"></i><i class="s-ap" style="width:23.08%"></i><i class="s-un" style="width:15.38%"></i>
+  </div>
+  <div class="legend">
+    <span><i style="background:var(--sage)"></i>8 identified</span>
+    <span><i style="background:var(--amber)"></i>3 need appraisal</span>
+    <span><i style="background:var(--faint);opacity:.45"></i>2 unidentified</span>
+    <span>shelf run 0.54 m</span>
+  </div>
+</div>
+
+
+<section>
+  <div class="head"><h2>Room</h2><span class="note">rectangular</span></div>
+  <div class="room">
+    <div class="plan">
+      <svg viewBox="0 0 300 220" role="img" aria-label="Floor plan 4.2 by 3.1 metres">
+        <rect class="wall" x="45.2" y="46.0" width="189.7" height="140.0" rx="2"/>
+        <text x="140.05" y="38.0" text-anchor="middle">4.2 m</text>
+        <text x="242.89999999999998" y="116.0" dominant-baseline="middle">3.1 m</text>
+        <text x="140.05" y="116.0" text-anchor="middle" dominant-baseline="middle">13.02 m²</text>
+      </svg>
+    </div>
+    <div>
+      <dl class="stats">
+        <div><dt>Floor</dt><dd>13.02 m²<small>140.1 ft²</small></dd></div>
+        <div><dt>Walls</dt><dd>36.5 m²<small>392.9 ft²</small></dd></div>
+        <div><dt>Shelved wall</dt><dd>5.4 m²<small>covered by shelving</small></dd></div>
+        <div><dt>Length × width</dt><dd>4.2 × 3.1<small>metres</small></dd></div>
+        <div><dt>Ceiling</dt><dd>2.5 m<small>floor to ceiling</small></dd></div>
+      </dl>
+      <p class="method">Measured by test fixture. Confidence <span class="meter"><i style="width:90%"></i></span></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="head"><h2>For the adjuster</h2><span class="note">every line the system is not certain of, and why</span></div>
+  <div class="queue">
+    <div class="one"><span class="ref">A1-04</span><span class="first">spine not legible; logged as unidentified with its dimensions</span></div>
+    <div class="one"><span class="ref">A1-05</span><span class="first">title-only match on a short title (&#39;Foundation&#39;); author not legible</span></div>
+    <div class="one"><span class="ref">A1-06</span><span class="first">needs human appraisal: spine reads &#39;FIRST EDITION&#39;</span></div>
+    <div class="one"><span class="ref">A1-07</span><span class="first">needs human appraisal: spine looks antiquarian (binding or wear seen on camera)</span></div>
+    <div class="one"><span class="ref">A2-01</span><span class="first">needs human appraisal: market price 420.00 at or above appraisal threshold 150</span></div>
+    <div class="one"><span class="ref">A2-02</span><span class="first">no replacement price found; excluded from totals: fewer than 3 matching new listings on eBay US (title search); fewer than 3 matching used listings on eBay US (title search)</span></div>
+    <div class="one"><span class="ref">B1</span><span class="first">shelf skipped at the policyholder&#39;s request</span></div>
+    <details><summary><span class="ref">I-01</span><span class="first">brand/model not visible; interquartile range of similar new items</span><span class="n">2</span></summary>
+    <ul><li>brand/model not visible; interquartile range of similar new items</li><li>dimensions not measured</li></ul></details>
+    <details><summary><span class="ref">I-02</span><span class="first">art defaults to appraisal; the policyholder has not said it is a print</span><span class="n">2</span></summary>
+    <ul><li>art defaults to appraisal; the policyholder has not said it is a print</li><li>dimensions not measured</li></ul></details>
+    <div class="one"><span class="ref">I-03</span><span class="first">dimensions not measured</span></div></div>
+  
+</section>
+
+<section>
+  <div class="head"><h2>Books</h2><span class="note">prices are medians of live listings; each links to its search</span></div>
+  <div class="tools" data-table="books">
+    <button class="f on" data-f="all">All<b>13</b></button>
+    <button class="f" data-f="identified">Identified<b>8</b></button>
+    <button class="f" data-f="needs_appraisal">Appraisal<b>3</b></button>
+    <button class="f" data-f="unidentified">Unidentified<b>2</b></button>
+    <input class="search" type="search" placeholder="Search title, author, line" aria-label="Search books">
+  </div>
+  <div class="scroll"><table id="books" class="cards">
+    <tr><th></th><th>Line</th><th>Book</th><th>Status</th><th class="n">H × T cm</th><th>Match</th><th class="n">Replacement</th><th class="n">Used</th></tr>
+    <tr data-s="identified" data-q="a1-01 dune frank herbert">
+      <td><a href="out/rows/A1.jpg#xyxy=230,222,262,400" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A1-01.jpg" alt=""></a></td>
+      <td class="lid">A1-01</td>
+      <td><div class="ttl">Dune</div><div class="sub">Frank Herbert</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">17.8 × 3.2 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 19.50</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Dune+Frank+Herbert&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 7.50</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Dune+Frank+Herbert&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a1-02 the hobbit j.r.r. tolkien">
+      <td><a href="out/rows/A1.jpg#xyxy=264,202,288,400" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A1-02.jpg" alt=""></a></td>
+      <td class="lid">A1-02</td>
+      <td><div class="ttl">The Hobbit</div><div class="sub">J.R.R. Tolkien</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">19.8 × 2.4 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 19.50</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=The+Hobbit+J.R.R.+Tolkien&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 7.50</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=The+Hobbit+J.R.R.+Tolkien&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a1-03 sapiens yuval noah harari">
+      <td><a href="out/rows/A1.jpg#xyxy=290,165,326,400" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A1-03.jpg" alt=""></a></td>
+      <td class="lid">A1-03</td>
+      <td><div class="ttl">Sapiens</div><div class="sub">Yuval Noah Harari</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">23.5 × 3.6 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 19.50</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Sapiens+Yuval+Noah+Harari&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 7.50</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Sapiens+Yuval+Noah+Harari&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="unidentified" data-q="a1-04  ">
+      <td><a href="out/rows/A1.jpg#xyxy=327,190,349,400" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A1-04.jpg" alt=""></a></td>
+      <td class="lid">A1-04</td>
+      <td><div class="sub">Spine not identified</div></td>
+      <td><span class="tag t-unidentified">unidentified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">21 × 2.2 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="nil">—</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td><td class="n" data-l="Used"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr data-s="unidentified" data-q="a1-05  ">
+      <td><a href="out/rows/A1.jpg#xyxy=350,220,376,400" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A1-05.jpg" alt=""></a></td>
+      <td class="lid">A1-05</td>
+      <td><div class="sub">Spine not identified</div></td>
+      <td><span class="tag t-unidentified">unidentified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">18 × 2.6 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:92%"></i></span><span class="lid">0.92</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td><td class="n" data-l="Used"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr data-s="needs_appraisal" data-q="a1-06 neuromancer william gibson">
+      <td><a href="out/rows/A1.jpg#xyxy=378,224,398,400" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A1-06.jpg" alt=""></a></td>
+      <td class="lid">A1-06</td>
+      <td><div class="ttl">Neuromancer</div><div class="sub">William Gibson</div></td>
+      <td><span class="tag t-needs_appraisal">needs appraisal</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">17.6 × 2 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td><td class="n" data-l="Used"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr data-s="needs_appraisal" data-q="a1-07 middlemarch george eliot">
+      <td><a href="out/rows/A1.jpg#xyxy=400,200,446,400" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A1-07.jpg" alt=""></a></td>
+      <td class="lid">A1-07</td>
+      <td><div class="ttl">Middlemarch</div><div class="sub">George Eliot</div></td>
+      <td><span class="tag t-needs_appraisal">needs appraisal</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">20 × 4.6 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td><td class="n" data-l="Used"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr data-s="identified" data-q="a1-08 great expectations charles dickens">
+      <td><a href="out/rows/A1.jpg#xyxy=448,210,480,400" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A1-08.jpg" alt=""></a></td>
+      <td class="lid">A1-08</td>
+      <td><div class="ttl">Great Expectations</div><div class="sub">Charles Dickens</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">19 × 3.2 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 19.50</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Great+Expectations+Charles+Dickens&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 7.50</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Great+Expectations+Charles+Dickens&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="needs_appraisal" data-q="a2-01 atlas shrugged ayn rand">
+      <td><a href="out/rows/A2.jpg#xyxy=230,170,290,400" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-01.jpg" alt=""></a></td>
+      <td class="lid">A2-01</td>
+      <td><div class="ttl">Atlas Shrugged</div><div class="sub">Ayn Rand</div></td>
+      <td><span class="tag t-needs_appraisal">needs appraisal</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">23 × 6 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td><td class="n" data-l="Used"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr data-s="identified" data-q="a2-02 obscure pamphlet nobody known">
+      <td><a href="out/rows/A2.jpg#xyxy=293,249,299,400" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-02.jpg" alt=""></a></td>
+      <td class="lid">A2-02</td>
+      <td><div class="ttl">Obscure Pamphlet</div><div class="sub">Nobody Known</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">15 × 0.6 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td><td class="n" data-l="Used"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr data-s="identified" data-q="a2-03 normal people sally rooney">
+      <td><a href="out/rows/A2.jpg#xyxy=302,346,500,370" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-03.jpg" alt=""></a></td>
+      <td class="lid">A2-03</td>
+      <td><div class="ttl">Normal People</div><div class="sub">Sally Rooney</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">19.8 × 2.4 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 19.50</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Normal+People+Sally+Rooney&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 7.50</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Normal+People+Sally+Rooney&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a2-04 beloved toni morrison">
+      <td><a href="out/rows/A2.jpg#xyxy=302,374,512,400" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-04.jpg" alt=""></a></td>
+      <td class="lid">A2-04</td>
+      <td><div class="ttl">Beloved</div><div class="sub">Toni Morrison</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">21 × 2.6 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 19.50</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Beloved+Toni+Morrison&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 7.50</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Beloved+Toni+Morrison&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a2-05 educated tara westover">
+      <td><a href="out/rows/A2.jpg#xyxy=516,165,546,400" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-05.jpg" alt=""></a></td>
+      <td class="lid">A2-05</td>
+      <td><div class="ttl">Educated</div><div class="sub">Tara Westover</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">23.5 × 3 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 19.50</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Educated+Tara+Westover&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 7.50</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Educated+Tara+Westover&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr>
+  </table></div>
+</section>
+
+
+
+<section>
+  <div class="head"><h2>Other contents</h2><span class="note">sizes are the front face, from depth; art waits for appraisal unless it is a print</span></div>
+  <div class="scroll"><table class="cards">
+    <tr><th>Line</th><th>Item</th><th>Category</th><th class="n">W × H cm</th><th>Status</th><th class="n">Replacement</th></tr>
+    <tr>
+      <td class="lid"><a href="frames/room1.jpg#xyxy=80,60,240,360" target="_blank" rel="noopener">I-01</a></td>
+      <td><div class="ttl">brass floor lamp</div></td>
+      <td class="sub" data-l="Category"><span class="v">lighting</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v"><span class="nil">—</span></span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 45.00 – USD 95.00</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=brass+floor+lamp&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/room1.jpg#xyxy=320,120,480,300" target="_blank" rel="noopener">I-02</a></td>
+      <td><div class="ttl">framed portrait</div></td>
+      <td class="sub" data-l="Category"><span class="v">art</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v"><span class="nil">—</span></span></td>
+      <td><span class="tag t-needs_appraisal">needs appraisal</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/room1.jpg#xyxy=480,300,720,420" target="_blank" rel="noopener">I-03</a></td>
+      <td><div class="ttl">espresso machine</div><div class="sub">Breville BES870XL</div></td>
+      <td class="sub" data-l="Category"><span class="v">appliance</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v"><span class="nil">—</span></span></td>
+      <td><span class="tag t-priced">priced</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 100.00</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Breville+BES870XL&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr>
+  </table></div>
+</section>
+
+<footer>
+  <span>Totals are computed from the lines above. A line without a price source, link and retrieval date carries no price.</span>
+  <span>Each book and item links to the saved frame it was seen in; retrieval dates are in claim_packet.json.</span>
+</footer>
+</div>
+<script>
+document.querySelectorAll(".tools").forEach(function (bar) {
+  var table = document.getElementById(bar.dataset.table), filter = "all", q = "";
+  function apply() {
+    table.querySelectorAll("tr[data-s]").forEach(function (tr) {
+      var ok = (filter === "all" || tr.dataset.s === filter) && (!q || tr.dataset.q.indexOf(q) !== -1);
+      tr.classList.toggle("hide", !ok);
+    });
+  }
+  bar.querySelectorAll(".f").forEach(function (b) {
+    b.onclick = function () { bar.querySelectorAll(".f").forEach(function (x) { x.classList.remove("on"); }); b.classList.add("on"); filter = b.dataset.f; apply(); };
+  });
+  bar.querySelector(".search").oninput = function (e) { q = e.target.value.trim().toLowerCase(); apply(); };
+});
+</script>
+</body></html>

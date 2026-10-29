@@ -1,0 +1,27 @@
+{
+  "seconds": {
+    "items_detect": 5.673,
+    "items_price": 0.0,
+    "after_sweep": 4.422,
+    "total": 5.746
+  },
+  "slowest_job": {
+    "items_detect": 5.673,
+    "items_price": 0.0
+  },
+  "model_calls": {
+    "vision": 1
+  },
+  "cost": {
+    "usd": 0.003,
+    "by_model": {
+      "gemini-3.8-flash": {
+        "calls": 1,
+        "input_tokens": 1301,
+        "output_tokens": 534,
+        "usd": 0.003,
+        "priced": true
+      }
+    }
+  }
+}

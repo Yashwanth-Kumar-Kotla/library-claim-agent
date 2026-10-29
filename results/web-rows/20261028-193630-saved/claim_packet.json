@@ -1,0 +1,4925 @@
+{
+  "sweep": {
+    "id": "web-rows",
+    "captured_at": "2026-10-28T20:50:34+00:00",
+    "device": "web photos (no marker)",
+    "duration_s": 0.0,
+    "country": "US",
+    "currency": "USD",
+    "capture_path": "browser"
+  },
+  "room": {
+    "length_m": null,
+    "width_m": null,
+    "height_m": null,
+    "floor_area_m2": null,
+    "wall_area_m2": null,
+    "shelved_wall_area_m2": null,
+    "floor_area_ft2": null,
+    "wall_area_ft2": null,
+    "shape_note": "",
+    "scale_method": "",
+    "confidence": 0.0
+  },
+  "books": [
+    {
+      "id": "A1-01",
+      "shelf": "A1",
+      "position": 1,
+      "frame_ref": "out/rows/A1.jpg#xyxy=204,0,331,581",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.75,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-02",
+      "shelf": "A1",
+      "position": 2,
+      "frame_ref": "out/rows/A1.jpg#xyxy=306,0,401,589",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.3,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-03",
+      "shelf": "A1",
+      "position": 3,
+      "frame_ref": "out/rows/A1.jpg#xyxy=392,0,493,592",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.25,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-04",
+      "shelf": "A1",
+      "position": 4,
+      "frame_ref": "out/rows/A1.jpg#xyxy=477,0,567,596",
+      "status": "identified",
+      "title": "Notes From the Midnight Driver",
+      "author": "Jordan Sonnenblick",
+      "edition": "SCHOLASTIC PRESS edition",
+      "isbn": "9780545231893",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.962,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-05",
+      "shelf": "A1",
+      "position": 5,
+      "frame_ref": "out/rows/A1.jpg#xyxy=554,0,629,603",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.5,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-06",
+      "shelf": "A1",
+      "position": 6,
+      "frame_ref": "out/rows/A1.jpg#xyxy=618,11,685,605",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.315,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-07",
+      "shelf": "A1",
+      "position": 7,
+      "frame_ref": "out/rows/A1.jpg#xyxy=678,65,725,609",
+      "status": "identified",
+      "title": "Buried Onions",
+      "author": "Gary Soto",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-08",
+      "shelf": "A1",
+      "position": 8,
+      "frame_ref": "out/rows/A1.jpg#xyxy=685,31,796,610",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.92,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-09",
+      "shelf": "A1",
+      "position": 9,
+      "frame_ref": "out/rows/A1.jpg#xyxy=788,79,859,614",
+      "status": "identified",
+      "title": "Safe Haven",
+      "author": "Nicholas Sparks",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-10",
+      "shelf": "A1",
+      "position": 10,
+      "frame_ref": "out/rows/A1.jpg#xyxy=851,66,929,617",
+      "status": "identified",
+      "title": "Two by Two",
+      "author": "Nicholas Sparks",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-11",
+      "shelf": "A1",
+      "position": 11,
+      "frame_ref": "out/rows/A1.jpg#xyxy=923,109,996,620",
+      "status": "identified",
+      "title": "True Believer",
+      "author": "Nicholas Sparks",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-12",
+      "shelf": "A1",
+      "position": 12,
+      "frame_ref": "out/rows/A1.jpg#xyxy=978,100,1034,622",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.5,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-13",
+      "shelf": "A1",
+      "position": 13,
+      "frame_ref": "out/rows/A1.jpg#xyxy=1025,144,1068,623",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-14",
+      "shelf": "A1",
+      "position": 14,
+      "frame_ref": "out/rows/A1.jpg#xyxy=1056,128,1112,625",
+      "status": "identified",
+      "title": "We Used to Be Friends",
+      "author": "Amy Spalding",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-15",
+      "shelf": "A1",
+      "position": 15,
+      "frame_ref": "out/rows/A1.jpg#xyxy=1103,144,1149,627",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.5,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-16",
+      "shelf": "A1",
+      "position": 16,
+      "frame_ref": "out/rows/A1.jpg#xyxy=1118,105,1222,627",
+      "status": "identified",
+      "title": "What the Night Sings",
+      "author": "Vesper Stamper",
+      "edition": "KNOPF edition",
+      "isbn": "9781524700386",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-17",
+      "shelf": "A1",
+      "position": 17,
+      "frame_ref": "out/rows/A1.jpg#xyxy=1208,162,1257,631",
+      "status": "identified",
+      "title": "The Gravity of Us",
+      "author": "Phil Stamper",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.962,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-18",
+      "shelf": "A1",
+      "position": 18,
+      "frame_ref": "out/rows/A1.jpg#xyxy=1248,189,1313,631",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.92,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-19",
+      "shelf": "A1",
+      "position": 19,
+      "frame_ref": "out/rows/A1.jpg#xyxy=1283,175,1355,631",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.523,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-20",
+      "shelf": "A1",
+      "position": 20,
+      "frame_ref": "out/rows/A1.jpg#xyxy=1332,150,1385,635",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.92,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-21",
+      "shelf": "A1",
+      "position": 21,
+      "frame_ref": "out/rows/A1.jpg#xyxy=1370,191,1440,635",
+      "status": "identified",
+      "title": "These Witches Don't Burn",
+      "author": "Isabel Sterling",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.874,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-22",
+      "shelf": "A1",
+      "position": 22,
+      "frame_ref": "out/rows/A1.jpg#xyxy=1420,205,1455,637",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.206,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-23",
+      "shelf": "A1",
+      "position": 23,
+      "frame_ref": "out/rows/A1.jpg#xyxy=1439,228,1496,640",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.604,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-24",
+      "shelf": "A1",
+      "position": 24,
+      "frame_ref": "out/rows/A1.jpg#xyxy=1474,235,1518,638",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.92,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-25",
+      "shelf": "A1",
+      "position": 25,
+      "frame_ref": "out/rows/A1.jpg#xyxy=1494,225,1549,638",
+      "status": "identified",
+      "title": "Shiver",
+      "author": "Maggie Stiefvater",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-01",
+      "shelf": "A2",
+      "position": 1,
+      "frame_ref": "out/rows/A2.jpg#xyxy=74,60,334,670",
+      "status": "identified",
+      "title": "Forever",
+      "author": "Maggie Stiefvater",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-02",
+      "shelf": "A2",
+      "position": 2,
+      "frame_ref": "out/rows/A2.jpg#xyxy=296,59,437,656",
+      "status": "identified",
+      "title": "Call Down the Hawk: The Dreamer Trilogy #1",
+      "author": "Maggie Stiefvater",
+      "edition": "SCHOLASTIC PRESS edition",
+      "isbn": "9781407192147",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.962,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-03",
+      "shelf": "A2",
+      "position": 3,
+      "frame_ref": "out/rows/A2.jpg#xyxy=400,66,514,643",
+      "status": "identified",
+      "title": "The Scorpio Races",
+      "author": "Maggie Stiefvater",
+      "edition": "SCHOLASTIC PRESS edition",
+      "isbn": "9781407130132",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.962,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-04",
+      "shelf": "A2",
+      "position": 4,
+      "frame_ref": "out/rows/A2.jpg#xyxy=488,73,575,623",
+      "status": "identified",
+      "title": "Jackpot",
+      "author": "Nic Stone",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.942,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-05",
+      "shelf": "A2",
+      "position": 5,
+      "frame_ref": "out/rows/A2.jpg#xyxy=565,87,649,617",
+      "status": "identified",
+      "title": "Welcome to the Dark House",
+      "author": "Laurie Faria Stolarz",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.962,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-06",
+      "shelf": "A2",
+      "position": 6,
+      "frame_ref": "out/rows/A2.jpg#xyxy=608,12,855,568",
+      "status": "identified",
+      "title": "Olive Kitteridge",
+      "author": "Elizabeth Strout",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.861,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-07",
+      "shelf": "A2",
+      "position": 7,
+      "frame_ref": "out/rows/A2.jpg#xyxy=634,87,706,607",
+      "status": "identified",
+      "title": "Return to the Dark House",
+      "author": "Laurie Faria Stolarz",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.962,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-08",
+      "shelf": "A2",
+      "position": 8,
+      "frame_ref": "out/rows/A2.jpg#xyxy=681,70,769,597",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.307,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-09",
+      "shelf": "A2",
+      "position": 9,
+      "frame_ref": "out/rows/A2.jpg#xyxy=761,70,811,582",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.245,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-10",
+      "shelf": "A2",
+      "position": 10,
+      "frame_ref": "out/rows/A2.jpg#xyxy=850,77,899,558",
+      "status": "identified",
+      "title": "Boot Camp",
+      "author": "Todd Strasser",
+      "edition": "on & Schuster edition",
+      "isbn": "9781442428881",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-11",
+      "shelf": "A2",
+      "position": 11,
+      "frame_ref": "out/rows/A2.jpg#xyxy=859,25,945,552",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.5,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-12",
+      "shelf": "A2",
+      "position": 12,
+      "frame_ref": "out/rows/A2.jpg#xyxy=937,25,1009,543",
+      "status": "identified",
+      "title": "Bangkok Wakes to Rain",
+      "author": "Pitchaya Sudbanthad",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-13",
+      "shelf": "A2",
+      "position": 13,
+      "frame_ref": "out/rows/A2.jpg#xyxy=1003,63,1061,534",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.403,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-14",
+      "shelf": "A2",
+      "position": 14,
+      "frame_ref": "out/rows/A2.jpg#xyxy=1035,22,1266,116",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.531,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-15",
+      "shelf": "A2",
+      "position": 15,
+      "frame_ref": "out/rows/A2.jpg#xyxy=1057,65,1112,526",
+      "status": "identified",
+      "title": "The Bitter Side of Sweet",
+      "author": "Tara Sullivan",
+      "edition": "Putnam edition",
+      "isbn": "9780399173073",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.984,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-16",
+      "shelf": "A2",
+      "position": 16,
+      "frame_ref": "out/rows/A2.jpg#xyxy=1099,65,1169,519",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.92,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-17",
+      "shelf": "A2",
+      "position": 17,
+      "frame_ref": "out/rows/A2.jpg#xyxy=1151,65,1221,513",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.288,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-18",
+      "shelf": "A2",
+      "position": 18,
+      "frame_ref": "out/rows/A2.jpg#xyxy=1202,116,1267,507",
+      "status": "identified",
+      "title": "The Shining Company",
+      "author": "Rosemary Sutcliff",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.98,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-19",
+      "shelf": "A2",
+      "position": 19,
+      "frame_ref": "out/rows/A2.jpg#xyxy=1246,24,1292,493",
+      "status": "identified",
+      "title": "Eight Perfect Murders",
+      "author": "Peter Swanson",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-20",
+      "shelf": "A2",
+      "position": 20,
+      "frame_ref": "out/rows/A2.jpg#xyxy=1268,25,1330,484",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.75,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-21",
+      "shelf": "A2",
+      "position": 21,
+      "frame_ref": "out/rows/A2.jpg#xyxy=1304,27,1364,473",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.962,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-22",
+      "shelf": "A2",
+      "position": 22,
+      "frame_ref": "out/rows/A2.jpg#xyxy=1346,27,1400,458",
+      "status": "identified",
+      "title": "A Torch Against the Night",
+      "author": "Sabaa Tahir",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.969,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-23",
+      "shelf": "A2",
+      "position": 23,
+      "frame_ref": "out/rows/A2.jpg#xyxy=1373,27,1448,456",
+      "status": "identified",
+      "title": "The Joy Luck Club",
+      "author": "Amy Tan",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-24",
+      "shelf": "A2",
+      "position": 24,
+      "frame_ref": "out/rows/A2.jpg#xyxy=1418,14,1501,452",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.213,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-25",
+      "shelf": "A2",
+      "position": 25,
+      "frame_ref": "out/rows/A2.jpg#xyxy=1468,28,1549,449",
+      "status": "identified",
+      "title": "Saving Fish from Drowning",
+      "author": "Amy Tan",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.917,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-26",
+      "shelf": "A2",
+      "position": 26,
+      "frame_ref": "out/rows/A2.jpg#xyxy=1517,125,1552,443",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.204,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-01",
+      "shelf": "A3",
+      "position": 1,
+      "frame_ref": "out/rows/A3.jpg#xyxy=174,289,389,750",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.5,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-02",
+      "shelf": "A3",
+      "position": 2,
+      "frame_ref": "out/rows/A3.jpg#xyxy=237,207,490,750",
+      "status": "identified",
+      "title": "All the Days Past, All the Days to Come",
+      "author": "Mildred D. Taylor",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.962,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-03",
+      "shelf": "A3",
+      "position": 3,
+      "frame_ref": "out/rows/A3.jpg#xyxy=337,185,575,750",
+      "status": "identified",
+      "title": "Days of Blood & Starlight",
+      "author": "Laini Taylor",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-05",
+      "shelf": "A3",
+      "position": 5,
+      "frame_ref": "out/rows/A3.jpg#xyxy=518,174,690,747",
+      "status": "identified",
+      "title": "Dreams of Gods and Monsters",
+      "author": "Laini Taylor",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.94,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-06",
+      "shelf": "A3",
+      "position": 6,
+      "frame_ref": "out/rows/A3.jpg#xyxy=614,144,785,745",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-07",
+      "shelf": "A3",
+      "position": 7,
+      "frame_ref": "out/rows/A3.jpg#xyxy=703,123,862,739",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-08",
+      "shelf": "A3",
+      "position": 8,
+      "frame_ref": "out/rows/A3.jpg#xyxy=762,105,932,702",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-09",
+      "shelf": "A3",
+      "position": 9,
+      "frame_ref": "out/rows/A3.jpg#xyxy=835,126,1035,651",
+      "status": "identified",
+      "title": "An Affair of Poisons",
+      "author": "Addie Thorley",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.99,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-10",
+      "shelf": "A3",
+      "position": 10,
+      "frame_ref": "out/rows/A3.jpg#xyxy=900,200,927,689",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.404,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-11",
+      "shelf": "A3",
+      "position": 11,
+      "frame_ref": "out/rows/A3.jpg#xyxy=910,240,955,665",
+      "status": "identified",
+      "title": "Dogs at the Perimeter",
+      "author": "Madeleine Thien",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.991,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-12",
+      "shelf": "A3",
+      "position": 12,
+      "frame_ref": "out/rows/A3.jpg#xyxy=931,246,994,666",
+      "status": "identified",
+      "title": "After Dark, My Sweet",
+      "author": "Jim Thompson",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-13",
+      "shelf": "A3",
+      "position": 13,
+      "frame_ref": "out/rows/A3.jpg#xyxy=952,105,1079,621",
+      "status": "identified",
+      "title": "The Twelve Lives of Samuel Hawley",
+      "author": "Hannah Tinti",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-14",
+      "shelf": "A3",
+      "position": 14,
+      "frame_ref": "out/rows/A3.jpg#xyxy=1027,102,1215,571",
+      "status": "identified",
+      "title": "On The Come Up",
+      "author": "Angie Thomas",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-15",
+      "shelf": "A3",
+      "position": 15,
+      "frame_ref": "out/rows/A3.jpg#xyxy=1058,141,1164,603",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.92,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-16",
+      "shelf": "A3",
+      "position": 16,
+      "frame_ref": "out/rows/A3.jpg#xyxy=1063,192,1126,615",
+      "status": "identified",
+      "title": "Now and on Earth",
+      "author": "Jim Thompson",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-17",
+      "shelf": "A3",
+      "position": 17,
+      "frame_ref": "out/rows/A3.jpg#xyxy=1068,150,1165,597",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.387,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-18",
+      "shelf": "A3",
+      "position": 18,
+      "frame_ref": "out/rows/A3.jpg#xyxy=1130,73,1375,481",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.591,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-19",
+      "shelf": "A3",
+      "position": 19,
+      "frame_ref": "out/rows/A3.jpg#xyxy=1194,167,1241,548",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.3,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-20",
+      "shelf": "A3",
+      "position": 20,
+      "frame_ref": "out/rows/A3.jpg#xyxy=1217,109,1321,514",
+      "status": "identified",
+      "title": "Wild and Crooked",
+      "author": "Leah Thomas",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.962,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-21",
+      "shelf": "A3",
+      "position": 21,
+      "frame_ref": "out/rows/A3.jpg#xyxy=1222,154,1279,536",
+      "status": "identified",
+      "title": "Night Music",
+      "author": "Jenn Marie Thorne",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-22",
+      "shelf": "A3",
+      "position": 22,
+      "frame_ref": "out/rows/A3.jpg#xyxy=1243,6,1465,447",
+      "status": "identified",
+      "title": "Enchante",
+      "author": "Gita Trelease",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.956,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-23",
+      "shelf": "A3",
+      "position": 23,
+      "frame_ref": "out/rows/A3.jpg#xyxy=1302,129,1352,497",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-24",
+      "shelf": "A3",
+      "position": 24,
+      "frame_ref": "out/rows/A3.jpg#xyxy=1353,73,1413,475",
+      "status": "identified",
+      "title": "House of Names",
+      "author": "Colm Toibin",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-25",
+      "shelf": "A3",
+      "position": 25,
+      "frame_ref": "out/rows/A3.jpg#xyxy=1409,27,1481,438",
+      "status": "identified",
+      "title": "House of Stone",
+      "author": "Novuyo Rosa Tshuma",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.993,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-26",
+      "shelf": "A3",
+      "position": 26,
+      "frame_ref": "out/rows/A3.jpg#xyxy=1453,81,1514,426",
+      "status": "identified",
+      "title": "The Samurai's Garden",
+      "author": "Gail Tsukiyama",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A3-27",
+      "shelf": "A3",
+      "position": 27,
+      "frame_ref": "out/rows/A3.jpg#xyxy=1483,79,1534,414",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.883,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-01",
+      "shelf": "B1",
+      "position": 1,
+      "frame_ref": "out/rows/B1.jpg#xyxy=0,0,17,290",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-02",
+      "shelf": "B1",
+      "position": 2,
+      "frame_ref": "out/rows/B1.jpg#xyxy=16,0,54,290",
+      "status": "identified",
+      "title": "The Hiding Place",
+      "author": "Corrie ten Boom, Elizabeth Sherrill, John Sherrill",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-03",
+      "shelf": "B1",
+      "position": 3,
+      "frame_ref": "out/rows/B1.jpg#xyxy=53,0,93,290",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.312,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-04",
+      "shelf": "B1",
+      "position": 4,
+      "frame_ref": "out/rows/B1.jpg#xyxy=90,0,138,293",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-05",
+      "shelf": "B1",
+      "position": 5,
+      "frame_ref": "out/rows/B1.jpg#xyxy=138,0,180,293",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-06",
+      "shelf": "B1",
+      "position": 6,
+      "frame_ref": "out/rows/B1.jpg#xyxy=181,0,233,294",
+      "status": "identified",
+      "title": "I Used to Know That: Geography",
+      "author": "Will Williams",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.897,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-07",
+      "shelf": "B1",
+      "position": 7,
+      "frame_ref": "out/rows/B1.jpg#xyxy=232,26,255,294",
+      "status": "identified",
+      "title": "Winston Churchill Quotations",
+      "author": "David Notley",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.92,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-08",
+      "shelf": "B1",
+      "position": 8,
+      "frame_ref": "out/rows/B1.jpg#xyxy=255,0,308,295",
+      "status": "identified",
+      "title": "The Brethren",
+      "author": "John Grisham",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-09",
+      "shelf": "B1",
+      "position": 9,
+      "frame_ref": "out/rows/B1.jpg#xyxy=306,0,340,299",
+      "status": "identified",
+      "title": "Brat Farrar",
+      "author": "Josephine Tey",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-10",
+      "shelf": "B1",
+      "position": 10,
+      "frame_ref": "out/rows/B1.jpg#xyxy=342,0,398,294",
+      "status": "identified",
+      "title": "The Street Lawyer",
+      "author": "John Grisham",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-11",
+      "shelf": "B1",
+      "position": 11,
+      "frame_ref": "out/rows/B1.jpg#xyxy=398,0,434,298",
+      "status": "identified",
+      "title": "The Joy Luck Club",
+      "author": "Amy Tan",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-12",
+      "shelf": "B1",
+      "position": 12,
+      "frame_ref": "out/rows/B1.jpg#xyxy=438,0,480,298",
+      "status": "identified",
+      "title": "The Dark Wind",
+      "author": "Tony Hillerman",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-13",
+      "shelf": "B1",
+      "position": 13,
+      "frame_ref": "out/rows/B1.jpg#xyxy=484,0,524,298",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.92,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-14",
+      "shelf": "B1",
+      "position": 14,
+      "frame_ref": "out/rows/B1.jpg#xyxy=522,0,562,298",
+      "status": "identified",
+      "title": "One Goal",
+      "author": "Amy Bass",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-15",
+      "shelf": "B1",
+      "position": 15,
+      "frame_ref": "out/rows/B1.jpg#xyxy=564,0,604,299",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.5,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-16",
+      "shelf": "B1",
+      "position": 16,
+      "frame_ref": "out/rows/B1.jpg#xyxy=602,0,642,299",
+      "status": "identified",
+      "title": "Three Men in a Boat and Three Men on the Bummel",
+      "author": "Jerome K. Jerome",
+      "edition": "OXFORD edition",
+      "isbn": "9780191611322",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-17",
+      "shelf": "B1",
+      "position": 17,
+      "frame_ref": "out/rows/B1.jpg#xyxy=636,0,674,299",
+      "status": "identified",
+      "title": "Their Eyes Were Watching God",
+      "author": "Zora Neale Hurston",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-18",
+      "shelf": "B1",
+      "position": 18,
+      "frame_ref": "out/rows/B1.jpg#xyxy=668,0,704,299",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-19",
+      "shelf": "B1",
+      "position": 19,
+      "frame_ref": "out/rows/B1.jpg#xyxy=699,0,731,299",
+      "status": "identified",
+      "title": "Coffin, Scarcely Used",
+      "author": "Colin Watson",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-20",
+      "shelf": "B1",
+      "position": 20,
+      "frame_ref": "out/rows/B1.jpg#xyxy=731,0,784,300",
+      "status": "identified",
+      "title": "Jane Eyre",
+      "author": "Brontë Charlotte",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-21",
+      "shelf": "B1",
+      "position": 21,
+      "frame_ref": "out/rows/B1.jpg#xyxy=779,0,839,300",
+      "status": "identified",
+      "title": "To the Bright Edge of the World",
+      "author": "Eowyn Ivey",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.908,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-22",
+      "shelf": "B1",
+      "position": 22,
+      "frame_ref": "out/rows/B1.jpg#xyxy=836,0,879,300",
+      "status": "identified",
+      "title": "Just for Clicks",
+      "author": "Kara McDowell",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.987,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-23",
+      "shelf": "B1",
+      "position": 23,
+      "frame_ref": "out/rows/B1.jpg#xyxy=876,0,916,300",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-24",
+      "shelf": "B1",
+      "position": 24,
+      "frame_ref": "out/rows/B1.jpg#xyxy=915,0,976,300",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.302,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-25",
+      "shelf": "B1",
+      "position": 25,
+      "frame_ref": "out/rows/B1.jpg#xyxy=968,0,1000,300",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.496,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B2-01",
+      "shelf": "B2",
+      "position": 1,
+      "frame_ref": "out/rows/B2.jpg#xyxy=0,24,38,397",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.767,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B2-02",
+      "shelf": "B2",
+      "position": 2,
+      "frame_ref": "out/rows/B2.jpg#xyxy=33,31,84,399",
+      "status": "identified",
+      "title": "The Falconer",
+      "author": "Elizabeth May",
+      "edition": "CHRONICLE BOOKS edition",
+      "isbn": "9781452130071",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B2-03",
+      "shelf": "B2",
+      "position": 3,
+      "frame_ref": "out/rows/B2.jpg#xyxy=81,27,137,398",
+      "status": "identified",
+      "title": "The Gallery",
+      "author": "Laura Marx Fitzgerald",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B2-04",
+      "shelf": "B2",
+      "position": 4,
+      "frame_ref": "out/rows/B2.jpg#xyxy=134,33,184,399",
+      "status": "identified",
+      "title": "Spinning Out",
+      "author": "David Stahler Jr.",
+      "edition": "chronicle books edition",
+      "isbn": "9781452108643",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B2-05",
+      "shelf": "B2",
+      "position": 5,
+      "frame_ref": "out/rows/B2.jpg#xyxy=181,68,225,400",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.316,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B2-06",
+      "shelf": "B2",
+      "position": 6,
+      "frame_ref": "out/rows/B2.jpg#xyxy=223,41,284,401",
+      "status": "identified",
+      "title": "Fire",
+      "author": "Kristin Cashore",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B2-07",
+      "shelf": "B2",
+      "position": 7,
+      "frame_ref": "out/rows/B2.jpg#xyxy=282,42,340,401",
+      "status": "identified",
+      "title": "Graceling",
+      "author": "Kristin Cashore",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B2-08",
+      "shelf": "B2",
+      "position": 8,
+      "frame_ref": "out/rows/B2.jpg#xyxy=340,31,404,402",
+      "status": "identified",
+      "title": "Tumbling",
+      "author": "Caela Carter",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B2-09",
+      "shelf": "B2",
+      "position": 9,
+      "frame_ref": "out/rows/B2.jpg#xyxy=400,44,448,402",
+      "status": "identified",
+      "title": "Matched",
+      "author": "Ally Condie",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B2-10",
+      "shelf": "B2",
+      "position": 10,
+      "frame_ref": "out/rows/B2.jpg#xyxy=444,37,499,404",
+      "status": "identified",
+      "title": "The Clockwork Scarab",
+      "author": "Colleen Gleason",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B2-11",
+      "shelf": "B2",
+      "position": 11,
+      "frame_ref": "out/rows/B2.jpg#xyxy=491,36,546,404",
+      "status": "identified",
+      "title": "The Chess Queen Enigma",
+      "author": "Colleen Gleason",
+      "edition": "CHRONICLE BOOKS edition",
+      "isbn": "9781452146867",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B2-12",
+      "shelf": "B2",
+      "position": 12,
+      "frame_ref": "out/rows/B2.jpg#xyxy=536,34,594,403",
+      "status": "identified",
+      "title": "Deadly Pink",
+      "author": "Vivian Vande Velde",
+      "edition": "harcourt edition",
+      "isbn": "9780547738505",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B2-13",
+      "shelf": "B2",
+      "position": 13,
+      "frame_ref": "out/rows/B2.jpg#xyxy=858,37,966,404",
+      "status": "identified",
+      "title": "Into the Dim",
+      "author": "Janet B. Taylor",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B2-14",
+      "shelf": "B2",
+      "position": 14,
+      "frame_ref": "out/rows/B2.jpg#xyxy=961,53,1000,405",
+      "status": "identified",
+      "title": "Gena/Finn",
+      "author": "Hannah Moskowitz, Kat Helgeson",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.967,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B3-01",
+      "shelf": "B3",
+      "position": 1,
+      "frame_ref": "out/rows/B3.jpg#xyxy=423,182,453,435",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B3-02",
+      "shelf": "B3",
+      "position": 2,
+      "frame_ref": "out/rows/B3.jpg#xyxy=442,175,468,427",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B3-03",
+      "shelf": "B3",
+      "position": 3,
+      "frame_ref": "out/rows/B3.jpg#xyxy=460,187,482,439",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B3-04",
+      "shelf": "B3",
+      "position": 4,
+      "frame_ref": "out/rows/B3.jpg#xyxy=472,166,500,445",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.563,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B3-05",
+      "shelf": "B3",
+      "position": 5,
+      "frame_ref": "out/rows/B3.jpg#xyxy=493,156,550,450",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B3-06",
+      "shelf": "B3",
+      "position": 6,
+      "frame_ref": "out/rows/B3.jpg#xyxy=548,170,578,452",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.46,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B3-07",
+      "shelf": "B3",
+      "position": 7,
+      "frame_ref": "out/rows/B3.jpg#xyxy=568,165,604,451",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B3-08",
+      "shelf": "B3",
+      "position": 8,
+      "frame_ref": "out/rows/B3.jpg#xyxy=574,121,629,453",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B3-09",
+      "shelf": "B3",
+      "position": 9,
+      "frame_ref": "out/rows/B3.jpg#xyxy=592,111,649,458",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B3-10",
+      "shelf": "B3",
+      "position": 10,
+      "frame_ref": "out/rows/B3.jpg#xyxy=639,121,698,463",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B3-11",
+      "shelf": "B3",
+      "position": 11,
+      "frame_ref": "out/rows/B3.jpg#xyxy=650,99,714,449",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B3-12",
+      "shelf": "B3",
+      "position": 12,
+      "frame_ref": "out/rows/B3.jpg#xyxy=704,142,730,454",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B3-13",
+      "shelf": "B3",
+      "position": 13,
+      "frame_ref": "out/rows/B3.jpg#xyxy=712,72,752,456",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B3-14",
+      "shelf": "B3",
+      "position": 14,
+      "frame_ref": "out/rows/B3.jpg#xyxy=730,70,774,461",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B3-15",
+      "shelf": "B3",
+      "position": 15,
+      "frame_ref": "out/rows/B3.jpg#xyxy=758,76,802,458",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B3-16",
+      "shelf": "B3",
+      "position": 16,
+      "frame_ref": "out/rows/B3.jpg#xyxy=787,72,835,462",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B3-17",
+      "shelf": "B3",
+      "position": 17,
+      "frame_ref": "out/rows/B3.jpg#xyxy=815,68,851,453",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B3-18",
+      "shelf": "B3",
+      "position": 18,
+      "frame_ref": "out/rows/B3.jpg#xyxy=823,78,878,458",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.761,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B3-19",
+      "shelf": "B3",
+      "position": 19,
+      "frame_ref": "out/rows/B3.jpg#xyxy=850,79,911,460",
+      "status": "identified",
+      "title": "Strong Is the New Pretty: A Guided Journal for Girls",
+      "author": "Kate T. Parker",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B3-21",
+      "shelf": "B3",
+      "position": 21,
+      "frame_ref": "out/rows/B3.jpg#xyxy=932,69,973,459",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B3-22",
+      "shelf": "B3",
+      "position": 22,
+      "frame_ref": "out/rows/B3.jpg#xyxy=938,43,999,456",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    }
+  ],
+  "items": [
+    {
+      "id": "I-01",
+      "category": "shelving",
+      "description": "top wooden shelf board",
+      "brand_model": "",
+      "frame_ref": "frames/0007.jpg#xyxy=0,297,1000,369",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-02",
+      "category": "decor",
+      "description": "white ribbed plant pot",
+      "brand_model": "",
+      "frame_ref": "frames/0007.jpg#xyxy=626,576,842,774",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-03",
+      "category": "other",
+      "description": "black hole puncher on shelf",
+      "brand_model": "",
+      "frame_ref": "frames/0007.jpg#xyxy=1,1098,140,1231",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-04",
+      "category": "decor",
+      "description": "glass spice-style jar with metal lid containing paper clips",
+      "brand_model": "",
+      "frame_ref": "frames/0007.jpg#xyxy=134,1069,224,1233",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-05",
+      "category": "decor",
+      "description": "white pencil holder cup",
+      "brand_model": "",
+      "frame_ref": "frames/0007.jpg#xyxy=318,1009,436,1246",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-06",
+      "category": "other",
+      "description": "group of yellow pencils in cup",
+      "brand_model": "",
+      "frame_ref": "frames/0007.jpg#xyxy=312,904,420,1029",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    }
+  ],
+  "totals": {
+    "book_count": 137,
+    "books_identified": 68,
+    "books_unidentified": 69,
+    "shelf_run_m": null,
+    "books_replacement_cost": 0.0,
+    "books_used_value": 0.0,
+    "items_replacement_cost_low": 0.0,
+    "items_replacement_cost_high": 0.0,
+    "excluded_from_totals": 143
+  },
+  "review_queue": [
+    {
+      "ref_id": "A1",
+      "reason": "no scale marker visible in this row; spine sizes not measured"
+    },
+    {
+      "ref_id": "A1-01",
+      "reason": "best match 'Man of My Time' below threshold (0.75)"
+    },
+    {
+      "ref_id": "A1-02",
+      "reason": "title-only match on a short title ('The Latter-day Saints' Millennial Star'); author not legible"
+    },
+    {
+      "ref_id": "A1-03",
+      "reason": "title-only match on a short title ('Printing Art Sample Book'); author not legible"
+    },
+    {
+      "ref_id": "A1-04",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A1-05",
+      "reason": "best match 'Unmarriageable' below threshold (0.50)"
+    },
+    {
+      "ref_id": "A1-06",
+      "reason": "title-only match on a short title ('Historisk tidsskrift'); author not legible"
+    },
+    {
+      "ref_id": "A1-07",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A1-08",
+      "reason": "ambiguous: 'The Way I Used to Be' vs 'The Way I Used to Be Tome 1'"
+    },
+    {
+      "ref_id": "A1-09",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A1-10",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A1-11",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A1-12",
+      "reason": "best match 'The Last Song' below threshold (0.50)"
+    },
+    {
+      "ref_id": "A1-13",
+      "reason": "ambiguous: 'The Notebook' vs 'The Notebook / Message in a Bottle'"
+    },
+    {
+      "ref_id": "A1-14",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A1-15",
+      "reason": "best match 'The Invisible Life of Ivan Isaenko' below threshold (0.50)"
+    },
+    {
+      "ref_id": "A1-16",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A1-17",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A1-18",
+      "reason": "ambiguous: 'The Art of Racing in the Rain' vs 'The Art of Racing in the Rain: A Novel by Garth Stein (Trivia-On-Books)'"
+    },
+    {
+      "ref_id": "A1-19",
+      "reason": "title-only match on a short title ('The Spirit of '76'); author not legible"
+    },
+    {
+      "ref_id": "A1-20",
+      "reason": "ambiguous: 'The Light Between Oceans' vs 'The Light Between Oceans'"
+    },
+    {
+      "ref_id": "A1-21",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A1-22",
+      "reason": "title-only match on a short title ('La Lancette française'); author not legible"
+    },
+    {
+      "ref_id": "A1-23",
+      "reason": "title-only match on a short title ('The Raven Boys: The Graphic Novel'); author not legible"
+    },
+    {
+      "ref_id": "A1-24",
+      "reason": "title-only match on a short title ('Lament'); author not legible"
+    },
+    {
+      "ref_id": "A1-25",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A1-26",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A1-26",
+      "reason": "same book as A1-25 seen twice (overlapping boxes); removed from the count"
+    },
+    {
+      "ref_id": "A2",
+      "reason": "no scale marker visible in this row; spine sizes not measured"
+    },
+    {
+      "ref_id": "A2-01",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A2-02",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A2-03",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A2-04",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A2-05",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A2-06",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A2-07",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A2-08",
+      "reason": "title-only match on a short title ('Engineering and Contracting'); author not legible"
+    },
+    {
+      "ref_id": "A2-09",
+      "reason": "title-only match on a short title ('Harper's Weekly'); author not legible"
+    },
+    {
+      "ref_id": "A2-10",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A2-11",
+      "reason": "best match 'Modern Lovers' below threshold (0.50)"
+    },
+    {
+      "ref_id": "A2-12",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A2-13",
+      "reason": "title-only match on a short title ('The New York Lumber Trade Journal'); author not legible"
+    },
+    {
+      "ref_id": "A2-14",
+      "reason": "best match 'Every Vow You Break' below threshold (0.53)"
+    },
+    {
+      "ref_id": "A2-15",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A2-16",
+      "reason": "title-only match on a short title ('Sadie'); author not legible"
+    },
+    {
+      "ref_id": "A2-17",
+      "reason": "title-only match on a short title ('Sermones. Summa poenitentiae [u.a.] - BSB Clm 14062'); author not legible"
+    },
+    {
+      "ref_id": "A2-18",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A2-19",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A2-20",
+      "reason": "best match 'The Nest' below threshold (0.75)"
+    },
+    {
+      "ref_id": "A2-21",
+      "reason": "ambiguous: 'An Ember in the Ashes' vs 'An Ember in the Ashes Series 4 Books Set'"
+    },
+    {
+      "ref_id": "A2-22",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A2-23",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A2-24",
+      "reason": "best match 'The Complete Short Stories' below threshold (0.21)"
+    },
+    {
+      "ref_id": "A2-25",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A2-26",
+      "reason": "title-only match on a short title ('Saving Grace'); author not legible"
+    },
+    {
+      "ref_id": "A3",
+      "reason": "no scale marker visible in this row; spine sizes not measured"
+    },
+    {
+      "ref_id": "A3-01",
+      "reason": "best match 'Real Life' below threshold (0.50)"
+    },
+    {
+      "ref_id": "A3-02",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A3-03",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A3-04",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A3-04",
+      "reason": "same book as A3-03 seen twice (overlapping boxes); removed from the count"
+    },
+    {
+      "ref_id": "A3-05",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A3-06",
+      "reason": "ambiguous: 'Strange the Dreamer' vs 'Strange the Dreamer & Muse of Nightmares Box Set'"
+    },
+    {
+      "ref_id": "A3-07",
+      "reason": "ambiguous: 'Muse of Nightmares' vs 'Muse of Nightmares the Magical Sequel to Strange the Dreamer'"
+    },
+    {
+      "ref_id": "A3-08",
+      "reason": "ambiguous: 'Daughter of Smoke & Bone' vs 'Daughter of Smoke & Bone Book Box Set'"
+    },
+    {
+      "ref_id": "A3-09",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A3-10",
+      "reason": "best match 'The Batman adventures' below threshold (0.40)"
+    },
+    {
+      "ref_id": "A3-11",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A3-12",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A3-13",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A3-14",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A3-15",
+      "reason": "title-only match on a short title ('Ordinary Girls'); author not legible"
+    },
+    {
+      "ref_id": "A3-16",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A3-17",
+      "reason": "best match 'The Hating Game' below threshold (0.39)"
+    },
+    {
+      "ref_id": "A3-18",
+      "reason": "title-only match on a short title ('That girl Lucy Moon'); author not legible"
+    },
+    {
+      "ref_id": "A3-19",
+      "reason": "title-only match on a short title ('The Southern Lumberman'); author not legible"
+    },
+    {
+      "ref_id": "A3-20",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A3-21",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A3-22",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A3-23",
+      "reason": "ambiguous: 'The Blacker the Berry' vs 'The Blacker the Berry;A Novel of Negro Life'"
+    },
+    {
+      "ref_id": "A3-24",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A3-25",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A3-26",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A3-27",
+      "reason": "title-only match on a short title ('The Wood Wife'); author not legible"
+    },
+    {
+      "ref_id": "B1",
+      "reason": "no scale marker visible in this row; spine sizes not measured"
+    },
+    {
+      "ref_id": "B1-01",
+      "reason": "spine not legible; logged as unidentified with its dimensions"
+    },
+    {
+      "ref_id": "B1-02",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B1-03",
+      "reason": "title-only match on a short title ('Lehrbuch der gotischen Konstruktionen'); author not legible"
+    },
+    {
+      "ref_id": "B1-04",
+      "reason": "ambiguous: 'The Kite Runner' vs 'The Kite Runner Graphic Novel'"
+    },
+    {
+      "ref_id": "B1-05",
+      "reason": "ambiguous: 'Maisie Dobbs' vs 'Maisie Dobbs A Novel'"
+    },
+    {
+      "ref_id": "B1-06",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B1-07",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B1-08",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B1-09",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B1-10",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B1-11",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B1-12",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B1-13",
+      "reason": "title-only match on a short title ('The Doll People'); author not legible"
+    },
+    {
+      "ref_id": "B1-14",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B1-15",
+      "reason": "best match 'Marriage Bureau for Rich People' below threshold (0.50)"
+    },
+    {
+      "ref_id": "B1-16",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B1-17",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B1-18",
+      "reason": "ambiguous: 'The Seven Dials Mystery' vs 'The Seven Dials Mystery, by Agatha Christie, ...'"
+    },
+    {
+      "ref_id": "B1-19",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B1-20",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B1-21",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B1-22",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B1-23",
+      "reason": "ambiguous: 'A Tale of Two Cities' vs 'A Tale of Two Cities - by Charles Dickens'"
+    },
+    {
+      "ref_id": "B1-24",
+      "reason": "best match 'From Revelation to Revolution' below threshold (0.30)"
+    },
+    {
+      "ref_id": "B1-25",
+      "reason": "title-only match on a short title ('When Breath Becomes Air'); author not legible"
+    },
+    {
+      "ref_id": "B2",
+      "reason": "no scale marker visible in this row; spine sizes not measured"
+    },
+    {
+      "ref_id": "B2-01",
+      "reason": "best match 'The Sweet Far Thing' below threshold (0.77)"
+    },
+    {
+      "ref_id": "B2-02",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B2-03",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B2-04",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B2-05",
+      "reason": "title-only match on a short title ('Judicial and Statutory Definitions of Words and Phrases'); author not legible"
+    },
+    {
+      "ref_id": "B2-06",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B2-07",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B2-08",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B2-09",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B2-10",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B2-11",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B2-12",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B2-13",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B2-14",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B3",
+      "reason": "no scale marker visible in this row; spine sizes not measured"
+    },
+    {
+      "ref_id": "B3-01",
+      "reason": "spine not legible; logged as unidentified with its dimensions"
+    },
+    {
+      "ref_id": "B3-02",
+      "reason": "spine not legible; logged as unidentified with its dimensions"
+    },
+    {
+      "ref_id": "B3-03",
+      "reason": "spine not legible; logged as unidentified with its dimensions"
+    },
+    {
+      "ref_id": "B3-04",
+      "reason": "best match 'Pocket Posh Adult Coloring Book: Pretty Designs for Fun and Relaxation' below threshold (0.56)"
+    },
+    {
+      "ref_id": "B3-05",
+      "reason": "ambiguous: 'Mom's One Line a Day' vs 'Mom's One Line a Day'"
+    },
+    {
+      "ref_id": "B3-06",
+      "reason": "title-only match on a short title ('Pampered to Death'); author not legible"
+    },
+    {
+      "ref_id": "B3-07",
+      "reason": "spine not legible; logged as unidentified with its dimensions"
+    },
+    {
+      "ref_id": "B3-08",
+      "reason": "spine not legible; logged as unidentified with its dimensions"
+    },
+    {
+      "ref_id": "B3-09",
+      "reason": "spine not legible; logged as unidentified with its dimensions"
+    },
+    {
+      "ref_id": "B3-10",
+      "reason": "spine not legible; logged as unidentified with its dimensions"
+    },
+    {
+      "ref_id": "B3-11",
+      "reason": "spine not legible; logged as unidentified with its dimensions"
+    },
+    {
+      "ref_id": "B3-12",
+      "reason": "spine not legible; logged as unidentified with its dimensions"
+    },
+    {
+      "ref_id": "B3-13",
+      "reason": "spine not legible; logged as unidentified with its dimensions"
+    },
+    {
+      "ref_id": "B3-14",
+      "reason": "spine not legible; logged as unidentified with its dimensions"
+    },
+    {
+      "ref_id": "B3-15",
+      "reason": "spine not legible; logged as unidentified with its dimensions"
+    },
+    {
+      "ref_id": "B3-16",
+      "reason": "spine not legible; logged as unidentified with its dimensions"
+    },
+    {
+      "ref_id": "B3-17",
+      "reason": "spine not legible; logged as unidentified with its dimensions"
+    },
+    {
+      "ref_id": "B3-18",
+      "reason": "best match 'Guided Journal for Teenage Girls' below threshold (0.76)"
+    },
+    {
+      "ref_id": "B3-19",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B3-20",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "B3-20",
+      "reason": "same book as B3-19 seen twice (overlapping boxes); removed from the count"
+    },
+    {
+      "ref_id": "B3-21",
+      "reason": "ambiguous: '52 Lists for Happiness' vs '52 Lists for Happiness Floral Pattern'"
+    },
+    {
+      "ref_id": "B3-22",
+      "reason": "ambiguous: '52 Lists for Happiness' vs '52 Lists for Happiness Floral Pattern'"
+    },
+    {
+      "ref_id": "I-01",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-01",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-02",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-02",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-03",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-03",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-04",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-04",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-05",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-05",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-06",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-06",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "room",
+      "reason": "no room geometry captured"
+    }
+  ]
+}

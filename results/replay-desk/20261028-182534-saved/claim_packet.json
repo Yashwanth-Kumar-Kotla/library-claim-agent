@@ -1,0 +1,305 @@
+{
+  "sweep": {
+    "id": "replay-desk",
+    "captured_at": "2026-10-28T23:25:28+00:00",
+    "device": "phone browser",
+    "duration_s": 64.3,
+    "country": "US",
+    "currency": "USD",
+    "capture_path": "browser"
+  },
+  "room": {
+    "length_m": null,
+    "width_m": null,
+    "height_m": null,
+    "floor_area_m2": null,
+    "wall_area_m2": null,
+    "shelved_wall_area_m2": null,
+    "floor_area_ft2": null,
+    "wall_area_ft2": null,
+    "shape_note": "",
+    "scale_method": "",
+    "confidence": 0.0
+  },
+  "books": [],
+  "items": [
+    {
+      "id": "I-01",
+      "category": "furniture",
+      "description": "pillow on bed",
+      "brand_model": "",
+      "frame_ref": "frames/00008.jpg#xyxy=581,490,748,604",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-02",
+      "category": "furniture",
+      "description": "bed mattress with colorful sheet",
+      "brand_model": "",
+      "frame_ref": "frames/00008.jpg#xyxy=195,571,869,897",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-03",
+      "category": "furniture",
+      "description": "black ergonomic gaming chair",
+      "brand_model": "",
+      "frame_ref": "frames/00008.jpg#xyxy=1121,369,1499,921",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-04",
+      "category": "electronics",
+      "description": "mechanical keyboard with white and blue keys",
+      "brand_model": "",
+      "frame_ref": "frames/00008.jpg#xyxy=472,867,865,1080",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-05",
+      "category": "electronics",
+      "description": "black computer mouse",
+      "brand_model": "",
+      "frame_ref": "frames/00008.jpg#xyxy=480,754,599,819",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-06",
+      "category": "furniture",
+      "description": "large black desk mousepad",
+      "brand_model": "",
+      "frame_ref": "frames/00008.jpg#xyxy=241,803,938,1080",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-07",
+      "category": "furniture",
+      "description": "light wood desk",
+      "brand_model": "",
+      "frame_ref": "frames/00008.jpg#xyxy=69,765,992,1080",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-08",
+      "category": "other",
+      "description": "black handheld massage gun device",
+      "brand_model": "",
+      "frame_ref": "frames/00008.jpg#xyxy=128,824,336,980",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-09",
+      "category": "decor",
+      "description": "small framed picture or item",
+      "brand_model": "",
+      "frame_ref": "frames/00008.jpg#xyxy=82,718,168,892",
+      "dimensions_cm": {
+        "w": null,
+        "h": null,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    }
+  ],
+  "totals": {
+    "book_count": 0,
+    "books_identified": 0,
+    "books_unidentified": 0,
+    "shelf_run_m": null,
+    "books_replacement_cost": 0.0,
+    "books_used_value": 0.0,
+    "items_replacement_cost_low": 0.0,
+    "items_replacement_cost_high": 0.0,
+    "excluded_from_totals": 9
+  },
+  "review_queue": [
+    {
+      "ref_id": "I-01",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-01",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-02",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-02",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-03",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-03",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-04",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-04",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-05",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-05",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-06",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-06",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-07",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-07",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-08",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-08",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-09",
+      "reason": "dimensions not measured on this capture path"
+    },
+    {
+      "ref_id": "I-09",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "room",
+      "reason": "no room geometry captured"
+    }
+  ]
+}
