@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Connection check</title>
+<style>
+  :root { --ink: #0f0e0c; --bone: #f2ede3; --muted: rgba(242,237,227,.62); --sage: #9fc6a3; --rose: #e88f86; --brass: #d4ad5b; }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; background: var(--ink); color: var(--bone); font: 16px/1.5 -apple-system, "Segoe UI", sans-serif; padding: 28px 18px; }
+  h1 { font-size: 26px; letter-spacing: -.02em; margin: 0 0 6px; }
+  p { color: var(--muted); margin: 0 0 22px; }
+  ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  li { display: flex; gap: 12px; align-items: baseline; padding: 12px 14px; border-radius: 12px; background: rgba(242,237,227,.06); }
+  li b { width: 22px; font-weight: 700; }
+  li.ok b { color: var(--sage); } li.bad b { color: var(--rose); }
+  li span { flex: 1; } li small { display: block; color: var(--muted); }
+  a { display: block; margin-top: 24px; padding: 15px; border-radius: 14px; text-align: center; background: var(--brass); color: #1a1408; font-weight: 600; text-decoration: none; }
+</style>
+</head>
+<body>
+<h1>Connection check</h1>
+<p>Run this on the phone before a sweep. Everything should be ticked.</p>
+<ul id="list"></ul>
+<a href="/">Go to the sweep</a>
+<script>
+const rows = [
+  ["Phone reaches the Mac", true, "this page came from the sweep server"],
+  ["Secure page (https)", window.isSecureContext, "needed for camera, microphone and motion"],
+  ["Camera and microphone available", !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia), "the browser exposes them"],
+  ["Motion sensors available", typeof DeviceOrientationEvent !== "undefined", "for the room-size turn"],
+  ["Audio playback", !!(window.AudioContext || window.webkitAudioContext), "to hear the assistant"],
+];
+fetch("/healthz").then(r => r.json()).then(j => {
+  rows.push(["Server ready", j.ok, `${j.time}`]); draw();
+}).catch(() => { rows.push(["Server ready", false, "no answer from /healthz"]); draw(); });
+function draw() {
+  const ul = document.getElementById("list"); ul.innerHTML = "";
+  for (const [name, ok, note] of rows) {
+    const li = document.createElement("li"); li.className = ok ? "ok" : "bad";
+    li.innerHTML = "<b></b><span></span>";
+    li.querySelector("b").textContent = ok ? "✓" : "✕";
+    li.querySelector("span").textContent = name;
+    const small = document.createElement("small"); small.textContent = note; li.querySelector("span").appendChild(small);
+    ul.appendChild(li);
+  }
+}
+draw();
+</script>
+</body>
+</html>

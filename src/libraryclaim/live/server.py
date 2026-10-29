@@ -82,6 +82,17 @@ async def revalidate(request, call_next):
     return response
 
 
+@app.get("/check")
+def check():
+    """Open this on the phone first: proves it reaches the Mac and can use camera, mic and motion."""
+    return FileResponse(STATIC / "check.html")
+
+
+@app.get("/healthz")
+def healthz():
+    return {"ok": True, "time": datetime.now().isoformat(timespec="seconds")}
+
+
 @app.get("/")
 def index():
     return FileResponse(STATIC / "index.html")
