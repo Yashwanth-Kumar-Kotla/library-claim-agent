@@ -21,11 +21,11 @@ TEMPLATE = """{% macro price(x, cur) -%}
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Contents claim {{ p.sweep.id }}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{--paper:#f5f0e6;--card:#fbf8f2;--ink:#1d1a15;--soft:#5d564b;--faint:#8f8778;--rule:#e2d9c8;--brass:#a8792a;
 --sage:#3f7a4f;--sage-bg:#e3efe3;--amber:#b0611a;--amber-bg:#f8e7d2;--grey-bg:#ece6da;--rose:#a8453b;
---serif:"Fraunces","Iowan Old Style",Georgia,serif;--sans:"Hanken Grotesk",-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+--serif:"Hanken Grotesk",-apple-system,"Segoe UI",sans-serif;--sans:"Hanken Grotesk",-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
 @media (prefers-color-scheme:dark){:root{--paper:#14120f;--card:#1c1a16;--ink:#eee7da;--soft:#b7ae9e;--faint:#857d6f;--rule:#2e2a23;
 --brass:#d4ad5b;--sage:#9fc6a3;--sage-bg:#1f2d22;--amber:#f0a453;--amber-bg:#33251a;--grey-bg:#26231d;--rose:#e88f86}}
 *{box-sizing:border-box}
@@ -34,9 +34,9 @@ background-image:radial-gradient(90% 40% at 100% 0%,color-mix(in srgb,var(--bras
 .wrap{max-width:1080px;margin:0 auto;padding:40px 24px 72px}
 a{color:inherit}
 .eyebrow{font:500 11.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin:0 0 14px}
-h1{font:400 clamp(32px,5vw,50px)/1.05 var(--serif);letter-spacing:-.015em;margin:0 0 12px;font-variation-settings:"opsz" 144}
-h1 em{color:var(--brass)}
-h2{font:600 22px/1.2 var(--serif);margin:0;letter-spacing:-.005em}
+h1{font:700 clamp(30px,4.6vw,46px)/1.1 var(--serif);letter-spacing:-.025em;margin:0 0 12px}
+h1 em{font-style:normal;color:var(--brass)}
+h2{font:700 21px/1.2 var(--serif);margin:0;letter-spacing:-.015em}
 .meta{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--soft);font:400 13px var(--mono)}
 .meta b{color:var(--ink);font-weight:500}
 section{margin-top:44px}
@@ -47,9 +47,10 @@ section{margin-top:44px}
 .fig{background:var(--card);padding:20px 20px 18px;animation:rise .6s both}
 .fig:nth-child(2){animation-delay:.05s}.fig:nth-child(3){animation-delay:.1s}.fig:nth-child(4){animation-delay:.15s}
 .fig small{display:block;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
-.fig b{display:block;font:400 32px/1.15 var(--serif);margin:8px 0 4px;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.fig b{display:block;font:700 30px/1.15 var(--serif);margin:8px 0 4px;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
 .fig span{color:var(--soft);font-size:13px}
 .fig.alert b{color:var(--amber)}
+.fig b.range{font-size:21px;line-height:1.75;white-space:nowrap}
 
 .split{margin-top:22px}
 .bar{display:flex;height:12px;border-radius:6px;overflow:hidden;background:var(--grey-bg)}
@@ -68,7 +69,7 @@ section{margin-top:44px}
 dl.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px 22px;margin:0}
 dl.stats div{border-top:1px solid var(--rule);padding-top:10px}
 dt{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
-dd{margin:4px 0 0;font:400 22px/1.2 var(--serif);font-variant-numeric:tabular-nums}
+dd{margin:4px 0 0;font:600 21px/1.2 var(--serif);font-variant-numeric:tabular-nums}
 dd small{display:block;font:400 12.5px var(--sans);color:var(--soft)}
 .method{margin-top:16px;color:var(--soft);font-size:13.5px}
 .meter{display:inline-block;width:70px;height:6px;border-radius:3px;background:var(--grey-bg);vertical-align:middle;margin-left:6px;overflow:hidden}
@@ -103,7 +104,7 @@ tr:last-child td{border-bottom:0}
 td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
 .thumb{width:34px;height:52px;object-fit:cover;border-radius:4px;background:var(--grey-bg);display:block}
 .lid{font:400 12.5px var(--mono);color:var(--faint);white-space:nowrap}
-.ttl{font:600 15px/1.3 var(--serif)}
+.ttl{font:600 15px/1.3 var(--serif);letter-spacing:-.005em}
 .sub{color:var(--soft);font-size:13px}
 .tag{display:inline-block;font:500 10.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;white-space:nowrap}
 .t-identified,.t-priced{color:var(--sage);background:var(--sage-bg)}
@@ -147,7 +148,7 @@ footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--rule);color:v
 
 <div class="figs">
   <div class="fig"><small>Books · replacement</small><b>{{ money(t.books_replacement_cost) }}</b><span>used value {{ money(t.books_used_value) }}</span></div>
-  <div class="fig"><small>Other contents</small><b>{% if t.items_replacement_cost_high %}{{ money(t.items_replacement_cost_low) }}{% if t.items_replacement_cost_high != t.items_replacement_cost_low %}<span style="font-size:18px"> – {{ money(t.items_replacement_cost_high) }}</span>{% endif %}{% else %}{{ money(0) }}{% endif %}</b><span>replacement, low to high</span></div>
+  <div class="fig"><small>Other contents</small><b class="{% if t.items_replacement_cost_high != t.items_replacement_cost_low %}range{% endif %}">{{ money(t.items_replacement_cost_low) }}{% if t.items_replacement_cost_high != t.items_replacement_cost_low %} – {{ "{:,.2f}".format(t.items_replacement_cost_high) }}{% endif %}</b><span>replacement, low to high</span></div>
   <div class="fig {% if t.excluded_from_totals %}alert{% endif %}"><small>Excluded from totals</small><b>{{ t.excluded_from_totals }}</b><span>awaiting appraisal or no price found</span></div>
   <div class="fig {% if groups %}alert{% endif %}"><small>For the adjuster</small><b>{{ groups|length }}</b><span>lines with review notes</span></div>
 </div>
