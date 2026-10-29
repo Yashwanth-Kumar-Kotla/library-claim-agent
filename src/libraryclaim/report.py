@@ -10,6 +10,8 @@ from .schema import ClaimPacket
 
 TEMPLATE = """{% macro price(x) -%}
 {% if x.amount is none %}—{% else %}{{ money(x.amount) }}{% if x.converted %} (converted){% endif %}<br><a class="muted" href="{{ x.url }}">source</a>{% endif %}
+{%- endmacro %}{% macro fprice(x, cur) -%}
+{% if x.amount is none %}—{% else %}{{ cur }} {{ "{:,.2f}".format(x.amount) }}{% if x.converted %} (converted){% endif %}<br><a class="muted" href="{{ x.url }}">source</a>{% endif %}
 {%- endmacro %}<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Contents claim {{ p.sweep.id }}</title>
@@ -43,6 +45,7 @@ img.t{height:56px} .grid{display:grid;grid-template-columns:repeat(auto-fit,minm
 <td>{{ num(r.wall_area_m2, " m²") }}<br><span class="muted">{{ num(r.wall_area_ft2, " ft²") }}</span></td>
 <td>{{ num(r.shelved_wall_area_m2, " m²") }}</td><td>{{ r.scale_method or "—" }}</td><td>{{ r.confidence }}</td></tr></table>
 {% if r.shape_note %}<p class="muted">{{ r.shape_note }}</p>{% endif %}
+{% if r.scale_method %}<p class="muted">Measured by: {{ r.scale_method }}. Room notes are in the review queue under "room".</p>{% endif %}
 
 <h2>Review queue ({{ p.review_queue|length }})</h2>
 <table><tr><th>Line</th><th>Reason</th></tr>
@@ -59,10 +62,20 @@ img.t{height:56px} .grid{display:grid;grid-template-columns:repeat(auto-fit,minm
 <td class="n">{{ "%.2f"|format(b.id_confidence) }}</td>
 <td class="n">{{ price(b.replacement_cost) }}</td><td class="n">{{ price(b.used_value) }}</td></tr>{% endfor %}</table>
 
+{% if p.second_country %}
+<h2>Same books priced for {{ p.second_country.country }} ({{ p.second_country.currency }})</h2>
+<p class="muted">The pricing code with a different country setting, to show locale is not hardcoded. Not included in the totals.</p>
+<table><tr><th>Line</th><th>Title</th><th>Replacement here</th><th>Replacement in {{ p.second_country.country }}</th><th>Used in {{ p.second_country.country }}</th></tr>
+{% for l in p.second_country.lines %}{% set home = p.books | selectattr("id", "equalto", l.book_id) | first %}<tr><td>{{ l.book_id }}</td><td>{{ l.title }}</td>
+<td class="n">{{ price(home.replacement_cost) if home else "—" }}</td>
+<td class="n">{{ fprice(l.replacement_cost, p.second_country.currency) }}</td><td class="n">{{ fprice(l.used_value, p.second_country.currency) }}</td></tr>{% endfor %}</table>
+{% endif %}
+
 <h2>Other contents ({{ p.items|length }})</h2>
-<table><tr><th>Line</th><th>Category</th><th>Description</th><th>Status</th><th>Replacement</th></tr>
+<table><tr><th>Line</th><th>Category</th><th>Description</th><th>Approx. size</th><th>Status</th><th>Replacement</th></tr>
 {% for i in p.items %}<tr><td>{% if i.frame_ref %}<a href="{{ i.frame_ref }}">{{ i.id }}</a>{% else %}{{ i.id }}{% endif %}</td>
 <td>{{ i.category }}</td><td>{{ i.description }}<br><span class="muted">{{ i.brand_model }}</span></td>
+<td class="n">{% if i.dimensions_cm.w %}{{ "%g"|format(i.dimensions_cm.w) }} × {{ "%g"|format(i.dimensions_cm.h) }} cm<br><span class="muted">front face</span>{% else %}—{% endif %}</td>
 <td><span class="tag {{ i.status }}">{{ i.status }}</span></td>
 <td class="n">{% if i.replacement_cost.low is not none %}{{ money(i.replacement_cost.low) }}{% if i.replacement_cost.high != i.replacement_cost.low %} – {{ money(i.replacement_cost.high) }}{% endif %}
 <br><a class="muted" href="{{ i.replacement_cost.url }}">{{ i.replacement_cost.source }}</a>{% else %}—{% endif %}</td></tr>{% endfor %}</table>
