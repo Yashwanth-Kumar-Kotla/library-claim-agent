@@ -2,7 +2,7 @@
 
     uv run python tools/live_cost_probe.py --minutes 6 --every 30
 
-Streams a saved sweep's frames at 1 fps (as the phone does), continuous silence as microphone audio,
+Streams a saved sweep's frames every 2 s (as the phone does), continuous silence as microphone audio,
 and every N seconds asks the agent to say one sentence, then records the usage the Live API reports
 for each reply. Writes data/cost_probe/<time>.json and prints cost by elapsed minute.
 """
