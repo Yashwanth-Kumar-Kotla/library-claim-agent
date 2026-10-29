@@ -3,6 +3,7 @@ const $ = (id) => document.getElementById(id);
 const HI_RES_MS = 333, HI_RES_W = 1920, HI_Q = 0.85;   // evidence frames: counting, reading, measuring
 const LIVE_MS = 1000, LIVE_W = 768, LIVE_Q = 0.6;      // what the agent sees
 let ws, stream, ctx, micNode, playAt = 0, speaking = [], timers = [];
+let orientation = null;  // latest {alpha, beta, gamma} from the phone's motion sensors, for room size
 const lines = new Map(), state = new Map();   // id -> <li>, id -> {kind, status}
 
 $("start").onclick = start;
@@ -12,7 +13,20 @@ function status(t) { $("status").textContent = t; }
 function send(data) { if (ws && ws.readyState === WebSocket.OPEN) ws.send(data); }
 function tagged(tag, buf) { const out = new Uint8Array(buf.byteLength + 1); out[0] = tag.charCodeAt(0); out.set(new Uint8Array(buf), 1); return out; }
 
+function listenForOrientation(permission) {
+  const on = () => window.addEventListener("deviceorientation", (e) => {
+    if (e.alpha !== null) orientation = { alpha: e.alpha, beta: e.beta, gamma: e.gamma };
+  });
+  if (!permission) { on(); return; }                 // Android and desktop: no prompt needed
+  permission.then((state) => (state === "granted" ? on() : status("Motion access denied: room size won't be measured.")))
+            .catch(() => status("Motion access unavailable: room size won't be measured."));
+}
+
 async function start() {
+  // iOS only grants motion sensors when asked directly inside the tap, before anything is awaited.
+  const motion = typeof DeviceOrientationEvent !== "undefined" && DeviceOrientationEvent.requestPermission
+    ? DeviceOrientationEvent.requestPermission() : null;
+  listenForOrientation(motion);
   $("start").disabled = true;
   try {
     ctx = new AudioContext();             // created inside the tap so iOS lets it play
@@ -64,9 +78,18 @@ function startFrames() {
     canvas.width = Math.round(video.videoWidth * scale);
     canvas.height = Math.round(video.videoHeight * scale);
     canvas.getContext("2d").drawImage(video, 0, 0, canvas.width, canvas.height);
+    const pose = tag === "F" && orientation ? orientation : null;   // orientation at capture time, not at send time
     canvas.toBlob(async (blob) => {
       busy = false;
-      if (blob) send(tagged(tag, await blob.arrayBuffer()));
+      if (!blob) return;
+      const jpeg = await blob.arrayBuffer();
+      if (pose) {                                    // G: three float32 angles, then the JPEG
+        const head = new Float32Array([pose.alpha, pose.beta, pose.gamma]).buffer;
+        const both = new Uint8Array(12 + jpeg.byteLength);
+        both.set(new Uint8Array(head), 0);
+        both.set(new Uint8Array(jpeg), 12);
+        send(tagged("G", both.buffer));
+      } else send(tagged(tag, jpeg));
     }, "image/jpeg", quality);
   };
   timers.push(setInterval(() => grab("F", HI_RES_W, HI_Q), HI_RES_MS));
@@ -94,6 +117,8 @@ function onEvent(m) {
   else if (m.type === "coach") { $("coach").textContent = m.text; $("coach").hidden = false; setTimeout(() => ($("coach").hidden = true), 3000); }
   else if (m.type === "row_open") { $("row").textContent = `Shelf ${m.shelf}`; $("row").hidden = false; }
   else if (m.type === "row_closed" || m.type === "row_rejected") $("row").hidden = true;
+  else if (m.type === "scan_open") { $("row").textContent = "Measuring the room: turn slowly"; $("row").hidden = false; }
+  else if (m.type === "scan_closed") $("row").hidden = true;
   else if (m.type === "book") upsert(m.id, m, "book");
   else if (m.type === "item") upsert(m.id, m, "item");
   else if (m.type === "done") {
