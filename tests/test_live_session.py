@@ -311,3 +311,38 @@ def test_scan_closes_an_open_shelf_and_frames_still_count_as_room_views(live):
     assert s.room_frames  # the turn also feeds item detection
     assert s.finish_room_scan()["ok"] is False  # no tilt
     assert s.finish_room_scan()["ok"] is False and "no room scan is open" in s.finish_room_scan()["error"]
+
+
+def test_a_live_session_replays_to_the_same_packet(live):
+    from libraryclaim.pipeline import Deps, run_pipeline
+    s, clock, _ = live
+    clock.t = 20
+    for shelf in ("A1", "A2"):
+        s.start_row(shelf)
+        for _ in range(3):
+            clock.t += 0.33
+            s.add_frame(jpeg(draw_row(ROWS[shelf])[0]))
+        s.finish_row()
+    s.start_row("A1")                                   # re-capture
+    for _ in range(3):
+        clock.t += 0.33
+        s.add_frame(jpeg(draw_row(ROWS["A1"])[0]))
+    s.finish_row()
+    s.record_remark("signed", "the Dune is signed", title="Dune", shelf="A1")
+    s.start_row("B1")
+    s.record_remark("skip_shelf", "skip it, not mine")
+    for _ in range(10):
+        clock.t += 0.33
+        s.add_frame(jpeg(textured(seed=7)))
+    live_packet = s.end(confirmed=True)
+    assert live_packet["ok"]
+    first = json.loads((s.root / "claim_packet.json").read_text())
+    assert (s.root / "out" / "claim_packet.live.json").is_file()
+
+    replayed = run_pipeline(s.root, Deps(vision=FakeVision(), get_json=FakeWeb(fake_catalogue()), ebay_token="t"), SETTINGS)
+    again = replayed.model_dump(mode="json")
+    strip = lambda p: {k: v for k, v in p.items() if k != "sweep"}
+    assert strip(again) == strip(first)
+    dune = next(b for b in again["books"] if b["title"] == "Dune")
+    assert dune["status"] == "needs_appraisal" and dune["id"].endswith("t1")   # remark and re-capture both replayed
+    assert json.loads((s.root / "out" / "claim_packet.live.json").read_text()) == first

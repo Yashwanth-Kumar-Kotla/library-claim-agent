@@ -344,6 +344,8 @@ class LiveSweep:
         (self.root / "sweep.json").write_text(json.dumps(meta | {"country": self.locale.country,
                                                                   "currency": self.locale.currency}, indent=2))
         packet = self.run.finish(None, meta)
+        # Keep what the policyholder saw: replays rewrite claim_packet.json, this copy stays.
+        (self.root / "out" / "claim_packet.live.json").write_text((self.root / "claim_packet.json").read_text())
         t = packet.totals
         cur = self.locale.currency
         summary = (f"{t.book_count} books counted, {t.books_identified} identified, {t.books_unidentified} not readable "
