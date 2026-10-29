@@ -243,7 +243,14 @@ def measure_room(frames: list[ScanFrame], depth: Depth, marker_size_m: float = 0
 
 def item_size_cm(box: tuple[float, float, float, float], depth: np.ndarray, focal: float,
                  scale: float = 1.0) -> tuple[float, float] | None:
-    """Approximate width and height of an object's front face from its box and the depth inside it."""
+    """Approximate width and height of an object's front face, whole centimetres."""
+    size = front_size_cm(box, depth, focal, scale)
+    return (round(size[0], 0), round(size[1], 0)) if size else None
+
+
+def front_size_cm(box: tuple[float, float, float, float], depth: np.ndarray, focal: float,
+                  scale: float = 1.0) -> tuple[float, float] | None:
+    """Width and height of an object's front face from its box and the depth inside it."""
     x0, y0, x1, y1 = (int(v) for v in box)
     h, w = depth.shape
     x0, x1 = max(0, x0), min(w, x1)
@@ -258,4 +265,4 @@ def item_size_cm(box: tuple[float, float, float, float], depth: np.ndarray, foca
     wc, hc = (x1 - x0) * z / focal * 100, (y1 - y0) * z / focal * 100
     if wc > 600 or hc > 400:
         return None
-    return round(wc, 0), round(hc, 0)
+    return wc, hc

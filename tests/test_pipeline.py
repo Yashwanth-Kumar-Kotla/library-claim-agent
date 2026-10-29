@@ -421,3 +421,37 @@ def test_no_depth_model_means_room_not_measured_not_guessed(sweep):
     p = run(root)
     assert p.room.floor_area_m2 is None
     assert any("no depth model" in r.reason for r in p.review_queue)
+
+
+def test_shelf_without_marker_scaled_by_known_book_heights(tmp_path):
+    """No marker, a depth model that reads every spine 25% short, and catalogues that also list
+    wrong-size editions: the consensus still recovers real spine sizes."""
+    import cv2
+    from synthetic import ALL, draw_row
+    build_sweep(tmp_path, rows={"A1": ROWS["A1"], "A2": ROWS["A2"]}, skip=())
+    for shelf in ("A1", "A2"):
+        cv2.imwrite(str(tmp_path / f"frames/{shelf}.jpg"), draw_row(ROWS[shelf], with_marker=False)[0])
+    by_title = {s.title.lower(): s for s in ALL}
+
+    def books_api(url, params, headers):
+        if url.endswith("/volumes"):
+            q = params["q"].lower()
+            hits = [s for t, s in by_title.items() if q.startswith(t) and s.author]
+            return {"items": [{"id": f"{s.title}|{e}", "volumeInfo": {"title": s.title, "authors": [s.author]}}
+                              for s in hits for e in ("hc", "pb")]}
+        title, edition = url.rsplit("/", 1)[1].split("|")
+        h = by_title[title.lower()].h_cm if edition == "hc" else 17.3   # the paperback is a different size
+        return {"volumeInfo": {"dimensions": {"height": f"{h:.2f} cm"}}}
+
+    def short_depth(img):  # 10 px/cm drawing: depth 0.75 m at focal 1000 px reads 25% short
+        return np.full(img.shape[:2], 0.75, np.float32), 1000.0
+
+    web = FakeWeb({"googleapis.com/books/v1/volumes": books_api, **fake_catalogue()})
+    deps = Deps(vision=FakeVision(), get_json=web, ebay_token="t", google_books_key="k", depth=short_depth)
+    p = run_pipeline(tmp_path, deps, SETTINGS)
+    truth = {s.title: s for s in ALL}
+    measured = [b for b in p.books if b.title in truth and b.spine_height_cm]
+    assert len(measured) >= 6
+    for b in measured:
+        assert b.spine_height_cm == pytest.approx(truth[b.title].h_cm, rel=0.05), b.title
+    assert any("scaled to" in r.reason and "identified books of known height" in r.reason for r in p.review_queue)

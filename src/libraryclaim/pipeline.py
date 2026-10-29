@@ -46,8 +46,9 @@ from .pricing import price_book, price_item
 from .resolve import Resolution, identify
 from .review import Assertion, appraisal_reasons, excluded, says_print
 from .room import Opening, room_figures
-from .room_scan import Depth, ScanFrame, item_size_cm, measure_room
-from .scale import find_markers, plane_from_marker, shelf_run_cm, spine_size
+from .room_scan import Depth, ScanFrame, front_size_cm, item_size_cm, measure_room
+from .book_scale import consensus_scale, edition_heights, format_scale
+from .scale import PLAUSIBLE_HEIGHT_CM, PLAUSIBLE_THICKNESS_CM, find_markers, plane_from_marker, shelf_run_cm, spine_size
 from .schema import Book, BookPrice, ClaimPacket, Dimensions, Item, ItemPrice, ReviewEntry, Room, Sweep
 from .segment import row_image
 from .vision import Meter, Model, SeenItem, SpineText, detect_items, detect_spines, read_spine, spine_crop
@@ -73,6 +74,8 @@ class BookJob:
     take: int = 0  # which capture of its row; a re-captured row replaces the earlier take
     text: SpineText | None = None
     resolution: Resolution | None = None
+    raw_spine: tuple[float, float] | None = None  # height, thickness from the depth model, scale unknown (no marker)
+    edition_heights: list[float] = field(default_factory=list)  # published heights of this title's editions
 
 
 @dataclass
@@ -139,6 +142,9 @@ class SweepRun:
         self.lock = threading.Lock()
         self.rows: list[tuple[str, Future]] = []
         self.takes: dict[str, int] = {}
+        # Everything handed to this run, in order: written next to the frames so the same sweep can
+        # be replayed through a newer pipeline (python -m libraryclaim run <sweep>).
+        self.journal: dict[str, list] = {"rows": [], "room_frames": [], "assertions": []}
         self.marker_images: list = []     # shelf rows with a marker in view: calibrate the depth model's scale
         self.scan: Future | None = None
         self.scan_result = None
@@ -158,12 +164,14 @@ class SweepRun:
     def add_assertion(self, a: Assertion) -> None:
         with self.lock:
             self.said.append(a)
+            self.journal["assertions"].append(asdict(a))
 
     def add_row(self, shelf: str, frame_refs: list[str]) -> Future:
         """Hand over a finished row. Handing the same shelf over again (the agent asked for a
         re-capture) replaces the earlier take once both are done."""
         with self.lock:
             take = self.takes[shelf] = self.takes.get(shelf, -1) + 1
+            self.journal["rows"].append({"shelf": shelf, "frames": list(frame_refs)})
         f = self.pool.submit(self._guard, f"row {shelf}", self._row, shelf, frame_refs, take)
         with self.lock:
             self.rows.append((shelf, f))
@@ -178,6 +186,8 @@ class SweepRun:
                                  "description": description, "at": time.perf_counter() - self.started})
 
     def add_room_frame(self, ref: str) -> Future:
+        with self.lock:
+            self.journal["room_frames"].append(ref)
         # One room view at a time, in capture order: whether an object was "just seen" depends on it.
         f = self.room_pool.submit(self._guard, f"room frame {ref}", self._room_frame, ref)
         with self.lock:
@@ -187,6 +197,9 @@ class SweepRun:
     def add_room_frames(self, refs: list[str]) -> Future:
         """Several room frames handled in capture order in one job, so item ids and which
         frame each item is credited to don't depend on which model call returns first."""
+        with self.lock:
+            self.journal["room_frames"].extend(refs)
+
         def all_in_order():
             for ref in refs:
                 self._guard(f"room frame {ref}", self._room_frame, ref)
@@ -252,7 +265,8 @@ class SweepRun:
                 self.marker_images.append(ri.image)
         scale = plane_from_marker(max(markers, key=lambda m: m.side_px), self.settings.marker_size_cm) if markers else None
         if scale is None:
-            self.note(shelf, "no scale marker visible in this row; spine sizes not measured")
+            if self.deps.depth is None:
+                self.note(shelf, "no scale marker visible in this row; spine sizes not measured")
         elif not scale.reliable:
             self.note(shelf, "scale marker too small in frame; spine sizes approximate")
         self.stats.add("segment", time.perf_counter() - t0)
@@ -276,6 +290,11 @@ class SweepRun:
                                   "boxes": [b.as_tuple() for b in boxes]})
         self.on_event("row_detected", {"shelf": shelf, "books": len(boxes)})
 
+        depth = None
+        if scale is None and boxes and self.deps.depth is not None:
+            t1 = time.perf_counter()
+            depth = self.deps.depth(ri.image)   # no marker: measure now, settle the scale from known books later
+            self.stats.add("depth", time.perf_counter() - t1)
         for pos, box in enumerate(boxes, start=1):
             bid = f"{shelf}-{pos:02d}" if take == 0 else f"{shelf}-{pos:02d}t{take}"
             b = Book(id=bid, shelf=shelf, position=pos,
@@ -287,6 +306,11 @@ class SweepRun:
                 else:
                     self.note(bid, f"implausible spine size {size.height_cm} x {size.thickness_cm} cm; not reported")
             job = BookJob(b, Future(), take)
+            if depth is not None:
+                face = front_size_cm(box.as_tuple(), depth[0], depth[1])
+                if face:
+                    flat = box.lying_flat if box.lying_flat is not None else face[0] > face[1]
+                    job.raw_spine = (face[0], face[1]) if flat else (face[1], face[0])
             with self.lock:
                 self.books.append(job)
             job.future = self.pool.submit(self._guard, f"book {bid}", self._book, job, ri.image, box)
@@ -322,6 +346,9 @@ class SweepRun:
         b.status, b.title, b.author = "identified", c.title, ", ".join(c.authors)
         b.edition, b.isbn = res.edition, res.isbn
         self.on_event("book", b.model_dump())
+        if job.raw_spine and self.deps.google_books_key:
+            job.edition_heights = edition_heights(c.title, c.authors[0] if c.authors else "", self.deps.get_json,
+                                                  self.deps.google_books_key)
 
         # Rare books are flagged before any price lookup; a price at or over the threshold flags after.
         reasons = appraisal_reasons(spine_text=job.text.text, year=c.year if res.edition else None,
@@ -434,6 +461,7 @@ class SweepRun:
         if stale:
             for shelf in sorted({j.book.shelf for j in stale}):
                 self.note(shelf, f"row re-captured; earlier take of {shelf} discarded")
+        self._scale_unmarked_rows()
         self.said += self._resolve_remarks()
         said = list(self.said)
 
@@ -501,6 +529,33 @@ class SweepRun:
         self._save_stage_outputs()
         return packet
 
+    def _scale_unmarked_rows(self) -> None:
+        """Spine sizes for shelves with no marker in view: the depth model's measurements, scaled by
+        the consensus of identified books with known edition heights, else the standard-format
+        fallback. Always per shelf: on real phone shelves the depth model read one shelf ~40% tall
+        and another ~25% short, so one shelf's scale says nothing about the next."""
+        rows: dict[str, list[BookJob]] = {}
+        for j in self.books:
+            if j.raw_spine:
+                rows.setdefault(j.book.shelf, []).append(j)
+        if not rows:
+            return
+        for shelf, jobs in rows.items():
+            own = consensus_scale([(j.raw_spine[0], j.edition_heights) for j in jobs if j.edition_heights])
+            if own:
+                k, why = own[0], f"scaled to {own[1]} identified books of known height on this shelf"
+            else:
+                k = format_scale([j.raw_spine[0] for j in jobs])
+                why = "scaled to a typical book height (standard formats); approximate"
+            if k is None:
+                self.note(shelf, "no marker and too few books to set a scale; spine sizes not reported")
+                continue
+            self.note(shelf, f"no marker in view: spine sizes from the depth model, {why}")
+            for j in jobs:
+                h, t = j.raw_spine[0] * k, j.raw_spine[1] * k
+                if PLAUSIBLE_HEIGHT_CM[0] <= h <= PLAUSIBLE_HEIGHT_CM[1] and PLAUSIBLE_THICKNESS_CM[0] <= t <= PLAUSIBLE_THICKNESS_CM[1]:
+                    j.book.spine_height_cm, j.book.spine_thickness_cm = round(h, 1), round(t, 2)
+
     def _resolve_remarks(self) -> list[Assertion]:
         """Tie each spoken remark to one line: a book by title on the shelf that was in view,
         an artwork by description. Ambiguous or unmatched remarks are reported, not applied."""
@@ -566,6 +621,10 @@ class SweepRun:
     def _save_stage_outputs(self) -> None:
         def save(name, data):
             (self.out / name).write_text(json.dumps(data, indent=2, default=str))
+        for name, data in (("rows.json", self.journal["rows"]), ("room_frames.json", self.journal["room_frames"]),
+                           ("assertions.json", self.journal["assertions"]),
+                           ("remarks.json", [{k: v for k, v in r.items() if k != "at"} for r in self.remarks])):
+            (self.root / name).write_text(json.dumps(data, indent=2))
         save("rows.json", sorted(self.row_info, key=lambda r: r["shelf"]))
         save("reads.json", {j.book.id: asdict(j.text) if j.text else None for j in self.books})
         save("resolved.json", {j.book.id: asdict(j.resolution) for j in self.books if j.resolution})
@@ -582,6 +641,8 @@ def run_pipeline(root: Path, deps: Deps, settings: Settings, on_event=None) -> C
     run = SweepRun(root, deps, settings, locale, on_event)
     for a in load(root / "assertions.json", []):
         run.add_assertion(Assertion(**a))
+    for r in load(root / "remarks.json", []):
+        run.add_remark(r["kind"], r.get("said", ""), r.get("shelf", ""), r.get("title", ""), r.get("description", ""))
     for row in load(root / "rows.json", []):
         run.add_row(row["shelf"], row.get("frames", []))
     run.add_room_frames(load(root / "room_frames.json", []))
