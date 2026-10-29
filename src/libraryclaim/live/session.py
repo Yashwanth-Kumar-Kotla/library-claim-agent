@@ -44,6 +44,11 @@ QUIET_START_S = 10.0        # ... never in the opening seconds, and once per she
 SPINE_PROBLEMS = {"moving_too_fast", "blurry", "glare"}  # only matter while a shelf is being read
 NUDGE_AFTER_S = 30.0        # camera moving this long with no shelf open: ask the agent about it
 NUDGE_REPEAT_S = 45.0
+# The turn is guided on screen (a ring that fills, a tilt bar), so the agent hears only the edges:
+# when the turn is complete, and once per scan if they stop with gaps left. Rules match the phone page.
+LEVEL_DEG, TILT_DEG = 20, 25  # roughly level for the ring; tilted this far up or down for floor/ceiling
+SCAN_STALL_S = 10.0          # no new sector or tilt for this long, once they have started turning ...
+SCAN_START_GRACE_S = 25.0    # ... or this long after the scan opened (the agent may still be explaining)
 MIN_USABLE_PER_ROW = 2
 
 
@@ -91,6 +96,9 @@ class LiveSweep:
         self.scan_entries: list[dict] = []   # {"ref", "alpha", "beta", "gamma"} for frames taken during the turn
         self.orientation_seen = False
         self.last_nudge = -1e9
+        self.scan_said: set[str] = set()     # "complete", "stalled": each said at most once per scan
+        self.scan_progress = (0, False, False)
+        self.scan_progress_at = self.scan_started_at = 0.0
 
     # ---- locale ----
 
@@ -129,6 +137,9 @@ class LiveSweep:
                 if self.scanning:
                     a, b, g = orientation
                     self.scan_entries.append({"ref": ref, "alpha": a, "beta": b, "gamma": g})
+                    bins, up, down = scan_coverage(self.scan_entries)
+                    if (len(bins), up, down) != self.scan_progress:
+                        self.scan_progress, self.scan_progress_at = (len(bins), up, down), now
             self.recent.append((now, q))
             while self.recent and now - self.recent[0][0] > SPEAK_WINDOW_S:
                 self.recent.popleft()
@@ -143,7 +154,7 @@ class LiveSweep:
         real sweep the agent once left shelves unopened for a minute, so the books were never
         counted. Only after the first shelf and before the end, and not too often."""
         with self.lock:
-            if self.row is not None or not self.rows_done or self.ended:
+            if self.row is not None or self.scanning or not self.rows_done or self.ended:
                 return None
             now = self.clock()
             if now - self.row_closed_at < NUDGE_AFTER_S or now - self.last_nudge < NUDGE_REPEAT_S:
@@ -155,6 +166,30 @@ class LiveSweep:
             self.last_nudge = self.last_spoken = now
         return ("No shelf is open, but the camera is moving. If they are filming books, call start_row "
                 "for the shelf in view now; if they are showing the rest of the room, carry on.")
+
+    def scan_prompt(self) -> str | None:
+        """What the agent should hear about the turn, if anything: it is complete (once), or the
+        policyholder has stopped with parts missing (once). Directions are the screen's job."""
+        with self.lock:
+            if not self.scanning or not self.scan_entries:
+                return None
+            n, up, down = self.scan_progress
+            now = self.clock()
+            covered = n * 360 / BINS
+            if covered >= MIN_COVERAGE_DEG and up and down:
+                if "complete" in self.scan_said:
+                    return None
+                self.scan_said.add("complete")
+                return f"The room turn is complete ({covered:.0f} degrees, tilted up and down). Call finish_room_scan now."
+            started = n >= 2 or now - self.scan_started_at >= SCAN_START_GRACE_S
+            if "stalled" in self.scan_said or not started or now - self.scan_progress_at < SCAN_STALL_S:
+                return None
+            self.scan_said.add("stalled")
+            self.last_spoken = now
+        missing = [f"about {360 - covered:.0f} degrees of the turn"] if covered < MIN_COVERAGE_DEG else []
+        missing += [w for w, done in (("the tilt up to the ceiling", up), ("the tilt down to the floor", down)) if not done]
+        return (f"The room turn has stalled; still missing {' and '.join(missing)}. Give one short, calm "
+                "reminder to follow the ring on the screen. Do not give directions.")
 
     def _relevant(self, q: FrameQuality) -> list[str]:
         # Speed, blur and glare only matter while a shelf is being read; darkness always does.
@@ -248,9 +283,12 @@ class LiveSweep:
         with self.lock:
             closed = self._close_row() if self.row else None
             self.scanning, self.scan_entries = True, []
+            self.scan_said, self.scan_progress = set(), (0, False, False)
+            self.scan_started_at = self.scan_progress_at = self.clock()
         self.on_event("scan_open", {})
         out = {"ok": True, "instructions": "stand near the middle of the room, hold the phone upright at chest height, "
-                                          "turn slowly all the way round once, then tilt it up to the ceiling and down to the floor"}
+                                          "and follow the ring on the screen: turn slowly all the way round, then tilt "
+                                          "up and down. The app tells you when the turn is complete."}
         if closed:
             out["previous_row"] = closed
         return out
@@ -264,19 +302,20 @@ class LiveSweep:
             entries = list(self.scan_entries)
         if not entries:
             msg = ("this phone did not share its orientation, so room size cannot be measured; carry on"
-                   if not self.orientation_seen else "no frames were captured during the turn; ask them to do it again")
+                   if not self.orientation_seen else "no frames were captured during the turn; call start_room_scan and ask them to do it again")
+            self.on_event("scan_rejected", {"advice": msg})
             return {"ok": False, "advice": msg}
-        level = {int((e["alpha"] % 360) // (360 / BINS)) for e in entries if abs(e["beta"] - 90) <= 20}
-        covered = len(level) * 360 / BINS
-        up = any(e["beta"] - 90 >= 25 for e in entries)
-        down = any(90 - e["beta"] >= 25 for e in entries)
+        bins, up, down = scan_coverage(entries)
+        covered = len(bins) * 360 / BINS
         problems = []
         if covered < MIN_COVERAGE_DEG:
             problems.append(f"the turn covered about {covered:.0f} degrees; they need to turn all the way round")
         if not (up and down):
             problems.append("they did not tilt the phone " + ("up to the ceiling" if not up else "down to the floor"))
         if problems:
-            return {"ok": False, "covered_deg": covered, "advice": "; ".join(problems) + ". Ask them to redo the turn."}
+            advice = "; ".join(problems) + ". Call start_room_scan and ask them to redo the turn."
+            self.on_event("scan_rejected", {"covered_deg": covered, "advice": advice})
+            return {"ok": False, "covered_deg": covered, "advice": advice}
         (self.root / "scan.json").write_text(json.dumps(entries, indent=1))
         frames = []
         for e in entries:
@@ -357,6 +396,14 @@ class LiveSweep:
         if packet.room.floor_area_m2 is None:
             summary += " Room size was not measured in this sweep."
         return {"ok": True, "summary": summary, "report": f"/sweeps/{self.root.name}/report.html"}
+
+
+def scan_coverage(entries: list[dict]) -> tuple[set[int], bool, bool]:
+    """Heading sectors seen with the phone roughly level, and whether it was tilted up and down."""
+    bins = {int((e["alpha"] % 360) // (360 / BINS)) for e in entries if abs(e["beta"] - 90) <= LEVEL_DEG}
+    up = any(e["beta"] - 90 >= TILT_DEG for e in entries)
+    down = any(90 - e["beta"] >= TILT_DEG for e in entries)
+    return bins, up, down
 
 
 def keyframes(frames: list[Frame], step: float = KEYFRAME_STEP) -> list[Frame]:

@@ -185,6 +185,8 @@ async def live(ws: WebSocket) -> None:
                         continue
                     if spoken:
                         await say(session, f"[capture] {spoken}")
+                    elif (hint := sweep.scan_prompt()):
+                        await say(session, f"[app] {hint}")
                     elif (hint := sweep.nudge()):
                         await say(session, f"[app] {hint}")
                 continue

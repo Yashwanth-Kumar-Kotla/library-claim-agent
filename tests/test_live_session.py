@@ -346,3 +346,70 @@ def test_a_live_session_replays_to_the_same_packet(live):
     dune = next(b for b in again["books"] if b["title"] == "Dune")
     assert dune["status"] == "needs_appraisal" and dune["id"].endswith("t1")   # remark and re-capture both replayed
     assert json.loads((s.root / "out" / "claim_packet.live.json").read_text()) == first
+
+
+def test_scan_coverage_rule():
+    from libraryclaim.live.session import scan_coverage
+    e = lambda a, b: {"alpha": a, "beta": b}
+    bins, up, down = scan_coverage([e(0, 90), e(370, 100), e(-10, 80), e(45, 115), e(90, 60)])
+    assert bins == {0, 15} and up and down  # 370 wraps to sector 0, -10 to 15; tilted frames add no sector
+    assert scan_coverage([e(0, 114), e(0, 66)])[1:] == (False, False)  # 24 degrees is not a tilt
+
+
+def test_agent_told_once_when_the_turn_is_complete(live):
+    s, clock, events = live
+    s.start_room_scan()
+    turn(s, clock, range(0, 360, 10))
+    assert s.scan_prompt() is None or "complete" not in s.scan_prompt()  # no tilt yet
+    turn(s, clock, [0], beta=125)
+    turn(s, clock, [0], beta=55)
+    assert "finish_room_scan" in s.scan_prompt()
+    assert s.scan_prompt() is None
+    assert s.finish_room_scan()["ok"] and s.scan_prompt() is None  # scan closed
+
+
+def test_stalled_turn_gets_one_reminder(live):
+    s, clock, _ = live
+    s.start_room_scan()
+    turn(s, clock, range(0, 120, 10))
+    assert s.scan_prompt() is None
+    turn(s, clock, [110] * 33)  # standing still for ~11 s
+    hint = s.scan_prompt()
+    assert "stalled" in hint and "degrees" in hint and "ceiling" in hint and "floor" in hint
+    turn(s, clock, [110] * 40)
+    assert s.scan_prompt() is None  # never twice in one scan
+
+
+def test_no_stall_reminder_while_the_agent_is_still_explaining(live):
+    s, clock, _ = live
+    s.start_room_scan()
+    turn(s, clock, [0] * 60)  # 20 s holding still, not started turning
+    assert s.scan_prompt() is None
+    turn(s, clock, [0] * 20)  # past the grace period
+    assert "stalled" in s.scan_prompt()
+
+
+def test_redo_resets_scan_prompts_and_failed_scan_tells_the_phone(live):
+    s, clock, events = live
+    s.start_room_scan()
+    turn(s, clock, range(0, 120, 10))
+    turn(s, clock, [110] * 33)
+    assert s.scan_prompt()
+    assert s.finish_room_scan()["ok"] is False and events[-1] == "scan_rejected"
+    s.start_room_scan()
+    turn(s, clock, range(0, 120, 10))
+    turn(s, clock, [110] * 33)
+    assert s.scan_prompt()  # a new scan may be reminded once again
+
+
+def test_no_shelf_nudge_during_the_room_scan(live):
+    s, clock, _ = live
+    img = draw_row(ROWS["A1"])[0]
+    s.start_row("A1")
+    for _ in range(3):
+        s.add_frame(jpeg(img))
+    s.finish_row()
+    s.start_room_scan()
+    pan(s, clock, textured(480, 4000, seed=3), steps=4, step_px=200)
+    clock.t += 60
+    assert s.nudge() is None
