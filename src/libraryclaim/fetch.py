@@ -49,6 +49,7 @@ def full_url(url: str, params: dict | None) -> str:
 
 USER_AGENT = "libraryclaim/0.1 (home contents claim prototype)"
 PER_HOST = 4               # Open Library answered 429 with 16 parallel requests
+HOST_LIMITS = {"serpapi.com": 8}  # a paid API that handles parallel searches; item prices queued behind 4
 RETRIES = (0.5, 1.5)       # backoff before each retry; then give up and say so
 RETRY_STATUS = {429, 500, 502, 503, 504}
 # Seconds between requests per host. Open Library asks unidentified clients for about 1-3/s
@@ -73,7 +74,7 @@ class Fetcher:
     def slot(self, url: str) -> threading.Semaphore:
         host = urlsplit(url).netloc
         with self.hosts_lock:
-            return self.hosts.setdefault(host, threading.Semaphore(PER_HOST))
+            return self.hosts.setdefault(host, threading.Semaphore(HOST_LIMITS.get(host, PER_HOST)))
 
     def pace(self, url: str) -> None:
         host = urlsplit(url).netloc

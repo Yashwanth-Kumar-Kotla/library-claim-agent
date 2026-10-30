@@ -28,6 +28,7 @@ A saved sweep directory holds:
 from __future__ import annotations
 
 import json
+import re
 import threading
 import time
 from concurrent.futures import Future, ThreadPoolExecutor
@@ -42,7 +43,7 @@ from . import report
 from .config import Locale, Settings
 from .fetch import GetJson
 from .packet import finalize
-from .pricing import price_book, price_item
+from .pricing import RANGE_NOTE, price_book, price_item
 from .resolve import Resolution, identify
 from .review import Assertion, appraisal_reasons, excluded, says_print
 from .room import Opening, room_figures
@@ -77,6 +78,18 @@ class BookJob:
     raw_spine: tuple[float, float] | None = None  # height, thickness from the depth model, scale unknown (no marker)
     edition_heights: list[float] = field(default_factory=list)  # published heights of this title's editions
 
+
+COLOURS = {"black", "white", "grey", "silver", "gold", "brass", "wood", "oak", "walnut", "brown", "beige", "cream",
+           "blue", "navy", "teal", "green", "red", "pink", "orange", "yellow", "purple", "chrome", "glass"}
+COLOUR_ALIASES = {"gray": "grey", "wooden": "wood"}
+
+
+def colours(text: str) -> set[str]:
+    words = (COLOUR_ALIASES.get(w, w) for w in re.findall(r"[a-z]+", text.lower()))
+    return {w for w in words if w in COLOURS}
+
+
+MAX_ITEM_SEARCHES = 25  # distinct item price searches per sweep; the library also needs ~150 for books
 
 @dataclass
 class ItemJob:
@@ -152,6 +165,7 @@ class SweepRun:
         self.room_frames: list[Future] = []
         self.books: list[BookJob] = []
         self.items: list[ItemJob] = []
+        self.item_queries: set[str] = set()   # distinct price searches spent on items this sweep
         self.review: list[ReviewEntry] = []
         self.said: list[Assertion] = []
         self.shelf_run_cm = 0.0
@@ -188,8 +202,11 @@ class SweepRun:
     def add_room_frame(self, ref: str) -> Future:
         with self.lock:
             self.journal["room_frames"].append(ref)
-        # One room view at a time, in capture order: whether an object was "just seen" depends on it.
-        f = self.room_pool.submit(self._guard, f"room frame {ref}", self._room_frame, ref)
+        # Detection starts now, in parallel with other frames; the results are then taken one view at a
+        # time, in capture order, because whether an object was "just seen" depends on it. Taking them
+        # one model call at a time left a minute of room frames still queued when a live sweep ended.
+        ahead = self.pool.submit(self._detect, ref)
+        f = self.room_pool.submit(self._guard, f"room frame {ref}", self._room_frame, ref, ahead)
         with self.lock:
             self.room_frames.append(f)
         return f
@@ -200,9 +217,11 @@ class SweepRun:
         with self.lock:
             self.journal["room_frames"].extend(refs)
 
+        ahead = [self.pool.submit(self._detect, ref) for ref in refs]
+
         def all_in_order():
-            for ref in refs:
-                self._guard(f"room frame {ref}", self._room_frame, ref)
+            for ref, a in zip(refs, ahead):
+                self._guard(f"room frame {ref}", self._room_frame, ref, a)
         f = self.room_pool.submit(all_in_order)
         with self.lock:
             self.room_frames.append(f)
@@ -377,29 +396,40 @@ class SweepRun:
 
     # ---- non-book items: detected per frame, priced as soon as a new one appears ----
 
-    def _room_frame(self, ref: str) -> None:
+    def _detect(self, ref: str):
         t0 = time.perf_counter()
         try:
             img = read_image(self.root, ref)
         except FileNotFoundError:
-            self.note(ref, "room frame missing")
-            return
+            return None, []
         seen = detect_items(self.vision, img)
         self.stats.add("items_detect", time.perf_counter() - t0)
-        depth = None
-        if seen and self.deps.depth is not None:
-            t1 = time.perf_counter()
-            depth = self.deps.depth(img)
-            self.stats.add("depth", time.perf_counter() - t1)
+        return img, seen
+
+    def _room_frame(self, ref: str, ahead: Future | None = None) -> None:
+        img, seen = ahead.result() if ahead is not None else self._detect(ref)
+        if img is None:
+            self.note(ref, "room frame missing")
+            return
         with self.lock:
             self.room_views += 1
             view = self.room_views
-        for s in seen:
-            with self.lock:
+            fresh = []
+            for s in seen:
                 twin = self._same_item(s, view)
                 if twin is not None:
                     twin.last_view = view
-                    continue
+                else:
+                    fresh.append(s)  # two sightings in one photo are two objects
+        if not fresh:
+            return  # nothing new in this view: no depth map needed (it is the slowest step)
+        depth = None
+        if self.deps.depth is not None:
+            t1 = time.perf_counter()
+            depth = self.deps.depth(img)
+            self.stats.add("depth", time.perf_counter() - t1)
+        for s in fresh:
+            with self.lock:
                 iid = f"I-{len(self.items) + 1:02d}"
                 it = Item(id=iid, category=s.category, description=s.description, brand_model=s.brand_model,
                           frame_ref=f"{ref}#xyxy={int(s.box.x0)},{int(s.box.y0)},{int(s.box.x1)},{int(s.box.y1)}",
@@ -419,6 +449,12 @@ class SweepRun:
         text = f"{s.description} {s.brand_model}".lower()
         best, best_score = None, 0.0
         for j in self.items:
+            if s.name and s.name == j.seen.name and s.brand_model == j.seen.brand_model:
+                if view - j.last_view <= 3:
+                    return j  # "office chair" again a moment later, whatever the wording or category
+                if colours(s.description) & colours(j.seen.description) or not (colours(s.description) and colours(j.seen.description)):
+                    return j  # seen again from across the room (the turn sees everything twice); a black
+                              # and a brass "floor lamp" stay two lamps
             if j.seen.category != s.category:
                 continue
             score = fuzz.token_set_ratio(text, f"{j.seen.description} {j.seen.brand_model}".lower())
@@ -430,8 +466,17 @@ class SweepRun:
     def _price_item(self, job: ItemJob, user_says_print: bool = False) -> None:
         t0 = time.perf_counter()
         s, it = job.seen, job.item
+        query = (s.brand_model or s.name or s.description).lower()
+        with self.lock:
+            over = query not in self.item_queries and len(self.item_queries) >= MAX_ITEM_SEARCHES
+            if not over:
+                self.item_queries.add(query)  # a repeated query is answered from the cache, free
+        if over:
+            it.status, it.replacement_cost = "range", ItemPrice()
+            job.note = f"not priced: this sweep reached its {MAX_ITEM_SEARCHES} item price searches"
+            return
         p = price_item(self.deps.get_json, self.deps.ebay_token, self.locale, s.category, s.description, s.brand_model,
-                       is_art=s.is_art, user_says_print=user_says_print)
+                       is_art=s.is_art, user_says_print=user_says_print, name=s.name)
         it.status = p.status
         it.replacement_cost = ItemPrice()
         if p.quote:
@@ -487,21 +532,30 @@ class SweepRun:
         books = self._drop_double_sightings(books)
 
         items = []
+        # Notes that apply to most items are listed once with their ids, not once per item (seen: 113
+        # review lines for one room, nearly all the same two sentences, read out by the agent).
+        common = {RANGE_NOTE: [], "approximate front-face size from monocular depth; depth not measured": [],
+                  "dimensions not measured": []}
         for job in self.items:
             gone = excluded(job.item.id, "", said)
             if gone:
                 self.note(job.item.id, f"removed: policyholder said '{gone.said or gone.kind}'")
                 continue
-            if job.note:
+            if job.note in common:
+                common[job.note].append(job.item.id)
+            elif job.note:
                 self.note(job.item.id, job.note)
             scale = self.scan_result.scale_factor if self.scan_result else 1.0
             if job.raw_size_cm:
                 w, h = job.raw_size_cm
                 job.item.dimensions_cm = Dimensions(w=round(w * scale), h=round(h * scale))
-                self.note(job.item.id, "approximate size of the front face from monocular depth; depth not measured")
+                common["approximate front-face size from monocular depth; depth not measured"].append(job.item.id)
             else:
-                self.note(job.item.id, "dimensions not measured")
+                common["dimensions not measured"].append(job.item.id)
             items.append(job.item)
+        for reason, ids in common.items():
+            if ids:
+                self.note("items", f"{reason}: {', '.join(ids)}")
 
         if room_geometry is None and self.scan_result is not None:
             shelving = [(j.item.dimensions_cm.w / 100, j.item.dimensions_cm.h / 100) for j in self.items

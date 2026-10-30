@@ -382,6 +382,43 @@ def test_item_seen_again_next_view_in_other_words_is_one_item(tmp_path):
     assert run._same_item(chair2, view=9) is None                   # much later, loose match: a second chair
     assert run._same_item(SeenItem(b, "lighting", "brass floor lamp", "", False), view=9) is run.items[1]  # close match anywhere
     assert run._same_item(SeenItem(b, "furniture", "brass floor lamp", "", False), view=2) is None        # other category
+    desk = SeenItem(b, "furniture", "white metal desk frame", "", False, "desk")
+    run.items.append(ItemJob(Item(id="I-03"), desk, Future(), last_view=4))
+    shelf_desk = SeenItem(b, "shelving", "desk with shelf above, white", "", False, "desk")
+    assert run._same_item(shelf_desk, view=6) is run.items[2]       # same short name a moment later, other words/category
+    assert run._same_item(shelf_desk, view=9) is run.items[2]       # same name and colour from across the room
+    black_desk = SeenItem(b, "furniture", "wooden top desk with black base", "", False, "desk")
+    assert run._same_item(black_desk, view=9) is None               # a desk in another colour is another desk
+    lamp2 = SeenItem(b, "lighting", "black metal floor lamp", "", False, "floor lamp")
+    run.items[1].seen = SeenItem(b, "lighting", "brass floor lamp", "", False, "floor lamp")
+    assert run._same_item(lamp2, view=9) is None                    # brass lamp and black lamp: two lamps
+
+
+def test_item_price_searches_are_capped_per_sweep_and_repeats_are_free(tmp_path, monkeypatch):
+    from concurrent.futures import Future
+    from libraryclaim import pipeline
+    from libraryclaim.boxes import Box
+    from libraryclaim.pipeline import ItemJob, SweepRun
+    from libraryclaim.schema import Item
+    from libraryclaim.vision import SeenItem
+    monkeypatch.setattr(pipeline, "MAX_ITEM_SEARCHES", 2)
+    run = SweepRun(tmp_path, Deps(vision=FakeVision(), get_json=FakeWeb(fake_catalogue()), ebay_token="t"), SETTINGS)
+    jobs = [ItemJob(Item(id=f"I-{i}"), SeenItem(Box(0, 0, 9, 9), "furniture", "chair", "", False, name), Future())
+            for i, name in enumerate(["office chair", "floor lamp", "office chair", "desk"])]
+    for j in jobs:
+        run._price_item(j)
+    assert run.item_queries == {"office chair", "floor lamp"}
+    assert "not priced" not in jobs[2].note                         # a repeat of a search already made
+    assert "reached its 2 item price searches" in jobs[3].note and jobs[3].item.replacement_cost.low is None
+
+
+def test_common_item_notes_are_listed_once_with_their_ids(sweep):
+    root, _ = sweep
+    p = run(root)
+    sized = [r for r in p.review_queue if r.reason.startswith("approximate front-face size")
+             or r.reason.startswith("dimensions not measured")]
+    assert len(sized) == 1 and sized[0].ref_id == "items"
+    assert all(i.id in sized[0].reason for i in p.items)
 
 
 def test_room_scan_and_item_sizes_through_the_pipeline(sweep):

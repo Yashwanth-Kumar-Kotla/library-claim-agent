@@ -251,14 +251,19 @@ class ItemPrice:
     note: str = ""
 
 
+RANGE_NOTE = "brand/model not visible; interquartile range of similar new items"
+
+
 def price_item(get_json: GetJson, token: str, locale: Locale, category: str, description: str,
-               brand_model: str = "", is_art: bool = False, user_says_print: bool = False) -> ItemPrice:
+               brand_model: str = "", is_art: bool = False, user_says_print: bool = False,
+               name: str = "") -> ItemPrice:
     """Known brand/model -> priced at the median of new listings for it.
-    Unknown model -> a sourced range (interquartile) for new items matching the description.
+    Unknown model -> a sourced range (interquartile) for new items of that kind, searched by its short
+    shop name ("office chair"), which finds comparable listings and lets similar objects share a search.
     Art -> appraisal unless the policyholder said it is a print."""
     if is_art and not user_says_print:
         return ItemPrice("needs_appraisal", note="art defaults to appraisal; the policyholder has not said it is a print")
-    query = brand_model or description
+    query = brand_model or name or description
     if is_art:
         query = f"{description} art print".strip()
     if not query:
@@ -289,5 +294,5 @@ def price_item(get_json: GetJson, token: str, locale: Locale, category: str, des
         if brand_model:
             quote.low = quote.high = quote.amount
             return ItemPrice("priced", quote)
-        return ItemPrice("range", quote, note="brand/model not visible; interquartile range of similar new items")
+        return ItemPrice("range", quote, note=RANGE_NOTE)
     return ItemPrice("range", None, note=note)
