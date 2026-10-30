@@ -128,8 +128,32 @@ def test_items_categories_normalised_and_books_skipped():
         {"box_2d": [0, 0, 500, 500], "category": "electronics", "brand_model": "unknown"},
     ])
     items = detect_items(ScriptedModel([reply]), np.zeros((300, 300, 3), np.uint8))
-    assert [i.category for i in items] == ["lighting", "other", "art", "electronics"]
-    assert items[2].is_art and items[3].brand_model == ""
+    assert [i.category for i in items] == ["lighting", "art", "electronics"]  # an unnamed "other" is dropped
+    assert items[1].is_art and items[2].brand_model == ""
+
+
+def test_small_accessories_and_packaging_are_not_contents_unless_branded():
+    reply = json.dumps([
+        {"box_2d": [0, 0, 500, 500], "category": "electronics", "name": "power strip", "description": "black power strip"},
+        {"box_2d": [0, 0, 500, 500], "category": "other", "name": "box", "description": "dark grey retail box"},
+        {"box_2d": [0, 0, 500, 500], "category": "decor", "name": "notes", "description": "yellow sticky notes pad"},
+        {"box_2d": [0, 0, 500, 500], "category": "electronics", "name": "charger", "description": "MagSafe charger",
+         "brand_model": "Apple MagSafe"},
+        {"box_2d": [0, 0, 500, 500], "category": "furniture", "name": "Office Chair", "description": "black mesh chair"},
+        {"box_2d": [0, 0, 500, 500], "category": "furniture", "name": "bean bag chair", "description": "grey bean bag"},
+    ])
+    items = detect_items(ScriptedModel([reply]), np.zeros((300, 300, 3), np.uint8))
+    assert [i.name for i in items] == ["charger", "office chair", "bean bag chair"]
+
+
+def test_slivers_of_objects_are_left_to_the_view_that_shows_them_whole():
+    reply = json.dumps([
+        {"box_2d": [0, 0, 500, 500], "category": "furniture", "name": "office chair", "description": "Portion of an office chair"},
+        {"box_2d": [0, 0, 500, 500], "category": "electronics", "name": "laptop", "description": "partially visible laptop"},
+        {"box_2d": [0, 0, 500, 500], "category": "furniture", "name": "office chair", "description": "Black wheeled base of a chair"},
+        {"box_2d": [0, 0, 500, 500], "category": "electronics", "name": "laptop", "description": "silver laptop, open"},
+    ])
+    assert [i.description for i in detect_items(ScriptedModel([reply]), np.zeros((300, 300, 3), np.uint8))] == ["silver laptop, open"]
 
 
 def test_meter_prices_tokens_and_flags_unpriced_models():

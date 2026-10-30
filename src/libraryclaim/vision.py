@@ -8,6 +8,7 @@ spelled out on the spine (resolve.py does that against a catalogue) and never pr
 from __future__ import annotations
 
 import hashlib
+import re
 import threading
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
@@ -39,15 +40,28 @@ Return JSON: {"text": "<all legible text, top to bottom>", "title": "", "author"
 Leave a field empty if it is not printed or not legible. Never fill a field from what you think the
 book probably is. If nothing is legible, return {"text": "", "legibility": 0}."""
 
-ITEMS_PROMPT = """List the household contents in this room photo that are not books: furniture, shelving units,
-lamps, electronics, appliances, framed art and portraits, rugs, plants, decor.
+ITEMS_PROMPT = """List the contents of this room that an insurance contents claim would list, other than books:
+furniture, shelving units, lamps, electronics, appliances, framed art and portraits, rugs, and decor or
+plants worth roughly 25 US dollars or more new.
 Return a JSON list of {"box_2d": [ymin, xmin, ymax, xmax], "category": "<one of: shelving, furniture,
-lighting, electronics, appliance, art, rug, decor, other>", "description": "<short visible description,
-including material>", "brand_model": "<only if a brand or model name is legible, else empty>",
-"is_art": true|false}. Coordinates are 0-1000.
-Do not list: people or anything a person is wearing or holding; clothing; food, drinks, snacks or their
-packaging; rubbish; parts of the building (doors, door handles, windows, walls, floors); screen contents;
-documents. List each physical object once, even if it is large."""
+lighting, electronics, appliance, art, rug, decor, other>", "name": "<the basic kind of object in 1 or 2 plain
+words, the same words whichever angle it is seen from: desk, office chair, keyboard, monitor, laptop, bookcase,
+bed, mirror, floor lamp, framed picture>", "description": "<short
+visible description, including material>", "brand_model": "<only if a brand or model name is legible, else
+empty>", "is_art": true|false}. Coordinates are 0-1000.
+Do not list: small accessories and consumables (cables, chargers, adapters, power strips, remotes, pens,
+sticky notes, scissors, tape, mugs, bottles); boxes, bags and packaging; people or anything a person is
+wearing or holding; clothing; food and drink; rubbish; documents; screen contents; the building and its
+fittings (doors, windows, walls, floors, built-in cabinets and counters, built-in appliances, radiators,
+switches, sockets); anything seen through a doorway in another room; objects mostly cut off by the edge of the photo (they are
+listed from a view that shows them whole). List each physical object once, even if it is large."""
+# Small things that slip past the prompt; listing them cost a price search each and buried the
+# real items (seen: 56 "items" in one home sweep, including sticky notes, scissors and a retail box).
+NOT_CONTENTS = re.compile(r"\b(cables?|cords?|chargers?|charging|adapters?|power (strip|bank)|surge|sticky notes?|"
+                          r"post-?it|pens?|pencils?|scissors|tape|packaging|retail box|cardboard|shipping box|"
+                          r"carton|(shopping|paper|plastic|tote) bags?|bottles?|mugs?|cups?|wrappers?|tissues?|receipts?|"
+                          r"papers|paper towels?)\b", re.I)
+PARTIAL = re.compile(r"\b(portion|partial(ly)?|part of|base of|edge of|corner of|section of)\b", re.I)
 
 EMPTY_WORDS = {"", "unknown", "n/a", "na", "none", "null", "illegible", "unreadable", "-", "?"}
 
@@ -242,6 +256,7 @@ class SeenItem:
     description: str
     brand_model: str
     is_art: bool
+    name: str = ""      # short shop name, used to price it and to recognise it in the next view
 
 
 CATEGORIES = {"shelving", "furniture", "lighting", "electronics", "appliance", "art", "rug", "decor", "other"}
@@ -256,9 +271,15 @@ def detect_items(model: Model, img: np.ndarray) -> list[SeenItem]:
         category = clean(b.extra.get("category")).lower()
         if category not in CATEGORIES:
             category = "other"
-        if category == "other" and "book" in clean(b.extra.get("description")).lower():
+        description, name, brand = (clean(b.extra.get(k)) for k in ("description", "name", "brand_model"))
+        if category == "other" and "book" in description.lower():
             continue  # books are counted by the spine pipeline, not here
+        if NOT_CONTENTS.search(f"{name} {description}") and not brand:
+            continue
+        if PARTIAL.search(description):
+            continue  # a sliver of something; the view that shows it whole lists it
+        if category == "other" and not brand:
+            continue  # nothing insurable to say about an unnamed "other"
         is_art = b.extra.get("is_art") is True or category == "art"
-        out.append(SeenItem(b, "art" if is_art else category, clean(b.extra.get("description")),
-                            clean(b.extra.get("brand_model")), is_art))
+        out.append(SeenItem(b, "art" if is_art else category, description, brand, is_art, name.lower()))
     return out

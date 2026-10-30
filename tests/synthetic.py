@@ -14,6 +14,8 @@ from pathlib import Path
 import cv2
 import numpy as np
 
+from libraryclaim.vision import ITEMS_PROMPT
+
 PX_PER_CM = 10
 
 
@@ -162,7 +164,7 @@ class FakeVision:
         if prompt.startswith("This is one book spine"):
             cy, cx = h // 2, w // 2
             return json.dumps(read_by_hue(int(np.median(hsv[cy - 2:cy + 3, cx - 2:cx + 3, 0]))))
-        if prompt.startswith("List the household contents"):
+        if prompt == ITEMS_PROMPT:
             return ITEMS_REPLY
         return "[]"
 
