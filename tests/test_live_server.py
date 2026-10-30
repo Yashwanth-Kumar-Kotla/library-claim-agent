@@ -256,7 +256,8 @@ def test_orientation_tagged_frames_reach_the_scan(live):
             break
         time.sleep(0.02)
     r = next(r for r in fake.tool_responses if r.name == "finish_room_scan")
-    assert r.scheduling == types.FunctionResponseScheduling.INTERRUPT  # redo needed while they are still there
+    assert r.scheduling == types.FunctionResponseScheduling.INTERRUPT  # they must act while still standing there
+    assert msg["result"]["still_open"]
 
 
 def responses(fake, name, n, timeout=10.0):

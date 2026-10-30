@@ -295,29 +295,40 @@ class LiveSweep:
         return out
 
     def finish_room_scan(self) -> dict:
-        """Check the turn now, while the policyholder can still redo it, then measure in the background."""
+        """Check the turn now, while the policyholder is still standing there. A turn that is only missing
+        part of the circle or a tilt stays open, so they just carry on (seen live: a full 360-degree turn
+        thrown away for want of a tilt, and the policyholder gave up rather than redo it)."""
         with self.lock:
             if not self.scanning:
                 return {"ok": False, "error": "no room scan is open; call start_room_scan first"}
+            entries = list(self.scan_entries)
+            if entries:
+                bins, up, down = scan_coverage(entries)
+                covered = len(bins) * 360 / BINS
+                missing = []
+                if covered < MIN_COVERAGE_DEG:
+                    missing.append(f"turn the rest of the way round (about {360 - covered:.0f} degrees left)")
+                if not up:
+                    missing.append("tilt the phone up to the ceiling")
+                if not down:
+                    missing.append("tilt it down to the floor")
+                if missing:
+                    return {"ok": False, "still_open": True, "covered_deg": covered,
+                            "advice": f"The turn is not finished and is still open: ask them to {' and '.join(missing)}, "
+                                      "following the screen. The app tells you when it is complete; do not call "
+                                      "finish_room_scan again before that."}
             self.scanning = False
             self.row_closed_at = self.clock()
-            entries = list(self.scan_entries)
         if not entries:
             msg = ("this phone did not share its orientation, so room size cannot be measured; carry on"
                    if not self.orientation_seen else "no frames were captured during the turn; call start_room_scan and ask them to do it again")
             self.on_event("scan_rejected", {"advice": msg})
             return {"ok": False, "advice": msg}
-        bins, up, down = scan_coverage(entries)
-        covered = len(bins) * 360 / BINS
-        problems = []
-        if covered < MIN_COVERAGE_DEG:
-            problems.append(f"the turn covered about {covered:.0f} degrees; they need to turn all the way round")
-        if not (up and down):
-            problems.append("they did not tilt the phone " + ("up to the ceiling" if not up else "down to the floor"))
-        if problems:
-            advice = "; ".join(problems) + ". Call start_room_scan and ask them to redo the turn."
-            self.on_event("scan_rejected", {"covered_deg": covered, "advice": advice})
-            return {"ok": False, "covered_deg": covered, "advice": advice}
+        n = self._measure(entries)
+        self.on_event("scan_closed", {"covered_deg": covered})
+        return {"ok": True, "covered_deg": covered, "frames": n, "note": "room size is being measured"}
+
+    def _measure(self, entries: list[dict]) -> int:
         (self.root / "scan.json").write_text(json.dumps(entries, indent=1))
         frames = []
         for e in entries:
@@ -325,8 +336,7 @@ class LiveSweep:
             if img is not None:
                 frames.append(ScanFrame(img, e["alpha"], e["beta"], e["gamma"], e["ref"]))
         self.run.add_room_scan(frames)
-        self.on_event("scan_closed", {"covered_deg": covered})
-        return {"ok": True, "covered_deg": covered, "frames": len(frames), "note": "room size is being measured"}
+        return len(frames)
 
     # ---- what the policyholder says ----
 
@@ -375,6 +385,14 @@ class LiveSweep:
             scan_open = self.scanning
         if scan_open:
             self.finish_room_scan()
+        with self.lock:
+            unfinished = list(self.scan_entries) if self.scanning else None
+            self.scanning = False
+        if unfinished is not None:
+            # Ended mid-turn: a full circle without the tilt still gives the floor and walls (height unmeasured).
+            if len(scan_coverage(unfinished)[0]) * 360 / BINS >= MIN_COVERAGE_DEG:
+                self._measure(unfinished)
+            self.on_event("scan_closed", {})
         with self.lock:
             missing = self.gaps()
             if missing and not confirmed:

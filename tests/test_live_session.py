@@ -278,16 +278,29 @@ def test_full_turn_with_tilt_is_accepted_and_saved(live):
     assert len(saved) == 38 and {"ref", "alpha", "beta", "gamma"} <= set(saved[0])
 
 
-def test_half_turn_or_no_tilt_asks_for_a_redo(live):
-    s, clock, _ = live
+def test_unfinished_turn_stays_open_and_can_simply_be_completed(live):
+    s, clock, events = live
     s.start_room_scan()
     turn(s, clock, range(0, 180, 10))
     r = s.finish_room_scan()
-    assert not r["ok"] and "all the way round" in r["advice"]
+    assert not r["ok"] and r["still_open"] and "rest of the way round" in r["advice"] and "up to the ceiling" in r["advice"]
+    turn(s, clock, range(180, 360, 10))  # they carry on; nothing is thrown away
+    r = s.finish_room_scan()
+    assert not r["ok"] and "rest of the way" not in r["advice"] and "tilt" in r["advice"]
+    assert s.scanning and "scan_rejected" not in events and not (s.root / "scan.json").exists()
+    turn(s, clock, [0], beta=125)
+    turn(s, clock, [0], beta=55)
+    r = s.finish_room_scan()
+    assert r["ok"] and r["frames"] == 38  # both halves of the turn kept
+
+
+def test_sweep_ended_after_a_full_circle_without_tilt_still_measures_the_room(live):
+    s, clock, events = live
+    s.add_frame(jpeg(textured()))
     s.start_room_scan()
     turn(s, clock, range(0, 360, 10))
-    r = s.finish_room_scan()
-    assert not r["ok"] and "tilt" in r["advice"] and not (s.root / "scan.json").exists()
+    s.end(confirmed=True)
+    assert (s.root / "scan.json").is_file() and "scan_closed" in events
 
 
 def test_phone_without_orientation_is_told_plainly(live):
@@ -310,8 +323,7 @@ def test_scan_closes_an_open_shelf_and_frames_still_count_as_room_views(live):
     clock.t = 30
     turn(s, clock, range(0, 360, 10))
     assert s.room_frames  # the turn also feeds item detection
-    assert s.finish_room_scan()["ok"] is False  # no tilt
-    assert s.finish_room_scan()["ok"] is False and "no room scan is open" in s.finish_room_scan()["error"]
+    assert s.finish_room_scan()["still_open"]  # no tilt yet: the turn stays open
 
 
 def test_a_live_session_replays_to_the_same_packet(live):
@@ -390,13 +402,12 @@ def test_no_stall_reminder_while_the_agent_is_still_explaining(live):
     assert "stalled" in s.scan_prompt()
 
 
-def test_redo_resets_scan_prompts_and_failed_scan_tells_the_phone(live):
+def test_a_new_scan_resets_the_scan_prompts(live):
     s, clock, events = live
     s.start_room_scan()
     turn(s, clock, range(0, 120, 10))
     turn(s, clock, [110] * 33)
     assert s.scan_prompt()
-    assert s.finish_room_scan()["ok"] is False and events[-1] == "scan_rejected"
     s.start_room_scan()
     turn(s, clock, range(0, 120, 10))
     turn(s, clock, [110] * 33)

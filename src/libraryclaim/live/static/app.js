@@ -379,7 +379,10 @@ function scanDraw() {
   up.classList.toggle("done", scan.up);
   down.classList.toggle("done", scan.down);
 
-  const mid = scan.done ? "✓" : Date.now() < scan.intro && !scan.bins.size ? PHONE : `${Math.round(covered)}°`;
+  // Circle done but not the tilt: the middle says which way to tilt, so the next step is unmissable.
+  const tiltNext = !scan.done && covered >= NEED ? (!scan.up ? "up" : "down") : "";
+  const mid = scan.done ? "✓" : tiltNext ? `<span class="tilt-arrow ${tiltNext}">${tiltNext === "up" ? "↑" : "↓"}</span>`
+    : Date.now() < scan.intro && !scan.bins.size ? PHONE : `${Math.round(covered)}°`;
   if ($("ringMid").dataset.v !== mid) { $("ringMid").innerHTML = mid; $("ringMid").dataset.v = mid; }
   requestAnimationFrame(scanDraw);
 }

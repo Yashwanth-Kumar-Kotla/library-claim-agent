@@ -59,11 +59,13 @@ Moments:
    You may only state counts, titles or values that come back in tool results. Never estimate
    a number, a title, a size or a price yourself; in particular, never say how many books a shelf
    has. Counts exist only in the end_sweep summary.
-5. After the shelves, measure the room. In the same reply in which you call start_room_scan, tell them
-   once: stand near the middle, hold the phone upright at chest height and follow the ring on the screen.
-   The screen guides every movement, so stay quiet while they turn and never give left, right, faster or
-   slower directions. The app tells you when the turn is complete: then call finish_room_scan. If it says
-   ok is false, explain the advice in one sentence, call start_room_scan and have them redo the turn.
+5. After the shelves, measure the room. Call start_room_scan first and say nothing about the room until
+   its result arrives: the ring only appears on their screen once the scan is open (seen: instructions
+   given before the call, and the policyholder saw nothing). Then give the instructions in its next_step,
+   once. The screen guides every movement, so stay quiet while they turn and never give left, right,
+   faster or slower directions. The app tells you when the turn is complete: then call finish_room_scan.
+   If they say they are done before that, call finish_room_scan: it says what is still missing and keeps
+   the turn open, so pass that on in one sentence and let them carry on. Never ask them to start over.
    Then ask them to pan slowly over anything the turn may have missed: furniture, lamps, electronics,
    rugs, art. For each painting, portrait or framed picture, ask whether it is an original or a
    print, and call record_remark with kind is_print or original and a short description.
@@ -186,9 +188,11 @@ def next_step(name: str, r: dict) -> str:
         "set_locale": "Explain the sweep in one sentence, then ask them to show the first bookcase's top shelf.",
         "start_row": "In a few words, name the shelf and ask for a slow pan left to right. Then stay quiet until "
                      "they say they reached the end.",
-        "finish_row": "Acknowledge in a few words (no counts) and name the next shelf, or move on to the room.",
-        "start_room_scan": "If you have not yet, tell them once: middle of the room, phone upright at chest height, "
-                           "follow the ring on the screen. Then stay silent until the app says the turn is complete.",
+        "finish_row": "Acknowledge in a few words (no counts) and name the next shelf. If they have no more shelves, "
+                      "call start_room_scan now and say nothing about the room until its result arrives.",
+        "start_room_scan": "Now tell them once, in two short sentences: stand near the middle of the room with the phone "
+                           "upright at chest height and turn slowly until the ring on the screen is full; then tilt up "
+                           "and down as the screen shows. Then stay silent until the app says the turn is complete.",
         "finish_room_scan": "Thank them in a few words, then ask them to pan slowly over the rest of the room: "
                             "furniture, lamps, electronics, rugs and art.",
         "record_remark": "Acknowledge in a few words and carry on where you were.",

@@ -91,6 +91,8 @@ video { position: fixed; inset: 0; width: 100%; height: 100%; object-fit: cover;
 .ring-mid { position: absolute; inset: 0; display: grid; place-items: center; font: 500 22px var(--mono); color: var(--bone); }
 .ring-mid svg { width: 26px; height: 44px; }
 .scan-guide.done .ring-mid { color: var(--sage); font-size: 40px; }
+.tilt-arrow { font: 700 52px/1 var(--sans); color: var(--brass); animation: tilt-up 1s ease-in-out infinite; }
+.tilt-arrow.down { animation-name: tilt-down; }
 .turn { position: absolute; top: -6px; font: 600 22px/1 var(--sans); color: var(--brass); animation: nudge 1.2s ease-in-out infinite; }
 .turn.l { left: 22px; } .turn.r { right: 22px; --dir: 1; }
 .tilt { position: relative; width: 14px; height: 120px; border-radius: 7px; background: var(--glass); border: 1px solid var(--line); }
@@ -152,5 +154,7 @@ video { position: fixed; inset: 0; width: 100%; height: 100%; object-fit: cover;
 @keyframes slide { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: none; } }
 @keyframes bump { 40% { transform: scale(1.35); } }
 @keyframes eq { 0%, 100% { height: 5px; } 50% { height: 20px; } }
+@keyframes tilt-up { 50% { transform: translateY(-8px); } }
+@keyframes tilt-down { 50% { transform: translateY(8px); } }
 @keyframes nudge { 50% { transform: translateX(calc(var(--dir, -1) * 4px)); } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
