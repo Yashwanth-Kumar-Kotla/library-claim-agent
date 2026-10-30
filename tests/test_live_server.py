@@ -21,6 +21,7 @@ class FakeLive:
 
     def __init__(self):
         self.audio, self.video, self.texts, self.tool_responses = 0, 0, [], []
+        self.replies = []  # turn_complete flag of each text, in order
         self.loop = None
         self.inbox = None
 
@@ -38,6 +39,7 @@ class FakeLive:
 
     async def send_client_content(self, turns, turn_complete):
         self.texts.append(turns.parts[0].text)
+        self.replies.append(turn_complete)
 
     async def send_tool_response(self, function_responses):
         self.tool_responses += function_responses
@@ -52,9 +54,9 @@ class FakeLive:
         self.loop.call_soon_threadsafe(self.inbox.put_nowait, msg)
 
 
-def call(name, **args):
+def call(name, call_id=None, **args):
     return types.LiveServerMessage(tool_call=types.LiveServerToolCall(
-        function_calls=[types.FunctionCall(id=f"c-{name}-{time.monotonic_ns()}", name=name, args=args)]))
+        function_calls=[types.FunctionCall(id=call_id or f"c-{name}-{time.monotonic_ns()}", name=name, args=args)]))
 
 
 def jpeg(img):
@@ -250,3 +252,114 @@ def test_orientation_tagged_frames_reach_the_scan(live):
         time.sleep(0.02)
     r = next(r for r in fake.tool_responses if r.name == "finish_room_scan")
     assert r.scheduling == types.FunctionResponseScheduling.INTERRUPT  # redo needed while they are still there
+
+
+def responses(fake, name, n, timeout=10.0):
+    end = time.monotonic() + timeout
+    while time.monotonic() < end:
+        got = [r for r in fake.tool_responses if r.name == name]
+        if len(got) >= n:
+            return got
+        time.sleep(0.02)
+    return [r for r in fake.tool_responses if r.name == name]
+
+
+def test_greeting_asks_for_a_reply(live):
+    ws, fake, _ = live
+    wait_for(ws, "session")
+    assert "Greet" in fake.texts[0] and fake.replies[0] is True
+
+
+def test_every_tool_result_says_what_to_do_next(live):
+    ws, fake, _ = live
+    wait_for(ws, "session")
+    fake.push(call("start_row", row="A1"))
+    fake.push(call("finish_row"))       # too few frames: advice
+    fake.push(call("record_remark", kind="signed", said="that one is signed"))  # no title: error
+    for name in ("start_row", "finish_row", "record_remark"):
+        [r] = responses(fake, name, 1)
+        assert r.response["next_step"]
+
+
+def test_duplicate_tool_call_runs_once(live):
+    ws, fake, _ = live
+    wait_for(ws, "session")
+    fake.push(call("start_row", call_id="same", row="A1"))
+    fake.push(call("start_row", call_id="same", row="A1"))
+    wait_for(ws, "tool", lambda m: m["phase"] == "done")
+    time.sleep(0.3)
+    assert len(responses(fake, "start_row", 1)) == 1
+
+
+def test_cancelled_end_gets_no_answer_but_the_report_still_appears(live):
+    ws, fake, root = live
+    wait_for(ws, "session")
+    ws.send_bytes(b"F" + jpeg(textured()))
+    frames_saved(root, 1)
+    msg = call("end_sweep", call_id="end-1", confirmed=True)
+    msg.tool_call_cancellation = types.LiveServerToolCallCancellation(ids=["end-1"])
+    fake.push(msg)
+    wait_for(ws, "done")
+    time.sleep(0.3)
+    assert responses(fake, "end_sweep", 1, timeout=0.5) == []
+
+
+def test_end_pressed_while_the_packet_builds_is_context_only(live):
+    ws, fake, root = live
+    wait_for(ws, "session")
+    ws.send_bytes(b"F" + jpeg(textured()))
+    frames_saved(root, 1)
+    fake.push(call("end_sweep", confirmed=True))
+    wait_for(ws, "done")
+    ws.send_text(json.dumps({"type": "end"}))
+    for _ in range(100):
+        if "pressed End" in fake.texts[-1]:
+            break
+        time.sleep(0.02)
+    assert "already being built" in fake.texts[-1] and fake.replies[-1] is False
+
+
+def test_transcripts_drop_cut_off_speech_and_markup_and_mark_turn_ends(live):
+    ws, fake, _ = live
+    wait_for(ws, "session")
+    T = types.Transcription
+    fake.push(types.LiveServerMessage(server_content=types.LiveServerContent(
+        output_transcription=T(text="Got it.<!-- Silent wait for user -->"))))
+    msg, _ = wait_for(ws, "transcript")
+    assert msg["text"] == "Got it."
+    fake.push(types.LiveServerMessage(server_content=types.LiveServerContent(
+        interrupted=True, output_transcription=T(text="and now the next"))))
+    fake.push(types.LiveServerMessage(server_content=types.LiveServerContent(turn_complete=True)))
+    _, seen = wait_for(ws, "turn_end")
+    assert "transcript" not in seen  # the cut-off words never arrive
+
+
+def test_time_cap_warns_then_asks_to_end_then_ends_and_keeps_the_packet(tmp_path, monkeypatch):
+    fake = FakeLive()
+    monkeypatch.setattr(server, "SWEEPS", tmp_path)
+    monkeypatch.setattr(server, "SESSION_WARN_S", 0.3)
+    monkeypatch.setattr(server, "SESSION_CAP_S", 0.6)
+    monkeypatch.setattr(server, "SESSION_GRACE_S", 0.3)
+    monkeypatch.setattr(server, "archive_run", lambda *a: None)
+    server.app.state.settings = Settings(locale=Locale("US", "USD"))
+    server.app.state.deps = lambda s: Deps(vision=FakeVision(), get_json=FakeWeb(fake_catalogue()), ebay_token="t")
+    server.app.state.connect = lambda s: (lambda config: fake)
+    with TestClient(server.app) as client, client.websocket_connect("/ws") as ws:
+        wait_for(ws, "session")
+        ws.send_bytes(b"F" + jpeg(textured()))
+        frames_saved(tmp_path, 1)
+        kinds = []
+        for _ in range(400):  # the server closes the socket at the cap
+            m = receive(ws, timeout=5)
+            kinds.append(m.get("type"))
+            if m.get("type") == "websocket.close":
+                break
+        assert kinds[-1] == "websocket.close"
+    sweep = next(tmp_path.glob("live-*"))
+    for _ in range(200):
+        if (sweep / "claim_packet.json").is_file():
+            break
+        time.sleep(0.02)
+    assert any("two minutes" in t for t in fake.texts) and any("time limit" in t for t in fake.texts)
+    assert (sweep / "claim_packet.json").is_file()
+    assert '"time_cap"' in (sweep / "out" / "session.jsonl").read_text()

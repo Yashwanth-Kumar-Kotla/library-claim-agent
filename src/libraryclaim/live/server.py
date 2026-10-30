@@ -17,6 +17,7 @@ import contextlib
 import struct
 import json
 import logging
+import re
 import threading
 import time
 from datetime import datetime
@@ -38,6 +39,11 @@ from .usage import usage_entry
 from .session import LiveSweep
 
 log = logging.getLogger("libraryclaim.live")
+SESSION_WARN_S = 13 * 60    # a spoken two-minute warning ...
+SESSION_CAP_S = 15 * 60     # ... then the agent is told to end ...
+SESSION_GRACE_S = 60        # ... and if it hasn't, the app ends the session itself
+MAX_RUNNING_TOOLS = 4
+MARKUP = re.compile(r"<!--.*?-->|<[^>]{1,40}>")  # stray markup the model sometimes puts in its transcript
 STATIC = Path(__file__).parent / "static"
 SWEEPS = REPO_ROOT / "data" / "sweeps"
 SWEEPS.mkdir(parents=True, exist_ok=True)
@@ -125,10 +131,12 @@ async def live(ws: WebSocket) -> None:
         record(msg)
         loop.call_soon_threadsafe(outbox.put_nowait, msg)
 
-    async def say(session, text: str) -> None:
-        record({"type": "app_to_agent", "text": text})
+    async def say(session, text: str, reply: bool = True) -> None:
+        """reply=False adds context without asking for a reply: what the screen shows, what is being
+        built. Forcing a reply to every app message made the agent talk over the policyholder."""
+        record({"type": "app_to_agent", "text": text, "reply": reply})
         await session.send_client_content(turns=types.Content(role="user", parts=[types.Part(text=text)]),
-                                          turn_complete=True)
+                                          turn_complete=reply)
 
     sweep = LiveSweep(SWEEPS / sweep_id, app.state.deps(s), s, on_event=emit)
     speaking = {"now": False}   # is the agent's voice currently streaming?
@@ -136,6 +144,9 @@ async def live(ws: WebSocket) -> None:
     shown = {"hint": None}
     emit("session", {"sweep": sweep_id})
     tasks: set[asyncio.Task] = set()
+    running: dict[str, asyncio.Task] = {}   # tool call id -> task
+    cancelled: set[str] = set()             # calls Gemini withdrew: their work finishes, no answer is sent
+    seen_calls: set[str] = set()
 
     async def to_phone():
         while True:
@@ -157,9 +168,25 @@ async def live(ws: WebSocket) -> None:
         if name == "end_sweep" and result.get("report") and not shown.get("done"):
             shown["done"] = True
             emit("done", {"report": result["report"], "summary": result["summary"]})
+        if str(fc.id) in cancelled:
+            return
         scheduling = types.FunctionResponseScheduling.INTERRUPT if urgent else types.FunctionResponseScheduling.WHEN_IDLE
         await session.send_tool_response(function_responses=[
             types.FunctionResponse(id=fc.id, name=name, response=result, scheduling=scheduling)])
+
+    async def launch_tool(fc, session):
+        key = str(fc.id)
+        if key in running or key in seen_calls:
+            return  # the same call delivered twice
+        seen_calls.add(key)
+        if len(running) >= MAX_RUNNING_TOOLS:
+            await session.send_tool_response(function_responses=[types.FunctionResponse(
+                id=fc.id, name=fc.name, response={"ok": False, "error": "busy", "next_step": "Wait a moment, then try again."})])
+            return
+        t = asyncio.create_task(run_tool(fc, session))
+        running[key] = t
+        tasks.add(t)
+        t.add_done_callback(lambda _, k=key: (running.pop(k, None), tasks.discard(_)))
 
     async def from_phone(session):
         while True:
@@ -179,7 +206,9 @@ async def live(ws: WebSocket) -> None:
                         orientation, body = struct.unpack("<3f", body[:12]), body[12:]
                     spoken, screen = await asyncio.to_thread(sweep.add_frame, body, orientation)
                     if screen and screen != shown["hint"]:
-                        emit("coach", {"text": screen})  # banner only; the agent is not told
+                        emit("coach", {"text": screen})
+                        # The agent knows what the screen says, so it doesn't repeat it or contradict it.
+                        await say(session, f"[app state] The screen is showing them: {screen}. Do not repeat it.", reply=False)
                     shown["hint"] = screen
                     # Never talk over the agent: a remark that arrives while it speaks is dropped.
                     if speaking["now"]:
@@ -195,7 +224,10 @@ async def live(ws: WebSocket) -> None:
             if text:
                 ctl = json.loads(text)
                 if ctl.get("type") == "end":
-                    await say(session, "[app] The policyholder pressed End. Call end_sweep now.")
+                    if sweep.ended:  # already being built: asking again made the agent call end_sweep twice
+                        await say(session, "[app state] The policyholder pressed End; the packet is already being built.", reply=False)
+                    else:
+                        await say(session, "[app] The policyholder pressed End. Call end_sweep now.")
 
     async def from_gemini(session):
         while True:
@@ -206,20 +238,28 @@ async def live(ws: WebSocket) -> None:
                     record({"type": "live_usage", **entry, "live_usd_so_far": spend["live"]})
                 if m.tool_call and m.tool_call.function_calls:
                     for fc in m.tool_call.function_calls:
-                        t = asyncio.create_task(run_tool(fc, session))
-                        tasks.add(t)
-                        t.add_done_callback(tasks.discard)
+                        await launch_tool(fc, session)
+                if m.tool_call_cancellation:
+                    # Our tools change the sweep in a worker thread, so the work is not undone; the
+                    # result is just not sent back. end_sweep still finishes and shows the report.
+                    for call_id in m.tool_call_cancellation.ids or []:
+                        cancelled.add(str(call_id))
+                        record({"type": "tool_cancelled", "id": str(call_id)})
                 c = m.server_content
                 if not c:
                     continue
                 if c.interrupted:
                     speaking["now"] = False
                     emit("interrupted", {})
+                for who, chunk in (("you", c.input_transcription), ("agent", c.output_transcription)):
+                    if who == "agent" and c.interrupted:
+                        continue  # cut-off speech: never shown or logged as said
+                    text = MARKUP.sub("", chunk.text) if chunk and chunk.text else ""
+                    if text:
+                        emit("transcript", {"who": who, "text": text})
                 if c.turn_complete:
                     speaking["now"] = False
-                for who, chunk in (("you", c.input_transcription), ("agent", c.output_transcription)):
-                    if chunk and chunk.text:
-                        emit("transcript", {"who": who, "text": chunk.text})
+                    emit("turn_end", {})  # separate turns stay separate in captions and the log
                 if c.model_turn and not c.interrupted:
                     for part in c.model_turn.parts or []:
                         if part.inline_data and (part.inline_data.mime_type or "").startswith("audio/pcm"):
@@ -230,7 +270,21 @@ async def live(ws: WebSocket) -> None:
     try:
         async with app.state.connect(s)(live_config()) as session:
             await say(session, "[app] The policyholder has opened the app and the camera is on. Greet them.")
-            pair = [asyncio.create_task(from_phone(session)), asyncio.create_task(from_gemini(session))]
+            async def time_cap():
+                """A backstop on length and cost: warn, ask the agent to end, then end it ourselves (the
+                packet is built from what was captured, as when the browser closes)."""
+                await asyncio.sleep(SESSION_WARN_S)
+                await say(session, "[app] About two minutes are left in this session. Tell them briefly and help them finish.")
+                await asyncio.sleep(SESSION_CAP_S - SESSION_WARN_S)
+                if not sweep.ended:
+                    await say(session, "[app] The session time limit is reached. Call end_sweep with confirmed true now.")
+                await asyncio.sleep(SESSION_GRACE_S)
+                if not sweep.ended:
+                    record({"type": "time_cap"})
+                    return
+
+            pair = [asyncio.create_task(from_phone(session)), asyncio.create_task(from_gemini(session)),
+                    asyncio.create_task(time_cap())]
             done, _ = await asyncio.wait(pair, return_when=asyncio.FIRST_COMPLETED)
             for t in pair:
                 t.cancel()

@@ -147,6 +147,7 @@ let coachTimer;
 function onEvent(m) {
   if (m.type === "interrupted") { speaking.forEach((n) => n.stop()); speaking = []; playAt = 0; $("wave").classList.remove("on"); }
   else if (m.type === "transcript") caption(m.who, m.text);
+  else if (m.type === "turn_end") lastWho = "";             // the next words start a fresh caption
   else if (m.type === "coach") {
     $("coach").textContent = m.text[0].toUpperCase() + m.text.slice(1);
     $("coach").hidden = false;
