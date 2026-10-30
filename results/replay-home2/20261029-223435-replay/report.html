@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contents claim live-20261029-221234</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f5f0e6;--card:#fbf8f2;--ink:#1d1a15;--soft:#5d564b;--faint:#8f8778;--rule:#e2d9c8;--brass:#a8792a;
+--sage:#3f7a4f;--sage-bg:#e3efe3;--amber:#b0611a;--amber-bg:#f8e7d2;--grey-bg:#ece6da;--rose:#a8453b;
+--serif:"Hanken Grotesk",-apple-system,"Segoe UI",sans-serif;--sans:"Hanken Grotesk",-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--paper:#14120f;--card:#1c1a16;--ink:#eee7da;--soft:#b7ae9e;--faint:#857d6f;--rule:#2e2a23;
+--brass:#d4ad5b;--sage:#9fc6a3;--sage-bg:#1f2d22;--amber:#f0a453;--amber-bg:#33251a;--grey-bg:#26231d;--rose:#e88f86}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 var(--sans);
+background-image:radial-gradient(90% 40% at 100% 0%,color-mix(in srgb,var(--brass) 9%,transparent),transparent 70%)}
+.wrap{max-width:1080px;margin:0 auto;padding:40px 24px 72px}
+a{color:inherit}
+.eyebrow{font:500 11.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin:0 0 14px}
+h1{font:700 clamp(30px,4.6vw,46px)/1.1 var(--serif);letter-spacing:-.025em;margin:0 0 12px}
+h1 em{font-style:normal;color:var(--brass)}
+h2{font:700 21px/1.2 var(--serif);margin:0;letter-spacing:-.015em}
+.meta{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--soft);font:400 13px var(--mono)}
+.meta b{color:var(--ink);font-weight:500}
+section{margin-top:44px}
+.head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:18px;flex-wrap:wrap}
+.head .note{color:var(--faint);font-size:13px}
+
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:16px;overflow:hidden;margin-top:30px}
+.fig{background:var(--card);padding:20px 20px 18px;animation:rise .6s both}
+.fig:nth-child(2){animation-delay:.05s}.fig:nth-child(3){animation-delay:.1s}.fig:nth-child(4){animation-delay:.15s}
+.fig small{display:block;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.fig b{display:block;font:700 30px/1.15 var(--serif);margin:8px 0 4px;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.fig span{color:var(--soft);font-size:13px}
+.fig.alert b{color:var(--amber)}
+.fig b.range{font-size:21px;line-height:1.75;white-space:nowrap}
+
+.split{margin-top:22px}
+.bar{display:flex;height:12px;border-radius:6px;overflow:hidden;background:var(--grey-bg)}
+.bar i{display:block}
+.bar .s-id{background:var(--sage)}.bar .s-ap{background:var(--amber)}.bar .s-un{background:var(--faint);opacity:.45}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;font-size:13px;color:var(--soft)}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:0}
+
+.room{display:grid;grid-template-columns:minmax(220px,340px) 1fr;gap:28px;align-items:start}
+@media(max-width:720px){.room{grid-template-columns:1fr}}
+.plan{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:18px}
+.plan svg{width:100%;height:auto;display:block}
+.plan .wall{fill:color-mix(in srgb,var(--brass) 10%,transparent);stroke:var(--ink);stroke-width:2.5}
+.plan text{font:500 11px var(--mono);fill:var(--soft)}
+.plan .empty{color:var(--faint);font-size:14px;padding:40px 10px;text-align:center}
+dl.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px 22px;margin:0}
+dl.stats div{border-top:1px solid var(--rule);padding-top:10px}
+dt{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+dd{margin:4px 0 0;font:600 21px/1.2 var(--serif);font-variant-numeric:tabular-nums}
+dd small{display:block;font:400 12.5px var(--sans);color:var(--soft)}
+.method{margin-top:16px;color:var(--soft);font-size:13.5px}
+.meter{display:inline-block;width:70px;height:6px;border-radius:3px;background:var(--grey-bg);vertical-align:middle;margin-left:6px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--brass)}
+
+.queue{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+details{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:0 16px}
+summary{list-style:none;cursor:pointer;display:flex;gap:12px;align-items:center;padding:12px 0}
+summary::-webkit-details-marker{display:none}
+summary .ref{font:500 13px var(--mono);min-width:70px}
+summary .first,.one .first{flex:1;min-width:0;color:var(--soft);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.one{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:12px 16px}
+.one .ref{font:500 13px var(--mono);min-width:70px}.one .first{white-space:normal}
+summary .n{font:500 12px var(--mono);color:var(--faint)}
+summary::after{content:"+";font:400 18px var(--mono);color:var(--faint)}
+details[open] summary::after{content:"−"}
+details ul{margin:0 0 14px;padding-left:82px;color:var(--soft);font-size:14px}
+@media(max-width:560px){details ul{padding-left:18px}summary .ref,.one .ref{min-width:0}}
+html,body{overflow-x:hidden}
+details li{margin:4px 0}
+
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.f{border:1px solid var(--rule);background:var(--card);color:var(--soft);border-radius:999px;padding:6px 13px;font:500 13px var(--sans);cursor:pointer}
+.f.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.f b{font-family:var(--mono);font-weight:500;margin-left:4px;opacity:.75}
+.search{margin-left:auto;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:10px;padding:8px 12px;font:14px var(--sans);min-width:200px}
+.scroll{overflow-x:auto;border:1px solid var(--rule);border-radius:14px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:760px}
+th{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint);text-align:left;padding:12px 14px;border-bottom:1px solid var(--rule);position:sticky;top:0;background:var(--card)}
+td{padding:11px 14px;border-bottom:1px solid var(--rule);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.thumb{width:34px;height:52px;object-fit:cover;border-radius:4px;background:var(--grey-bg);display:block}
+.lid{font:400 12.5px var(--mono);color:var(--faint);white-space:nowrap}
+.ttl{font:600 15px/1.3 var(--serif);letter-spacing:-.005em}
+.sub{color:var(--soft);font-size:13px}
+.tag{display:inline-block;font:500 10.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;white-space:nowrap}
+.t-identified,.t-priced{color:var(--sage);background:var(--sage-bg)}
+.t-needs_appraisal{color:var(--amber);background:var(--amber-bg)}
+.t-unidentified,.t-range{color:var(--soft);background:var(--grey-bg)}
+.amt{font-variant-numeric:tabular-nums;white-space:nowrap}
+.src{display:block;font:400 11.5px var(--mono);color:var(--faint);text-decoration-thickness:1px}
+.conv{font:500 10px var(--mono);color:var(--amber);margin-left:6px;text-transform:uppercase}
+.nil{color:var(--faint)}
+.conf{display:inline-block;width:46px;height:5px;border-radius:3px;background:var(--grey-bg);overflow:hidden;vertical-align:middle;margin-right:6px}
+.conf i{display:block;height:100%;background:var(--ink);opacity:.7}
+tr.hide{display:none!important}
+@media(max-width:640px){
+  table.cards{min-width:0}.scroll:has(table.cards){overflow:visible}
+  table.cards tr:first-child{display:none}
+  table.cards tr{display:grid;grid-template-columns:auto 1fr;column-gap:12px;row-gap:4px;padding:14px;border-bottom:1px solid var(--rule)}
+  table.cards tr:last-child{border-bottom:0}
+  table.cards td{display:block;padding:0;border:0;text-align:left}
+  table.cards td{grid-column:2}
+  table.cards td:first-child{grid-column:1;grid-row:1 / span 7}
+  table.cards td[data-l]{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:14px}
+  table.cards td[data-l] .v{text-align:right}
+  table.cards td[data-l]::before{content:attr(data-l);font:500 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);padding-top:3px}
+  table.cards .src{display:inline;margin-left:8px}
+}
+footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--rule);color:var(--faint);font-size:13px;display:grid;gap:6px}
+@keyframes rise{from{transform:translateY(8px)}to{transform:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+@media print{body{background:#fff}.tools,.src{display:none}.scroll{overflow:visible;border:0}section{break-inside:avoid-page}details{break-inside:avoid}}
+</style></head><body><div class="wrap">
+
+<header>
+  <p class="eyebrow">Contents claim · home library</p>
+  <h1>6 books, 30 other items</h1>
+  <div class="meta">
+    <span>Sweep <b>live-20261029-221234</b></span><span>2026-10-30T03:12:34+00:00</span>
+    <span>phone browser</span><span>Values in <b>USD</b> · US</span>
+    <span>120 s sweep</span>
+  </div>
+</header>
+
+<div class="figs">
+  <div class="fig"><small>Books · replacement</small><b>USD 0.00</b><span>used value USD 0.00</span></div>
+  <div class="fig"><small>Other contents</small><b class="">USD 0.00</b><span>replacement, low to high</span></div>
+  <div class="fig alert"><small>Excluded from totals</small><b>36</b><span>awaiting appraisal or no price found</span></div>
+  <div class="fig alert"><small>For the adjuster</small><b>40</b><span>lines with review notes</span></div>
+</div>
+
+
+<div class="split">
+  <div class="bar">
+    <i class="s-id" style="width:100.0%"></i><i class="s-ap" style="width:0.0%"></i><i class="s-un" style="width:0.0%"></i>
+  </div>
+  <div class="legend">
+    <span><i style="background:var(--sage)"></i>6 identified</span>
+    <span><i style="background:var(--amber)"></i>0 need appraisal</span>
+    <span><i style="background:var(--faint);opacity:.45"></i>0 unidentified</span>
+    <span>shelf run —</span>
+  </div>
+</div>
+
+
+<section>
+  <div class="head"><h2>Room</h2><span class="note"></span></div>
+  <div class="room">
+    <div class="plan"><div class="empty">Room size was not measured in this sweep.</div>
+    </div>
+    <div>
+      <dl class="stats">
+        <div><dt>Floor</dt><dd>—<small>—</small></dd></div>
+        <div><dt>Walls</dt><dd>—<small>—</small></dd></div>
+        <div><dt>Shelved wall</dt><dd>—<small>covered by shelving</small></dd></div>
+        <div><dt>Length × width</dt><dd>— × —<small>metres</small></dd></div>
+        <div><dt>Ceiling</dt><dd>—<small>floor to ceiling</small></dd></div>
+      </dl>
+      
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="head"><h2>For the adjuster</h2><span class="note">every line the system is not certain of, and why</span></div>
+  <div class="queue">
+    <div class="one"><span class="ref">room</span><span class="first">no room geometry captured</span></div>
+    <div class="one"><span class="ref">A1</span><span class="first">no marker and too few books to set a scale; spine sizes not reported</span></div>
+    <div class="one"><span class="ref">A1-01</span><span class="first">no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">A1-02</span><span class="first">no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">A1-03</span><span class="first">no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">A2</span><span class="first">no marker and too few books to set a scale; spine sizes not reported</span></div>
+    <div class="one"><span class="ref">A2-01</span><span class="first">no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">A2-02</span><span class="first">no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">A2-03</span><span class="first">no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-01</span><span class="first">price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-02</span><span class="first">price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-03</span><span class="first">price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-04</span><span class="first">price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-05</span><span class="first">price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-06</span><span class="first">price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-07</span><span class="first">price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-08</span><span class="first">price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-09</span><span class="first">price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-10</span><span class="first">price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-11</span><span class="first">price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-12</span><span class="first">price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-13</span><span class="first">price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-14</span><span class="first">art defaults to appraisal; the policyholder has not said it is a print</span></div>
+    <div class="one"><span class="ref">I-15</span><span class="first">price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-16</span><span class="first">price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-17</span><span class="first">price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-18</span><span class="first">price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-19</span><span class="first">price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-20</span><span class="first">price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-21</span><span class="first">price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-22</span><span class="first">art defaults to appraisal; the policyholder has not said it is a print</span></div>
+    <div class="one"><span class="ref">I-23</span><span class="first">price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-24</span><span class="first">price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-25</span><span class="first">price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-26</span><span class="first">price source not configured (no eBay credentials); left unpriced</span></div>
+    <div class="one"><span class="ref">I-27</span><span class="first">not priced: this sweep reached its 25 item price searches</span></div>
+    <div class="one"><span class="ref">I-28</span><span class="first">not priced: this sweep reached its 25 item price searches</span></div>
+    <div class="one"><span class="ref">I-29</span><span class="first">not priced: this sweep reached its 25 item price searches</span></div>
+    <div class="one"><span class="ref">I-30</span><span class="first">not priced: this sweep reached its 25 item price searches</span></div>
+    <div class="one"><span class="ref">items</span><span class="first">approximate front-face size from monocular depth; depth not measured: I-01, I-02, I-03, I-04, I-05, I-06, I-07, I-08, I-09, I-10, I-11, I-12, I-13, I-14, I-15, I-16, I-17, I-18, I-19, I-20, I-21, I-22, I-23, I-24, I-25, I-26, I-27, I-28, I-29, I-30</span></div></div>
+  
+</section>
+
+<section>
+  <div class="head"><h2>Books</h2><span class="note">prices are medians of live listings; each links to its search</span></div>
+  <div class="tools" data-table="books">
+    <button class="f on" data-f="all">All<b>6</b></button>
+    <button class="f" data-f="identified">Identified<b>6</b></button>
+    <button class="f" data-f="needs_appraisal">Appraisal<b>0</b></button>
+    <button class="f" data-f="unidentified">Unidentified<b>0</b></button>
+    <input class="search" type="search" placeholder="Search title, author, line" aria-label="Search books">
+  </div>
+  <div class="scroll"><table id="books" class="cards">
+    <tr><th></th><th>Line</th><th>Book</th><th>Status</th><th class="n">H × T cm</th><th>Match</th><th class="n">Replacement</th><th class="n">Used</th></tr>
+    <tr data-s="identified" data-q="a1-01 bhagavad-gita as it is prabhupada a. c. bhaktivedanta swami">
+      <td><a href="out/rows/A1.jpg#xyxy=362,181,615,1057" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A1-01.jpg" alt=""></a></td>
+      <td class="lid">A1-01</td>
+      <td><div class="ttl">Bhagavad-Gita As It Is</div><div class="sub">Prabhupada A. C. Bhaktivedanta Swami</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">— × — cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td><td class="n" data-l="Used"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr data-s="identified" data-q="a1-02 coming back : the science of reincarnation ">
+      <td><a href="out/rows/A1.jpg#xyxy=576,179,679,1054" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A1-02.jpg" alt=""></a></td>
+      <td class="lid">A1-02</td>
+      <td><div class="ttl">Coming Back : the Science of Reincarnation</div><div class="sub"></div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">— × — cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:92%"></i></span><span class="lid">0.92</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td><td class="n" data-l="Used"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr data-s="identified" data-q="a1-03 the science of self realization a. c. bhaktivedanta swami prabhupāda">
+      <td><a href="out/rows/A1.jpg#xyxy=632,181,774,1054" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A1-03.jpg" alt=""></a></td>
+      <td class="lid">A1-03</td>
+      <td><div class="ttl">The Science of Self Realization</div><div class="sub">A. C. Bhaktivedanta Swami Prabhupāda</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">— × — cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td><td class="n" data-l="Used"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr data-s="identified" data-q="a2-01 the full monty wendy holden">
+      <td><a href="out/rows/A2.jpg#xyxy=361,420,543,1125" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-01.jpg" alt=""></a></td>
+      <td class="lid">A2-01</td>
+      <td><div class="ttl">The Full Monty</div><div class="sub">Wendy Holden</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">— × — cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td><td class="n" data-l="Used"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr data-s="identified" data-q="a2-02 counterfeit prince of old texas, the: swindling slaver monroe edwards lora-marie bernard">
+      <td><a href="out/rows/A2.jpg#xyxy=432,325,609,1127" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-02.jpg" alt=""></a></td>
+      <td class="lid">A2-02</td>
+      <td><div class="ttl">Counterfeit Prince of Old Texas, The: Swindling Slaver Monroe Edwards</div><div class="sub">Lora-Marie Bernard · H edition · ISBN 9781467117876</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">— × — cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:91%"></i></span><span class="lid">0.91</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td><td class="n" data-l="Used"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr data-s="identified" data-q="a2-03 the witchwood crown tad williams">
+      <td><a href="out/rows/A2.jpg#xyxy=600,265,844,1107" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-03.jpg" alt=""></a></td>
+      <td class="lid">A2-03</td>
+      <td><div class="ttl">The Witchwood Crown</div><div class="sub">Tad Williams</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">— × — cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td><td class="n" data-l="Used"><span class="v"><span class="nil">—</span></span></td>
+    </tr>
+  </table></div>
+</section>
+
+
+
+<section>
+  <div class="head"><h2>Other contents</h2><span class="note">sizes are the front face, from depth; art waits for appraisal unless it is a print</span></div>
+  <div class="scroll"><table class="cards">
+    <tr><th>Line</th><th>Item</th><th>Category</th><th class="n">W × H cm</th><th>Status</th><th class="n">Replacement</th></tr>
+    <tr>
+      <td class="lid"><a href="frames/00007.jpg#xyxy=427,172,1080,696" target="_blank" rel="noopener">I-01</a></td>
+      <td><div class="ttl">Mechanical keyboard with Great Wave off Kanagawa artwork, custom keycaps, and RGB lighting.</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">10 × 8</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00007.jpg#xyxy=18,63,321,268" target="_blank" rel="noopener">I-02</a></td>
+      <td><div class="ttl">Small screen or phone stand display on the desk.</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">4 × 3</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00007.jpg#xyxy=4,245,1069,890" target="_blank" rel="noopener">I-03</a></td>
+      <td><div class="ttl">Large black desk mat/mousepad covering the desk surface.</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">17 × 10</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00007.jpg#xyxy=0,111,1074,1678" target="_blank" rel="noopener">I-04</a></td>
+      <td><div class="ttl">Wooden desktop with white metal legs.</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">19 × 28</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00021.jpg#xyxy=189,126,332,282" target="_blank" rel="noopener">I-05</a></td>
+      <td><div class="ttl">Small black digital cube clock showing time</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">3 × 3</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00062.jpg#xyxy=0,0,968,1920" target="_blank" rel="noopener">I-06</a></td>
+      <td><div class="ttl">White multi-tiered cube shelf unit</div></td>
+      <td class="sub" data-l="Category"><span class="v">shelving</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">37 × 73</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00068.jpg#xyxy=0,0,847,1841" target="_blank" rel="noopener">I-07</a></td>
+      <td><div class="ttl">white composite wood shelving unit/bookcase</div></td>
+      <td class="sub" data-l="Category"><span class="v">shelving</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">36 × 78</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00126.jpg#xyxy=0,0,741,1182" target="_blank" rel="noopener">I-08</a></td>
+      <td><div class="ttl">gray corduroy ribbed upholstered armchair or sofa section</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">59 × 94</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00134.jpg#xyxy=4,0,332,380" target="_blank" rel="noopener">I-09</a></td>
+      <td><div class="ttl">Large plush Minion character toy wearing blue overalls</div></td>
+      <td class="sub" data-l="Category"><span class="v">decor</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">26 × 30</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00143.jpg#xyxy=0,0,910,1825" target="_blank" rel="noopener">I-10</a></td>
+      <td><div class="ttl">White multi-tier wooden bookshelf with brown backing panel</div></td>
+      <td class="sub" data-l="Category"><span class="v">shelving</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">55 × 110</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00192.jpg#xyxy=693,0,1067,312" target="_blank" rel="noopener">I-11</a></td>
+      <td><div class="ttl">swivel office chair with black caster base and wheeled legs</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">62 × 51</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00226.jpg#xyxy=702,1142,1080,1816" target="_blank" rel="noopener">I-12</a></td>
+      <td><div class="ttl">black folding saucer/bungee chair loaded with clothes and a pink pillow</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">44 × 79</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00226.jpg#xyxy=0,1322,749,1920" target="_blank" rel="noopener">I-13</a></td>
+      <td><div class="ttl">bed with colorful Tetris-patterned blue comforter</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">76 × 61</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00242.jpg#xyxy=743,466,906,689" target="_blank" rel="noopener">I-14</a></td>
+      <td><div class="ttl">small framed picture with religious or spiritual illustration</div></td>
+      <td class="sub" data-l="Category"><span class="v">art</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">16 × 22</span></td>
+      <td><span class="tag t-needs_appraisal">needs appraisal</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00242.jpg#xyxy=515,1071,864,1918" target="_blank" rel="noopener">I-15</a></td>
+      <td><div class="ttl">rectangular floor or wall mirror with a simple black frame</div></td>
+      <td class="sub" data-l="Category"><span class="v">decor</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">37 × 89</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00267.jpg#xyxy=582,1067,1073,1449" target="_blank" rel="noopener">I-16</a></td>
+      <td><div class="ttl">LG widescreen monitor with black bezel and stand</div><div class="sub">LG</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">68 × 53</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00267.jpg#xyxy=141,1069,435,1392" target="_blank" rel="noopener">I-17</a></td>
+      <td><div class="ttl">Silver laptop open showing YouTube</div><div class="sub">Apple</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">45 × 50</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00267.jpg#xyxy=298,1359,1080,1914" target="_blank" rel="noopener">I-18</a></td>
+      <td><div class="ttl">Adjustable height desk with light wood surface and white metal legs</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">104 × 74</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00274.jpg#xyxy=450,1474,1065,1914" target="_blank" rel="noopener">I-19</a></td>
+      <td><div class="ttl">chair with purple blanket or cover draped over back</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">32 × 23</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00274.jpg#xyxy=639,80,1060,1401" target="_blank" rel="noopener">I-20</a></td>
+      <td><div class="ttl">grey window drape panel hanging on rod</div></td>
+      <td class="sub" data-l="Category"><span class="v">decor</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">59 × 184</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00274.jpg#xyxy=151,161,656,1121" target="_blank" rel="noopener">I-21</a></td>
+      <td><div class="ttl">white horizontal slat blinds</div></td>
+      <td class="sub" data-l="Category"><span class="v">decor</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">76 × 144</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00286.jpg#xyxy=259,412,399,622" target="_blank" rel="noopener">I-22</a></td>
+      <td><div class="ttl">small framed religious or spiritual image with dark frame</div></td>
+      <td class="sub" data-l="Category"><span class="v">art</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">20 × 30</span></td>
+      <td><span class="tag t-needs_appraisal">needs appraisal</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00323.jpg#xyxy=44,1027,594,1509" target="_blank" rel="noopener">I-23</a></td>
+      <td><div class="ttl">teal hardshell rolling suitcase with wheels and zipper</div><div class="sub">Samsonite</div></td>
+      <td class="sub" data-l="Category"><span class="v">other</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">52 × 46</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00343.jpg#xyxy=405,1075,1077,1628" target="_blank" rel="noopener">I-24</a></td>
+      <td><div class="ttl">teal or dark green upholstered tufted headboard</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">95 × 78</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00343.jpg#xyxy=497,1392,1006,1756" target="_blank" rel="noopener">I-25</a></td>
+      <td><div class="ttl">patterned throw pillow with blue and orange geometric design</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">38 × 27</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00343.jpg#xyxy=236,1601,541,1895" target="_blank" rel="noopener">I-26</a></td>
+      <td><div class="ttl">dark or translucent drawer nightstand unit</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">36 × 35</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00344.jpg#xyxy=259,1165,772,1488" target="_blank" rel="noopener">I-27</a></td>
+      <td><div class="ttl">widescreen computer display on desk</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">65 × 41</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00344.jpg#xyxy=309,1557,676,1695" target="_blank" rel="noopener">I-28</a></td>
+      <td><div class="ttl">keyboard with illuminated RGB backlighting</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">39 × 15</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00344.jpg#xyxy=0,1453,963,1900" target="_blank" rel="noopener">I-29</a></td>
+      <td><div class="ttl">light wood surface computer desk</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">103 × 48</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00355.jpg#xyxy=0,1411,378,1920" target="_blank" rel="noopener">I-30</a></td>
+      <td><div class="ttl">bed mattress covered in blue fitted sheet with yellow designs</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">42 × 56</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr>
+  </table></div>
+</section>
+
+<footer>
+  <span>Totals are computed from the lines above. A line without a price source, link and retrieval date carries no price.</span>
+  <span>Each book and item links to the saved frame it was seen in; retrieval dates are in claim_packet.json.</span>
+</footer>
+</div>
+<script>
+document.querySelectorAll(".tools").forEach(function (bar) {
+  var table = document.getElementById(bar.dataset.table), filter = "all", q = "";
+  function apply() {
+    table.querySelectorAll("tr[data-s]").forEach(function (tr) {
+      var ok = (filter === "all" || tr.dataset.s === filter) && (!q || tr.dataset.q.indexOf(q) !== -1);
+      tr.classList.toggle("hide", !ok);
+    });
+  }
+  bar.querySelectorAll(".f").forEach(function (b) {
+    b.onclick = function () { bar.querySelectorAll(".f").forEach(function (x) { x.classList.remove("on"); }); b.classList.add("on"); filter = b.dataset.f; apply(); };
+  });
+  bar.querySelector(".search").oninput = function (e) { q = e.target.value.trim().toLowerCase(); apply(); };
+});
+</script>
+</body></html>

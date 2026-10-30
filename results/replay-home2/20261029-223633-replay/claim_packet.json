@@ -1,0 +1,662 @@
+{
+  "sweep": {
+    "id": "live-20261029-221234",
+    "captured_at": "2026-10-30T03:12:34+00:00",
+    "device": "phone browser",
+    "duration_s": 119.8,
+    "country": "US",
+    "currency": "USD",
+    "capture_path": "browser"
+  },
+  "room": {
+    "length_m": null,
+    "width_m": null,
+    "height_m": null,
+    "floor_area_m2": null,
+    "wall_area_m2": null,
+    "shelved_wall_area_m2": null,
+    "floor_area_ft2": null,
+    "wall_area_ft2": null,
+    "shape_note": "",
+    "scale_method": "",
+    "confidence": 0.0
+  },
+  "books": [
+    {
+      "id": "A1-01",
+      "shelf": "A1",
+      "position": 1,
+      "frame_ref": "out/rows/A1.jpg#xyxy=362,181,615,1057",
+      "status": "identified",
+      "title": "Bhagavad-Gita As It Is",
+      "author": "Prabhupada A. C. Bhaktivedanta Swami",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-02",
+      "shelf": "A1",
+      "position": 2,
+      "frame_ref": "out/rows/A1.jpg#xyxy=576,179,679,1054",
+      "status": "identified",
+      "title": "Coming Back : the Science of Reincarnation",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.92,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-03",
+      "shelf": "A1",
+      "position": 3,
+      "frame_ref": "out/rows/A1.jpg#xyxy=632,181,774,1054",
+      "status": "identified",
+      "title": "The Science of Self Realization",
+      "author": "A. C. Bhaktivedanta Swami Prabhupāda",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-01",
+      "shelf": "A2",
+      "position": 1,
+      "frame_ref": "out/rows/A2.jpg#xyxy=358,418,546,1125",
+      "status": "identified",
+      "title": "The Full Monty",
+      "author": "Wendy Holden",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-02",
+      "shelf": "A2",
+      "position": 2,
+      "frame_ref": "out/rows/A2.jpg#xyxy=425,325,609,1127",
+      "status": "identified",
+      "title": "Counterfeit Prince of Old Texas, The: Swindling Slaver Monroe Edwards",
+      "author": "Lora-Marie Bernard",
+      "edition": "H edition",
+      "isbn": "9781467117876",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.914,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A2-03",
+      "shelf": "A2",
+      "position": 3,
+      "frame_ref": "out/rows/A2.jpg#xyxy=594,265,844,1111",
+      "status": "identified",
+      "title": "The Witchwood Crown",
+      "author": "Tad Williams",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    }
+  ],
+  "items": [
+    {
+      "id": "I-01",
+      "category": "electronics",
+      "description": "mechanical keyboard with custom wave-themed keycaps and RGB backlighting",
+      "brand_model": "",
+      "frame_ref": "frames/00007.jpg#xyxy=427,172,1080,706",
+      "dimensions_cm": {
+        "w": 10.0,
+        "h": 8.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-02",
+      "category": "furniture",
+      "description": "light wood grain desk surface with white metal legs",
+      "brand_model": "",
+      "frame_ref": "frames/00007.jpg#xyxy=0,140,1080,1693",
+      "dimensions_cm": {
+        "w": 19.0,
+        "h": 28.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-03",
+      "category": "electronics",
+      "description": "small black digital desk clock",
+      "brand_model": "",
+      "frame_ref": "frames/00007.jpg#xyxy=325,84,471,249",
+      "dimensions_cm": {
+        "w": 2.0,
+        "h": 2.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-04",
+      "category": "electronics",
+      "description": "small portable monitor or display device on desk",
+      "brand_model": "",
+      "frame_ref": "frames/00007.jpg#xyxy=15,63,313,268",
+      "dimensions_cm": {
+        "w": 4.0,
+        "h": 3.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-05",
+      "category": "shelving",
+      "description": "white shelving unit / bookcase compartment shelf",
+      "brand_model": "",
+      "frame_ref": "frames/00062.jpg#xyxy=0,0,946,1910",
+      "dimensions_cm": {
+        "w": 36.0,
+        "h": 72.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-06",
+      "category": "furniture",
+      "description": "grey ribbed corduroy armchair",
+      "brand_model": "",
+      "frame_ref": "frames/00126.jpg#xyxy=0,0,740,1192",
+      "dimensions_cm": {
+        "w": 59.0,
+        "h": 94.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-07",
+      "category": "decor",
+      "description": "large Minion plush/figure sitting on top of bookcase",
+      "brand_model": "",
+      "frame_ref": "frames/00134.jpg#xyxy=0,0,338,374",
+      "dimensions_cm": {
+        "w": 26.0,
+        "h": 29.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-08",
+      "category": "furniture",
+      "description": "swivel office chair with black caster base and fabric upholstery",
+      "brand_model": "",
+      "frame_ref": "frames/00192.jpg#xyxy=693,0,1069,307",
+      "dimensions_cm": {
+        "w": 62.0,
+        "h": 50.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-09",
+      "category": "furniture",
+      "description": "bed covered with Tetris-themed blue bedsheet",
+      "brand_model": "",
+      "frame_ref": "frames/00226.jpg#xyxy=0,1322,744,1920",
+      "dimensions_cm": {
+        "w": 76.0,
+        "h": 61.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-10",
+      "category": "furniture",
+      "description": "black folding saucer chair loaded with clothes and a pillow",
+      "brand_model": "",
+      "frame_ref": "frames/00226.jpg#xyxy=702,1142,1075,1804",
+      "dimensions_cm": {
+        "w": 44.0,
+        "h": 77.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-11",
+      "category": "art",
+      "description": "framed religious art print on the wall",
+      "brand_model": "",
+      "frame_ref": "frames/00242.jpg#xyxy=740,466,902,691",
+      "dimensions_cm": {
+        "w": 16.0,
+        "h": 22.0,
+        "d": null
+      },
+      "status": "needs_appraisal",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-12",
+      "category": "furniture",
+      "description": "full-length floor/wall mirror with black frame",
+      "brand_model": "",
+      "frame_ref": "frames/00242.jpg#xyxy=515,1071,867,1920",
+      "dimensions_cm": {
+        "w": 37.0,
+        "h": 90.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-13",
+      "category": "electronics",
+      "description": "large widescreen computer monitor on desk",
+      "brand_model": "LG",
+      "frame_ref": "frames/00267.jpg#xyxy=579,1069,1078,1449",
+      "dimensions_cm": {
+        "w": 69.0,
+        "h": 52.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "I-14",
+      "category": "electronics",
+      "description": "open laptop sitting on desk stand",
+      "brand_model": "",
+      "frame_ref": "frames/00267.jpg#xyxy=137,1071,435,1392",
+      "dimensions_cm": {
+        "w": 46.0,
+        "h": 49.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-15",
+      "category": "furniture",
+      "description": "teal upholstered headboard and bed with pillows",
+      "brand_model": "",
+      "frame_ref": "frames/00343.jpg#xyxy=427,1073,1080,1904",
+      "dimensions_cm": {
+        "w": 87.0,
+        "h": 111.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-16",
+      "category": "furniture",
+      "description": "patterned accent pillow on bed",
+      "brand_model": "",
+      "frame_ref": "frames/00343.jpg#xyxy=494,1392,1010,1756",
+      "dimensions_cm": {
+        "w": 38.0,
+        "h": 27.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    }
+  ],
+  "totals": {
+    "book_count": 6,
+    "books_identified": 6,
+    "books_unidentified": 0,
+    "shelf_run_m": null,
+    "books_replacement_cost": 0.0,
+    "books_used_value": 0.0,
+    "items_replacement_cost_low": 0.0,
+    "items_replacement_cost_high": 0.0,
+    "excluded_from_totals": 22
+  },
+  "review_queue": [
+    {
+      "ref_id": "A1",
+      "reason": "no marker and too few books to set a scale; spine sizes not reported"
+    },
+    {
+      "ref_id": "A1-01",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A1-02",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A1-03",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A2",
+      "reason": "no marker and too few books to set a scale; spine sizes not reported"
+    },
+    {
+      "ref_id": "A2-01",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A2-02",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "A2-03",
+      "reason": "no replacement price found; excluded from totals: price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-01",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-02",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-03",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-04",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-05",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-06",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-07",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-08",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-09",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-10",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-11",
+      "reason": "art defaults to appraisal; the policyholder has not said it is a print"
+    },
+    {
+      "ref_id": "I-12",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-13",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-14",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-15",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "I-16",
+      "reason": "price source not configured (no eBay credentials); left unpriced"
+    },
+    {
+      "ref_id": "items",
+      "reason": "approximate front-face size from monocular depth; depth not measured: I-01, I-02, I-03, I-04, I-05, I-06, I-07, I-08, I-09, I-10, I-11, I-12, I-13, I-14, I-15, I-16"
+    },
+    {
+      "ref_id": "room",
+      "reason": "no room geometry captured"
+    }
+  ],
+  "second_country": null
+}
