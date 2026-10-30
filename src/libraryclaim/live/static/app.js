@@ -409,7 +409,7 @@ function chime() {               // iPhone Safari has no vibration, so a short s
 }
 
 // ---- after End: the finishing screen ----
-// The orb follows the agent's voice (an analyser on its playback), so the screen visibly "talks" while
+// A line follows the agent's voice (an analyser on its playback), so the screen visibly "talks" while
 // the packet is built; the steps show what is being finished, and the report button appears when ready.
 let analyser = null, voiceBus = null, finishTimer = null, finishAt = 0, roomScanned = false;
 
@@ -434,7 +434,7 @@ function showFinish() {
   setStep("stepItems", "fItems", `${[...state.values()].filter((x) => x.kind === "item").length} found`);
   setStep("stepRoom", "fRoom", roomScanned ? "measuring" : "not scanned", !roomScanned);
   finishTimer = setInterval(() => ($("fClock").textContent = `${Math.round((Date.now() - finishAt) / 1000)} s`), 500);
-  requestAnimationFrame(orbLoop);
+  requestAnimationFrame(drawVoice);
 }
 
 function setStep(row, cell, text, skipped = false, done = false) {
@@ -446,7 +446,7 @@ function setStep(row, cell, text, skipped = false, done = false) {
 function finishReady(report, f) {
   clearInterval(finishTimer);
   const secs = Math.round((Date.now() - finishAt) / 1000);
-  $("orb").classList.add("ready");
+  lineReady = true;
   $("finishEyebrow").textContent = finishAt ? `Done in ${secs} s` : "Sweep ended";
   $("finishTitle").textContent = report ? "Your claim report is ready" : "This sweep has ended";
   if (f) {
@@ -461,17 +461,47 @@ function finishReady(report, f) {
   $("finishNote").textContent = report ? "The agent is reading the summary; the session closes by itself." : "";
 }
 
-function orbLoop() {
+let lineReady = false, lineLevel = 0;
+
+function drawVoice(now) {
   if ($("finish").hidden) return;
+  const c = $("voiceLine"), dpr = window.devicePixelRatio || 1;
+  const w = c.clientWidth, h = c.clientHeight;
+  if (c.width !== Math.round(w * dpr)) { c.width = Math.round(w * dpr); c.height = Math.round(h * dpr); }
+  const g = c.getContext("2d");
+  g.setTransform(dpr, 0, 0, dpr, 0, 0);
+  g.clearRect(0, 0, w, h);
+
+  // Loudness of the agent's voice, eased so the line swells and settles rather than flickers.
   let level = 0;
   if (analyser) {
     const buf = new Uint8Array(analyser.fftSize);
     analyser.getByteTimeDomainData(buf);
     let sum = 0;
     for (const v of buf) sum += ((v - 128) / 128) ** 2;
-    level = Math.min(1, Math.sqrt(sum / buf.length) * 4);
+    level = Math.min(1, Math.sqrt(sum / buf.length) * 5);
   }
-  const orb = $("orb"), prev = parseFloat(orb.style.getPropertyValue("--level")) || 0;
-  orb.style.setProperty("--level", (prev + (level - prev) * 0.3).toFixed(3));   // eased, no flicker
-  requestAnimationFrame(orbLoop);
+  lineLevel += (level - lineLevel) * (level > lineLevel ? 0.35 : 0.08);
+
+  // Two slow waves for the quiet "breathing", a faster pair that grows with the voice; pinned to the
+  // centre at both ends so it reads as a calm pulse, not a meter.
+  const t = now / 1000, mid = h / 2, n = 120;
+  const colour = lineReady ? "159,198,163" : "212,173,91";
+  const y = (i, scale) => {
+    const x = i / n, edge = Math.sin(Math.PI * x) ** 2;
+    const idle = Math.sin(x * 6 + t * 1.6) * 3 + Math.sin(x * 11 - t * 1.1) * 1.5;
+    const voice = (Math.sin(x * 23 + t * 9) * 0.6 + Math.sin(x * 37 - t * 13) * 0.4) * lineLevel * (h * 0.42);
+    return mid + (idle + voice) * edge * scale;
+  };
+  for (const [scale, alpha, width] of [[0.55, 0.22, 1.5], [1, 1, 2.5]]) {   // a faint echo, then the line
+    g.beginPath();
+    for (let i = 0; i <= n; i++) g[i ? "lineTo" : "moveTo"]((i / n) * w, y(i, scale));
+    g.strokeStyle = `rgba(${colour},${alpha})`;
+    g.lineWidth = width;
+    g.lineCap = "round";
+    g.shadowColor = `rgba(${colour},${0.25 + lineLevel * 0.5})`;
+    g.shadowBlur = 8 + lineLevel * 14;
+    g.stroke();
+  }
+  requestAnimationFrame(drawVoice);
 }
