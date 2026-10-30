@@ -139,7 +139,7 @@ function onAudio(buf) {                  // tag byte + PCM16 mono 24 kHz from th
   for (let i = 0; i < pcm.length; i++) ch[i] = pcm[i] / 0x8000;
   const node = ctx.createBufferSource();
   node.buffer = audio;
-  node.connect(ctx.destination);
+  node.connect(voiceOut());
   playAt = Math.max(playAt, ctx.currentTime);
   node.start(playAt);
   playAt += audio.duration;
@@ -181,6 +181,8 @@ function onEvent(m) {
     stopCapture();
     status("This sweep has ended and what was captured has been saved.");
     if (m.report) { $("report").href = m.report; $("report").hidden = false; $("end").hidden = true; }
+    showFinish();
+    finishReady(m.report, null);
   }
   else if (m.type === "interrupted") { speaking.forEach((n) => n.stop()); speaking = []; playAt = 0; $("wave").classList.remove("on"); }
   else if (m.type === "transcript") caption(m.who, m.text);
@@ -194,10 +196,13 @@ function onEvent(m) {
   else if (m.type === "row_open") place(shelfName(m.shelf));
   else if (m.type === "row_closed" || m.type === "row_rejected") place(null);
   else if (m.type === "scan_open") { place("Measuring the room", true); scanShow(); }
-  else if (m.type === "scan_closed" || m.type === "scan_rejected") { place(null); scanHide(); }
+  else if (m.type === "scan_closed" || m.type === "scan_rejected") {
+    place(null); scanHide();
+    if (m.type === "scan_closed") roomScanned = true;
+  }
   else if (m.type === "book") upsert(m.id, m, "book");
   else if (m.type === "item") upsert(m.id, m, "item");
-  else if (m.type === "finishing") { stopCapture(); status("Finishing the claim packet…"); }
+  else if (m.type === "finishing") { stopCapture(); status("Finishing the claim packet…"); showFinish(); }
   else if (m.type === "done") {
     finished = true;
     sessionSet("sweep", null);
@@ -206,6 +211,7 @@ function onEvent(m) {
     place(null);
     scanHide();
     stopCapture();
+    finishReady(m.report, m.figures || {});
     hangUpAfterSummary();
     $("report").href = m.report; $("report").hidden = false;
     $("end").hidden = true;
@@ -219,6 +225,7 @@ function caption(who, text) {
   lastWho = who;
   buffers[who] = (buffers[who] + text).slice(-220);
   $(who === "agent" ? "agent" : "you").textContent = buffers[who];
+  if (who === "agent") $("finishAgent").textContent = buffers[who];
 }
 
 const LABEL = { identified: "named", unidentified: "unread", needs_appraisal: "appraise" };
@@ -294,6 +301,7 @@ function hangUpAfterSummary() {
       clearInterval(check);
       ws?.close();
       status("Sweep finished. The claim report is ready.");
+      $("finishNote").textContent = "Session closed. The report stays available on the computer.";
     }
   }, 500);
 }
@@ -398,4 +406,72 @@ function chime() {               // iPhone Safari has no vibration, so a short s
   osc.connect(gain).connect(ctx.destination);
   osc.start();
   osc.stop(ctx.currentTime + 0.3);
+}
+
+// ---- after End: the finishing screen ----
+// The orb follows the agent's voice (an analyser on its playback), so the screen visibly "talks" while
+// the packet is built; the steps show what is being finished, and the report button appears when ready.
+let analyser = null, voiceBus = null, finishTimer = null, finishAt = 0, roomScanned = false;
+
+function voiceOut() {
+  if (!voiceBus) {
+    voiceBus = ctx.createGain();
+    analyser = ctx.createAnalyser();
+    analyser.fftSize = 512;
+    voiceBus.connect(analyser);
+    analyser.connect(ctx.destination);
+  }
+  return voiceBus;
+}
+
+function showFinish() {
+  if (!$("finish").hidden) return;
+  finishAt = Date.now();
+  $("finish").hidden = false;
+  $("finishAgent").textContent = buffers.agent || "";
+  const books = [...state.values()].filter((x) => x.kind === "book");
+  setStep("stepBooks", "fBooks", books.length ? `${books.length} found` : "–");
+  setStep("stepItems", "fItems", `${[...state.values()].filter((x) => x.kind === "item").length} found`);
+  setStep("stepRoom", "fRoom", roomScanned ? "measuring" : "not scanned", !roomScanned);
+  finishTimer = setInterval(() => ($("fClock").textContent = `${Math.round((Date.now() - finishAt) / 1000)} s`), 500);
+  requestAnimationFrame(orbLoop);
+}
+
+function setStep(row, cell, text, skipped = false, done = false) {
+  $(cell).textContent = text;
+  $(row).classList.toggle("skip", skipped);
+  $(row).classList.toggle("done", done);
+}
+
+function finishReady(report, f) {
+  clearInterval(finishTimer);
+  const secs = Math.round((Date.now() - finishAt) / 1000);
+  $("orb").classList.add("ready");
+  $("finishEyebrow").textContent = finishAt ? `Done in ${secs} s` : "Sweep ended";
+  $("finishTitle").textContent = report ? "Your claim report is ready" : "This sweep has ended";
+  if (f) {
+    setStep("stepBooks", "fBooks", `${f.books ?? 0} · ${f.identified ?? 0} named`, false, true);
+    setStep("stepItems", "fItems", `${f.items ?? 0}`, false, true);
+    setStep("stepRoom", "fRoom", f.floor_m2 ? `${f.floor_m2} m² floor` : "not measured", !f.floor_m2, !!f.floor_m2);
+    setStep("stepPacket", "fClock", `${secs} s`, false, true);
+  } else {
+    for (const row of ["stepBooks", "stepItems", "stepRoom", "stepPacket"]) $(row).classList.add("done");
+  }
+  if (report) { $("finishReport").href = report; $("finishReport").hidden = false; }
+  $("finishNote").textContent = report ? "The agent is reading the summary; the session closes by itself." : "";
+}
+
+function orbLoop() {
+  if ($("finish").hidden) return;
+  let level = 0;
+  if (analyser) {
+    const buf = new Uint8Array(analyser.fftSize);
+    analyser.getByteTimeDomainData(buf);
+    let sum = 0;
+    for (const v of buf) sum += ((v - 128) / 128) ** 2;
+    level = Math.min(1, Math.sqrt(sum / buf.length) * 4);
+  }
+  const orb = $("orb"), prev = parseFloat(orb.style.getPropertyValue("--level")) || 0;
+  orb.style.setProperty("--level", (prev + (level - prev) * 0.3).toFixed(3));   // eased, no flicker
+  requestAnimationFrame(orbLoop);
 }

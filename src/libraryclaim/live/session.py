@@ -420,7 +420,10 @@ class LiveSweep:
                    f"the adjuster to review.")
         if packet.room.floor_area_m2 is None:
             summary += " Room size was not measured in this sweep."
-        self.result = {"ok": True, "summary": summary, "report": f"/sweeps/{self.root.name}/report.html"}
+        figures = {"books": t.book_count, "identified": t.books_identified, "items": len(packet.items),
+                   "floor_m2": packet.room.floor_area_m2, "currency": cur}  # for the phone's finishing screen
+        self.result = {"ok": True, "summary": summary, "figures": figures,
+                       "report": f"/sweeps/{self.root.name}/report.html"}
         return self.result
 
 

@@ -53,6 +53,24 @@
   <div id="tilt" class="tilt" hidden><span class="aim up"></span><span class="aim down"></span><span id="tiltDot" class="dot"></span></div>
 </div>
 
+<!-- After End: the sweep is over; the orb carries the agent's voice while the packet is built -->
+<section id="finish" class="finish" hidden aria-live="polite">
+  <div class="finish-card">
+    <div id="orb" class="orb" aria-hidden="true"><span class="core"></span><span class="halo"></span></div>
+    <p class="eyebrow" id="finishEyebrow">Sweep complete</p>
+    <h2 id="finishTitle">Building your claim report</h2>
+    <p id="finishAgent" class="finish-agent"></p>
+    <ul class="finish-steps">
+      <li id="stepBooks"><i></i><span>Books</span><b id="fBooks">–</b></li>
+      <li id="stepItems"><i></i><span>Other contents</span><b id="fItems">–</b></li>
+      <li id="stepRoom"><i></i><span>Room size</span><b id="fRoom">–</b></li>
+      <li id="stepPacket"><i></i><span>Prices, checks and totals</span><b id="fClock">0 s</b></li>
+    </ul>
+    <a id="finishReport" class="primary" href="#" target="_blank" hidden>Open the claim report</a>
+    <p id="finishNote" class="fineprint">You can put the phone down. Nothing else is being recorded.</p>
+  </div>
+</section>
+
 <section id="sheet" class="sheet" hidden>
   <button id="handle" class="handle" aria-label="Show or hide the inventory"><span></span></button>
   <div class="voice">

@@ -250,7 +250,7 @@ async def live(ws: WebSocket) -> None:
         st.emit("tool", {"name": name, "args": args, "phase": "done", "result": result})
         if name == "end_sweep" and result.get("report") and not st.shown.get("done"):
             st.shown["done"] = True
-            st.emit("done", {"report": result["report"], "summary": result["summary"]})
+            st.emit("done", {"report": result["report"], "summary": result["summary"], "figures": result.get("figures", {})})
         if str(fc.id) in st.cancelled:
             return
         scheduling = types.FunctionResponseScheduling.INTERRUPT if urgent else types.FunctionResponseScheduling.WHEN_IDLE
