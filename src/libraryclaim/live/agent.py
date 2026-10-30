@@ -136,9 +136,11 @@ def tools() -> list[types.Tool]:
     return [types.Tool(function_declarations=decls)]
 
 
-def live_config(voice: str = "Kore") -> types.LiveConnectConfig:
+def live_config(voice: str = "Kore", seed_history: bool = False) -> types.LiveConnectConfig:
+    """seed_history: a reconnect replays the conversation so far as the first client content."""
     return types.LiveConnectConfig(
         response_modalities=["AUDIO"],
+        history_config=types.HistoryConfig(initial_history_in_client_content=True) if seed_history else None,
         system_instruction=SYSTEM_PROMPT,
         speech_config=types.SpeechConfig(voice_config=types.VoiceConfig(
             prebuilt_voice_config=types.PrebuiltVoiceConfig(voice_name=voice))),

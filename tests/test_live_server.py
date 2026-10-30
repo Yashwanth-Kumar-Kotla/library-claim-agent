@@ -38,6 +38,9 @@ class FakeLive:
         self.video += video is not None
 
     async def send_client_content(self, turns, turn_complete):
+        if isinstance(turns, list):  # conversation history replayed after a reconnect
+            self.history = [(t.role, t.parts[0].text) for t in turns]
+            return
         self.texts.append(turns.parts[0].text)
         self.replies.append(turn_complete)
 
@@ -67,6 +70,7 @@ def jpeg(img):
 def live(tmp_path, monkeypatch):
     fake = FakeLive()
     monkeypatch.setattr(server, "SWEEPS", tmp_path)
+    monkeypatch.setattr(server, "RECONNECT_GRACE_S", 0)  # closing the test client ends the sweep at once
     server.app.state.settings = Settings(locale=Locale("US", "USD"))
     server.app.state.deps = lambda s: Deps(vision=FakeVision(), get_json=FakeWeb(fake_catalogue()), ebay_token="t")
     server.app.state.connect = lambda s: (lambda config: fake)
@@ -208,6 +212,7 @@ def test_unknown_tool_and_garbage_frames_do_not_break_the_session(live):
 def test_session_log_and_packet_when_browser_closes(tmp_path, monkeypatch):
     fake = FakeLive()
     monkeypatch.setattr(server, "SWEEPS", tmp_path)
+    monkeypatch.setattr(server, "RECONNECT_GRACE_S", 0.2)  # it never comes back
     archived = []
     monkeypatch.setattr(server, "archive_run", lambda root, kind: archived.append((root, kind, (root / "out" / "session.jsonl").read_text())))
     server.app.state.settings = Settings(locale=Locale("US", "USD"))
@@ -363,3 +368,82 @@ def test_time_cap_warns_then_asks_to_end_then_ends_and_keeps_the_packet(tmp_path
     assert any("two minutes" in t for t in fake.texts) and any("time limit" in t for t in fake.texts)
     assert (sweep / "claim_packet.json").is_file()
     assert '"time_cap"' in (sweep / "out" / "session.jsonl").read_text()
+
+
+@pytest.fixture
+def phone(tmp_path, monkeypatch):
+    """A test client whose phone can drop and come back; configs records each Gemini session's setup."""
+    fake, configs = FakeLive(), []
+    monkeypatch.setattr(server, "SWEEPS", tmp_path)
+    monkeypatch.setattr(server, "RECONNECT_GRACE_S", 30)
+    monkeypatch.setattr(server, "archive_run", lambda *a: None)
+    server.app.state.settings = Settings(locale=Locale("US", "USD"))
+    server.app.state.deps = lambda s: Deps(vision=FakeVision(), get_json=FakeWeb(fake_catalogue()), ebay_token="t")
+    server.app.state.connect = lambda s: (lambda config: (configs.append(config), fake)[1])
+    with TestClient(server.app) as client:
+        yield client, fake, configs, tmp_path
+        for st in list(server.ACTIVE.values()):  # don't leave a sweep waiting for its phone
+            server.close_out(st)
+
+
+def test_dropped_phone_resumes_the_same_sweep_and_conversation(phone):
+    client, fake, configs, root = phone
+    T = types.Transcription
+    with client.websocket_connect("/ws") as ws:
+        sid = wait_for(ws, "session")[0]["sweep"]
+        fake.push(types.LiveServerMessage(server_content=types.LiveServerContent(input_transcription=T(text="Hi there"))))
+        fake.push(types.LiveServerMessage(server_content=types.LiveServerContent(output_transcription=T(text="Welcome."))))
+        fake.push(types.LiveServerMessage(server_content=types.LiveServerContent(turn_complete=True)))
+        wait_for(ws, "turn_end")
+        fake.push(call("start_row", row="A1"))
+        wait_for(ws, "row_open")
+        ws.send_bytes(b"F" + jpeg(textured()))
+        frames_saved(root, 1)
+    # Wi-Fi blip: the phone is gone, the sweep is not
+    for _ in range(100):
+        if not server.ACTIVE[sid].attached:
+            break
+        time.sleep(0.02)
+    assert not (root / sid / "claim_packet.json").exists()
+    server.ACTIVE[sid].lines["b1"] = {"type": "book", "id": "b1", "title": "Dune"}  # shown before the drop
+    with client.websocket_connect(f"/ws?resume={sid}") as ws:
+        msg, seen = wait_for(ws, "book")
+        assert "session" in seen
+        assert msg["title"] == "Dune"
+        assert configs[-1].history_config.initial_history_in_client_content
+        assert fake.history == [("user", "Hi there"), ("model", "Welcome.")]
+        back = fake.texts[-1]
+        assert "dropped" in back and "A1 is still open" in back and fake.replies[-1] is True
+        assert server.ACTIVE[sid].sweep.row.shelf == "A1"  # the open shelf survived
+
+
+def test_resume_of_a_closed_sweep_says_so_and_links_its_report(phone):
+    client, fake, configs, root = phone
+    with client.websocket_connect("/ws") as ws:
+        sid = wait_for(ws, "session")[0]["sweep"]
+        ws.send_bytes(b"F" + jpeg(textured()))
+        frames_saved(root, 1)
+        fake.push(call("end_sweep", confirmed=True))
+        wait_for(ws, "done")
+    assert sid not in server.ACTIVE  # closed out at disconnect: nothing left to resume
+    with client.websocket_connect(f"/ws?resume={sid}") as ws:
+        msg = json.loads(receive(ws)["text"])
+        assert msg["type"] == "gone" and msg["report"] == f"/sweeps/{sid}/report.html"  # not a new sweep
+
+
+def test_finished_while_away_hands_over_the_report_not_a_new_sweep(phone):
+    client, fake, configs, root = phone
+    with client.websocket_connect("/ws") as ws:
+        sid = wait_for(ws, "session")[0]["sweep"]
+        ws.send_bytes(b"F" + jpeg(textured()))
+        frames_saved(root, 1)
+    st = server.ACTIVE[sid]
+    for _ in range(100):
+        if not st.attached:
+            break
+        time.sleep(0.02)
+    st.sweep.end(True)  # e.g. end_sweep finished just as the phone dropped
+    st.emit("done", {"report": "/sweeps/x/report.html", "summary": "s"})
+    with client.websocket_connect(f"/ws?resume={sid}") as ws:
+        msg = json.loads(receive(ws)["text"])
+        assert msg["type"] == "done" and msg["report"].endswith("report.html")
