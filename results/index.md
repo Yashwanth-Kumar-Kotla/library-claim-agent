@@ -16,3 +16,4 @@ Every processed sweep, newest last. Outputs are in `results/<sweep>/<run>/`.
 | 20261029-222813 | replay-home2 | replay | 6 | 5 | 0 | 34 | USD 0.00 | — | — | $0.287 | 250.6 s |  |
 | 20261029-223435 | replay-home2 | replay | 6 | 6 | 0 | 30 | USD 0.00 | — | — | $0.274 | 278.5 s |  |
 | 20261029-223633 | replay-home2 | replay | 6 | 6 | 0 | 16 | USD 0.00 | — | — | $0.279 | 30.2 s |  |
+| 20261029-231106 | live-20261029-230838 | live | 6 | 6 | 0 | 18 | USD 106.12 | USD 1,687–2,510 | 20.62 | $0.186 | 40.6 s |  |
