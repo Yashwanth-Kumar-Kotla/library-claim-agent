@@ -462,17 +462,21 @@ function finishReady(report, f) {
 }
 
 let lineReady = false, lineLevel = 0;
+const ORB = {   // top, middle and bottom tones, and the light band that drifts through the middle
+  building: ["#8a5a1c", "#d9a95a", "#f3e2bd", "255,246,226"],
+  ready: ["#3f6b4a", "#8fbf98", "#e3f1e2", "244,255,245"],
+};
 
 function drawVoice(now) {
   if ($("finish").hidden) return;
-  const c = $("voiceLine"), dpr = window.devicePixelRatio || 1;
+  const c = $("voiceOrb"), dpr = window.devicePixelRatio || 1;
   const w = c.clientWidth, h = c.clientHeight;
   if (c.width !== Math.round(w * dpr)) { c.width = Math.round(w * dpr); c.height = Math.round(h * dpr); }
   const g = c.getContext("2d");
   g.setTransform(dpr, 0, 0, dpr, 0, 0);
   g.clearRect(0, 0, w, h);
 
-  // Loudness of the agent's voice, eased so the line swells and settles rather than flickers.
+  // Loudness of the agent's voice, eased so the sphere swells and settles rather than flickers.
   let level = 0;
   if (analyser) {
     const buf = new Uint8Array(analyser.fftSize);
@@ -481,27 +485,50 @@ function drawVoice(now) {
     for (const v of buf) sum += ((v - 128) / 128) ** 2;
     level = Math.min(1, Math.sqrt(sum / buf.length) * 5);
   }
-  lineLevel += (level - lineLevel) * (level > lineLevel ? 0.35 : 0.08);
+  lineLevel += (level - lineLevel) * (level > lineLevel ? 0.3 : 0.06);
 
-  // Two slow waves for the quiet "breathing", a faster pair that grows with the voice; pinned to the
-  // centre at both ends so it reads as a calm pulse, not a meter.
-  const t = now / 1000, mid = h / 2, n = 120;
-  const colour = lineReady ? "159,198,163" : "212,173,91";
-  const y = (i, scale) => {
-    const x = i / n, edge = Math.sin(Math.PI * x) ** 2;
-    const idle = Math.sin(x * 6 + t * 1.6) * 3 + Math.sin(x * 11 - t * 1.1) * 1.5;
-    const voice = (Math.sin(x * 23 + t * 9) * 0.6 + Math.sin(x * 37 - t * 13) * 0.4) * lineLevel * (h * 0.42);
-    return mid + (idle + voice) * edge * scale;
-  };
-  for (const [scale, alpha, width] of [[0.55, 0.22, 1.5], [1, 1, 2.5]]) {   // a faint echo, then the line
+  const [top, middle, bottom, light] = lineReady ? ORB.ready : ORB.building;
+  const t = now / 1000, cx = w / 2, cy = h / 2;
+  const r = w * 0.44 * (1 + lineLevel * 0.05);             // breathes a little with the voice
+  const speed = 0.35 + lineLevel * 1.4, amp = r * (0.12 + lineLevel * 0.22);
+
+  g.save();
+  g.beginPath();
+  g.arc(cx, cy, r, 0, Math.PI * 2);
+  g.clip();
+  const sky = g.createLinearGradient(0, cy - r, 0, cy + r);
+  sky.addColorStop(0, top);
+  sky.addColorStop(0.5, middle);
+  sky.addColorStop(1, bottom);
+  g.fillStyle = sky;
+  g.fillRect(cx - r, cy - r, 2 * r, 2 * r);
+
+  // Soft-edged shapes: the canvas blur where the browser has it, layered transparency otherwise.
+  const soft = "filter" in g;
+  const wave = (offset, phase, k, a) => {
     g.beginPath();
-    for (let i = 0; i <= n; i++) g[i ? "lineTo" : "moveTo"]((i / n) * w, y(i, scale));
-    g.strokeStyle = `rgba(${colour},${alpha})`;
+    for (let i = 0; i <= 60; i++) {
+      const x = cx - r + (2 * r * i) / 60;
+      const y = cy + offset + Math.sin(i / 60 * Math.PI * k + t * speed + phase) * a
+                            + Math.sin(i / 60 * Math.PI * (k + 1.7) - t * speed * 0.7 + phase) * a * 0.4;
+      g[i ? "lineTo" : "moveTo"](x, y);
+    }
+  };
+  // a drifting dark cloud in the upper half, then two light bands that flow across the middle
+  if (soft) g.filter = `blur(${r * 0.16}px)`;
+  const cloud = g.createRadialGradient(cx + Math.sin(t * speed * 0.6) * r * 0.35, cy - r * 0.45, 0,
+                                       cx, cy - r * 0.45, r * 0.8);
+  cloud.addColorStop(0, top);
+  cloud.addColorStop(1, "rgba(0,0,0,0)");
+  g.fillStyle = cloud;
+  g.fillRect(cx - r, cy - r, 2 * r, 2 * r);
+  for (const [offset, phase, k, alpha, width] of [[r * 0.05, 0, 1.6, 0.85, r * 0.34], [r * 0.38, 2.1, 1.2, 0.45, r * 0.5]]) {
+    wave(offset, phase, k, amp);
+    g.strokeStyle = `rgba(${light},${alpha})`;
     g.lineWidth = width;
     g.lineCap = "round";
-    g.shadowColor = `rgba(${colour},${0.25 + lineLevel * 0.5})`;
-    g.shadowBlur = 8 + lineLevel * 14;
     g.stroke();
   }
+  g.restore();
   requestAnimationFrame(drawVoice);
 }
