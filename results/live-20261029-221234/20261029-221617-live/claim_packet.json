@@ -1,0 +1,1850 @@
+{
+  "sweep": {
+    "id": "live-20261029-221234",
+    "captured_at": "2026-10-30T03:12:34+00:00",
+    "device": "phone browser",
+    "duration_s": 119.8,
+    "country": "US",
+    "currency": "USD",
+    "capture_path": "browser"
+  },
+  "room": {
+    "length_m": null,
+    "width_m": null,
+    "height_m": null,
+    "floor_area_m2": null,
+    "wall_area_m2": null,
+    "shelved_wall_area_m2": null,
+    "floor_area_ft2": null,
+    "wall_area_ft2": null,
+    "shape_note": "",
+    "scale_method": "",
+    "confidence": 0.0
+  },
+  "books": [
+    {
+      "id": "A1-01",
+      "shelf": "A1",
+      "position": 1,
+      "frame_ref": "out/rows/A1.jpg#xyxy=362,181,621,1054",
+      "status": "identified",
+      "title": "Bhagavad-Gita As It Is",
+      "author": "Prabhupada A. C. Bhaktivedanta Swami",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 15.0,
+        "source": "eBay US (via SerpApi): median asking price of 50 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Bhagavad-Gita+As+It+Is+Prabhupada+A.+C.+Bhaktivedanta+Swami&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T00:25:12+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 6.5,
+        "source": "eBay US (via SerpApi): median asking price of 53 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Bhagavad-Gita+As+It+Is+Prabhupada+A.+C.+Bhaktivedanta+Swami&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T00:25:15+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A1-02",
+      "shelf": "A1",
+      "position": 2,
+      "frame_ref": "out/rows/A1.jpg#xyxy=596,181,683,1050",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.723,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-03",
+      "shelf": "A1",
+      "position": 3,
+      "frame_ref": "out/rows/A1.jpg#xyxy=632,181,774,1052",
+      "status": "identified",
+      "title": "The Science of Self Realization",
+      "author": "A. C. Bhaktivedanta Swami Prabhupāda",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 9.0,
+        "source": "eBay US (via SerpApi): median asking price of 37 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Science+of+Self+Realization+A.+C.+Bhaktivedanta+Swami+Prabhup%C4%81da&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T00:25:17+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 6.99,
+        "source": "eBay US (via SerpApi): median asking price of 53 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Science+of+Self+Realization+A.+C.+Bhaktivedanta+Swami+Prabhup%C4%81da&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T00:25:21+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A2-01",
+      "shelf": "A2",
+      "position": 1,
+      "frame_ref": "out/rows/A2.jpg#xyxy=358,418,541,1131",
+      "status": "identified",
+      "title": "The Full Monty",
+      "author": "Wendy Holden",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 20.85,
+        "source": "eBay US (via SerpApi): median asking price of 20 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Full+Monty+Wendy+Holden&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T00:25:48+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 7.84,
+        "source": "eBay US (via SerpApi): median asking price of 45 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Full+Monty+Wendy+Holden&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T00:25:52+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A2-02",
+      "shelf": "A2",
+      "position": 2,
+      "frame_ref": "out/rows/A2.jpg#xyxy=425,325,609,1127",
+      "status": "identified",
+      "title": "Counterfeit Prince of Old Texas, The: Swindling Slaver Monroe Edwards",
+      "author": "Lora-Marie Bernard",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.914,
+      "replacement_cost": {
+        "amount": 22.66,
+        "source": "eBay US (via SerpApi): median asking price of 5 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Counterfeit+Prince+of+Old+Texas%2C+The+Lora-Marie+Bernard&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T00:25:47+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 9.61,
+        "source": "eBay US (via SerpApi): median asking price of 6 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Counterfeit+Prince+of+Old+Texas%2C+The+Lora-Marie+Bernard&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T00:25:56+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A2-03",
+      "shelf": "A2",
+      "position": 3,
+      "frame_ref": "out/rows/A2.jpg#xyxy=594,265,844,1107",
+      "status": "identified",
+      "title": "The Witchwood Crown",
+      "author": "Tad Williams",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 21.57,
+        "source": "eBay US (via SerpApi): median asking price of 29 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Witchwood+Crown+Tad+Williams&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-29T17:27:42+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 14.93,
+        "source": "eBay US (via SerpApi): median asking price of 40 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Witchwood+Crown+Tad+Williams&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-29T17:27:47+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    }
+  ],
+  "items": [
+    {
+      "id": "I-01",
+      "category": "electronics",
+      "description": "mechanical keyboard with custom wave artwork and RGB backlight",
+      "brand_model": "",
+      "frame_ref": "frames/00007.jpg#xyxy=416,180,1080,706",
+      "dimensions_cm": {
+        "w": 10.0,
+        "h": 8.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 35.42,
+        "high": 80.0,
+        "source": "eBay US (via SerpApi): median asking price of 61 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=mechanical+keyboard+with+custom+wave+artwork+and+RGB+backlight&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:12:52+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-02",
+      "category": "other",
+      "description": "black desk mat covering part of desk",
+      "brand_model": "",
+      "frame_ref": "frames/00007.jpg#xyxy=0,222,1080,896",
+      "dimensions_cm": {
+        "w": 17.0,
+        "h": 11.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 15.18,
+        "high": 42.94,
+        "source": "eBay US (via SerpApi): median asking price of 51 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=black+desk+mat+covering+part+of+desk&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:12:58+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-03",
+      "category": "electronics",
+      "description": "smartphone or small screen in a stand",
+      "brand_model": "",
+      "frame_ref": "frames/00007.jpg#xyxy=11,57,321,272",
+      "dimensions_cm": {
+        "w": 4.0,
+        "h": 3.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 12.06,
+        "high": 17.54,
+        "source": "eBay US (via SerpApi): median asking price of 90 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=smartphone+or+small+screen+in+a+stand&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:13:07+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-04",
+      "category": "electronics",
+      "description": "small digital clock display",
+      "brand_model": "",
+      "frame_ref": "frames/00007.jpg#xyxy=327,90,470,249",
+      "dimensions_cm": {
+        "w": 2.0,
+        "h": 2.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 10.3,
+        "high": 21.03,
+        "source": "eBay US (via SerpApi): median asking price of 56 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=small+digital+clock+display&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:12:50+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-05",
+      "category": "furniture",
+      "description": "wooden tabletop desk with white metal legs",
+      "brand_model": "",
+      "frame_ref": "frames/00007.jpg#xyxy=0,113,1080,1685",
+      "dimensions_cm": {
+        "w": 19.0,
+        "h": 28.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 138.41,
+        "high": 238.49,
+        "source": "eBay US (via SerpApi): median asking price of 47 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=wooden+tabletop+desk+with+white+metal+legs&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:12:52+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-06",
+      "category": "electronics",
+      "description": "computer monitor",
+      "brand_model": "",
+      "frame_ref": "frames/00021.jpg#xyxy=25,0,1075,263",
+      "dimensions_cm": {
+        "w": 19.0,
+        "h": 5.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 73.04,
+        "high": 127.49,
+        "source": "eBay US (via SerpApi): median asking price of 53 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=computer+monitor&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T00:27:41+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-07",
+      "category": "shelving",
+      "description": "White shelving unit cube/shelf bookcase",
+      "brand_model": "",
+      "frame_ref": "frames/00062.jpg#xyxy=0,0,957,1883",
+      "dimensions_cm": {
+        "w": 34.0,
+        "h": 67.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 81.05,
+        "high": 141.46,
+        "source": "eBay US (via SerpApi): median asking price of 49 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=White+shelving+unit+cube%2Fshelf+bookcase&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:13:04+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-08",
+      "category": "other",
+      "description": "Green and black grip object or hand-held gear",
+      "brand_model": "",
+      "frame_ref": "frames/00062.jpg#xyxy=11,718,263,936",
+      "dimensions_cm": {
+        "w": 7.0,
+        "h": 6.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 18.02,
+        "high": 38.06,
+        "source": "eBay US (via SerpApi): median asking price of 20 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Green+and+black+grip+object+or+hand-held+gear&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:13:05+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-09",
+      "category": "other",
+      "description": "Black curved case or accessory",
+      "brand_model": "",
+      "frame_ref": "frames/00062.jpg#xyxy=1,1436,159,1848",
+      "dimensions_cm": {
+        "w": 7.0,
+        "h": 18.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 10.95,
+        "high": 23.71,
+        "source": "eBay US (via SerpApi): median asking price of 40 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Black+curved+case+or+accessory&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:13:11+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-10",
+      "category": "furniture",
+      "description": "Grey corduroy armchair",
+      "brand_model": "",
+      "frame_ref": "frames/00126.jpg#xyxy=0,0,737,1182",
+      "dimensions_cm": {
+        "w": 58.0,
+        "h": 94.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 119.98,
+        "high": 211.49,
+        "source": "eBay US (via SerpApi): median asking price of 51 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Grey+corduroy+armchair&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:13:33+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-11",
+      "category": "other",
+      "description": "Cardboard moving box",
+      "brand_model": "Home Depot",
+      "frame_ref": "frames/00126.jpg#xyxy=520,0,746,236",
+      "dimensions_cm": {
+        "w": 35.0,
+        "h": 36.0,
+        "d": null
+      },
+      "status": "priced",
+      "replacement_cost": {
+        "low": 109.9,
+        "high": 109.9,
+        "source": "eBay US (via SerpApi): median asking price of 32 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Home+Depot&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:13:27+00:00"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "I-12",
+      "category": "decor",
+      "description": "Minion stuffed plush toy",
+      "brand_model": "",
+      "frame_ref": "frames/00134.jpg#xyxy=4,0,338,376",
+      "dimensions_cm": {
+        "w": 26.0,
+        "h": 29.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 11.12,
+        "high": 19.99,
+        "source": "eBay US (via SerpApi): median asking price of 56 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Minion+stuffed+plush+toy&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:13:33+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-13",
+      "category": "electronics",
+      "description": "Black electronics box or packaging",
+      "brand_model": "",
+      "frame_ref": "frames/00134.jpg#xyxy=0,892,411,1075",
+      "dimensions_cm": {
+        "w": 43.0,
+        "h": 19.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 11.41,
+        "high": 18.71,
+        "source": "eBay US (via SerpApi): median asking price of 49 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Black+electronics+box+or+packaging&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:13:45+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-14",
+      "category": "other",
+      "description": "Green laundry detergent jug",
+      "brand_model": "",
+      "frame_ref": "frames/00134.jpg#xyxy=777,1044,955,1411",
+      "dimensions_cm": {
+        "w": 21.0,
+        "h": 44.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 15.46,
+        "high": 25.6,
+        "source": "eBay US (via SerpApi): median asking price of 53 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Green+laundry+detergent+jug&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:13:34+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-15",
+      "category": "other",
+      "description": "Black box on shelf",
+      "brand_model": "Womier S-K80",
+      "frame_ref": "frames/00143.jpg#xyxy=1,673,236,961",
+      "dimensions_cm": {
+        "w": 13.0,
+        "h": 16.0,
+        "d": null
+      },
+      "status": "priced",
+      "replacement_cost": {
+        "low": 50.0,
+        "high": 50.0,
+        "source": "eBay US (via SerpApi): median asking price of 57 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Womier+S-K80&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T00:25:55+00:00"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "I-16",
+      "category": "furniture",
+      "description": "White framed board/tray with black pads",
+      "brand_model": "",
+      "frame_ref": "frames/00143.jpg#xyxy=0,1322,280,1816",
+      "dimensions_cm": {
+        "w": 20.0,
+        "h": 36.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 20.14,
+        "high": 46.67,
+        "source": "eBay US (via SerpApi): median asking price of 46 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=White+framed+board%2Ftray+with+black+pads&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:13:39+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-17",
+      "category": "rug",
+      "description": "light-colored floor mat",
+      "brand_model": "",
+      "frame_ref": "frames/00188.jpg#xyxy=948,1276,1077,1710",
+      "dimensions_cm": {
+        "w": 12.0,
+        "h": 41.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 29.02,
+        "high": 86.34,
+        "source": "eBay US (via SerpApi): median asking price of 37 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=light-colored+floor+mat&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:13:48+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-18",
+      "category": "furniture",
+      "description": "black rolling office chair base with wheels",
+      "brand_model": "",
+      "frame_ref": "frames/00192.jpg#xyxy=693,0,1071,309",
+      "dimensions_cm": {
+        "w": 62.0,
+        "h": 51.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 74.39,
+        "high": 117.31,
+        "source": "eBay US (via SerpApi): median asking price of 56 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=black+rolling+office+chair+base+with+wheels&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:13:54+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-19",
+      "category": "other",
+      "description": "teal hardshell suitcase",
+      "brand_model": "",
+      "frame_ref": "frames/00192.jpg#xyxy=0,681,272,1090",
+      "dimensions_cm": {
+        "w": 27.0,
+        "h": 40.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 87.99,
+        "high": 178.99,
+        "source": "eBay US (via SerpApi): median asking price of 51 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=teal+hardshell+suitcase&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:13:54+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-20",
+      "category": "furniture",
+      "description": "white desk/table piece",
+      "brand_model": "",
+      "frame_ref": "frames/00192.jpg#xyxy=0,3,400,720",
+      "dimensions_cm": {
+        "w": 32.0,
+        "h": 57.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 17.99,
+        "high": 43.99,
+        "source": "eBay US (via SerpApi): median asking price of 51 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=white+desk%2Ftable+piece&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:13:56+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-21",
+      "category": "shelving",
+      "description": "white shelving/storage unit",
+      "brand_model": "",
+      "frame_ref": "frames/00192.jpg#xyxy=176,0,518,286",
+      "dimensions_cm": {
+        "w": 56.0,
+        "h": 47.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 59.44,
+        "high": 120.0,
+        "source": "eBay US (via SerpApi): median asking price of 53 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=white+shelving%2Fstorage+unit&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:13:57+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-22",
+      "category": "decor",
+      "description": "white cloth towel with orange/green stripes hanging on door",
+      "brand_model": "",
+      "frame_ref": "frames/00208.jpg#xyxy=871,0,1076,848",
+      "dimensions_cm": {
+        "w": 14.0,
+        "h": 57.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 16.48,
+        "high": 26.39,
+        "source": "eBay US (via SerpApi): median asking price of 21 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=white+cloth+towel+with+orange%2Fgreen+stripes+hanging+on+door&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:14:01+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-23",
+      "category": "other",
+      "description": "hanging towel or cloth",
+      "brand_model": "",
+      "frame_ref": "frames/00209.jpg#xyxy=880,0,1080,842",
+      "dimensions_cm": {
+        "w": 13.0,
+        "h": 56.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 17.67,
+        "high": 26.94,
+        "source": "eBay US (via SerpApi): median asking price of 54 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=hanging+towel+or+cloth&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:14:12+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-24",
+      "category": "furniture",
+      "description": "Bed with blue Tetris-patterned bedspread",
+      "brand_model": "",
+      "frame_ref": "frames/00226.jpg#xyxy=0,1317,754,1918",
+      "dimensions_cm": {
+        "w": 77.0,
+        "h": 61.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 122.99,
+        "high": 199.99,
+        "source": "eBay US (via SerpApi): median asking price of 15 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Bed+with+blue+Tetris-patterned+bedspread&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:14:16+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-25",
+      "category": "furniture",
+      "description": "Round folding dish/saucer chair with metal frame",
+      "brand_model": "",
+      "frame_ref": "frames/00226.jpg#xyxy=702,1140,1075,1810",
+      "dimensions_cm": {
+        "w": 44.0,
+        "h": 78.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 48.46,
+        "high": 79.77,
+        "source": "eBay US (via SerpApi): median asking price of 54 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Round+folding+dish%2Fsaucer+chair+with+metal+frame&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:14:16+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-26",
+      "category": "decor",
+      "description": "Pink plush textured pillow",
+      "brand_model": "",
+      "frame_ref": "frames/00226.jpg#xyxy=787,1127,1075,1311",
+      "dimensions_cm": {
+        "w": 37.0,
+        "h": 24.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 11.99,
+        "high": 20.0,
+        "source": "eBay US (via SerpApi): median asking price of 49 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Pink+plush+textured+pillow&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:14:12+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-27",
+      "category": "furniture",
+      "description": "light pink textured throw pillow",
+      "brand_model": "",
+      "frame_ref": "frames/00227.jpg#xyxy=844,1163,1080,1344",
+      "dimensions_cm": {
+        "w": 33.0,
+        "h": 25.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 14.19,
+        "high": 32.41,
+        "source": "eBay US (via SerpApi): median asking price of 33 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=light+pink+textured+throw+pillow&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:14:19+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-28",
+      "category": "art",
+      "description": "small framed religious Hindu/Indian art piece",
+      "brand_model": "",
+      "frame_ref": "frames/00242.jpg#xyxy=743,466,906,689",
+      "dimensions_cm": {
+        "w": 16.0,
+        "h": 22.0,
+        "d": null
+      },
+      "status": "needs_appraisal",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-29",
+      "category": "furniture",
+      "description": "full-length mirror with black frame",
+      "brand_model": "",
+      "frame_ref": "frames/00242.jpg#xyxy=508,1073,868,1920",
+      "dimensions_cm": {
+        "w": 38.0,
+        "h": 89.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 47.99,
+        "high": 73.16,
+        "source": "eBay US (via SerpApi): median asking price of 38 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=full-length+mirror+with+black+frame&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:14:32+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-30",
+      "category": "art",
+      "description": "framed wall artwork",
+      "brand_model": "",
+      "frame_ref": "frames/00247.jpg#xyxy=1040,280,1078,508",
+      "dimensions_cm": {
+        "w": 4.0,
+        "h": 25.0,
+        "d": null
+      },
+      "status": "needs_appraisal",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-31",
+      "category": "shelving",
+      "description": "over-the-door wire hanger rack",
+      "brand_model": "",
+      "frame_ref": "frames/00247.jpg#xyxy=15,286,344,412",
+      "dimensions_cm": {
+        "w": 42.0,
+        "h": 16.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 20.49,
+        "high": 41.48,
+        "source": "eBay US (via SerpApi): median asking price of 57 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=over-the-door+wire+hanger+rack&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:14:30+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-32",
+      "category": "furniture",
+      "description": "black saucer chair holding pillows and clothes",
+      "brand_model": "",
+      "frame_ref": "frames/00257.jpg#xyxy=671,1305,1076,1893",
+      "dimensions_cm": {
+        "w": 38.0,
+        "h": 55.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 24.43,
+        "high": 79.79,
+        "source": "eBay US (via SerpApi): median asking price of 3 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=black+saucer+chair+holding+pillows+and+clothes&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:14:35+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-33",
+      "category": "decor",
+      "description": "pink ribbed throw pillow",
+      "brand_model": "",
+      "frame_ref": "frames/00257.jpg#xyxy=768,1297,1080,1499",
+      "dimensions_cm": {
+        "w": 33.0,
+        "h": 21.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 14.86,
+        "high": 25.74,
+        "source": "eBay US (via SerpApi): median asking price of 66 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=pink+ribbed+throw+pillow&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T00:27:50+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-34",
+      "category": "furniture",
+      "description": "Black desk mat/mouse pad",
+      "brand_model": "",
+      "frame_ref": "frames/00267.jpg#xyxy=456,1420,1074,1637",
+      "dimensions_cm": {
+        "w": 70.0,
+        "h": 25.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 12.91,
+        "high": 25.96,
+        "source": "eBay US (via SerpApi): median asking price of 30 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Black+desk+mat%2Fmouse+pad&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:14:47+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-35",
+      "category": "electronics",
+      "description": "Open laptop display and keyboard",
+      "brand_model": "Apple",
+      "frame_ref": "frames/00267.jpg#xyxy=141,1067,427,1393",
+      "dimensions_cm": {
+        "w": 44.0,
+        "h": 50.0,
+        "d": null
+      },
+      "status": "priced",
+      "replacement_cost": {
+        "low": 24.99,
+        "high": 24.99,
+        "source": "eBay US (via SerpApi): median asking price of 19 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Apple&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:14:58+00:00"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "I-36",
+      "category": "furniture",
+      "description": "Wooden top standing desk with white adjustable legs",
+      "brand_model": "",
+      "frame_ref": "frames/00267.jpg#xyxy=298,1342,1074,1908",
+      "dimensions_cm": {
+        "w": 97.0,
+        "h": 71.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 85.0,
+        "high": 209.86,
+        "source": "eBay US (via SerpApi): median asking price of 43 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Wooden+top+standing+desk+with+white+adjustable+legs&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:14:51+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-37",
+      "category": "furniture",
+      "description": "Secondary wooden desk/table",
+      "brand_model": "",
+      "frame_ref": "frames/00267.jpg#xyxy=0,1263,483,1898",
+      "dimensions_cm": {
+        "w": 80.0,
+        "h": 105.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 94.99,
+        "high": 179.99,
+        "source": "eBay US (via SerpApi): median asking price of 43 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Secondary+wooden+desk%2Ftable&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:14:46+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-38",
+      "category": "electronics",
+      "description": "Black low-profile keyboard",
+      "brand_model": "",
+      "frame_ref": "frames/00267.jpg#xyxy=182,1365,390,1484",
+      "dimensions_cm": {
+        "w": 27.0,
+        "h": 15.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 28.14,
+        "high": 87.45,
+        "source": "eBay US (via SerpApi): median asking price of 49 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Black+low-profile+keyboard&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:14:50+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-39",
+      "category": "electronics",
+      "description": "Closed black laptop",
+      "brand_model": "",
+      "frame_ref": "frames/00267.jpg#xyxy=0,1372,209,1520",
+      "dimensions_cm": {
+        "w": 25.0,
+        "h": 18.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 22.99,
+        "high": 59.98,
+        "source": "eBay US (via SerpApi): median asking price of 65 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Closed+black+laptop&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:14:50+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-40",
+      "category": "furniture",
+      "description": "Office chair armrest/part",
+      "brand_model": "",
+      "frame_ref": "frames/00267.jpg#xyxy=879,1777,1078,1912",
+      "dimensions_cm": {
+        "w": 16.0,
+        "h": 11.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 20.89,
+        "high": 29.49,
+        "source": "eBay US (via SerpApi): median asking price of 47 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Office+chair+armrest%2Fpart&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:14:59+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-41",
+      "category": "decor",
+      "description": "Plush duck toy with hat",
+      "brand_model": "",
+      "frame_ref": "frames/00267.jpg#xyxy=74,1127,151,1278",
+      "dimensions_cm": {
+        "w": 13.0,
+        "h": 25.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 11.38,
+        "high": 21.23,
+        "source": "eBay US (via SerpApi): median asking price of 57 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Plush+duck+toy+with+hat&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:14:54+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-42",
+      "category": "lighting",
+      "description": "Black desk lamp arm",
+      "brand_model": "",
+      "frame_ref": "frames/00267.jpg#xyxy=0,867,52,1006",
+      "dimensions_cm": {
+        "w": 8.0,
+        "h": 23.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 13.59,
+        "high": 33.74,
+        "source": "eBay US (via SerpApi): median asking price of 56 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Black+desk+lamp+arm&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:14:54+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-43",
+      "category": "other",
+      "description": "White small container or bin",
+      "brand_model": "",
+      "frame_ref": "frames/00267.jpg#xyxy=168,1822,336,1920",
+      "dimensions_cm": {
+        "w": 24.0,
+        "h": 14.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 15.46,
+        "high": 38.7,
+        "source": "eBay US (via SerpApi): median asking price of 51 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=White+small+container+or+bin&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:14:57+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-44",
+      "category": "electronics",
+      "description": "Small phone/device or clock on desk",
+      "brand_model": "",
+      "frame_ref": "frames/00267.jpg#xyxy=522,1344,615,1403",
+      "dimensions_cm": {
+        "w": 14.0,
+        "h": 9.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-45",
+      "category": "electronics",
+      "description": "Small black cube accessory/clock",
+      "brand_model": "",
+      "frame_ref": "frames/00267.jpg#xyxy=626,1372,669,1424",
+      "dimensions_cm": {
+        "w": 6.0,
+        "h": 7.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 9.08,
+        "high": 13.9,
+        "source": "eBay US (via SerpApi): median asking price of 39 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Small+black+cube+accessory%2Fclock&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:14:57+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-46",
+      "category": "furniture",
+      "description": "Curtain rod mounted above window",
+      "brand_model": "",
+      "frame_ref": "frames/00267.jpg#xyxy=487,1,1068,130",
+      "dimensions_cm": {
+        "w": 88.0,
+        "h": 20.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 22.54,
+        "high": 40.02,
+        "source": "eBay US (via SerpApi): median asking price of 56 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Curtain+rod+mounted+above+window&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:15:02+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-47",
+      "category": "decor",
+      "description": "Black desk mat",
+      "brand_model": "",
+      "frame_ref": "frames/00274.jpg#xyxy=41,1426,604,1591",
+      "dimensions_cm": {
+        "w": 67.0,
+        "h": 20.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 7.45,
+        "high": 15.54,
+        "source": "eBay US (via SerpApi): median asking price of 40 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Black+desk+mat&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:15:01+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-48",
+      "category": "decor",
+      "description": "Gray curtain panel",
+      "brand_model": "",
+      "frame_ref": "frames/00274.jpg#xyxy=639,61,1056,1392",
+      "dimensions_cm": {
+        "w": 58.0,
+        "h": 186.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 10.73,
+        "high": 21.49,
+        "source": "eBay US (via SerpApi): median asking price of 28 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Gray+curtain+panel&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:15:07+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-49",
+      "category": "decor",
+      "description": "full-length mirror with black frame",
+      "brand_model": "",
+      "frame_ref": "frames/00286.jpg#xyxy=131,1000,407,1920",
+      "dimensions_cm": {
+        "w": 39.0,
+        "h": 130.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 47.99,
+        "high": 73.16,
+        "source": "eBay US (via SerpApi): median asking price of 38 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=full-length+mirror+with+black+frame&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:14:32+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-50",
+      "category": "other",
+      "description": "teal hard-shell rolling suitcase",
+      "brand_model": "",
+      "frame_ref": "frames/00306.jpg#xyxy=272,1297,826,1791",
+      "dimensions_cm": {
+        "w": 57.0,
+        "h": 51.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 66.67,
+        "high": 172.98,
+        "source": "eBay US (via SerpApi): median asking price of 49 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=teal+hard-shell+rolling+suitcase&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:15:05+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-51",
+      "category": "furniture",
+      "description": "pillow on the bed/couch with pattern",
+      "brand_model": "",
+      "frame_ref": "frames/00343.jpg#xyxy=497,1392,1010,1756",
+      "dimensions_cm": {
+        "w": 38.0,
+        "h": 27.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 19.49,
+        "high": 29.95,
+        "source": "eBay US (via SerpApi): median asking price of 53 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=pillow+on+the+bed%2Fcouch+with+pattern&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:15:27+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-52",
+      "category": "furniture",
+      "description": "teal upholstered headboard/bed frame",
+      "brand_model": "",
+      "frame_ref": "frames/00343.jpg#xyxy=411,1071,1080,1904",
+      "dimensions_cm": {
+        "w": 90.0,
+        "h": 112.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 206.24,
+        "high": 388.41,
+        "source": "eBay US (via SerpApi): median asking price of 37 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=teal+upholstered+headboard%2Fbed+frame&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:15:25+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-53",
+      "category": "decor",
+      "description": "grey curtains hanging over window",
+      "brand_model": "",
+      "frame_ref": "frames/00343.jpg#xyxy=16,174,474,1509",
+      "dimensions_cm": {
+        "w": 58.0,
+        "h": 170.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 13.29,
+        "high": 27.89,
+        "source": "eBay US (via SerpApi): median asking price of 49 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=grey+curtains+hanging+over+window&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:15:30+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-54",
+      "category": "electronics",
+      "description": "monitor screen displaying code/text",
+      "brand_model": "",
+      "frame_ref": "frames/00343.jpg#xyxy=0,1188,109,1493",
+      "dimensions_cm": {
+        "w": 14.0,
+        "h": 40.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 41.99,
+        "high": 69.0,
+        "source": "eBay US (via SerpApi): median asking price of 39 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=monitor+screen+displaying+code%2Ftext&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:15:32+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-55",
+      "category": "other",
+      "description": "desk mat / mousepad",
+      "brand_model": "",
+      "frame_ref": "frames/00344.jpg#xyxy=143,1518,684,1724",
+      "dimensions_cm": {
+        "w": 59.0,
+        "h": 23.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 5.57,
+        "high": 17.99,
+        "source": "eBay US (via SerpApi): median asking price of 37 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=desk+mat+%2F+mousepad&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:15:36+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-56",
+      "category": "decor",
+      "description": "curtain drape",
+      "brand_model": "",
+      "frame_ref": "frames/00344.jpg#xyxy=740,115,1076,1484",
+      "dimensions_cm": {
+        "w": 43.0,
+        "h": 177.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 12.91,
+        "high": 26.99,
+        "source": "eBay US (via SerpApi): median asking price of 23 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=curtain+drape&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T03:15:36+00:00"
+      },
+      "confidence": 0.4
+    }
+  ],
+  "totals": {
+    "book_count": 6,
+    "books_identified": 5,
+    "books_unidentified": 1,
+    "shelf_run_m": null,
+    "books_replacement_cost": 89.08,
+    "books_used_value": 45.87,
+    "items_replacement_cost_low": 2135.11,
+    "items_replacement_cost_high": 3974.09,
+    "excluded_from_totals": 4
+  },
+  "review_queue": [
+    {
+      "ref_id": "A1",
+      "reason": "no marker and too few books to set a scale; spine sizes not reported"
+    },
+    {
+      "ref_id": "A1-02",
+      "reason": "title-only match on a short title ('Coming Back Alive'); author not legible"
+    },
+    {
+      "ref_id": "A2",
+      "reason": "no marker and too few books to set a scale; spine sizes not reported"
+    },
+    {
+      "ref_id": "I-01",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-01",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-02",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-02",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-03",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-03",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-04",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-04",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-05",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-05",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-06",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-06",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-07",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-07",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-08",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-08",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-09",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-09",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-10",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-10",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-11",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-12",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-12",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-13",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-13",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-14",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-14",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-15",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-16",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-16",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-17",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-17",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-18",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-18",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-19",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-19",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-20",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-20",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-21",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-21",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-22",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-22",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-23",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-23",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-24",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-24",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-25",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-25",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-26",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-26",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-27",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-27",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-28",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-28",
+      "reason": "art defaults to appraisal; the policyholder has not said it is a print"
+    },
+    {
+      "ref_id": "I-29",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-29",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-30",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-30",
+      "reason": "art defaults to appraisal; the policyholder has not said it is a print"
+    },
+    {
+      "ref_id": "I-31",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-31",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-32",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-32",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-33",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-33",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-34",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-34",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-35",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-36",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-36",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-37",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-37",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-38",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-38",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-39",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-39",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-40",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-40",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-41",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-41",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-42",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-42",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-43",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-43",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-44",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-44",
+      "reason": "fewer than 3 new listings for 'Small phone/device or clock on desk' on eBay US"
+    },
+    {
+      "ref_id": "I-45",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-45",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-46",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-46",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-47",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-47",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-48",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-48",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-49",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-49",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-50",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-50",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-51",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-51",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-52",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-52",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-53",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-53",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-54",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-54",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-55",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-55",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "I-56",
+      "reason": "approximate size of the front face from monocular depth; depth not measured"
+    },
+    {
+      "ref_id": "I-56",
+      "reason": "brand/model not visible; interquartile range of similar new items"
+    },
+    {
+      "ref_id": "room",
+      "reason": "no room geometry captured"
+    }
+  ],
+  "second_country": null
+}
