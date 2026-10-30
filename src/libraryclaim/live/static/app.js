@@ -3,6 +3,8 @@ const $ = (id) => document.getElementById(id);
 const HI_RES_MS = 333, HI_RES_W = 1920, HI_Q = 0.85;   // evidence frames: counting, reading, measuring
 const LIVE_MS = 2000, LIVE_W = 768, LIVE_Q = 0.6;      // what the agent sees: frames are most of its re-billed context
 let ws, stream, ctx, micNode, playAt = 0, speaking = [], timers = [], lastAudioAt = 0, finished = false;
+let sweepId = null, capturing = false, wakeLock = null;
+const RECONNECT_FOR_MS = 75000;   // the server holds a dropped sweep for 90 s
 let orientation = null;  // latest {alpha, beta, gamma} from the phone's motion sensors, for room size
 const lines = new Map(), state = new Map();   // id -> <li>, id -> {kind, status}
 
@@ -46,12 +48,39 @@ async function start() {
   }
   $("video").srcObject = stream;
   showSession();
-  ws = new WebSocket(`${location.protocol === "https:" ? "wss" : "ws"}://${location.host}/ws`);
-  ws.binaryType = "arraybuffer";
-  ws.onopen = () => { status("Connected"); $("agent").textContent = "Listening…"; $("end").disabled = false; startMic(); startFrames(); };
-  ws.onmessage = (ev) => (typeof ev.data === "string" ? onEvent(JSON.parse(ev.data)) : onAudio(ev.data));
-  ws.onclose = () => { stopAll(); if (!finished) status("Disconnected."); };
+  keepAwake();
+  connect(sessionGet("sweep"));   // a reload mid-sweep picks the same sweep back up
 }
+
+// One sweep can span several connections: a Wi-Fi blip or a backgrounded tab reconnects to the same
+// sweep (shelves, frames and conversation kept) instead of ending it.
+function connect(resume, since = Date.now()) {
+  ws = new WebSocket(`${location.protocol === "https:" ? "wss" : "ws"}://${location.host}/ws${resume ? `?resume=${encodeURIComponent(resume)}` : ""}`);
+  ws.binaryType = "arraybuffer";
+  ws.onopen = () => {
+    status(resume ? "Reconnected" : "Connected");
+    if (!resume) $("agent").textContent = "Listening…";
+    $("end").disabled = false;
+    if (!capturing) { capturing = true; startMic(); startFrames(); }
+  };
+  ws.onmessage = (ev) => (typeof ev.data === "string" ? onEvent(JSON.parse(ev.data)) : onAudio(ev.data));
+  ws.onclose = () => {
+    if (finished || !sweepId) { stopAll(); if (!finished) status("Disconnected."); return; }
+    if (Date.now() - since > RECONNECT_FOR_MS) { stopAll(); status("Connection lost. The sweep so far has been saved."); return; }
+    status("Connection lost · reconnecting…");
+    setTimeout(() => connect(sweepId, since), 1500);
+  };
+}
+
+function sessionGet(k) { try { return sessionStorage.getItem(k); } catch { return null; } }
+function sessionSet(k, v) { try { v ? sessionStorage.setItem(k, v) : sessionStorage.removeItem(k); } catch {} }
+
+// iPhone auto-lock suspends the page mid-sweep; a screen wake lock stops that (iOS 16.4+), and it
+// has to be asked for again whenever the page comes back to the front.
+async function keepAwake() {
+  try { if (!finished && navigator.wakeLock) wakeLock = await navigator.wakeLock.request("screen"); } catch {}
+}
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && started) keepAwake(); });
 
 function startMic() {
   const src = ctx.createMediaStreamSource(stream);
@@ -145,7 +174,15 @@ const shelfName = (s) => `Bookcase ${s[0]} · shelf ${s.slice(1)}`;
 let coachTimer;
 
 function onEvent(m) {
-  if (m.type === "interrupted") { speaking.forEach((n) => n.stop()); speaking = []; playAt = 0; $("wave").classList.remove("on"); }
+  if (m.type === "session") { sweepId = m.sweep; sessionSet("sweep", m.sweep); }
+  else if (m.type === "gone") {           // tried to resume a sweep the server has already closed
+    finished = true;
+    sessionSet("sweep", null);
+    stopCapture();
+    status("This sweep has ended and what was captured has been saved.");
+    if (m.report) { $("report").href = m.report; $("report").hidden = false; $("end").hidden = true; }
+  }
+  else if (m.type === "interrupted") { speaking.forEach((n) => n.stop()); speaking = []; playAt = 0; $("wave").classList.remove("on"); }
   else if (m.type === "transcript") caption(m.who, m.text);
   else if (m.type === "turn_end") lastWho = "";             // the next words start a fresh caption
   else if (m.type === "coach") {
@@ -162,6 +199,9 @@ function onEvent(m) {
   else if (m.type === "item") upsert(m.id, m, "item");
   else if (m.type === "finishing") { stopCapture(); status("Finishing the claim packet…"); }
   else if (m.type === "done") {
+    finished = true;
+    sessionSet("sweep", null);
+    wakeLock?.release().catch(() => {});
     status("Claim packet ready");
     place(null);
     scanHide();
