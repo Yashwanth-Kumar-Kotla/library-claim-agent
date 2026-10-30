@@ -2,7 +2,7 @@
 const $ = (id) => document.getElementById(id);
 const HI_RES_MS = 333, HI_RES_W = 1920, HI_Q = 0.85;   // evidence frames: counting, reading, measuring
 const LIVE_MS = 2000, LIVE_W = 768, LIVE_Q = 0.6;      // what the agent sees: frames are most of its re-billed context
-let ws, stream, ctx, micNode, playAt = 0, speaking = [], timers = [];
+let ws, stream, ctx, micNode, playAt = 0, speaking = [], timers = [], lastAudioAt = 0, finished = false;
 let orientation = null;  // latest {alpha, beta, gamma} from the phone's motion sensors, for room size
 const lines = new Map(), state = new Map();   // id -> <li>, id -> {kind, status}
 
@@ -50,7 +50,7 @@ async function start() {
   ws.binaryType = "arraybuffer";
   ws.onopen = () => { status("Connected"); $("agent").textContent = "Listening…"; $("end").disabled = false; startMic(); startFrames(); };
   ws.onmessage = (ev) => (typeof ev.data === "string" ? onEvent(JSON.parse(ev.data)) : onAudio(ev.data));
-  ws.onclose = () => { stopAll(); status("Disconnected."); };
+  ws.onclose = () => { stopAll(); if (!finished) status("Disconnected."); };
 }
 
 function startMic() {
@@ -103,6 +103,7 @@ function startFrames() {
 }
 
 function onAudio(buf) {                  // tag byte + PCM16 mono 24 kHz from the agent
+  lastAudioAt = Date.now();
   const pcm = new Int16Array(buf.slice(1));
   const audio = ctx.createBuffer(1, pcm.length, 24000);
   const ch = audio.getChannelData(0);
@@ -158,10 +159,13 @@ function onEvent(m) {
   else if (m.type === "scan_closed" || m.type === "scan_rejected") { place(null); scanHide(); }
   else if (m.type === "book") upsert(m.id, m, "book");
   else if (m.type === "item") upsert(m.id, m, "item");
+  else if (m.type === "finishing") { stopCapture(); status("Finishing the claim packet…"); }
   else if (m.type === "done") {
     status("Claim packet ready");
     place(null);
     scanHide();
+    stopCapture();
+    hangUpAfterSummary();
     $("report").href = m.report; $("report").hidden = false;
     $("end").hidden = true;
     $("sheet").classList.add("open");
@@ -222,6 +226,35 @@ function addCard(main, sub) {
   const row = $("latest");
   row.prepend(card);
   while (row.children.length > 6) row.lastChild.remove();
+}
+
+// The sweep is over once the packet is being built: no more frames, and the clock stops. The mic stays
+// on until the packet is done, in case the agent needs to ask something.
+function stopCapture() {
+  timers.forEach(clearInterval); timers = [];
+  stream?.getVideoTracks().forEach((t) => t.stop());
+  scanHide();
+  $("end").disabled = true;
+}
+
+// Mic off, let the agent read the summary, then hang up once it has been quiet for a few seconds
+// (or after 45 s at most), so nothing keeps recording or billing after the report exists.
+function hangUpAfterSummary() {
+  finished = true;
+  micNode?.disconnect();
+  stream?.getAudioTracks().forEach((t) => t.stop());
+  const doneAt = Date.now();
+  let quietSince = null;
+  const check = setInterval(() => {
+    const now = Date.now();
+    quietSince = speaking.length ? null : quietSince ?? now;
+    const spoke = lastAudioAt > doneAt;
+    if ((spoke && quietSince && now - quietSince > 4000) || now - doneAt > 45000) {
+      clearInterval(check);
+      ws?.close();
+      status("Sweep finished. The claim report is ready.");
+    }
+  }, 500);
 }
 
 function stopAll() {

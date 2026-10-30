@@ -91,6 +91,7 @@ class LiveSweep:
         self.room_frames: list[str] = []
         self.room_travel = float("inf")  # the first room view is always taken
         self.ended = False
+        self.result: dict | None = None   # end_sweep's answer, repeated to any later call
         self.row_closed_at = 0.0
         self.scanning = False
         self.scan_entries: list[dict] = []   # {"ref", "alpha", "beta", "gamma"} for frames taken during the turn
@@ -299,6 +300,7 @@ class LiveSweep:
             if not self.scanning:
                 return {"ok": False, "error": "no room scan is open; call start_room_scan first"}
             self.scanning = False
+            self.row_closed_at = self.clock()
             entries = list(self.scan_entries)
         if not entries:
             msg = ("this phone did not share its orientation, so room size cannot be measured; carry on"
@@ -363,7 +365,11 @@ class LiveSweep:
     def end(self, confirmed: bool = False, closed_early: bool = False) -> dict:
         with self.lock:
             if self.ended:
-                return {"ok": False, "error": "sweep already ended"}
+                # The agent sometimes calls end_sweep twice (on its own and again when End is tapped).
+                # A plain error made it tell a policyholder the sweep "has already ended" mid-build.
+                return self.result or {"ok": True, "status": "finishing",
+                                       "note": "the claim packet is already being built; its summary comes back from "
+                                               "the first end_sweep call. Say nothing about the result until then."}
             if self.row:
                 self._close_row()
             scan_open = self.scanning
@@ -376,6 +382,7 @@ class LiveSweep:
                         "advice": f"rows {', '.join(missing)} were never captured; ask before ending"}
             self._flush_room_window()
             self.ended = True
+        self.on_event("finishing", {})
         if closed_early:
             self.run.note("sweep", "connection closed before the sweep was ended; packet built from what was captured")
         meta = {"id": self.root.name, "captured_at": self.started_at, "device": "phone browser",
@@ -395,7 +402,8 @@ class LiveSweep:
                    f"the adjuster to review.")
         if packet.room.floor_area_m2 is None:
             summary += " Room size was not measured in this sweep."
-        return {"ok": True, "summary": summary, "report": f"/sweeps/{self.root.name}/report.html"}
+        self.result = {"ok": True, "summary": summary, "report": f"/sweeps/{self.root.name}/report.html"}
+        return self.result
 
 
 def scan_coverage(entries: list[dict]) -> tuple[set[int], bool, bool]:

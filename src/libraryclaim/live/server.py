@@ -154,7 +154,8 @@ async def live(ws: WebSocket) -> None:
             log.exception("tool %s failed", name)
             result, urgent = {"ok": False, "error": f"{name} failed: {exc}"}, False
         emit("tool", {"name": name, "args": args, "phase": "done", "result": result})
-        if name == "end_sweep" and result.get("ok"):
+        if name == "end_sweep" and result.get("report") and not shown.get("done"):
+            shown["done"] = True
             emit("done", {"report": result["report"], "summary": result["summary"]})
         scheduling = types.FunctionResponseScheduling.INTERRUPT if urgent else types.FunctionResponseScheduling.WHEN_IDLE
         await session.send_tool_response(function_responses=[

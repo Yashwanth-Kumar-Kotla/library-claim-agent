@@ -185,7 +185,8 @@ def test_end_after_disconnect_builds_a_packet_and_says_so(live):
     out = s.end(True, closed_early=True)
     packet = json.loads((s.root / "claim_packet.json").read_text())
     assert out["ok"] and any("connection closed" in r["reason"] for r in packet["review_queue"])
-    assert s.end()["ok"] is False  # never twice
+    built = (s.root / "claim_packet.json").stat().st_mtime_ns
+    assert s.end() is out and (s.root / "claim_packet.json").stat().st_mtime_ns == built  # never built twice
 
 
 
@@ -413,3 +414,32 @@ def test_no_shelf_nudge_during_the_room_scan(live):
     pan(s, clock, textured(480, 4000, seed=3), steps=4, step_px=200)
     clock.t += 60
     assert s.nudge() is None
+
+
+def test_second_end_call_is_not_an_error_and_later_calls_repeat_the_summary(live):
+    s, clock, events = live
+    first = s.end()
+    assert first["ok"] and "summary" in first and "finishing" in events
+    assert s.end() == first  # repeated, so the agent reads the same numbers
+    s.result = None          # as if the first call were still building the packet
+    again = s.end()
+    assert again["ok"] and again["status"] == "finishing" and "summary" not in again
+
+
+def test_no_shelf_nudge_right_after_the_room_scan_closes(live):
+    s, clock, _ = live
+    img = draw_row(ROWS["A1"])[0]
+    s.start_row("A1")
+    for _ in range(3):
+        s.add_frame(jpeg(img))
+    s.finish_row()
+    clock.t += 40
+    s.start_room_scan()
+    turn(s, clock, range(0, 360, 10))
+    turn(s, clock, [0], beta=125)
+    turn(s, clock, [0], beta=55)
+    assert s.finish_room_scan()["ok"]
+    pan(s, clock, textured(480, 4000, seed=3), steps=4, step_px=200)
+    assert s.nudge() is None  # seen live: a shelf nudge 0.3 s after the turn finished
+    clock.t += 31
+    assert s.nudge()
