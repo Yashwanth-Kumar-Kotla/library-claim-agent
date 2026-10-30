@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contents claim live-20261029-192400</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f5f0e6;--card:#fbf8f2;--ink:#1d1a15;--soft:#5d564b;--faint:#8f8778;--rule:#e2d9c8;--brass:#a8792a;
+--sage:#3f7a4f;--sage-bg:#e3efe3;--amber:#b0611a;--amber-bg:#f8e7d2;--grey-bg:#ece6da;--rose:#a8453b;
+--serif:"Hanken Grotesk",-apple-system,"Segoe UI",sans-serif;--sans:"Hanken Grotesk",-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--paper:#14120f;--card:#1c1a16;--ink:#eee7da;--soft:#b7ae9e;--faint:#857d6f;--rule:#2e2a23;
+--brass:#d4ad5b;--sage:#9fc6a3;--sage-bg:#1f2d22;--amber:#f0a453;--amber-bg:#33251a;--grey-bg:#26231d;--rose:#e88f86}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 var(--sans);
+background-image:radial-gradient(90% 40% at 100% 0%,color-mix(in srgb,var(--brass) 9%,transparent),transparent 70%)}
+.wrap{max-width:1080px;margin:0 auto;padding:40px 24px 72px}
+a{color:inherit}
+.eyebrow{font:500 11.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin:0 0 14px}
+h1{font:700 clamp(30px,4.6vw,46px)/1.1 var(--serif);letter-spacing:-.025em;margin:0 0 12px}
+h1 em{font-style:normal;color:var(--brass)}
+h2{font:700 21px/1.2 var(--serif);margin:0;letter-spacing:-.015em}
+.meta{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--soft);font:400 13px var(--mono)}
+.meta b{color:var(--ink);font-weight:500}
+section{margin-top:44px}
+.head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:18px;flex-wrap:wrap}
+.head .note{color:var(--faint);font-size:13px}
+
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:16px;overflow:hidden;margin-top:30px}
+.fig{background:var(--card);padding:20px 20px 18px;animation:rise .6s both}
+.fig:nth-child(2){animation-delay:.05s}.fig:nth-child(3){animation-delay:.1s}.fig:nth-child(4){animation-delay:.15s}
+.fig small{display:block;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.fig b{display:block;font:700 30px/1.15 var(--serif);margin:8px 0 4px;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.fig span{color:var(--soft);font-size:13px}
+.fig.alert b{color:var(--amber)}
+.fig b.range{font-size:21px;line-height:1.75;white-space:nowrap}
+
+.split{margin-top:22px}
+.bar{display:flex;height:12px;border-radius:6px;overflow:hidden;background:var(--grey-bg)}
+.bar i{display:block}
+.bar .s-id{background:var(--sage)}.bar .s-ap{background:var(--amber)}.bar .s-un{background:var(--faint);opacity:.45}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;font-size:13px;color:var(--soft)}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:0}
+
+.room{display:grid;grid-template-columns:minmax(220px,340px) 1fr;gap:28px;align-items:start}
+@media(max-width:720px){.room{grid-template-columns:1fr}}
+.plan{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:18px}
+.plan svg{width:100%;height:auto;display:block}
+.plan .wall{fill:color-mix(in srgb,var(--brass) 10%,transparent);stroke:var(--ink);stroke-width:2.5}
+.plan text{font:500 11px var(--mono);fill:var(--soft)}
+.plan .empty{color:var(--faint);font-size:14px;padding:40px 10px;text-align:center}
+dl.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px 22px;margin:0}
+dl.stats div{border-top:1px solid var(--rule);padding-top:10px}
+dt{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+dd{margin:4px 0 0;font:600 21px/1.2 var(--serif);font-variant-numeric:tabular-nums}
+dd small{display:block;font:400 12.5px var(--sans);color:var(--soft)}
+.method{margin-top:16px;color:var(--soft);font-size:13.5px}
+.meter{display:inline-block;width:70px;height:6px;border-radius:3px;background:var(--grey-bg);vertical-align:middle;margin-left:6px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--brass)}
+
+.queue{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+details{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:0 16px}
+summary{list-style:none;cursor:pointer;display:flex;gap:12px;align-items:center;padding:12px 0}
+summary::-webkit-details-marker{display:none}
+summary .ref{font:500 13px var(--mono);min-width:70px}
+summary .first,.one .first{flex:1;min-width:0;color:var(--soft);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.one{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:12px 16px}
+.one .ref{font:500 13px var(--mono);min-width:70px}.one .first{white-space:normal}
+summary .n{font:500 12px var(--mono);color:var(--faint)}
+summary::after{content:"+";font:400 18px var(--mono);color:var(--faint)}
+details[open] summary::after{content:"−"}
+details ul{margin:0 0 14px;padding-left:82px;color:var(--soft);font-size:14px}
+@media(max-width:560px){details ul{padding-left:18px}summary .ref,.one .ref{min-width:0}}
+html,body{overflow-x:hidden}
+details li{margin:4px 0}
+
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.f{border:1px solid var(--rule);background:var(--card);color:var(--soft);border-radius:999px;padding:6px 13px;font:500 13px var(--sans);cursor:pointer}
+.f.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.f b{font-family:var(--mono);font-weight:500;margin-left:4px;opacity:.75}
+.search{margin-left:auto;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:10px;padding:8px 12px;font:14px var(--sans);min-width:200px}
+.scroll{overflow-x:auto;border:1px solid var(--rule);border-radius:14px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:760px}
+th{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint);text-align:left;padding:12px 14px;border-bottom:1px solid var(--rule);position:sticky;top:0;background:var(--card)}
+td{padding:11px 14px;border-bottom:1px solid var(--rule);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.thumb{width:34px;height:52px;object-fit:cover;border-radius:4px;background:var(--grey-bg);display:block}
+.lid{font:400 12.5px var(--mono);color:var(--faint);white-space:nowrap}
+.ttl{font:600 15px/1.3 var(--serif);letter-spacing:-.005em}
+.sub{color:var(--soft);font-size:13px}
+.tag{display:inline-block;font:500 10.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;white-space:nowrap}
+.t-identified,.t-priced{color:var(--sage);background:var(--sage-bg)}
+.t-needs_appraisal{color:var(--amber);background:var(--amber-bg)}
+.t-unidentified,.t-range{color:var(--soft);background:var(--grey-bg)}
+.amt{font-variant-numeric:tabular-nums;white-space:nowrap}
+.src{display:block;font:400 11.5px var(--mono);color:var(--faint);text-decoration-thickness:1px}
+.conv{font:500 10px var(--mono);color:var(--amber);margin-left:6px;text-transform:uppercase}
+.nil{color:var(--faint)}
+.conf{display:inline-block;width:46px;height:5px;border-radius:3px;background:var(--grey-bg);overflow:hidden;vertical-align:middle;margin-right:6px}
+.conf i{display:block;height:100%;background:var(--ink);opacity:.7}
+tr.hide{display:none!important}
+@media(max-width:640px){
+  table.cards{min-width:0}.scroll:has(table.cards){overflow:visible}
+  table.cards tr:first-child{display:none}
+  table.cards tr{display:grid;grid-template-columns:auto 1fr;column-gap:12px;row-gap:4px;padding:14px;border-bottom:1px solid var(--rule)}
+  table.cards tr:last-child{border-bottom:0}
+  table.cards td{display:block;padding:0;border:0;text-align:left}
+  table.cards td{grid-column:2}
+  table.cards td:first-child{grid-column:1;grid-row:1 / span 7}
+  table.cards td[data-l]{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:14px}
+  table.cards td[data-l] .v{text-align:right}
+  table.cards td[data-l]::before{content:attr(data-l);font:500 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);padding-top:3px}
+  table.cards .src{display:inline;margin-left:8px}
+}
+footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--rule);color:var(--faint);font-size:13px;display:grid;gap:6px}
+@keyframes rise{from{transform:translateY(8px)}to{transform:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+@media print{body{background:#fff}.tools,.src{display:none}.scroll{overflow:visible;border:0}section{break-inside:avoid-page}details{break-inside:avoid}}
+</style></head><body><div class="wrap">
+
+<header>
+  <p class="eyebrow">Contents claim · home library</p>
+  <h1>6 books, 62 other items, <em>18.55 m²</em></h1>
+  <div class="meta">
+    <span>Sweep <b>live-20261029-192400</b></span><span>2026-10-30T00:24:00+00:00</span>
+    <span>phone browser</span><span>Values in <b>USD</b> · US</span>
+    <span>171 s sweep</span>
+  </div>
+</header>
+
+<div class="figs">
+  <div class="fig"><small>Books · replacement</small><b>USD 106.12</b><span>used value USD 50.84</span></div>
+  <div class="fig"><small>Other contents</small><b class="range">USD 3,359.02 – 7,205.48</b><span>replacement, low to high</span></div>
+  <div class="fig alert"><small>Excluded from totals</small><b>4</b><span>awaiting appraisal or no price found</span></div>
+  <div class="fig alert"><small>For the adjuster</small><b>65</b><span>lines with review notes</span></div>
+</div>
+
+
+<div class="split">
+  <div class="bar">
+    <i class="s-id" style="width:100.0%"></i><i class="s-ap" style="width:0.0%"></i><i class="s-un" style="width:0.0%"></i>
+  </div>
+  <div class="legend">
+    <span><i style="background:var(--sage)"></i>6 identified</span>
+    <span><i style="background:var(--amber)"></i>0 need appraisal</span>
+    <span><i style="background:var(--faint);opacity:.45"></i>0 unidentified</span>
+    <span>shelf run —</span>
+  </div>
+</div>
+
+
+<section>
+  <div class="head"><h2>Room</h2><span class="note">non-rectangular, 20 corners; floor area from the outline polygon, length/width are the smallest enclosing rectangle</span></div>
+  <div class="room">
+    <div class="plan">
+      <svg viewBox="0 0 300 220" role="img" aria-label="Floor plan 5.39 by 5.31 metres">
+        <rect class="wall" x="68.9" y="46.0" width="142.1" height="140.0" rx="2"/>
+        <text x="139.95" y="38.0" text-anchor="middle">5.39 m</text>
+        <text x="219.0" y="116.0" dominant-baseline="middle">5.31 m</text>
+        <text x="139.95" y="116.0" text-anchor="middle" dominant-baseline="middle">18.55 m²</text>
+      </svg>
+    </div>
+    <div>
+      <dl class="stats">
+        <div><dt>Floor</dt><dd>18.55 m²<small>199.6 ft²</small></dd></div>
+        <div><dt>Walls</dt><dd>85.07 m²<small>915.7 ft²</small></dd></div>
+        <div><dt>Shelved wall</dt><dd>1.28 m²<small>covered by shelving</small></dd></div>
+        <div><dt>Length × width</dt><dd>5.39 × 5.31<small>metres</small></dd></div>
+        <div><dt>Ceiling</dt><dd>3.95 m<small>floor to ceiling</small></dd></div>
+      </dl>
+      <p class="method">Measured by turn-around scan: Depth Pro metric depth on 19 frames, phone orientation, no marker correction. Confidence <span class="meter"><i style="width:56%"></i></span></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="head"><h2>For the adjuster</h2><span class="note">every line the system is not certain of, and why</span></div>
+  <div class="queue">
+    <details><summary><span class="ref">room</span><span class="first">no marker seen in depth-mapped frames; depth model scale used uncorrected</span><span class="n">3</span></summary>
+    <ul><li>no marker seen in depth-mapped frames; depth model scale used uncorrected</li><li>non-rectangular outline simplified to 20 corners</li><li>policyholder said &#34;Is that an original or a print?&#34; about &#39;framed picture on the wall&#39; on the room; could not tie it to one line, please check</li></ul></details>
+    <div class="one"><span class="ref">A1</span><span class="first">no marker and too few books to set a scale; spine sizes not reported</span></div>
+    <div class="one"><span class="ref">B1</span><span class="first">no marker and too few books to set a scale; spine sizes not reported</span></div>
+    <details><summary><span class="ref">I-01</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-02</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-03</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-04</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-05</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-06</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-07</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-08</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>fewer than 3 new listings for &#39;Black handle with neon green accent (hand grip/exerciser)&#39; on eBay US</li></ul></details>
+    <details><summary><span class="ref">I-09</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-10</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-11</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-12</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-13</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <div class="one"><span class="ref">I-14</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span></div>
+    <details><summary><span class="ref">I-15</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-16</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-17</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-18</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <div class="one"><span class="ref">I-19</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span></div>
+    <details><summary><span class="ref">I-20</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-21</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-22</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-23</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-24</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <div class="one"><span class="ref">I-25</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span></div>
+    <details><summary><span class="ref">I-26</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-27</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-28</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <div class="one"><span class="ref">I-29</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span></div>
+    <details><summary><span class="ref">I-30</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-31</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-32</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-33</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-34</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-35</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-36</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-37</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-38</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-39</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-40</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-41</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>art defaults to appraisal; the policyholder has not said it is a print</li></ul></details>
+    <details><summary><span class="ref">I-42</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <div class="one"><span class="ref">I-43</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span></div>
+    <details><summary><span class="ref">I-44</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-45</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-46</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>art defaults to appraisal; the policyholder has not said it is a print</li></ul></details>
+    <details><summary><span class="ref">I-47</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-48</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-49</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-50</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-51</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-52</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-53</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-54</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-55</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-56</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-57</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-58</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>art defaults to appraisal; the policyholder has not said it is a print</li></ul></details>
+    <details><summary><span class="ref">I-59</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-60</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-61</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details>
+    <details><summary><span class="ref">I-62</span><span class="first">approximate size of the front face from monocular depth; depth not measured</span><span class="n">2</span></summary>
+    <ul><li>approximate size of the front face from monocular depth; depth not measured</li><li>brand/model not visible; interquartile range of similar new items</li></ul></details></div>
+  
+</section>
+
+<section>
+  <div class="head"><h2>Books</h2><span class="note">prices are medians of live listings; each links to its search</span></div>
+  <div class="tools" data-table="books">
+    <button class="f on" data-f="all">All<b>6</b></button>
+    <button class="f" data-f="identified">Identified<b>6</b></button>
+    <button class="f" data-f="needs_appraisal">Appraisal<b>0</b></button>
+    <button class="f" data-f="unidentified">Unidentified<b>0</b></button>
+    <input class="search" type="search" placeholder="Search title, author, line" aria-label="Search books">
+  </div>
+  <div class="scroll"><table id="books" class="cards">
+    <tr><th></th><th>Line</th><th>Book</th><th>Status</th><th class="n">H × T cm</th><th>Match</th><th class="n">Replacement</th><th class="n">Used</th></tr>
+    <tr data-s="identified" data-q="a1-01 bhagavad-gita as it is prabhupada a. c. bhaktivedanta swami">
+      <td><a href="out/rows/A1.jpg#xyxy=429,196,695,1119" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A1-01.jpg" alt=""></a></td>
+      <td class="lid">A1-01</td>
+      <td><div class="ttl">Bhagavad-Gita As It Is</div><div class="sub">Prabhupada A. C. Bhaktivedanta Swami</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">— × — cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 15.00</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Bhagavad-Gita+As+It+Is+Prabhupada+A.+C.+Bhaktivedanta+Swami&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 6.50</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Bhagavad-Gita+As+It+Is+Prabhupada+A.+C.+Bhaktivedanta+Swami&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a1-02 coming back : the science of reincarnation ">
+      <td><a href="out/rows/A1.jpg#xyxy=679,200,765,1115" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A1-02.jpg" alt=""></a></td>
+      <td class="lid">A1-02</td>
+      <td><div class="ttl">Coming Back : the Science of Reincarnation</div><div class="sub"></div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">— × — cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:92%"></i></span><span class="lid">0.92</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 17.04</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Coming+Back&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 4.97</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Coming+Back&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a1-03 the science of self realization a. c. bhaktivedanta swami prabhupāda">
+      <td><a href="out/rows/A1.jpg#xyxy=710,191,871,1119" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A1-03.jpg" alt=""></a></td>
+      <td class="lid">A1-03</td>
+      <td><div class="ttl">The Science of Self Realization</div><div class="sub">A. C. Bhaktivedanta Swami Prabhupāda</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">— × — cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 9.00</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=The+Science+of+Self+Realization+A.+C.+Bhaktivedanta+Swami+Prabhup%C4%81da&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 6.99</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=The+Science+of+Self+Realization+A.+C.+Bhaktivedanta+Swami+Prabhup%C4%81da&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="b1-01 the full monty wendy holden">
+      <td><a href="out/rows/B1.jpg#xyxy=480,359,703,1059" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/B1-01.jpg" alt=""></a></td>
+      <td class="lid">B1-01</td>
+      <td><div class="ttl">The Full Monty</div><div class="sub">Wendy Holden</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">— × — cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 20.85</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=The+Full+Monty+Wendy+Holden&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 7.84</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=The+Full+Monty+Wendy+Holden&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="b1-02 counterfeit prince of old texas, the: swindling slaver monroe edwards lora-marie bernard">
+      <td><a href="out/rows/B1.jpg#xyxy=567,262,766,1063" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/B1-02.jpg" alt=""></a></td>
+      <td class="lid">B1-02</td>
+      <td><div class="ttl">Counterfeit Prince of Old Texas, The: Swindling Slaver Monroe Edwards</div><div class="sub">Lora-Marie Bernard</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">— × — cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:91%"></i></span><span class="lid">0.91</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 22.66</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Counterfeit+Prince+of+Old+Texas%2C+The+Lora-Marie+Bernard&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 9.61</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Counterfeit+Prince+of+Old+Texas%2C+The+Lora-Marie+Bernard&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="b1-03 the witchwood crown tad williams">
+      <td><a href="out/rows/B1.jpg#xyxy=714,225,976,1051" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/B1-03.jpg" alt=""></a></td>
+      <td class="lid">B1-03</td>
+      <td><div class="ttl">The Witchwood Crown</div><div class="sub">Tad Williams</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">— × — cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 21.57</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=The+Witchwood+Crown+Tad+Williams&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 14.93</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=The+Witchwood+Crown+Tad+Williams&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr>
+  </table></div>
+</section>
+
+
+
+<section>
+  <div class="head"><h2>Other contents</h2><span class="note">sizes are the front face, from depth; art waits for appraisal unless it is a print</span></div>
+  <div class="scroll"><table class="cards">
+    <tr><th>Line</th><th>Item</th><th>Category</th><th class="n">W × H cm</th><th>Status</th><th class="n">Replacement</th></tr>
+    <tr>
+      <td class="lid"><a href="frames/00002.jpg#xyxy=0,0,1080,1898" target="_blank" rel="noopener">I-01</a></td>
+      <td><div class="ttl">mechanical keyboard with custom wave pattern Japanese keycaps and RGB backlight</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">19 × 33</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 34.97 – USD 44.90</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=mechanical+keyboard+with+custom+wave+pattern+Japanese+keycaps+and+RGB+backlight&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00012.jpg#xyxy=0,988,1080,1543" target="_blank" rel="noopener">I-02</a></td>
+      <td><div class="ttl">wooden desk or table edge/wrist rest</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">30 × 15</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 94.26 – USD 434.90</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=wooden+desk+or+table+edge%2Fwrist+rest&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00080.jpg#xyxy=0,397,542,1918" target="_blank" rel="noopener">I-03</a></td>
+      <td><div class="ttl">white metal rolling utility cart</div></td>
+      <td class="sub" data-l="Category"><span class="v">shelving</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">30 × 83</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 39.41 – USD 54.29</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=white+metal+rolling+utility+cart&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00080.jpg#xyxy=725,69,959,385" target="_blank" rel="noopener">I-04</a></td>
+      <td><div class="ttl">blue pencil holder/container on desk</div></td>
+      <td class="sub" data-l="Category"><span class="v">decor</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">11 × 15</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 12.76 – USD 20.08</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=blue+pencil+holder%2Fcontainer+on+desk&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00080.jpg#xyxy=536,349,1071,499" target="_blank" rel="noopener">I-05</a></td>
+      <td><div class="ttl">laptop computer on desk</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">22 × 6</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 54.14 – USD 109.99</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=laptop+computer+on+desk&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00090.jpg#xyxy=387,1436,608,1751" target="_blank" rel="noopener">I-06</a></td>
+      <td><div class="ttl">Small black electronic device or power bank</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">13 × 19</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 19.18 – USD 34.73</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Small+black+electronic+device+or+power+bank&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00090.jpg#xyxy=360,1489,474,1726" target="_blank" rel="noopener">I-07</a></td>
+      <td><div class="ttl">Computer mouse partially covered</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">7 × 14</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 15.32 – USD 39.97</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Computer+mouse+partially+covered&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00090.jpg#xyxy=6,808,236,1009" target="_blank" rel="noopener">I-08</a></td>
+      <td><div class="ttl">Black handle with neon green accent (hand grip/exerciser)</div></td>
+      <td class="sub" data-l="Category"><span class="v">other</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">8 × 7</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00090.jpg#xyxy=4,860,327,1071" target="_blank" rel="noopener">I-09</a></td>
+      <td><div class="ttl">Yellow sticky notes pad</div></td>
+      <td class="sub" data-l="Category"><span class="v">other</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">12 × 8</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 10.45 – USD 18.71</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Yellow+sticky+notes+pad&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00090.jpg#xyxy=855,871,1080,1900" target="_blank" rel="noopener">I-10</a></td>
+      <td><div class="ttl">White metal desk frame and leg structure</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">16 × 73</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 85.48 – USD 179.58</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=White+metal+desk+frame+and+leg+structure&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00184.jpg#xyxy=665,0,1055,247" target="_blank" rel="noopener">I-11</a></td>
+      <td><div class="ttl">light-colored floor mat/runner</div></td>
+      <td class="sub" data-l="Category"><span class="v">rug</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">68 × 43</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 29.87 – USD 78.73</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=light-colored+floor+mat%2Frunner&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00193.jpg#xyxy=656,1244,1078,1920" target="_blank" rel="noopener">I-12</a></td>
+      <td><div class="ttl">patterned kitchen runner mat</div></td>
+      <td class="sub" data-l="Category"><span class="v">rug</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">50 × 80</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 28.33 – USD 46.19</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=patterned+kitchen+runner+mat&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00193.jpg#xyxy=902,180,1076,1102" target="_blank" rel="noopener">I-13</a></td>
+      <td><div class="ttl">stainless steel refrigerator/appliance panel</div></td>
+      <td class="sub" data-l="Category"><span class="v">appliance</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">24 × 129</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 70.47 – USD 224.00</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=stainless+steel+refrigerator%2Fappliance+panel&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00200.jpg#xyxy=0,915,815,1509" target="_blank" rel="noopener">I-14</a></td>
+      <td><div class="ttl">built-in dishwasher with black top control panel and silver front</div><div class="sub">ESTATE</div></td>
+      <td class="sub" data-l="Category"><span class="v">appliance</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">48 × 35</span></td>
+      <td><span class="tag t-priced">priced</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 149.95</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=ESTATE&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00200.jpg#xyxy=536,858,1077,1301" target="_blank" rel="noopener">I-15</a></td>
+      <td><div class="ttl">dark reddish-brown wooden kitchen base cabinets</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">32 × 26</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 187.38 – USD 380.99</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=dark+reddish-brown+wooden+kitchen+base+cabinets&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00214.jpg#xyxy=430,0,1080,1201" target="_blank" rel="noopener">I-16</a></td>
+      <td><div class="ttl">white shelving unit with multiple shelves</div></td>
+      <td class="sub" data-l="Category"><span class="v">shelving</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">75 × 138</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 34.28 – USD 98.00</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=white+shelving+unit+with+multiple+shelves&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00214.jpg#xyxy=522,445,974,775" target="_blank" rel="noopener">I-17</a></td>
+      <td><div class="ttl">black electronic console/device box on shelf</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">53 × 39</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 459.98 – USD 1,197.00</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=black+electronic+console%2Fdevice+box+on+shelf&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00214.jpg#xyxy=1,0,465,852" target="_blank" rel="noopener">I-18</a></td>
+      <td><div class="ttl">dark brown or black cabinet/desk side</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">62 × 114</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 230.44 – USD 439.19</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=dark+brown+or+black+cabinet%2Fdesk+side&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00220.jpg#xyxy=474,0,1080,572" target="_blank" rel="noopener">I-19</a></td>
+      <td><div class="ttl">Minion plush toy with blue overalls and yellow body</div><div class="sub">Minions</div></td>
+      <td class="sub" data-l="Category"><span class="v">decor</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">26 × 25</span></td>
+      <td><span class="tag t-priced">priced</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 18.00</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Minions&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00220.jpg#xyxy=0,445,467,837" target="_blank" rel="noopener">I-20</a></td>
+      <td><div class="ttl">black power strip / surge protector</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">22 × 19</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 15.57 – USD 29.60</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=black+power+strip+%2F+surge+protector&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00220.jpg#xyxy=192,378,411,612" target="_blank" rel="noopener">I-21</a></td>
+      <td><div class="ttl">white USB charger block</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">10 × 11</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 8.49 – USD 11.33</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=white+USB+charger+block&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00220.jpg#xyxy=427,666,599,769" target="_blank" rel="noopener">I-22</a></td>
+      <td><div class="ttl">small scissors with yellow plastic handles</div></td>
+      <td class="sub" data-l="Category"><span class="v">other</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">8 × 5</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 9.99 – USD 14.99</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=small+scissors+with+yellow+plastic+handles&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00220.jpg#xyxy=644,641,744,1372" target="_blank" rel="noopener">I-23</a></td>
+      <td><div class="ttl">white circular magnetic charging puck with cable</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">5 × 37</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 7.99 – USD 16.00</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=white+circular+magnetic+charging+puck+with+cable&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00220.jpg#xyxy=369,1207,988,1543" target="_blank" rel="noopener">I-24</a></td>
+      <td><div class="ttl">dark grey retail box</div></td>
+      <td class="sub" data-l="Category"><span class="v">other</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">42 × 23</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 75.99 – USD 160.00</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=dark+grey+retail+box&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00229.jpg#xyxy=0,633,287,904" target="_blank" rel="noopener">I-25</a></td>
+      <td><div class="ttl">Black box packaging on shelf</div><div class="sub">Womier S-K80</div></td>
+      <td class="sub" data-l="Category"><span class="v">other</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">14 × 14</span></td>
+      <td><span class="tag t-priced">priced</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 50.00</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Womier+S-K80&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00229.jpg#xyxy=0,1345,335,1883" target="_blank" rel="noopener">I-26</a></td>
+      <td><div class="ttl">White tray-like board accessory with anti-slip pads</div></td>
+      <td class="sub" data-l="Category"><span class="v">other</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">23 × 36</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 58.69 – USD 74.96</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=White+tray-like+board+accessory+with+anti-slip+pads&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00229.jpg#xyxy=390,1322,740,1451" target="_blank" rel="noopener">I-27</a></td>
+      <td><div class="ttl">Small electronics adapter package box</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">27 × 10</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 20.26 – USD 55.90</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Small+electronics+adapter+package+box&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00293.jpg#xyxy=0,835,335,1322" target="_blank" rel="noopener">I-28</a></td>
+      <td><div class="ttl">metal stool with patterned perforated seat</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">28 × 41</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 57.69 – USD 134.34</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=metal+stool+with+patterned+perforated+seat&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00314.jpg#xyxy=762,1493,1080,1918" target="_blank" rel="noopener">I-29</a></td>
+      <td><div class="ttl">marble pattern digital bathroom scale</div><div class="sub">TAYLOR</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">32 × 42</span></td>
+      <td><span class="tag t-priced">priced</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 40.00</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=TAYLOR&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00323.jpg#xyxy=508,0,1035,205" target="_blank" rel="noopener">I-30</a></td>
+      <td><div class="ttl">swivel chair base with wheels</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">58 × 23</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 56.50 – USD 102.47</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=swivel+chair+base+with+wheels&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00349.jpg#xyxy=0,57,436,589" target="_blank" rel="noopener">I-31</a></td>
+      <td><div class="ttl">turquoise hard-shell rolling luggage suitcase</div></td>
+      <td class="sub" data-l="Category"><span class="v">other</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">41 × 51</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 79.23 – USD 151.81</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=turquoise+hard-shell+rolling+luggage+suitcase&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00363.jpg#xyxy=0,0,964,769" target="_blank" rel="noopener">I-32</a></td>
+      <td><div class="ttl">bed with patterned blue bedsheet and mattress base</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">76 × 60</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 24.39 – USD 43.05</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=bed+with+patterned+blue+bedsheet+and+mattress+base&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00378.jpg#xyxy=0,1330,284,1610" target="_blank" rel="noopener">I-33</a></td>
+      <td><div class="ttl">Brown pillow resting on bed</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">48 × 48</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 89.00 – USD 179.00</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Brown+pillow+resting+on+bed&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00378.jpg#xyxy=0,971,115,1395" target="_blank" rel="noopener">I-34</a></td>
+      <td><div class="ttl">Teal upholstered headboard or bed post</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">23 × 84</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 218.50 – USD 525.99</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Teal+upholstered+headboard+or+bed+post&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00380.jpg#xyxy=834,808,1078,1443" target="_blank" rel="noopener">I-35</a></td>
+      <td><div class="ttl">black dish/saucer folding chair piled with pillows and clothes</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">28 × 74</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 45.00 – USD 81.69</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=black+dish%2Fsaucer+folding+chair+piled+with+pillows+and+clothes&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00393.jpg#xyxy=110,1605,427,1918" target="_blank" rel="noopener">I-36</a></td>
+      <td><div class="ttl">laptop open on desk displaying browser</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">40 × 39</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 42.79 – USD 136.15</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=laptop+open+on+desk+displaying+browser&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00393.jpg#xyxy=619,1624,1080,1920" target="_blank" rel="noopener">I-37</a></td>
+      <td><div class="ttl">desktop monitor showing applications</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">49 × 32</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 29.69 – USD 92.16</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=desktop+monitor+showing+applications&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00393.jpg#xyxy=11,1822,522,1918" target="_blank" rel="noopener">I-38</a></td>
+      <td><div class="ttl">desk surface</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">60 × 11</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 37.49 – USD 80.54</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=desk+surface&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00393.jpg#xyxy=536,533,1075,681" target="_blank" rel="noopener">I-39</a></td>
+      <td><div class="ttl">curtain rod mounted above window</div></td>
+      <td class="sub" data-l="Category"><span class="v">decor</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">81 × 22</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 24.13 – USD 40.02</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=curtain+rod+mounted+above+window&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00393.jpg#xyxy=596,568,1080,1756" target="_blank" rel="noopener">I-40</a></td>
+      <td><div class="ttl">window horizontal blinds</div></td>
+      <td class="sub" data-l="Category"><span class="v">decor</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">67 × 164</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 24.64 – USD 35.00</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=window+horizontal+blinds&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00405.jpg#xyxy=801,1000,924,1167" target="_blank" rel="noopener">I-41</a></td>
+      <td><div class="ttl">small framed picture hanging on the wall</div></td>
+      <td class="sub" data-l="Category"><span class="v">art</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">17 × 24</span></td>
+      <td><span class="tag t-needs_appraisal">needs appraisal</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00405.jpg#xyxy=721,1501,988,1918" target="_blank" rel="noopener">I-42</a></td>
+      <td><div class="ttl">mirror with black frame on the wall</div></td>
+      <td class="sub" data-l="Category"><span class="v">decor</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">36 × 56</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 16.99 – USD 49.99</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=mirror+with+black+frame+on+the+wall&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00429.jpg#xyxy=153,961,667,1618" target="_blank" rel="noopener">I-43</a></td>
+      <td><div class="ttl">Michael Kors pattern tote bag hanging on door handle</div><div class="sub">Michael Kors</div></td>
+      <td class="sub" data-l="Category"><span class="v">other</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">49 × 63</span></td>
+      <td><span class="tag t-priced">priced</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 80.00</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Michael+Kors&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00429.jpg#xyxy=751,1127,1080,1912" target="_blank" rel="noopener">I-44</a></td>
+      <td><div class="ttl">white shelving side table unit</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">30 × 72</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 42.99 – USD 85.09</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=white+shelving+side+table+unit&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00429.jpg#xyxy=902,1205,1080,1326" target="_blank" rel="noopener">I-45</a></td>
+      <td><div class="ttl">smartphone lying flat on table</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">16 × 11</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 10.41 – USD 24.16</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=smartphone+lying+flat+on+table&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00437.jpg#xyxy=390,606,571,867" target="_blank" rel="noopener">I-46</a></td>
+      <td><div class="ttl">Framed devotional/religious picture hung on the wall</div></td>
+      <td class="sub" data-l="Category"><span class="v">art</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">16 × 23</span></td>
+      <td><span class="tag t-needs_appraisal">needs appraisal</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00437.jpg#xyxy=185,1367,571,1920" target="_blank" rel="noopener">I-47</a></td>
+      <td><div class="ttl">Wall-mounted rectangular mirror with black frame</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">34 × 49</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 39.99 – USD 78.70</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Wall-mounted+rectangular+mirror+with+black+frame&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00445.jpg#xyxy=702,881,1077,1192" target="_blank" rel="noopener">I-48</a></td>
+      <td><div class="ttl">computer monitor</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">51 × 42</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 73.04 – USD 127.49</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=computer+monitor&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00445.jpg#xyxy=762,1228,1021,1342" target="_blank" rel="noopener">I-49</a></td>
+      <td><div class="ttl">backlit keyboard</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">31 × 13</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 19.66 – USD 30.24</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=backlit+keyboard&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00445.jpg#xyxy=102,721,219,1167" target="_blank" rel="noopener">I-50</a></td>
+      <td><div class="ttl">black desk lamp</div></td>
+      <td class="sub" data-l="Category"><span class="v">lighting</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">18 × 69</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 19.18 – USD 33.99</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=black+desk+lamp&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00445.jpg#xyxy=520,1155,1076,1920" target="_blank" rel="noopener">I-51</a></td>
+      <td><div class="ttl">mesh office chair</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">56 × 77</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 59.69 – USD 117.00</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=mesh+office+chair&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00445.jpg#xyxy=450,1134,1026,1595" target="_blank" rel="noopener">I-52</a></td>
+      <td><div class="ttl">wood and metal desk</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">68 × 55</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 89.99 – USD 289.98</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=wood+and+metal+desk&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00445.jpg#xyxy=369,1520,518,1793" target="_blank" rel="noopener">I-53</a></td>
+      <td><div class="ttl">white trash can</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">20 × 37</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 20.66 – USD 42.89</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=white+trash+can&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00445.jpg#xyxy=594,1198,1014,1367" target="_blank" rel="noopener">I-54</a></td>
+      <td><div class="ttl">black desk mat</div></td>
+      <td class="sub" data-l="Category"><span class="v">other</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">51 × 20</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 7.65 – USD 15.73</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=black+desk+mat&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00457.jpg#xyxy=355,994,700,1171" target="_blank" rel="noopener">I-55</a></td>
+      <td><div class="ttl">pink ribbed throw pillow</div></td>
+      <td class="sub" data-l="Category"><span class="v">decor</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">42 × 22</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 14.86 – USD 25.74</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=pink+ribbed+throw+pillow&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00457.jpg#xyxy=0,1173,214,1918" target="_blank" rel="noopener">I-56</a></td>
+      <td><div class="ttl">bed edge with colorful blue geometric bedding</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">19 × 67</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 71.72 – USD 123.00</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=bed+edge+with+colorful+blue+geometric+bedding&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00464.jpg#xyxy=536,1138,693,1382" target="_blank" rel="noopener">I-57</a></td>
+      <td><div class="ttl">white trash can</div></td>
+      <td class="sub" data-l="Category"><span class="v">other</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">22 × 34</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 20.66 – USD 42.89</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=white+trash+can&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00475.jpg#xyxy=307,372,711,915" target="_blank" rel="noopener">I-58</a></td>
+      <td><div class="ttl">Framed religious picture with deities&#39; sacred feet (padukas) in brown textured frame</div></td>
+      <td class="sub" data-l="Category"><span class="v">art</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">31 × 42</span></td>
+      <td><span class="tag t-needs_appraisal">needs appraisal</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00475.jpg#xyxy=444,255,531,389" target="_blank" rel="noopener">I-59</a></td>
+      <td><div class="ttl">Oval gray plastic adhesive hook or mount on the wall</div></td>
+      <td class="sub" data-l="Category"><span class="v">decor</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">7 × 10</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 9.55 – USD 24.67</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Oval+gray+plastic+adhesive+hook+or+mount+on+the+wall&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00489.jpg#xyxy=497,0,1068,560" target="_blank" rel="noopener">I-60</a></td>
+      <td><div class="ttl">Black office swivel chair with grey seat cushion</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">76 × 74</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 83.22 – USD 199.94</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Black+office+swivel+chair+with+grey+seat+cushion&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00489.jpg#xyxy=219,0,419,234" target="_blank" rel="noopener">I-61</a></td>
+      <td><div class="ttl">White metal table leg base with wheels</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">34 × 40</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 48.17 – USD 85.53</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=White+metal+table+leg+base+with+wheels&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00504.jpg#xyxy=69,286,248,407" target="_blank" rel="noopener">I-62</a></td>
+      <td><div class="ttl">Mechanical keyboard on shelf</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">24 × 16</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 39.89 – USD 104.25</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Mechanical+keyboard+on+shelf&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr>
+  </table></div>
+</section>
+
+<footer>
+  <span>Totals are computed from the lines above. A line without a price source, link and retrieval date carries no price.</span>
+  <span>Each book and item links to the saved frame it was seen in; retrieval dates are in claim_packet.json.</span>
+</footer>
+</div>
+<script>
+document.querySelectorAll(".tools").forEach(function (bar) {
+  var table = document.getElementById(bar.dataset.table), filter = "all", q = "";
+  function apply() {
+    table.querySelectorAll("tr[data-s]").forEach(function (tr) {
+      var ok = (filter === "all" || tr.dataset.s === filter) && (!q || tr.dataset.q.indexOf(q) !== -1);
+      tr.classList.toggle("hide", !ok);
+    });
+  }
+  bar.querySelectorAll(".f").forEach(function (b) {
+    b.onclick = function () { bar.querySelectorAll(".f").forEach(function (x) { x.classList.remove("on"); }); b.classList.add("on"); filter = b.dataset.f; apply(); };
+  });
+  bar.querySelector(".search").oninput = function (e) { q = e.target.value.trim().toLowerCase(); apply(); };
+});
+</script>
+</body></html>
