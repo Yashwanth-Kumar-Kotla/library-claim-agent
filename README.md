@@ -23,6 +23,22 @@ of goes to the review queue instead of being guessed.
 - [Cost and latency](#cost-and-latency)
 - [Assumptions](#assumptions) and [known limitations](#known-limitations)
 - [ARCHITECTURE.md](ARCHITECTURE.md): how the pieces fit, where scale and prices come from
+- [FAILURE_LOG.md](FAILURE_LOG.md): the worst errors, root causes, a measured fix, cost and latency
+- [Deliverables](#deliverables): where each of the six submission items is
+
+## Deliverables
+
+| # | Item | Where |
+|---|---|---|
+| 1 | Repository | this repo; `.env.example` lists every key, no secrets are committed |
+| 2 | Demo video | linked in the submission email (one unedited take) |
+| 3 | Claim packet, report and frames from the demo sweep | [`submission/`](submission/): `claim_packet.json`, `report.html`, `frames/`, `out/crops/` |
+| 4 | Ground truth and results | `submission/ground_truth_results.xlsx` (hand counts and measurements, with the system's numbers and pass bars beside them) and `submission/eval.md` |
+| 5 | Architecture note | [ARCHITECTURE.md](ARCHITECTURE.md) |
+| 6 | Failure log | [FAILURE_LOG.md](FAILURE_LOG.md) |
+
+Every processed sweep is also archived in [`results/`](results/index.md), with its packet, report, timings and session log.
+`uv run python tools/package_submission.py data/sweeps/<sweep>` rebuilds `submission/` for any sweep.
 
 ## Quick start (about 10 minutes)
 
@@ -33,7 +49,7 @@ git clone https://github.com/Yashwanth-Kumar-Kotla/library-claim-agent.git
 cd library-claim-agent
 uv sync                                   # everything, including PyTorch for the depth model
 uv run python tools/demo_offline.py       # the whole pipeline with no API keys; opens a report
-uv run pytest -q                          # 328 tests, about 10 s, no network
+uv run pytest -q                          # 361 tests, about 15 s, no network
 ```
 
 The offline demo runs on a synthetic shelf with fake model replies. Only the model calls are fake.

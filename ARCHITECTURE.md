@@ -46,7 +46,7 @@ flowchart TD
 2. **No marker on a shelf:** Depth Pro measures every spine; identified books bring the published heights of
    their printed editions (Google Books); the scale is the one factor most books agree on within 4%. Set per
    shelf, because the depth model's scale error varied from -25% to +40% between images. Too few known heights:
-   a typical book height, flagged approximate.
+   a typical book height, flagged approximate. Shelf run is then the sum of the scaled spine thicknesses.
 3. **Room:** a turn-around scan. Phone orientation (deviceorientation) plus Depth Pro place every pixel in one
    room frame; floor and ceiling are the extreme horizontal layers (from surface normals); walls are the far
    cluster in each direction. A marker seen during the turn or on a shelf corrects the depth scale.
@@ -59,6 +59,13 @@ filtered out. Fewer than 3 matching listings means no price. A country without i
 in the US market and converted at the ECB reference rate (Frankfurter), labelled converted. Every price keeps
 its listing-search URL and retrieval time; the packet check removes any price without them. Rare, signed,
 antiquarian-looking or over-threshold books and original art go to appraisal and are not priced.
+
+## Live session
+
+The Gemini Live session runs on the server, not the phone. Tools are non-blocking and every result carries
+a `next_step` for the agent. If the phone's connection drops, it reconnects within 75 s to the same sweep, and
+the agent gets the conversation history back. End stops the camera at once, the agent reads the summary,
+then the call hangs up. A session is capped at 15 minutes.
 
 ## Stages and their outputs
 
