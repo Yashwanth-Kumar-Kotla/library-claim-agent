@@ -254,6 +254,11 @@ class ItemPrice:
 RANGE_NOTE = "brand/model not visible; interquartile range of similar new items"
 
 
+def has_model(brand_model: str) -> bool:
+    """'Sony WH-1000XM4', 'Herman Miller Aeron' name a product; 'LG' or 'IKEA' only name a maker."""
+    return bool(re.search(r"\d", brand_model)) or len(brand_model.split()) > 1
+
+
 def price_item(get_json: GetJson, token: str, locale: Locale, category: str, description: str,
                brand_model: str = "", is_art: bool = False, user_says_print: bool = False,
                name: str = "") -> ItemPrice:
@@ -263,6 +268,10 @@ def price_item(get_json: GetJson, token: str, locale: Locale, category: str, des
     Art -> appraisal unless the policyholder said it is a print."""
     if is_art and not user_says_print:
         return ItemPrice("needs_appraisal", note="art defaults to appraisal; the policyholder has not said it is a print")
+    # A bare brand ("LG") is not a model: searched alone it matches anything the brand sells.
+    # Brand plus the kind of object ("LG monitor") finds comparable listings, priced as a range.
+    if brand_model and not has_model(brand_model):
+        brand_model, name = "", f"{brand_model} {name or description}".strip()
     query = brand_model or name or description
     if is_art:
         query = f"{description} art print".strip()

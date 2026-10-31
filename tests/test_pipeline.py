@@ -37,6 +37,7 @@ def test_full_run_counts_identifies_and_measures(sweep):
     assert p.totals.book_count == expected
     books = by_title(p)
     assert books["Dune"].status == "identified"
+    assert books["Dune"].publisher == "Ace" and books["The Hobbit"].publisher == ""
     for shelf in ("A1", "A2"):
         for s, _ in truth[shelf]:
             b = books.get(s.title)
@@ -492,3 +493,7 @@ def test_shelf_without_marker_scaled_by_known_book_heights(tmp_path):
     for b in measured:
         assert b.spine_height_cm == pytest.approx(truth[b.title].h_cm, rel=0.05), b.title
     assert any("scaled to" in r.reason and "identified books of known height" in r.reason for r in p.review_queue)
+    # No marker, yet the shelf run is still reported: the measured books' thicknesses, flagged approximate.
+    run_m = sum(b.spine_thickness_cm for b in p.books if b.spine_thickness_cm) / 100
+    assert p.totals.shelf_run_m == pytest.approx(run_m, abs=0.01) and run_m > 0
+    assert any("sum of spine thicknesses" in r.reason for r in p.review_queue)

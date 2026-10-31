@@ -2,7 +2,7 @@ import pytest
 
 from libraryclaim.config import Locale, Settings
 from libraryclaim.fx import get_rate
-from libraryclaim.pricing import listing_matches_book, price_book, price_item, robust_prices
+from libraryclaim.pricing import has_model, listing_matches_book, price_book, price_item, robust_prices
 from libraryclaim.review import Assertion, appraisal_reasons, excluded, says_print
 from helpers import FakeWeb
 
@@ -149,6 +149,18 @@ def test_item_without_brand_gets_sourced_range():
     web = FakeWeb({"ebay": listings(20, 30, 40, 50, 60, title="brass floor lamp")})
     p = price_item(web, "t", US, "lighting", "brass floor lamp")
     assert p.status == "range" and p.quote.low < p.quote.amount < p.quote.high
+
+
+def test_bare_brand_is_searched_with_the_object_and_priced_as_range():
+    web = FakeWeb({"ebay": listings(90, 150, 200, 260, title="LG monitor 27 inch")})
+    p = price_item(web, "t", US, "electronics", "black computer monitor", "LG", name="monitor")
+    assert web.calls[0][1]["q"] == "LG monitor" and p.status == "range"
+
+
+@pytest.mark.parametrize("bm,expected", [("LG", False), ("IKEA", False), ("Sony WH-1000XM4", True),
+                                         ("Herman Miller Aeron", True), ("Kindle", False), ("iPad 9", True)])
+def test_has_model(bm, expected):
+    assert has_model(bm) is expected
 
 
 def test_art_defaults_to_appraisal_and_is_not_searched():

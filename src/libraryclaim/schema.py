@@ -48,6 +48,7 @@ class Book(BaseModel):
     status: Literal["identified", "unidentified", "needs_appraisal"] = "unidentified"
     title: str = ""
     author: str = ""
+    publisher: str = ""  # as printed on the spine; empty when not legible
     edition: str = ""
     isbn: str = ""
     spine_height_cm: Optional[float] = None

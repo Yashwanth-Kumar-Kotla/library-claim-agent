@@ -214,7 +214,7 @@ footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--rule);color:v
     {% for b in p.books %}<tr data-s="{{ b.status }}" data-q="{{ (b.id ~ ' ' ~ b.title ~ ' ' ~ b.author)|lower }}">
       <td>{% if b.frame_ref %}<a href="{{ b.frame_ref }}" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/{{ b.id }}.jpg" alt=""></a>{% endif %}</td>
       <td class="lid">{{ b.id }}</td>
-      <td>{% if b.title %}<div class="ttl">{{ b.title }}</div><div class="sub">{{ b.author }}{% if b.edition %} · {{ b.edition }}{% endif %}{% if b.isbn %} · ISBN {{ b.isbn }}{% endif %}</div>{% else %}<div class="sub">Spine not identified</div>{% endif %}</td>
+      <td>{% if b.title %}<div class="ttl">{{ b.title }}</div><div class="sub">{{ b.author }}{% if b.publisher and not b.edition %} · {{ b.publisher }}{% endif %}{% if b.edition %} · {{ b.edition }}{% endif %}{% if b.isbn %} · ISBN {{ b.isbn }}{% endif %}</div>{% else %}<div class="sub">Spine not identified</div>{% endif %}</td>
       <td><span class="tag t-{{ b.status }}">{{ b.status|replace("_", " ") }}</span></td>
       <td class="n" data-l="Height × thickness"><span class="v">{{ num(b.spine_height_cm) }} × {{ num(b.spine_thickness_cm) }} cm</span></td>
       <td data-l="Match"><span class="v">{% if b.id_confidence %}<span class="conf"><i style="width:{{ (b.id_confidence * 100)|round|int }}%"></i></span><span class="lid">{{ "%.2f"|format(b.id_confidence) }}</span>{% else %}<span class="nil">—</span>{% endif %}</span></td>

@@ -32,11 +32,12 @@ class Spine:
     new: tuple = (18, 19, 20, 21)
     used: tuple = (6, 7, 8, 9)
     looks_antique: bool = False
+    publisher: str = ""
 
 
 ROWS = {
     "A1": [
-        Spine("Dune", "Frank Herbert", 17.8, 3.2),
+        Spine("Dune", "Frank Herbert", 17.8, 3.2, publisher="Ace"),
         Spine("The Hobbit", "J.R.R. Tolkien", 19.8, 2.2),
         Spine("Sapiens", "Yuval Noah Harari", 23.4, 3.5),
         Spine("Unreadable One", "", 21.0, 2.0, legible=False),
@@ -133,7 +134,7 @@ def read_by_hue(hue: int) -> dict:
     if not s.legible:
         return {"text": "", "legibility": 0}
     return {"text": f"{s.title.upper()} {s.author.upper()} {s.extra_text}".strip(), "title": s.title,
-            "author": s.author, "legibility": 0.9, "looks_antique": s.looks_antique}
+            "author": s.author, "publisher": s.publisher, "legibility": 0.9, "looks_antique": s.looks_antique}
 
 
 class FakeVision:

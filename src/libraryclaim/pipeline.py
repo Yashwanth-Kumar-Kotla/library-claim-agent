@@ -363,7 +363,7 @@ class SweepRun:
             return
         c = res.candidate
         b.status, b.title, b.author = "identified", c.title, ", ".join(c.authors)
-        b.edition, b.isbn = res.edition, res.isbn
+        b.edition, b.isbn, b.publisher = res.edition, res.isbn, job.text.publisher
         self.on_event("book", b.model_dump())
         if job.raw_spine and self.deps.google_books_key:
             job.edition_heights = edition_heights(c.title, c.authors[0] if c.authors else "", self.deps.get_json,
@@ -605,10 +605,18 @@ class SweepRun:
                 self.note(shelf, "no marker and too few books to set a scale; spine sizes not reported")
                 continue
             self.note(shelf, f"no marker in view: spine sizes from the depth model, {why}")
+            run = 0.0
             for j in jobs:
                 h, t = j.raw_spine[0] * k, j.raw_spine[1] * k
                 if PLAUSIBLE_HEIGHT_CM[0] <= h <= PLAUSIBLE_HEIGHT_CM[1] and PLAUSIBLE_THICKNESS_CM[0] <= t <= PLAUSIBLE_THICKNESS_CM[1]:
                     j.book.spine_height_cm, j.book.spine_thickness_cm = round(h, 1), round(t, 2)
+                    run += t
+            # Without a marker there is no shelf plane to project onto; the books' own thicknesses
+            # still give the run they occupy (a flat stack is over-counted, so it stays approximate).
+            if run:
+                self.shelf_run_cm += run
+                self.measured_any = True
+                self.note(shelf, "shelf run from the sum of spine thicknesses (no marker); approximate")
 
     def _resolve_remarks(self) -> list[Assertion]:
         """Tie each spoken remark to one line: a book by title on the shelf that was in view,
