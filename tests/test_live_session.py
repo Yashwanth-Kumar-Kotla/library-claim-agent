@@ -266,6 +266,34 @@ def turn(s, clock, headings, beta=90.0):
         s.add_frame(img, (float(a), beta, 0.0))
 
 
+def marker_jpeg():
+    img = np.full((800, 600, 3), 255, np.uint8)
+    m = cv2.aruco.generateImageMarker(cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_50), 0, 200)
+    img[300:500, 200:400] = m[..., None]
+    return jpeg(img)
+
+
+def test_turn_without_the_marker_asks_for_it_once(live):
+    s, clock, events = live
+    s.start_room_scan()
+    turn(s, clock, range(0, 360, 10))
+    turn(s, clock, [0], beta=125)
+    turn(s, clock, [0], beta=55)
+    said = s.scan_prompt()
+    assert "marker was not in view" in said and "finish_room_scan" in said
+    assert s.scan_prompt() is None and "scan_marker" not in events
+
+
+def test_marker_seen_in_the_turn_is_reported_and_not_asked_for(live):
+    s, clock, events = live
+    s.start_room_scan()
+    s.add_frame(marker_jpeg(), (0.0, 90.0, 0.0))
+    turn(s, clock, range(0, 360, 10))
+    turn(s, clock, [0], beta=125)
+    turn(s, clock, [0], beta=55)
+    assert "scan_marker" in events and "marker" not in s.scan_prompt()
+
+
 def test_full_turn_with_tilt_is_accepted_and_saved(live):
     s, clock, _ = live
     s.start_room_scan()
@@ -367,6 +395,15 @@ def test_scan_coverage_rule():
     bins, up, down = scan_coverage([e(0, 90), e(370, 100), e(-10, 80), e(45, 115), e(90, 60)])
     assert bins == {0, 15} and up and down  # 370 wraps to sector 0, -10 to 15; tilted frames add no sector
     assert scan_coverage([e(0, 114), e(0, 66)])[1:] == (False, False)  # 24 degrees is not a tilt
+
+
+def test_scan_coverage_uses_where_the_camera_points_not_alpha():
+    """Upright phone, iOS gimbal lock: alpha 299 with gamma 67 points the camera at heading 6
+    (seen in a real home turn). Counting alpha would fill the wrong sector."""
+    from libraryclaim.live.session import scan_coverage
+    from libraryclaim.room_scan import BINS
+    bins, _, _ = scan_coverage([{"alpha": 299, "beta": 89.5, "gamma": 67}])
+    assert bins == {int(6 // (360 / BINS))}
 
 
 def test_agent_told_once_when_the_turn_is_complete(live):

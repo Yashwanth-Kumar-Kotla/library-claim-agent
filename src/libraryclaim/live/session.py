@@ -27,7 +27,7 @@ from ..config import Locale, Settings
 from ..pipeline import Deps, SweepRun
 from ..quality import WORK_WIDTH, FrameQuality, assess, coaching
 from ..review import Assertion
-from ..room_scan import BINS, MIN_COVERAGE_DEG, ScanFrame
+from ..room_scan import BINS, MIN_COVERAGE_DEG, ScanFrame, aim, best_marker
 
 ROW_NAME = re.compile(r"^[A-Z][1-9][0-9]?$")
 KEYFRAME_STEP = 0.35        # keep a keyframe each time the camera has moved ~35% of a frame width
@@ -98,6 +98,7 @@ class LiveSweep:
         self.orientation_seen = False
         self.last_nudge = -1e9
         self.scan_said: set[str] = set()     # "complete", "stalled": each said at most once per scan
+        self.scan_marker = False             # the printed marker was in view during the turn: exact room scale
         self.scan_progress = (0, False, False)
         self.scan_progress_at = self.scan_started_at = 0.0
 
@@ -129,6 +130,13 @@ class LiveSweep:
             prev = self.prev_gray
         (self.root / ref).write_bytes(jpeg)
         q, gray = assess(img, prev)
+        # A marker seen during the turn turns the room's depth into exact metres; without one the
+        # scale is the depth model's own. Looked for only until it is found once.
+        if self.scanning and not self.scan_marker and orientation is not None:
+            m = best_marker(img)
+            if m and m.side_px >= 40:
+                self.scan_marker = True
+                self.on_event("scan_marker", {})
         now = self.clock()
         frame = Frame(ref, now - self.t0, q, q.sharpness)
         with self.lock:
@@ -181,6 +189,10 @@ class LiveSweep:
                 if "complete" in self.scan_said:
                     return None
                 self.scan_said.add("complete")
+                if not self.scan_marker:
+                    return (f"The room turn is complete ({covered:.0f} degrees, tilted up and down), but the printed "
+                            "marker was not in view. Ask once, briefly: if there is a marker on a wall, point the phone "
+                            "at it for a second. As soon as they have, or if there is none, call finish_room_scan.")
                 return f"The room turn is complete ({covered:.0f} degrees, tilted up and down). Call finish_room_scan now."
             started = n >= 2 or now - self.scan_started_at >= SCAN_START_GRACE_S
             if "stalled" in self.scan_said or not started or now - self.scan_progress_at < SCAN_STALL_S:
@@ -283,13 +295,15 @@ class LiveSweep:
     def start_room_scan(self) -> dict:
         with self.lock:
             closed = self._close_row() if self.row else None
-            self.scanning, self.scan_entries = True, []
+            self.scanning, self.scan_entries, self.scan_marker = True, [], False
             self.scan_said, self.scan_progress = set(), (0, False, False)
             self.scan_started_at = self.scan_progress_at = self.clock()
         self.on_event("scan_open", {})
         out = {"ok": True, "instructions": "stand near the middle of the room, hold the phone upright at chest height, "
-                                          "and follow the ring on the screen: turn slowly all the way round, then tilt "
-                                          "up and down. The app tells you when the turn is complete."}
+                                          "and follow the ring on the screen: turn slowly all the way round, letting it "
+                                          "pass over the marker on the wall if there is one, then tilt up to where the "
+                                          "wall meets the ceiling and down to where it meets the floor. The app tells "
+                                          "you when the turn is complete."}
         if closed:
             out["previous_row"] = closed
         return out
@@ -428,10 +442,11 @@ class LiveSweep:
 
 
 def scan_coverage(entries: list[dict]) -> tuple[set[int], bool, bool]:
-    """Heading sectors seen with the phone roughly level, and whether it was tilted up and down."""
-    bins = {int((e["alpha"] % 360) // (360 / BINS)) for e in entries if abs(e["beta"] - 90) <= LEVEL_DEG}
-    up = any(e["beta"] - 90 >= TILT_DEG for e in entries)
-    down = any(90 - e["beta"] >= TILT_DEG for e in entries)
+    """Heading sectors seen with the camera roughly level, and whether it was tilted up and down."""
+    aims = [aim(e["alpha"], e["beta"], e.get("gamma") or 0.0) for e in entries]
+    bins = {int(h // (360 / BINS)) for h, p in aims if abs(p) <= LEVEL_DEG}
+    up = any(p >= TILT_DEG for _, p in aims)
+    down = any(-p >= TILT_DEG for _, p in aims)
     return bins, up, down
 
 

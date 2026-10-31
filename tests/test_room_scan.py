@@ -3,7 +3,9 @@
 import numpy as np
 import pytest
 
-from libraryclaim.room_scan import (ARM_M, ScanFrame, item_size_cm, marker_scale, measure_room, rotation)
+from libraryclaim import room_scan
+from libraryclaim.room_scan import (ARM_M, CAMERA_HEIGHT_M, ScanFrame, item_size_cm, marker_scale, measure_room,
+                                     rotation)
 
 W, H, F = 108, 192, 158.0   # portrait frame, ~62 degree vertical field of view like a phone
 
@@ -42,7 +44,7 @@ def render(alpha, beta, room, axis, cam_h, arm=ARM_M):
     return t.astype(np.float32)  # t is depth along the axis: the device-frame direction has z = -1
 
 
-def scan(room, axis=(1.9, 1.4), cam_h=1.45, step=5, scale_err=1.0, noise=0.0, tilt=True, upto=360, seed=0):
+def scan(room, axis=(1.9, 1.4), cam_h=CAMERA_HEIGHT_M, step=5, scale_err=1.0, noise=0.0, tilt=True, upto=360, seed=0):
     rng = np.random.default_rng(seed)
     frames, depths = [], {}
     def add(alpha, beta):
@@ -104,11 +106,101 @@ def test_l_shaped_room_is_not_forced_into_a_rectangle():
     assert dims(r).floor_area_m2 == pytest.approx(5 * 2.2 + 3 * 1.8, rel=0.12)
 
 
-def test_depth_scale_error_is_reported_when_uncorrected():
+def test_depth_scale_error_without_marker_is_corrected_by_camera_height():
     frames, depth = scan(RECT, scale_err=1.10)
     r = measure_room(frames, depth)
-    assert r.scale_factor == 1.0 and any("no marker" in n for n in r.notes)
-    assert dims(r).floor_area_m2 == pytest.approx(13.02 * 1.21, rel=0.07)  # the 10% shows up, area ~21%
+    assert r.scale_factor == pytest.approx(1 / 1.10, rel=0.02)
+    assert any("no marker seen" in n and "+/-10%" in n for n in r.notes)
+    assert dims(r).floor_area_m2 == pytest.approx(13.02, rel=0.05)
+    assert r.height_m == pytest.approx(2.5, abs=0.08)
+
+
+@pytest.mark.parametrize("cam_h", [1.25, 1.55])
+def test_short_or_tall_holder_stays_within_the_stated_error(cam_h):
+    """The prior is a guess: a phone held 15 cm lower or higher than assumed is ~11% off in length."""
+    frames, depth = scan(RECT, cam_h=cam_h, axis=(2.0, 1.5))
+    r = measure_room(frames, depth)
+    k = CAMERA_HEIGHT_M / cam_h
+    assert dims(r).length_m == pytest.approx(4.2 * k, rel=0.04)
+    assert abs(dims(r).length_m / 4.2 - 1) < 0.14
+
+
+def test_no_floor_in_view_leaves_depth_scale_uncorrected_and_says_so():
+    frames, depth = scan(RECT, scale_err=1.10, tilt=False, axis=(2.1, 1.55))
+    r = measure_room(frames, depth)
+    assert r.scale_factor == 1.0 and any("uncorrected" in n for n in r.notes)
+
+
+def test_marker_in_a_frame_not_picked_for_its_heading_still_sets_the_scale(monkeypatch):
+    frames, depth = scan(RECT, scale_err=1.10)
+    marked = frames[7]                                     # one of many frames in its heading sector
+
+    class M:
+        side_px = 80
+    monkeypatch.setattr(room_scan, "best_marker", lambda img: M() if img is marked.image else None)
+    monkeypatch.setattr(room_scan, "marker_scale", lambda img, d, f, size: 1 / 1.10 if img is marked.image else None)
+    r = measure_room(frames, depth)
+    assert "printed marker" in r.method and r.scale_factor == pytest.approx(1 / 1.10, rel=0.001)
+    assert any("camera-height check agrees" in n for n in r.notes)
+    assert dims(r).floor_area_m2 == pytest.approx(13.02, rel=0.05)
+
+
+@pytest.mark.parametrize("alpha,beta,gamma,heading,pitch", [
+    (40, 90, 0, 40, 0), (299, 89.5, 67, 6, 0), (10, 130, 0, 10, 40), (200, 34, 0, 200, -56), (0, 90, -90, 270, 0)])
+def test_aim_is_where_the_camera_points(alpha, beta, gamma, heading, pitch):
+    from libraryclaim.room_scan import aim
+    h, p = aim(alpha, beta, gamma)
+    assert abs((h - heading + 180) % 360 - 180) < 1 and p == pytest.approx(pitch, abs=1)
+
+
+def test_rolled_phone_frames_still_fill_the_circle():
+    """The same turn reported with gamma soaking up part of the heading, as iOS does when upright."""
+    frames, depth = scan(RECT)
+    for n, f in enumerate(frames):
+        if abs(f.beta - 90) < 1:
+            g = ((n * 37) % 120) - 60                 # roll of -60..+60 degrees
+            f.alpha, f.gamma = (f.alpha - g) % 360, g   # heading = alpha + gamma when upright
+    r = measure_room(frames, depth)
+    assert r.coverage_deg >= 337 and dims(r).floor_area_m2 == pytest.approx(13.02, rel=0.05)
+
+
+def test_tilted_frames_with_their_own_depth_scale_are_aligned_to_the_walls():
+    """Every frame tilted up reads 60% deep and every frame tilted down 20% shallow, as Depth Pro did
+    at home (one depth map, one scale). Matching each frame's walls to the level frames undoes it."""
+    frames, depth = scan(RECT)
+    good = depth
+    def depth(img):
+        d, f = good(img)
+        beta = frames[int(img[0, 0, 0]) + 256 * int(img[0, 0, 1])].beta
+        return (d * 1.6 if beta > 110 else d * 0.8 if beta < 70 else d), f
+    r = measure_room(frames, depth)
+    assert r.height_m == pytest.approx(2.5, abs=0.1)
+    assert dims(r).floor_area_m2 == pytest.approx(13.02, rel=0.06)
+
+
+def test_one_bad_ceiling_frame_does_not_set_the_height():
+    """The 4.34 m home reading: a single tilted-up frame whose depth is far off must not win."""
+    frames, depth = scan(RECT)
+    up = [n for n, f in enumerate(frames) if f.beta > 110]
+    good = depth
+    def depth(img):
+        d, f = good(img)
+        return (d * 1.6, f) if int(img[0, 0, 0]) + 256 * int(img[0, 0, 1]) == up[0] else (d, f)
+    r = measure_room(frames, depth)
+    assert r.height_m == pytest.approx(2.5, abs=0.08)
+
+
+def test_furniture_dents_are_cleaned_but_a_real_l_shape_is_kept():
+    from libraryclaim.room_scan import rectify
+    t = np.linspace(0, 1, 50, endpoint=False)
+    rect = np.concatenate([np.stack([4.2 * t, 0 * t], 1), np.stack([4.2 + 0 * t, 3.1 * t], 1),
+                           np.stack([4.2 * (1 - t), 3.1 + 0 * t], 1), np.stack([0 * t, 3.1 * (1 - t)], 1)])
+    dented = rect.copy()
+    dented[60:66, 0] -= 0.3                                 # a 30 cm-wide chair in front of the right wall
+    corners, note = rectify(dented)
+    assert note.startswith("rectangle")
+    from libraryclaim.room import room_figures
+    assert room_figures(corners, 2.5).floor_area_m2 == pytest.approx(13.02, rel=0.03)
 
 
 def test_marker_scale_corrects_a_10_percent_depth_error():

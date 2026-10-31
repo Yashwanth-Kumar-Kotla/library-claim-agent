@@ -196,6 +196,7 @@ function onEvent(m) {
   else if (m.type === "row_open") place(shelfName(m.shelf));
   else if (m.type === "row_closed" || m.type === "row_rejected") place(null);
   else if (m.type === "scan_open") { place("Measuring the room", true); scanShow(); }
+  else if (m.type === "scan_marker") $("scanMarker").hidden = false;
   else if (m.type === "scan_closed" || m.type === "scan_rejected") {
     place(null); scanHide();
     if (m.type === "scan_closed") roomScanned = true;
@@ -334,6 +335,7 @@ function scanShow() {
   $("ringSegs").innerHTML = Array.from({ length: BINS }, (_, i) => `<path class="seg" d="${arc(i)}"/>`).join("");
   $("scanGuide").className = "scan-guide";
   $("tilt").hidden = true;
+  $("scanMarker").hidden = true;
   for (const a of $("tilt").querySelectorAll(".aim")) a.classList.remove("done");
   $("scanGuide").hidden = false;
   requestAnimationFrame(scanDraw);
@@ -341,22 +343,33 @@ function scanShow() {
 
 function scanHide() { scan.on = false; $("scanGuide").hidden = true; }
 
+// Where the camera points. With the phone upright, iOS reports a sideways roll in gamma as well as
+// alpha (the angles hit gimbal lock), so alpha alone is not the heading. Same formula as session.py.
+function aim(o) {
+  const d = Math.PI / 180, a = o.alpha * d, b = o.beta * d, g = o.gamma * d;
+  const x = -Math.cos(a) * Math.sin(g) - Math.sin(a) * Math.sin(b) * Math.cos(g);
+  const y = -Math.sin(a) * Math.sin(g) + Math.cos(a) * Math.sin(b) * Math.cos(g);
+  const z = -Math.cos(b) * Math.cos(g);
+  return { heading: ((Math.atan2(y, x) / d - 90) % 360 + 360) % 360, pitch: Math.asin(Math.max(-1, Math.min(1, z))) / d };
+}
+
 function scanAdd(p) {
-  if (Math.abs(p.beta - 90) <= LEVEL) scan.bins.add(Math.floor((((p.alpha % 360) + 360) % 360) / SECTOR));
-  scan.up ||= p.beta - 90 >= TILT;
-  scan.down ||= 90 - p.beta >= TILT;
+  const { heading, pitch } = aim(p);
+  if (Math.abs(pitch) <= LEVEL) scan.bins.add(Math.floor(heading / SECTOR));
+  scan.up ||= pitch >= TILT;
+  scan.down ||= -pitch >= TILT;
   if (!scan.done && scan.bins.size * SECTOR >= NEED && scan.up && scan.down) { scan.done = true; chime(); }
 }
 
 function scanMotion(o, t) {      // smoothed heading (no flicker on a wobble) and turning speed
-  const r = o.alpha * Math.PI / 180;
+  const h = aim(o).heading, r = h * Math.PI / 180;
   scan.hx += 0.25 * (Math.sin(r) - scan.hx);
   scan.hy += 0.25 * (Math.cos(r) - scan.hy);
   if (scan.last) {
     const dt = (t - scan.last.t) / 1000;
-    if (dt > 0 && dt < 0.5) scan.speed += 0.2 * (Math.abs(wrap(o.alpha - scan.last.a)) / dt - scan.speed);
+    if (dt > 0 && dt < 0.5) scan.speed += 0.2 * (Math.abs(wrap(h - scan.last.a)) / dt - scan.speed);
   }
-  scan.last = { a: o.alpha, t };
+  scan.last = { a: h, t };
 }
 
 function scanDraw() {
@@ -382,7 +395,7 @@ function scanDraw() {
 
   // Tilt comes second: shown once most of the turn is done, so there is one thing to do at a time.
   $("tilt").hidden = scan.done || !(covered >= 0.8 * NEED || scan.up || scan.down);
-  if (orientation) $("tiltDot").style.top = `${50 - Math.max(-1, Math.min(1, (orientation.beta - 90) / 45)) * 45}%`;
+  if (orientation) $("tiltDot").style.top = `${50 - Math.max(-1, Math.min(1, aim(orientation).pitch / 45)) * 45}%`;
   const [up, down] = $("tilt").querySelectorAll(".aim");
   up.classList.toggle("done", scan.up);
   down.classList.toggle("done", scan.down);
