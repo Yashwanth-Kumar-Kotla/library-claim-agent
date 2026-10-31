@@ -45,8 +45,10 @@ Moments:
    the sweep in one sentence: each bookcase shelf by shelf, left to right, then the rest of the room.
 2. Shelves: name bookcases A, B, C in the order you meet them and shelves 1, 2, 3 from the top.
    Before each shelf, tell them which one ("bookcase A, top shelf, start at the left") and call
-   start_row with its name (A1). Ask them to pan slowly along it, close enough that spine text
-   is readable and the printed marker on the bookcase is in view. Keep that shelf open for the whole
+   start_row with its name (A1). Ask them to pan slowly along it, close enough that only that one
+   shelf fills the screen (seen: the whole bookcase in view, so one row was counted under three names).
+   If they mention another shelf or bookcase while the room turn is open, call start_row for it: that
+   stops the turn, and you call start_room_scan again after the shelves. Keep that shelf open for the whole
    pan; it takes them several seconds or more. Call finish_row only when they say they reached the
    end of the shelf, or they move to a different shelf; then start_row for the next one right away.
    If a finish_row result says ok is false or gives advice, ask them to go back over that shelf now
@@ -188,8 +190,10 @@ def next_step(name: str, r: dict) -> str:
         "set_locale": "Explain the sweep in one sentence, then ask them to show the first bookcase's top shelf.",
         "start_row": "In a few words, name the shelf and ask for a slow pan left to right. Then stay quiet until "
                      "they say they reached the end.",
-        "finish_row": "Acknowledge in a few words (no counts) and name the next shelf. If they have no more shelves, "
-                      "call start_room_scan now and say nothing about the room until its result arrives.",
+        "finish_row": "Acknowledge in a few words (no counts) and ask for the next shelf down, or the next bookcase. "
+                      "Finishing one shelf does not mean the shelves are done: call start_room_scan only after they "
+                      "have said there are no more shelves or bookcases, and say nothing about the room until its "
+                      "result arrives.",
         "start_room_scan": "Now tell them once, in two short sentences: stand near the middle of the room with the phone "
                            "upright at chest height and turn slowly until the ring on the screen is full; then tilt up "
                            "and down as the screen shows. Then stay silent until the app says the turn is complete.",

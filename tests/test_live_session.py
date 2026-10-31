@@ -294,6 +294,17 @@ def test_marker_seen_in_the_turn_is_reported_and_not_asked_for(live):
     assert "scan_marker" in events and "marker" not in s.scan_prompt()
 
 
+def test_shelf_named_during_the_turn_stops_the_turn(live):
+    s, clock, events = live
+    s.start_room_scan()
+    turn(s, clock, range(0, 120, 10))
+    out = s.start_row("B1")
+    assert out["ok"] and "start_room_scan again" in out["room_turn"]
+    assert "scan_rejected" in events and not s.scanning and s.row is not None
+    s.finish_row()
+    assert s.start_room_scan()["ok"] and s.scan_entries == []
+
+
 def test_full_turn_with_tilt_is_accepted_and_saved(live):
     s, clock, _ = live
     s.start_room_scan()

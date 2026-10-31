@@ -290,9 +290,9 @@ async def live(ws: WebSocket) -> None:
                         orientation, body = struct.unpack("<3f", body[:12]), body[12:]
                     spoken, screen = await asyncio.to_thread(sweep.add_frame, body, orientation)
                     if screen and screen != st.shown["hint"]:
+                        # Shown on screen only. Telling the agent as well made it talk about the notice
+                        # ("I should also acknowledge that the app indicated earlier to slow down").
                         st.emit("coach", {"text": screen})
-                        # The agent knows what the screen says, so it doesn't repeat it or contradict it.
-                        await say(session, f"[app state] The screen is showing them: {screen}. Do not repeat it.", reply=False)
                     st.shown["hint"] = screen
                     # Never talk over the agent: a remark that arrives while it speaks is dropped.
                     if speaking["now"]:

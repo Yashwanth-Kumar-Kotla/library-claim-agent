@@ -253,12 +253,21 @@ class LiveSweep:
             return {"ok": False, "error": "row names are a unit letter and a shelf number from the top, e.g. A1"}
         with self.lock:
             closed = self._close_row() if self.row else None
+            # Seen live: the turn had started when the policyholder said there was one more bookcase.
+            # The shelf comes first; the turn is stopped and simply started again afterwards.
+            stopped_scan = self.scanning
+            if stopped_scan:
+                self.scanning, self.scan_entries = False, []
             self._flush_room_window()
             self.row = OpenRow(shelf, self.clock() - self.t0)
             self.said_this_row = set()
+        if stopped_scan:
+            self.on_event("scan_rejected", {"advice": "the room turn was stopped to film a shelf"})
         out = {"ok": True, "row": shelf, "recapture": shelf in self.rows_done}
         if closed:
             out["previous_row"] = closed
+        if stopped_scan:
+            out["room_turn"] = "stopped for this shelf; call start_room_scan again once the shelves are done"
         self.on_event("row_open", {"shelf": shelf})
         return out
 
