@@ -2,7 +2,6 @@
 const $ = (id) => document.getElementById(id);
 const HI_RES_MS = 333, HI_RES_W = 1920, HI_Q = 0.85;   // evidence frames: counting, reading, measuring
 const LIVE_MS = 2000, LIVE_W = 768, LIVE_Q = 0.6;      // what the agent sees: frames are most of its re-billed context
-let rec = false;   // ?rec: recordable audio (see start)
 let ws, stream, ctx, micNode, playAt = 0, speaking = [], timers = [], lastAudioAt = 0, finished = false;
 let sweepId = null, capturing = false, wakeLock = null;
 const RECONNECT_FOR_MS = 75000;   // the server holds a dropped sweep for 90 s
@@ -39,9 +38,8 @@ async function start() {
     ctx = new AudioContext();             // created inside the tap so iOS lets it play
     await ctx.resume();
     // ?rec: without echo cancellation iOS does not switch to call audio, which Screen Recording
-    // leaves out, so the agent's voice is recorded. With nothing cancelling the speaker, the
-    // microphone is muted while the agent talks (startMic) so it cannot hear itself.
-    rec = new URLSearchParams(location.search).has("rec");
+    // leaves out; the agent's voice can then be recorded. Use earbuds so the agent does not hear itself.
+    const rec = new URLSearchParams(location.search).has("rec");
     stream = await navigator.mediaDevices.getUserMedia({
       audio: { echoCancellation: !rec, noiseSuppression: !rec, autoGainControl: true },
       video: { facingMode: "environment", width: { ideal: 1920 }, height: { ideal: 1080 } },
@@ -92,11 +90,7 @@ function startMic() {
   micNode = ctx.createScriptProcessor(4096, 1, 1);
   micNode.onaudioprocess = (e) => {
     e.outputBuffer.getChannelData(0).fill(0);
-    const input = e.inputBuffer.getChannelData(0);
-    // In ?rec mode the speaker reaches the mic uncancelled: send silence while the agent's audio is
-    // playing and for 0.4 s after (room echo), so it never hears and interrupts itself.
-    const muted = rec && ctx.currentTime < playAt + 0.4;
-    send(tagged("A", toPcm16(muted ? new Float32Array(input.length) : input, ctx.sampleRate, 16000).buffer));
+    send(tagged("A", toPcm16(e.inputBuffer.getChannelData(0), ctx.sampleRate, 16000).buffer));
   };
   src.connect(micNode);
   micNode.connect(ctx.destination);
