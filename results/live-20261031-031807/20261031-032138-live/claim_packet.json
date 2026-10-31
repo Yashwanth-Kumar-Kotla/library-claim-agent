@@ -1,0 +1,1980 @@
+{
+  "sweep": {
+    "id": "live-20261031-031807",
+    "captured_at": "2026-10-31T08:18:07+00:00",
+    "device": "phone browser",
+    "duration_s": 166.2,
+    "country": "US",
+    "currency": "USD",
+    "capture_path": "browser"
+  },
+  "room": {
+    "length_m": 4.45,
+    "width_m": 4.45,
+    "height_m": 3.23,
+    "floor_area_m2": 19.8,
+    "wall_area_m2": 57.5,
+    "shelved_wall_area_m2": 1.17,
+    "floor_area_ft2": 213.2,
+    "wall_area_ft2": 618.9,
+    "shape_note": "rectangular",
+    "scale_method": "turn-around scan: Depth Pro metric depth on 21 frames, phone orientation, scale corrected x1.067 from the printed marker",
+    "confidence": 0.85
+  },
+  "books": [
+    {
+      "id": "A1-01",
+      "shelf": "A1",
+      "position": 1,
+      "frame_ref": "out/rows/A1.jpg#xyxy=230,637,341,1214",
+      "status": "identified",
+      "title": "Theodore Boone: The Accused",
+      "author": "John Grisham",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 19.7,
+      "spine_thickness_cm": 3.07,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 9.0,
+        "source": "eBay US (via SerpApi): median asking price of 27 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Theodore+Boone+John+Grisham&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:28+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 4.16,
+        "source": "eBay US (via SerpApi): median asking price of 45 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Theodore+Boone+John+Grisham&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:33+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A1-02",
+      "shelf": "A1",
+      "position": 2,
+      "frame_ref": "out/rows/A1.jpg#xyxy=300,634,404,1209",
+      "status": "identified",
+      "title": "Theodore Boone: The Activist",
+      "author": "John Grisham",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 19.6,
+      "spine_thickness_cm": 1.97,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 9.0,
+        "source": "eBay US (via SerpApi): median asking price of 27 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Theodore+Boone+John+Grisham&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:28+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 4.16,
+        "source": "eBay US (via SerpApi): median asking price of 45 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Theodore+Boone+John+Grisham&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:33+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A1-03",
+      "shelf": "A1",
+      "position": 3,
+      "frame_ref": "out/rows/A1.jpg#xyxy=300,1353,528,1998",
+      "status": "identified",
+      "title": "The Witchwood Crown",
+      "author": "Tad Williams",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 23.9,
+      "spine_thickness_cm": 3.27,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 21.57,
+        "source": "eBay US (via SerpApi): median asking price of 29 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Witchwood+Crown+Tad+Williams&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-29T17:27:42+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 14.93,
+        "source": "eBay US (via SerpApi): median asking price of 40 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Witchwood+Crown+Tad+Williams&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-29T17:27:47+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A1-04",
+      "shelf": "A1",
+      "position": 4,
+      "frame_ref": "out/rows/A1.jpg#xyxy=352,647,459,1201",
+      "status": "identified",
+      "title": "Prisoner B-3087",
+      "author": "Alan Gratz, Ruth Gruener, Jack Gruener",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 16.67,
+        "source": "eBay US (via SerpApi): median asking price of 35 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Prisoner+B-3087+Alan+Gratz&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:27+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 5.14,
+        "source": "eBay US (via SerpApi): median asking price of 49 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Prisoner+B-3087+Alan+Gratz&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:31+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A1-05",
+      "shelf": "A1",
+      "position": 5,
+      "frame_ref": "out/rows/A1.jpg#xyxy=407,608,505,1206",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 20.3,
+      "spine_thickness_cm": 0.37,
+      "id_confidence": 0.913,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-06",
+      "shelf": "A1",
+      "position": 6,
+      "frame_ref": "out/rows/A1.jpg#xyxy=451,563,564,1214",
+      "status": "identified",
+      "title": "The Alchemist",
+      "author": "Paulo Coelho",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 22.1,
+      "spine_thickness_cm": 1.26,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 11.82,
+        "source": "eBay US (via SerpApi): median asking price of 52 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Alchemist+Paulo+Coelho&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:34+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 6.07,
+        "source": "eBay US (via SerpApi): median asking price of 55 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Alchemist+Paulo+Coelho&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:35+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A1-07",
+      "shelf": "A1",
+      "position": 7,
+      "frame_ref": "out/rows/A1.jpg#xyxy=465,1455,564,1993",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 20.1,
+      "spine_thickness_cm": 0.9,
+      "id_confidence": 0.92,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-08",
+      "shelf": "A1",
+      "position": 8,
+      "frame_ref": "out/rows/A1.jpg#xyxy=514,532,608,1201",
+      "status": "identified",
+      "title": "Influencer: The Power to Change Anything, First Edition",
+      "author": "Kerry Patterson, Joseph Grenny, David Maxfield",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 22.7,
+      "spine_thickness_cm": 0.99,
+      "id_confidence": 0.938,
+      "replacement_cost": {
+        "amount": 15.0,
+        "source": "eBay US (via SerpApi): median asking price of 39 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Influencer+Kerry+Patterson&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:03+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 4.96,
+        "source": "eBay US (via SerpApi): median asking price of 56 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Influencer+Kerry+Patterson&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:06+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A1-09",
+      "shelf": "A1",
+      "position": 9,
+      "frame_ref": "out/rows/A1.jpg#xyxy=514,1440,589,1990",
+      "status": "identified",
+      "title": "The Summer of Riley",
+      "author": "Eve Bunting",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 20.5,
+      "spine_thickness_cm": 0.45,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 12.24,
+        "source": "eBay US (via SerpApi): median asking price of 15 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Summer+of+Riley+Eve+Bunting&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:16+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 5.4,
+        "source": "eBay US (via SerpApi): median asking price of 53 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Summer+of+Riley+Eve+Bunting&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:19+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A1-10",
+      "shelf": "A1",
+      "position": 10,
+      "frame_ref": "out/rows/A1.jpg#xyxy=551,1411,623,1990",
+      "status": "identified",
+      "title": "Bad Kitty Vs. Uncle Murray",
+      "author": "Nick Bruel",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 21.5,
+      "spine_thickness_cm": 0.78,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 16.05,
+        "source": "eBay US (via SerpApi): median asking price of 19 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Bad+Kitty+Vs.+Uncle+Murray+Nick+Bruel&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:13+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 4.16,
+        "source": "eBay US (via SerpApi): median asking price of 50 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Bad+Kitty+Vs.+Uncle+Murray+Nick+Bruel&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:21+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A1-11",
+      "shelf": "A1",
+      "position": 11,
+      "frame_ref": "out/rows/A1.jpg#xyxy=579,629,650,1201",
+      "status": "identified",
+      "title": "Bfg",
+      "author": "Roald Dahl",
+      "publisher": "PUFFIN",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 19.6,
+      "spine_thickness_cm": 0.86,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 8.05,
+        "source": "eBay US (via SerpApi): median asking price of 40 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Bfg+Roald+Dahl&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:03+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 4.16,
+        "source": "eBay US (via SerpApi): median asking price of 42 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Bfg+Roald+Dahl&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:07+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A1-12",
+      "shelf": "A1",
+      "position": 12,
+      "frame_ref": "out/rows/A1.jpg#xyxy=602,1366,702,1993",
+      "status": "identified",
+      "title": "High School Algebra I Unlocked",
+      "author": "The Princeton Review",
+      "publisher": "Princeton Review",
+      "edition": "Princeton Review edition",
+      "isbn": "9781101882191",
+      "spine_height_cm": 23.3,
+      "spine_thickness_cm": 1.41,
+      "id_confidence": 0.92,
+      "replacement_cost": {
+        "amount": 18.2,
+        "source": "eBay US (via SerpApi): median asking price of 13 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=9781101882191&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:11+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 5.58,
+        "source": "eBay US (via SerpApi): median asking price of 35 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=9781101882191&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:14+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A1-13",
+      "shelf": "A1",
+      "position": 13,
+      "frame_ref": "out/rows/A1.jpg#xyxy=625,611,696,1203",
+      "status": "identified",
+      "title": "The Full Monty",
+      "author": "Wendy Holden",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 20.2,
+      "spine_thickness_cm": 0.55,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 20.85,
+        "source": "eBay US (via SerpApi): median asking price of 20 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Full+Monty+Wendy+Holden&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T00:25:48+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 7.84,
+        "source": "eBay US (via SerpApi): median asking price of 45 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Full+Monty+Wendy+Holden&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T00:25:52+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A1-14",
+      "shelf": "A1",
+      "position": 14,
+      "frame_ref": "out/rows/A1.jpg#xyxy=665,532,730,1203",
+      "status": "identified",
+      "title": "Counterfeit Prince of Old Texas, The: Swindling Slaver Monroe Edwards",
+      "author": "Lora-Marie Bernard",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 22.8,
+      "spine_thickness_cm": 0.78,
+      "id_confidence": 0.914,
+      "replacement_cost": {
+        "amount": 22.66,
+        "source": "eBay US (via SerpApi): median asking price of 5 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Counterfeit+Prince+of+Old+Texas%2C+The+Lora-Marie+Bernard&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T00:25:47+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 9.61,
+        "source": "eBay US (via SerpApi): median asking price of 6 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Counterfeit+Prince+of+Old+Texas%2C+The+Lora-Marie+Bernard&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T00:25:56+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A1-15",
+      "shelf": "A1",
+      "position": 15,
+      "frame_ref": "out/rows/A1.jpg#xyxy=677,1445,761,1990",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 20.4,
+      "spine_thickness_cm": 1.27,
+      "id_confidence": 0.492,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-16",
+      "shelf": "A1",
+      "position": 16,
+      "frame_ref": "out/rows/A1.jpg#xyxy=713,689,759,1206",
+      "status": "identified",
+      "title": "When to Speak Up and When To Shut Up",
+      "author": "Dr. Michael D. Sedler",
+      "publisher": "SPIRE",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 17.7,
+      "spine_thickness_cm": 0.51,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 9.96,
+        "source": "eBay US (via SerpApi): median asking price of 13 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=When+to+Speak+Up+and+When+To+Shut+Up+Dr.+Michael+D.+Sedler&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:27+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 5.63,
+        "source": "eBay US (via SerpApi): median asking price of 43 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=When+to+Speak+Up+and+When+To+Shut+Up+Dr.+Michael+D.+Sedler&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:28+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A1-17",
+      "shelf": "A1",
+      "position": 17,
+      "frame_ref": "out/rows/A1.jpg#xyxy=744,689,845,1206",
+      "status": "identified",
+      "title": "Bhagavad-Gita As It Is",
+      "author": "Prabhupada A. C. Bhaktivedanta Swami",
+      "publisher": "THE BHAKTIVEDANTA BOOK TRUST",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 17.7,
+      "spine_thickness_cm": 3.09,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 15.0,
+        "source": "eBay US (via SerpApi): median asking price of 50 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Bhagavad-Gita+As+It+Is+Prabhupada+A.+C.+Bhaktivedanta+Swami&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T00:25:12+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 6.5,
+        "source": "eBay US (via SerpApi): median asking price of 53 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Bhagavad-Gita+As+It+Is+Prabhupada+A.+C.+Bhaktivedanta+Swami&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T00:25:15+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A1-18",
+      "shelf": "A1",
+      "position": 18,
+      "frame_ref": "out/rows/A1.jpg#xyxy=839,679,870,1201",
+      "status": "identified",
+      "title": "Coming Back : the Science of Reincarnation",
+      "author": "",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 17.9,
+      "spine_thickness_cm": 0.48,
+      "id_confidence": 0.92,
+      "replacement_cost": {
+        "amount": 17.04,
+        "source": "eBay US (via SerpApi): median asking price of 53 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Coming+Back&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T00:25:12+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 4.97,
+        "source": "eBay US (via SerpApi): median asking price of 54 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Coming+Back&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T00:25:16+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A1-19",
+      "shelf": "A1",
+      "position": 19,
+      "frame_ref": "out/rows/A1.jpg#xyxy=843,584,912,1203",
+      "status": "identified",
+      "title": "The Science of Self Realization",
+      "author": "A. C. Bhaktivedanta Swami Prabhupāda",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 21.2,
+      "spine_thickness_cm": 1.85,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 9.0,
+        "source": "eBay US (via SerpApi): median asking price of 37 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Science+of+Self+Realization+A.+C.+Bhaktivedanta+Swami+Prabhup%C4%81da&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T00:25:17+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 6.99,
+        "source": "eBay US (via SerpApi): median asking price of 53 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Science+of+Self+Realization+A.+C.+Bhaktivedanta+Swami+Prabhup%C4%81da&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T00:25:21+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A1-20",
+      "shelf": "A1",
+      "position": 20,
+      "frame_ref": "out/rows/A1.jpg#xyxy=908,561,969,1201",
+      "status": "identified",
+      "title": "Catholic Home Schooling",
+      "author": "Mary Kay Clark",
+      "publisher": "SP",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 21.9,
+      "spine_thickness_cm": 1.85,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": 6.05,
+        "source": "eBay US (via SerpApi): median asking price of 33 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Catholic+Home+Schooling+Mary+Kay+Clark&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:30+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A1-21",
+      "shelf": "A1",
+      "position": 21,
+      "frame_ref": "out/rows/A1.jpg#xyxy=960,608,1004,1266",
+      "status": "identified",
+      "title": "Be a People Person",
+      "author": "John C. Maxwell",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 22.6,
+      "spine_thickness_cm": 1.07,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 20.75,
+        "source": "eBay US (via SerpApi): median asking price of 19 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Be+a+People+Person+John+C.+Maxwell&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:01+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 6.0,
+        "source": "eBay US (via SerpApi): median asking price of 59 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Be+a+People+Person+John+C.+Maxwell&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:07+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A1-22",
+      "shelf": "A1",
+      "position": 22,
+      "frame_ref": "out/rows/A1.jpg#xyxy=986,763,1042,1285",
+      "status": "identified",
+      "title": "The Science of Self Realization",
+      "author": "A. C. Bhaktivedanta Swami Prabhupāda",
+      "publisher": "THE BHAKTIVEDANTA BOOK TRUST",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 18.1,
+      "spine_thickness_cm": 1.46,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 9.0,
+        "source": "eBay US (via SerpApi): median asking price of 37 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Science+of+Self+Realization+A.+C.+Bhaktivedanta+Swami+Prabhup%C4%81da&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T00:25:17+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 6.99,
+        "source": "eBay US (via SerpApi): median asking price of 53 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Science+of+Self+Realization+A.+C.+Bhaktivedanta+Swami+Prabhup%C4%81da&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T00:25:21+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A1-23",
+      "shelf": "A1",
+      "position": 23,
+      "frame_ref": "out/rows/A1.jpg#xyxy=1032,647,1099,1280",
+      "status": "identified",
+      "title": "Catholic Home Schooling",
+      "author": "Mary Kay Clark",
+      "publisher": "SP",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 21.8,
+      "spine_thickness_cm": 2.0,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": 6.05,
+        "source": "eBay US (via SerpApi): median asking price of 33 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Catholic+Home+Schooling+Mary+Kay+Clark&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:30+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A1-24",
+      "shelf": "A1",
+      "position": 24,
+      "frame_ref": "out/rows/A1.jpg#xyxy=1090,681,1143,1280",
+      "status": "identified",
+      "title": "Be a People Person",
+      "author": "John C. Maxwell",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 20.6,
+      "spine_thickness_cm": 1.55,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 20.75,
+        "source": "eBay US (via SerpApi): median asking price of 19 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Be+a+People+Person+John+C.+Maxwell&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:01+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 6.0,
+        "source": "eBay US (via SerpApi): median asking price of 59 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Be+a+People+Person+John+C.+Maxwell&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:07+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A1-25",
+      "shelf": "A1",
+      "position": 25,
+      "frame_ref": "out/rows/A1.jpg#xyxy=1137,713,1204,1285",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 19.7,
+      "spine_thickness_cm": 1.93,
+      "id_confidence": 0.734,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-26",
+      "shelf": "A1",
+      "position": 26,
+      "frame_ref": "out/rows/A1.jpg#xyxy=1189,855,1546,1295",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.637,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-27",
+      "shelf": "A1",
+      "position": 27,
+      "frame_ref": "out/rows/A1.jpg#xyxy=1556,1201,1600,1308",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.767,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-28",
+      "shelf": "A1",
+      "position": 28,
+      "frame_ref": "out/rows/A1.jpg#xyxy=1600,1227,1669,1308",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": null,
+      "spine_thickness_cm": null,
+      "id_confidence": 0.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-29",
+      "shelf": "A1",
+      "position": 29,
+      "frame_ref": "out/rows/A1.jpg#xyxy=1652,708,1778,1266",
+      "status": "identified",
+      "title": "How I Stayed Catholic at Harvard",
+      "author": "Aurora Griffin",
+      "publisher": "IGNATIUS",
+      "edition": "IGNATIUS edition",
+      "isbn": "9781621641285",
+      "spine_height_cm": 19.6,
+      "spine_thickness_cm": 4.1,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 18.75,
+        "source": "eBay US (via SerpApi): median asking price of 4 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=9781621641285&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:23+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 5.27,
+        "source": "eBay US (via SerpApi): median asking price of 24 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=9781621641285&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:27+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A1-30",
+      "shelf": "A1",
+      "position": 30,
+      "frame_ref": "out/rows/A1.jpg#xyxy=1810,700,1928,1261",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 19.7,
+      "spine_thickness_cm": 3.08,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "A1-31",
+      "shelf": "A1",
+      "position": 31,
+      "frame_ref": "out/rows/A1.jpg#xyxy=1869,702,2043,1269",
+      "status": "identified",
+      "title": "The Red Pyramid",
+      "author": "Rick Riordan",
+      "publisher": "Disney HYPERION",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 19.9,
+      "spine_thickness_cm": 5.09,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 15.94,
+        "source": "eBay US (via SerpApi): median asking price of 49 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Red+Pyramid+Rick+Riordan&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:19:58+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 5.49,
+        "source": "eBay US (via SerpApi): median asking price of 47 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Red+Pyramid+Rick+Riordan&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:00+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A1-32",
+      "shelf": "A1",
+      "position": 32,
+      "frame_ref": "out/rows/A1.jpg#xyxy=2059,679,2236,1282",
+      "status": "identified",
+      "title": "Unbroken",
+      "author": "Laura Hillenbrand",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 21.2,
+      "spine_thickness_cm": 6.21,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 9.47,
+        "source": "eBay US (via SerpApi): median asking price of 48 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Unbroken+Laura+Hillenbrand&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:19:59+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 4.53,
+        "source": "eBay US (via SerpApi): median asking price of 56 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Unbroken+Laura+Hillenbrand&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:02+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A2-01",
+      "shelf": "A2",
+      "position": 1,
+      "frame_ref": "out/rows/A2.jpg#xyxy=332,462,580,1300",
+      "status": "identified",
+      "title": "The Witchwood Crown",
+      "author": "Tad Williams",
+      "publisher": "DAW",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 23.3,
+      "spine_thickness_cm": 6.26,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 21.57,
+        "source": "eBay US (via SerpApi): median asking price of 29 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Witchwood+Crown+Tad+Williams&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-29T17:27:42+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 14.93,
+        "source": "eBay US (via SerpApi): median asking price of 40 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Witchwood+Crown+Tad+Williams&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-29T17:27:47+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A2-02",
+      "shelf": "A2",
+      "position": 2,
+      "frame_ref": "out/rows/A2.jpg#xyxy=533,633,613,1300",
+      "status": "identified",
+      "title": "The Jungle Pyramid",
+      "author": "Franklin W. Dixon",
+      "publisher": "Grosset & Dunlap",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 19.0,
+      "spine_thickness_cm": 1.48,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 14.51,
+        "source": "eBay US (via SerpApi): median asking price of 11 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Jungle+Pyramid+Franklin+W.+Dixon&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:11+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 6.11,
+        "source": "eBay US (via SerpApi): median asking price of 52 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Jungle+Pyramid+Franklin+W.+Dixon&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:13+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A2-03",
+      "shelf": "A2",
+      "position": 3,
+      "frame_ref": "out/rows/A2.jpg#xyxy=605,633,660,1300",
+      "status": "identified",
+      "title": "The Summer of Riley",
+      "author": "Eve Bunting",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 19.0,
+      "spine_thickness_cm": 1.37,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 12.24,
+        "source": "eBay US (via SerpApi): median asking price of 15 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Summer+of+Riley+Eve+Bunting&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:16+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 5.4,
+        "source": "eBay US (via SerpApi): median asking price of 53 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=The+Summer+of+Riley+Eve+Bunting&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:19+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A2-04",
+      "shelf": "A2",
+      "position": 4,
+      "frame_ref": "out/rows/A2.jpg#xyxy=654,588,718,1304",
+      "status": "identified",
+      "title": "Bad Kitty Vs. Uncle Murray",
+      "author": "Nick Bruel",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 20.1,
+      "spine_thickness_cm": 1.63,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 16.05,
+        "source": "eBay US (via SerpApi): median asking price of 19 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Bad+Kitty+Vs.+Uncle+Murray+Nick+Bruel&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:13+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 4.16,
+        "source": "eBay US (via SerpApi): median asking price of 50 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Bad+Kitty+Vs.+Uncle+Murray+Nick+Bruel&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:21+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A2-05",
+      "shelf": "A2",
+      "position": 5,
+      "frame_ref": "out/rows/A2.jpg#xyxy=713,484,830,1317",
+      "status": "identified",
+      "title": "High School Algebra I Unlocked",
+      "author": "The Princeton Review",
+      "publisher": "The Princeton Review",
+      "edition": "The Princeton Review edition",
+      "isbn": "9781101882191",
+      "spine_height_cm": 22.9,
+      "spine_thickness_cm": 2.67,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 18.2,
+        "source": "eBay US (via SerpApi): median asking price of 13 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=9781101882191&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:11+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 5.58,
+        "source": "eBay US (via SerpApi): median asking price of 35 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=9781101882191&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:14+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "A2-06",
+      "shelf": "A2",
+      "position": 6,
+      "frame_ref": "out/rows/A2.jpg#xyxy=794,623,914,1319",
+      "status": "identified",
+      "title": "Thanksgiving on Thursday",
+      "author": "Mary Pope Osborne",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 20.1,
+      "spine_thickness_cm": 2.94,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 11.38,
+        "source": "eBay US (via SerpApi): median asking price of 22 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Thanksgiving+on+Thursday+Mary+Pope+Osborne&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:20+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 5.46,
+        "source": "eBay US (via SerpApi): median asking price of 57 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Thanksgiving+on+Thursday+Mary+Pope+Osborne&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:24+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "B1-01",
+      "shelf": "B1",
+      "position": 1,
+      "frame_ref": "out/rows/B1.jpg#xyxy=159,641,253,1349",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 20.9,
+      "spine_thickness_cm": 2.66,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-02",
+      "shelf": "B1",
+      "position": 2,
+      "frame_ref": "out/rows/B1.jpg#xyxy=245,627,390,1353",
+      "status": "identified",
+      "title": "Stormbreaker",
+      "author": "Anthony Horowitz",
+      "publisher": "speak",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 21.5,
+      "spine_thickness_cm": 3.32,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 14.32,
+        "source": "eBay US (via SerpApi): median asking price of 55 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Stormbreaker+Anthony+Horowitz&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:35+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 4.88,
+        "source": "eBay US (via SerpApi): median asking price of 54 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Stormbreaker+Anthony+Horowitz&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:37+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "B1-03",
+      "shelf": "B1",
+      "position": 3,
+      "frame_ref": "out/rows/B1.jpg#xyxy=333,705,404,1353",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 19.5,
+      "spine_thickness_cm": 1.11,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-04",
+      "shelf": "B1",
+      "position": 4,
+      "frame_ref": "out/rows/B1.jpg#xyxy=392,645,428,1355",
+      "status": "identified",
+      "title": "A Boy at War",
+      "author": "Harry Mazer",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 21.1,
+      "spine_thickness_cm": 0.86,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 93.55,
+        "source": "eBay US (via SerpApi): median asking price of 18 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=A+Boy+at+War+Harry+Mazer&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:31+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 4.26,
+        "source": "eBay US (via SerpApi): median asking price of 56 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=A+Boy+at+War+Harry+Mazer&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:35+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "B1-05",
+      "shelf": "B1",
+      "position": 5,
+      "frame_ref": "out/rows/B1.jpg#xyxy=426,639,475,1358",
+      "status": "identified",
+      "title": "A Boy No More",
+      "author": "Harry Mazer",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 21.5,
+      "spine_thickness_cm": 1.41,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 14.0,
+        "source": "eBay US (via SerpApi): median asking price of 11 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=A+Boy+No+More+Harry+Mazer&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:30+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 5.88,
+        "source": "eBay US (via SerpApi): median asking price of 54 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=A+Boy+No+More+Harry+Mazer&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:33+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "B1-06",
+      "shelf": "B1",
+      "position": 6,
+      "frame_ref": "out/rows/B1.jpg#xyxy=474,548,609,1362",
+      "status": "identified",
+      "title": "Life Strategies for Catholic Teens",
+      "author": "Jim Auer",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 24.3,
+      "spine_thickness_cm": 2.48,
+      "id_confidence": 0.92,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": 6.46,
+        "source": "eBay US (via SerpApi): median asking price of 8 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Life+Strategies+for+Catholic+Teens+Jim+Auer&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:55:13+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "B1-07",
+      "shelf": "B1",
+      "position": 7,
+      "frame_ref": "out/rows/B1.jpg#xyxy=505,723,639,1364",
+      "status": "identified",
+      "title": "Johnny Tremain",
+      "author": "Esther Forbes",
+      "publisher": "LAUREL-LEAF NEWBERY",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 19.2,
+      "spine_thickness_cm": 1.47,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 13.56,
+        "source": "eBay US (via SerpApi): median asking price of 26 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Johnny+Tremain+Esther+Forbes&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:10+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 5.44,
+        "source": "eBay US (via SerpApi): median asking price of 54 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Johnny+Tremain+Esther+Forbes&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:20:15+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "B1-08",
+      "shelf": "B1",
+      "position": 8,
+      "frame_ref": "out/rows/B1.jpg#xyxy=573,803,708,1377",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 17.1,
+      "spine_thickness_cm": 2.63,
+      "id_confidence": 0.698,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-09",
+      "shelf": "B1",
+      "position": 9,
+      "frame_ref": "out/rows/B1.jpg#xyxy=680,645,763,1384",
+      "status": "unidentified",
+      "title": "",
+      "author": "",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 21.8,
+      "spine_thickness_cm": 1.39,
+      "id_confidence": 0.786,
+      "replacement_cost": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      },
+      "used_value": {
+        "amount": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": "",
+        "converted": false,
+        "condition_assumed": ""
+      }
+    },
+    {
+      "id": "B1-10",
+      "shelf": "B1",
+      "position": 10,
+      "frame_ref": "out/rows/B1.jpg#xyxy=719,603,787,1389",
+      "status": "identified",
+      "title": "Changed",
+      "author": "Tom Cantor",
+      "publisher": "",
+      "edition": "",
+      "isbn": "",
+      "spine_height_cm": 23.2,
+      "spine_thickness_cm": 0.71,
+      "id_confidence": 1.0,
+      "replacement_cost": {
+        "amount": 4.97,
+        "source": "eBay US (via SerpApi): median asking price of 42 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Changed+Tom+Cantor&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:30+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 4.67,
+        "source": "eBay US (via SerpApi): median asking price of 50 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Changed+Tom+Cantor&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:35+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    },
+    {
+      "id": "B1-11",
+      "shelf": "B1",
+      "position": 11,
+      "frame_ref": "out/rows/B1.jpg#xyxy=743,654,869,1391",
+      "status": "identified",
+      "title": "When Will This Cruel War Be Over The Diary Of Emma Simpson",
+      "author": "Barry Denenberg",
+      "publisher": "Scholastic",
+      "edition": "Scholastic edition",
+      "isbn": "9780545275989",
+      "spine_height_cm": 23.8,
+      "spine_thickness_cm": 3.36,
+      "id_confidence": 0.847,
+      "replacement_cost": {
+        "amount": 12.99,
+        "source": "eBay US (via SerpApi): median asking price of 8 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=When+Will+This+Cruel+War+Be+Over+The+Diary+Of+Emma+Simpson+Barry+Denenberg&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:20+00:00",
+        "converted": false,
+        "condition_assumed": "new"
+      },
+      "used_value": {
+        "amount": 6.46,
+        "source": "eBay US (via SerpApi): median asking price of 10 used fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=9780545275989&LH_ItemCondition=3000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:44:26+00:00",
+        "converted": false,
+        "condition_assumed": "used, good (median of used listings)"
+      }
+    }
+  ],
+  "items": [
+    {
+      "id": "I-01",
+      "category": "electronics",
+      "description": "large computer monitor displaying black and white graphics on a desk",
+      "brand_model": "",
+      "frame_ref": "frames/00005.jpg#xyxy=0,111,1029,1021",
+      "dimensions_cm": {
+        "w": 85.0,
+        "h": 76.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 80.5,
+        "high": 168.37,
+        "source": "eBay US (via SerpApi): median asking price of 48 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=monitor&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T04:09:38+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-02",
+      "category": "electronics",
+      "description": "silver laptop computer open on desk",
+      "brand_model": "Apple",
+      "frame_ref": "frames/00005.jpg#xyxy=0,721,602,1367",
+      "dimensions_cm": {
+        "w": 46.0,
+        "h": 49.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 655.0,
+        "high": 1170.0,
+        "source": "eBay US (via SerpApi): median asking price of 49 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=Apple+laptop&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:09:10+00:00"
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "I-03",
+      "category": "electronics",
+      "description": "black smartwatch with fabric strap on desk mat",
+      "brand_model": "",
+      "frame_ref": "frames/00005.jpg#xyxy=700,1159,815,1330",
+      "dimensions_cm": {
+        "w": 7.0,
+        "h": 11.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 22.99,
+        "high": 39.75,
+        "source": "eBay US (via SerpApi): median asking price of 48 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=smartwatch&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:19:14+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-04",
+      "category": "furniture",
+      "description": "light wood desk with white legs and black desk pad",
+      "brand_model": "",
+      "frame_ref": "frames/00005.jpg#xyxy=0,967,1080,1908",
+      "dimensions_cm": {
+        "w": 64.0,
+        "h": 55.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 65.36,
+        "high": 149.49,
+        "source": "eBay US (via SerpApi): median asking price of 36 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=desk&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T04:08:56+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-05",
+      "category": "decor",
+      "description": "black large desk pad",
+      "brand_model": "",
+      "frame_ref": "frames/00046.jpg#xyxy=0,1188,1043,1601",
+      "dimensions_cm": {
+        "w": 70.0,
+        "h": 28.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 12.64,
+        "high": 23.99,
+        "source": "eBay US (via SerpApi): median asking price of 31 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=desk+mat&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T04:09:02+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-06",
+      "category": "electronics",
+      "description": "digital desk clock showing blue numbers",
+      "brand_model": "",
+      "frame_ref": "frames/00055.jpg#xyxy=0,1082,115,1209",
+      "dimensions_cm": {
+        "w": 10.0,
+        "h": 11.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 8.98,
+        "high": 18.86,
+        "source": "eBay US (via SerpApi): median asking price of 49 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=digital+clock&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:09:25+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-07",
+      "category": "shelving",
+      "description": "white wooden bookshelf containing multiple shelves filled with books",
+      "brand_model": "",
+      "frame_ref": "frames/00072.jpg#xyxy=6,0,1080,1920",
+      "dimensions_cm": {
+        "w": 54.0,
+        "h": 98.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 37.48,
+        "high": 81.15,
+        "source": "eBay US (via SerpApi): median asking price of 47 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=bookcase&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T04:09:12+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-08",
+      "category": "shelving",
+      "description": "white cube shelving unit",
+      "brand_model": "",
+      "frame_ref": "frames/00280.jpg#xyxy=196,295,1080,1918",
+      "dimensions_cm": {
+        "w": 59.0,
+        "h": 108.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 38.95,
+        "high": 84.99,
+        "source": "eBay US (via SerpApi): median asking price of 47 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=shelving+unit&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T08:19:52+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-09",
+      "category": "electronics",
+      "description": "small mechanical keyboard with grey, beige, and orange keycaps",
+      "brand_model": "",
+      "frame_ref": "frames/00280.jpg#xyxy=637,1526,828,1797",
+      "dimensions_cm": {
+        "w": 14.0,
+        "h": 19.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 18.02,
+        "high": 31.99,
+        "source": "eBay US (via SerpApi): median asking price of 51 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=keyboard&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T04:09:03+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-10",
+      "category": "art",
+      "description": "small framed picture or certificate on wall",
+      "brand_model": "",
+      "frame_ref": "frames/00294.jpg#xyxy=574,314,689,503",
+      "dimensions_cm": {
+        "w": 14.0,
+        "h": 23.0,
+        "d": null
+      },
+      "status": "needs_appraisal",
+      "replacement_cost": {
+        "low": null,
+        "high": null,
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-11",
+      "category": "furniture",
+      "description": "full-length floor mirror leaning against the wall with black frame",
+      "brand_model": "",
+      "frame_ref": "frames/00294.jpg#xyxy=411,827,664,1756",
+      "dimensions_cm": {
+        "w": 34.0,
+        "h": 125.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 40.22,
+        "high": 84.35,
+        "source": "eBay US (via SerpApi): median asking price of 48 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=mirror&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T04:09:54+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-12",
+      "category": "electronics",
+      "description": "laptop open on desk displaying code",
+      "brand_model": "",
+      "frame_ref": "frames/00335.jpg#xyxy=340,1257,789,1628",
+      "dimensions_cm": {
+        "w": 51.0,
+        "h": 42.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 229.0,
+        "high": 449.0,
+        "source": "eBay US (via SerpApi): median asking price of 35 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=laptop&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T04:09:34+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-13",
+      "category": "furniture",
+      "description": "teal upholstered tufted headboard and bed with patterned pillow",
+      "brand_model": "",
+      "frame_ref": "frames/00342.jpg#xyxy=115,1184,1077,1912",
+      "dimensions_cm": {
+        "w": 97.0,
+        "h": 74.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 81.27,
+        "high": 217.22,
+        "source": "eBay US (via SerpApi): median asking price of 22 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=bed&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T04:09:44+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-14",
+      "category": "furniture",
+      "description": "black gaming/office chair with cutout headrest",
+      "brand_model": "",
+      "frame_ref": "frames/00353.jpg#xyxy=772,1305,1077,1908",
+      "dimensions_cm": {
+        "w": 33.0,
+        "h": 65.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 86.61,
+        "high": 189.99,
+        "source": "eBay US (via SerpApi): median asking price of 45 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=office+chair&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-30T04:09:49+00:00"
+      },
+      "confidence": 0.4
+    },
+    {
+      "id": "I-15",
+      "category": "electronics",
+      "description": "LG widescreen monitor with black frame displaying black/white graphic pattern",
+      "brand_model": "LG",
+      "frame_ref": "frames/00434.jpg#xyxy=0,412,935,1392",
+      "dimensions_cm": {
+        "w": 83.0,
+        "h": 88.0,
+        "d": null
+      },
+      "status": "range",
+      "replacement_cost": {
+        "low": 137.5,
+        "high": 272.28,
+        "source": "eBay US (via SerpApi): median asking price of 53 new fixed-price listings",
+        "url": "https://www.ebay.com/sch/i.html?_nkw=LG+monitor&LH_ItemCondition=1000&LH_BIN=1",
+        "retrieved_at": "2026-10-31T07:21:28+00:00"
+      },
+      "confidence": 0.6
+    }
+  ],
+  "totals": {
+    "book_count": 49,
+    "books_identified": 37,
+    "books_unidentified": 12,
+    "shelf_run_m": 0.9,
+    "books_replacement_cost": 574.11,
+    "books_used_value": 207.77,
+    "items_replacement_cost_low": 1514.52,
+    "items_replacement_cost_high": 2981.43,
+    "excluded_from_totals": 16
+  },
+  "review_queue": [
+    {
+      "ref_id": "A1",
+      "reason": "no marker in view: spine sizes from the depth model, scaled to 11 identified books of known height on this shelf"
+    },
+    {
+      "ref_id": "A1",
+      "reason": "shelf run from the sum of spine thicknesses (no marker); approximate"
+    },
+    {
+      "ref_id": "A1-05",
+      "reason": "ambiguous: 'Narrative of the Life of Frederick Douglass an American Slave' vs 'Narrative of the life of Frederick Douglass, an American slave. Written by himself. [With] Appendix'"
+    },
+    {
+      "ref_id": "A1-07",
+      "reason": "title-only match on a short title ('The Jungle Pyramid'); author not legible"
+    },
+    {
+      "ref_id": "A1-15",
+      "reason": "title-only match on a short title ('Critical Thinking'); author not legible"
+    },
+    {
+      "ref_id": "A1-20",
+      "reason": "no replacement price found; excluded from totals: fewer than 3 matching new listings on eBay US (title search)"
+    },
+    {
+      "ref_id": "A1-23",
+      "reason": "no replacement price found; excluded from totals: fewer than 3 matching new listings on eBay US (title search)"
+    },
+    {
+      "ref_id": "A1-25",
+      "reason": "best match 'Breath of the Dragon' below threshold (0.73)"
+    },
+    {
+      "ref_id": "A1-26",
+      "reason": "best match 'A Journey to the New World (Dear America)' below threshold (0.64)"
+    },
+    {
+      "ref_id": "A1-27",
+      "reason": "title-only match on a short title ('Scholastic Kindergarten Collection'); author not legible"
+    },
+    {
+      "ref_id": "A1-28",
+      "reason": "spine not legible; logged as unidentified with its dimensions"
+    },
+    {
+      "ref_id": "A1-30",
+      "reason": "ambiguous: 'The Hunger Games' vs 'The Hunger Games Trilogy'"
+    },
+    {
+      "ref_id": "A2",
+      "reason": "no marker in view: spine sizes from the depth model, scaled to 3 identified books of known height on this shelf"
+    },
+    {
+      "ref_id": "A2",
+      "reason": "shelf run from the sum of spine thicknesses (no marker); approximate"
+    },
+    {
+      "ref_id": "B1",
+      "reason": "no marker in view: spine sizes from the depth model, scaled to a typical book height (standard formats); approximate"
+    },
+    {
+      "ref_id": "B1",
+      "reason": "shelf run from the sum of spine thicknesses (no marker); approximate"
+    },
+    {
+      "ref_id": "B1-01",
+      "reason": "ambiguous: 'The One and Only Ivan' vs 'The One and Only Ivan Movie Tie-In Edition'"
+    },
+    {
+      "ref_id": "B1-03",
+      "reason": "ambiguous: 'A Tale of Two Cities' vs 'A Tale of Two Cities - by Charles Dickens'"
+    },
+    {
+      "ref_id": "B1-06",
+      "reason": "no replacement price found; excluded from totals: fewer than 3 matching new listings on eBay US (title search)"
+    },
+    {
+      "ref_id": "B1-08",
+      "reason": "best match 'St. Joseph Sunday Missal and Hymnal for 2019' below threshold (0.70)"
+    },
+    {
+      "ref_id": "B1-09",
+      "reason": "best match 'LEPRECHAUN IN LATE WINTER (MAGIC TREE HOUSE 43)(CD1장포함)' below threshold (0.79)"
+    },
+    {
+      "ref_id": "I-10",
+      "reason": "art defaults to appraisal; the policyholder has not said it is a print"
+    },
+    {
+      "ref_id": "items",
+      "reason": "approximate front-face size from monocular depth; depth not measured: I-01, I-02, I-03, I-04, I-05, I-06, I-07, I-08, I-09, I-10, I-11, I-12, I-13, I-14, I-15"
+    },
+    {
+      "ref_id": "items",
+      "reason": "brand/model not visible; interquartile range of similar new items: I-01, I-02, I-03, I-04, I-05, I-06, I-07, I-08, I-09, I-11, I-12, I-13, I-14, I-15"
+    },
+    {
+      "ref_id": "room",
+      "reason": "rectangle fitted to the scanned outline"
+    },
+    {
+      "ref_id": "room",
+      "reason": "the floor was not seen consistently in the frames tilted down; camera-height check skipped"
+    }
+  ],
+  "second_country": null
+}

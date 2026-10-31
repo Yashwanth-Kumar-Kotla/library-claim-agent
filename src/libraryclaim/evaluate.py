@@ -200,9 +200,11 @@ def score(packet: ClaimPacket, truth: dict, timings: dict | None = None) -> list
     else:
         out.append(Result("Wall area", "no ground truth", "within 15%", None))
 
-    total = (timings or {}).get("seconds", {}).get("total")
-    out.append(Result("Time to packet", f"{total:.0f} s" if total is not None else "not recorded", "under 5 minutes",
-                      None if total is None else total < 300))
+    # The brief's clock starts when the sweep ends; a replay has no "after_sweep", only its total.
+    secs = (timings or {}).get("seconds", {})
+    total = secs.get("after_sweep", secs.get("total"))
+    out.append(Result("Time to packet", f"{total:.0f} s after the sweep ended" if total is not None else "not recorded",
+                      "under 5 minutes", None if total is None else total < 300))
     return out
 
 

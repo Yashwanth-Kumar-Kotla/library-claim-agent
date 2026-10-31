@@ -661,6 +661,29 @@ class SweepRun:
             keep, drop = (b, twin) if b.id_confidence > twin.id_confidence else (twin, b)
             kept[kept.index(twin)] = keep
             self.note(drop.id, f"same book as {keep.id} seen twice (overlapping boxes); removed from the count")
+        return self._drop_neighbour_shelf_sightings(kept)
+
+    def _drop_neighbour_shelf_sightings(self, books: list[Book]) -> list[Book]:
+        """The same identified book under two adjacent shelves of one bookcase was filmed twice: the
+        frame for one shelf also held the next (seen: seven bottom-shelf books counted again under
+        the top shelf, 49 books for 40). A real second copy one shelf down is rare, and the line
+        stays in the review queue for the adjuster."""
+        def row(shelf: str) -> tuple[str, int] | None:
+            m = re.fullmatch(r"([A-Z])(\d+)", shelf)
+            return (m.group(1), int(m.group(2))) if m else None
+        kept: list[Book] = []
+        for b in books:
+            rb = row(b.shelf)
+            twin = next((k for k in kept if b.status != "unidentified" and k.status != "unidentified"
+                         and k.title == b.title and k.author == b.author and k.shelf != b.shelf and rb
+                         and row(k.shelf) and row(k.shelf)[0] == rb[0] and abs(row(k.shelf)[1] - rb[1]) == 1), None)
+            if twin is None:
+                kept.append(b)
+                continue
+            keep, drop = (b, twin) if b.id_confidence > twin.id_confidence else (twin, b)
+            kept[kept.index(twin)] = keep
+            self.note(drop.id, f"same book as {keep.id} on the next shelf: one frame held both shelves; "
+                               "removed from the count (restore it if this is a second copy)")
         return kept
 
     @staticmethod

@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contents claim live-20261031-030804</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f5f0e6;--card:#fbf8f2;--ink:#1d1a15;--soft:#5d564b;--faint:#8f8778;--rule:#e2d9c8;--brass:#a8792a;
+--sage:#3f7a4f;--sage-bg:#e3efe3;--amber:#b0611a;--amber-bg:#f8e7d2;--grey-bg:#ece6da;--rose:#a8453b;
+--serif:"Hanken Grotesk",-apple-system,"Segoe UI",sans-serif;--sans:"Hanken Grotesk",-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--paper:#14120f;--card:#1c1a16;--ink:#eee7da;--soft:#b7ae9e;--faint:#857d6f;--rule:#2e2a23;
+--brass:#d4ad5b;--sage:#9fc6a3;--sage-bg:#1f2d22;--amber:#f0a453;--amber-bg:#33251a;--grey-bg:#26231d;--rose:#e88f86}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 var(--sans);
+background-image:radial-gradient(90% 40% at 100% 0%,color-mix(in srgb,var(--brass) 9%,transparent),transparent 70%)}
+.wrap{max-width:1080px;margin:0 auto;padding:40px 24px 72px}
+a{color:inherit}
+.eyebrow{font:500 11.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin:0 0 14px}
+h1{font:700 clamp(30px,4.6vw,46px)/1.1 var(--serif);letter-spacing:-.025em;margin:0 0 12px}
+h1 em{font-style:normal;color:var(--brass)}
+h2{font:700 21px/1.2 var(--serif);margin:0;letter-spacing:-.015em}
+.meta{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--soft);font:400 13px var(--mono)}
+.meta b{color:var(--ink);font-weight:500}
+section{margin-top:44px}
+.head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:18px;flex-wrap:wrap}
+.head .note{color:var(--faint);font-size:13px}
+
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:16px;overflow:hidden;margin-top:30px}
+.fig{background:var(--card);padding:20px 20px 18px;animation:rise .6s both}
+.fig:nth-child(2){animation-delay:.05s}.fig:nth-child(3){animation-delay:.1s}.fig:nth-child(4){animation-delay:.15s}
+.fig small{display:block;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.fig b{display:block;font:700 30px/1.15 var(--serif);margin:8px 0 4px;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.fig span{color:var(--soft);font-size:13px}
+.fig.alert b{color:var(--amber)}
+.fig b.range{font-size:21px;line-height:1.75;white-space:nowrap}
+
+.split{margin-top:22px}
+.bar{display:flex;height:12px;border-radius:6px;overflow:hidden;background:var(--grey-bg)}
+.bar i{display:block}
+.bar .s-id{background:var(--sage)}.bar .s-ap{background:var(--amber)}.bar .s-un{background:var(--faint);opacity:.45}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;font-size:13px;color:var(--soft)}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:0}
+
+.room{display:grid;grid-template-columns:minmax(220px,340px) 1fr;gap:28px;align-items:start}
+@media(max-width:720px){.room{grid-template-columns:1fr}}
+.plan{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:18px}
+.plan svg{width:100%;height:auto;display:block}
+.plan .wall{fill:color-mix(in srgb,var(--brass) 10%,transparent);stroke:var(--ink);stroke-width:2.5}
+.plan text{font:500 11px var(--mono);fill:var(--soft)}
+.plan .empty{color:var(--faint);font-size:14px;padding:40px 10px;text-align:center}
+dl.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px 22px;margin:0}
+dl.stats div{border-top:1px solid var(--rule);padding-top:10px}
+dt{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+dd{margin:4px 0 0;font:600 21px/1.2 var(--serif);font-variant-numeric:tabular-nums}
+dd small{display:block;font:400 12.5px var(--sans);color:var(--soft)}
+.method{margin-top:16px;color:var(--soft);font-size:13.5px}
+.meter{display:inline-block;width:70px;height:6px;border-radius:3px;background:var(--grey-bg);vertical-align:middle;margin-left:6px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--brass)}
+
+.queue{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+details{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:0 16px}
+summary{list-style:none;cursor:pointer;display:flex;gap:12px;align-items:center;padding:12px 0}
+summary::-webkit-details-marker{display:none}
+summary .ref{font:500 13px var(--mono);min-width:70px}
+summary .first,.one .first{flex:1;min-width:0;color:var(--soft);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.one{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:12px 16px}
+.one .ref{font:500 13px var(--mono);min-width:70px}.one .first{white-space:normal}
+summary .n{font:500 12px var(--mono);color:var(--faint)}
+summary::after{content:"+";font:400 18px var(--mono);color:var(--faint)}
+details[open] summary::after{content:"−"}
+details ul{margin:0 0 14px;padding-left:82px;color:var(--soft);font-size:14px}
+@media(max-width:560px){details ul{padding-left:18px}summary .ref,.one .ref{min-width:0}}
+html,body{overflow-x:hidden}
+details li{margin:4px 0}
+
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.f{border:1px solid var(--rule);background:var(--card);color:var(--soft);border-radius:999px;padding:6px 13px;font:500 13px var(--sans);cursor:pointer}
+.f.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.f b{font-family:var(--mono);font-weight:500;margin-left:4px;opacity:.75}
+.search{margin-left:auto;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:10px;padding:8px 12px;font:14px var(--sans);min-width:200px}
+.scroll{overflow-x:auto;border:1px solid var(--rule);border-radius:14px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:760px}
+th{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint);text-align:left;padding:12px 14px;border-bottom:1px solid var(--rule);position:sticky;top:0;background:var(--card)}
+td{padding:11px 14px;border-bottom:1px solid var(--rule);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.thumb{width:34px;height:52px;object-fit:cover;border-radius:4px;background:var(--grey-bg);display:block}
+.lid{font:400 12.5px var(--mono);color:var(--faint);white-space:nowrap}
+.ttl{font:600 15px/1.3 var(--serif);letter-spacing:-.005em}
+.sub{color:var(--soft);font-size:13px}
+.tag{display:inline-block;font:500 10.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;white-space:nowrap}
+.t-identified,.t-priced{color:var(--sage);background:var(--sage-bg)}
+.t-needs_appraisal{color:var(--amber);background:var(--amber-bg)}
+.t-unidentified,.t-range{color:var(--soft);background:var(--grey-bg)}
+.amt{font-variant-numeric:tabular-nums;white-space:nowrap}
+.src{display:block;font:400 11.5px var(--mono);color:var(--faint);text-decoration-thickness:1px}
+.conv{font:500 10px var(--mono);color:var(--amber);margin-left:6px;text-transform:uppercase}
+.nil{color:var(--faint)}
+.conf{display:inline-block;width:46px;height:5px;border-radius:3px;background:var(--grey-bg);overflow:hidden;vertical-align:middle;margin-right:6px}
+.conf i{display:block;height:100%;background:var(--ink);opacity:.7}
+tr.hide{display:none!important}
+@media(max-width:640px){
+  table.cards{min-width:0}.scroll:has(table.cards){overflow:visible}
+  table.cards tr:first-child{display:none}
+  table.cards tr{display:grid;grid-template-columns:auto 1fr;column-gap:12px;row-gap:4px;padding:14px;border-bottom:1px solid var(--rule)}
+  table.cards tr:last-child{border-bottom:0}
+  table.cards td{display:block;padding:0;border:0;text-align:left}
+  table.cards td{grid-column:2}
+  table.cards td:first-child{grid-column:1;grid-row:1 / span 7}
+  table.cards td[data-l]{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:14px}
+  table.cards td[data-l] .v{text-align:right}
+  table.cards td[data-l]::before{content:attr(data-l);font:500 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);padding-top:3px}
+  table.cards .src{display:inline;margin-left:8px}
+}
+footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--rule);color:var(--faint);font-size:13px;display:grid;gap:6px}
+@keyframes rise{from{transform:translateY(8px)}to{transform:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+@media print{body{background:#fff}.tools,.src{display:none}.scroll{overflow:visible;border:0}section{break-inside:avoid-page}details{break-inside:avoid}}
+</style></head><body><div class="wrap">
+
+<header>
+  <p class="eyebrow">Contents claim · home library</p>
+  <h1>36 books, 18 other items, <em>15.17 m²</em></h1>
+  <div class="meta">
+    <span>Sweep <b>live-20261031-030804</b></span><span>2026-10-31T08:08:04+00:00</span>
+    <span>phone browser</span><span>Values in <b>USD</b> · US</span>
+    <span>266 s sweep</span>
+  </div>
+</header>
+
+<div class="figs">
+  <div class="fig"><small>Books · replacement</small><b>USD 481.67</b><span>used value USD 159.34</span></div>
+  <div class="fig"><small>Other contents</small><b class="range">USD 1,898.98 – 3,794.58</b><span>replacement, low to high</span></div>
+  <div class="fig alert"><small>Excluded from totals</small><b>10</b><span>awaiting appraisal or no price found</span></div>
+  <div class="fig alert"><small>For the adjuster</small><b>16</b><span>lines with review notes</span></div>
+</div>
+
+
+<div class="split">
+  <div class="bar">
+    <i class="s-id" style="width:80.56%"></i><i class="s-ap" style="width:0.0%"></i><i class="s-un" style="width:19.44%"></i>
+  </div>
+  <div class="legend">
+    <span><i style="background:var(--sage)"></i>29 identified</span>
+    <span><i style="background:var(--amber)"></i>0 need appraisal</span>
+    <span><i style="background:var(--faint);opacity:.45"></i>7 unidentified</span>
+    <span>shelf run 0.72 m</span>
+  </div>
+</div>
+
+
+<section>
+  <div class="head"><h2>Room</h2><span class="note">non-rectangular, 12 corners; floor area from the outline polygon, length/width are the smallest enclosing rectangle</span></div>
+  <div class="room">
+    <div class="plan">
+      <svg viewBox="0 0 300 220" role="img" aria-label="Floor plan 4.83 by 4.15 metres">
+        <rect class="wall" x="58.5" y="46.0" width="162.9" height="140.0" rx="2"/>
+        <text x="139.95" y="38.0" text-anchor="middle">4.83 m</text>
+        <text x="229.4" y="116.0" dominant-baseline="middle">4.15 m</text>
+        <text x="139.95" y="116.0" text-anchor="middle" dominant-baseline="middle">15.17 m²</text>
+      </svg>
+    </div>
+    <div>
+      <dl class="stats">
+        <div><dt>Floor</dt><dd>15.17 m²<small>163.3 ft²</small></dd></div>
+        <div><dt>Walls</dt><dd>54.83 m²<small>590.2 ft²</small></dd></div>
+        <div><dt>Shelved wall</dt><dd>0.48 m²<small>covered by shelving</small></dd></div>
+        <div><dt>Length × width</dt><dd>4.83 × 4.15<small>metres</small></dd></div>
+        <div><dt>Ceiling</dt><dd>3.28 m<small>floor to ceiling</small></dd></div>
+      </dl>
+      <p class="method">Measured by turn-around scan: Depth Pro metric depth on 19 frames, phone orientation, scale corrected x0.972 from the printed marker. Confidence <span class="meter"><i style="width:85%"></i></span></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="head"><h2>For the adjuster</h2><span class="note">every line the system is not certain of, and why</span></div>
+  <div class="queue">
+    <details><summary><span class="ref">room</span><span class="first">non-rectangular outline simplified to 12 corners</span><span class="n">2</span></summary>
+    <ul><li>non-rectangular outline simplified to 12 corners</li><li>the floor was not seen consistently in the frames tilted down; camera-height check skipped</li></ul></details>
+    <div class="one"><span class="ref">sweep</span><span class="first">connection closed before the sweep was ended; packet built from what was captured</span></div>
+    <details><summary><span class="ref">A2</span><span class="first">no marker in view: spine sizes from the depth model, scaled to 8 identified books of known height on this shelf</span><span class="n">2</span></summary>
+    <ul><li>no marker in view: spine sizes from the depth model, scaled to 8 identified books of known height on this shelf</li><li>shelf run from the sum of spine thicknesses (no marker); approximate</li></ul></details>
+    <div class="one"><span class="ref">A2-14</span><span class="first">no replacement price found; excluded from totals: fewer than 3 matching new listings on eBay US (title search)</span></div>
+    <div class="one"><span class="ref">A2-17</span><span class="first">best match &#39;A Journey to the New World (Dear America)&#39; below threshold (0.64)</span></div>
+    <div class="one"><span class="ref">A2-19</span><span class="first">title-only match on a short title (&#39;The Hunger Games&#39;); author not legible</span></div>
+    <details><summary><span class="ref">A3</span><span class="first">no marker in view: spine sizes from the depth model, scaled to 3 identified books of known height on this shelf</span><span class="n">2</span></summary>
+    <ul><li>no marker in view: spine sizes from the depth model, scaled to 3 identified books of known height on this shelf</li><li>shelf run from the sum of spine thicknesses (no marker); approximate</li></ul></details>
+    <details><summary><span class="ref">B1</span><span class="first">no marker in view: spine sizes from the depth model, scaled to a typical book height (standard formats); approximate</span><span class="n">2</span></summary>
+    <ul><li>no marker in view: spine sizes from the depth model, scaled to a typical book height (standard formats); approximate</li><li>shelf run from the sum of spine thicknesses (no marker); approximate</li></ul></details>
+    <div class="one"><span class="ref">B1-01</span><span class="first">ambiguous: &#39;The One and Only Ivan&#39; vs &#39;The One and Only Ivan Movie Tie-In Edition&#39;</span></div>
+    <div class="one"><span class="ref">B1-03</span><span class="first">ambiguous: &#39;A Tale of Two Cities&#39; vs &#39;A Tale of Two Cities - by Charles Dickens&#39;</span></div>
+    <div class="one"><span class="ref">B1-06</span><span class="first">title-only match on a short title (&#39;Stradivarius&#39;); author not legible</span></div>
+    <div class="one"><span class="ref">B1-08</span><span class="first">best match &#39;St. Joseph Sunday Missal and Hymnal for 2019&#39; below threshold (0.70)</span></div>
+    <div class="one"><span class="ref">B1-10</span><span class="first">no replacement price found; excluded from totals: fewer than 3 matching new listings on eBay US (title search); fewer than 3 matching used listings on eBay US (title search)</span></div>
+    <div class="one"><span class="ref">B1-11</span><span class="first">title-only match on a short title (&#39;Scholastic Kindergarten Collection&#39;); author not legible</span></div>
+    <div class="one"><span class="ref">I-07</span><span class="first">art defaults to appraisal; the policyholder has not said it is a print</span></div>
+    <details><summary><span class="ref">items</span><span class="first">approximate front-face size from monocular depth; depth not measured: I-01, I-02, I-03, I-04, I-05, I-06, I-07, I-08, I-09, I-10, I-11, I-12, I-13, I-14, I-15, I-16, I-17, I-18</span><span class="n">2</span></summary>
+    <ul><li>approximate front-face size from monocular depth; depth not measured: I-01, I-02, I-03, I-04, I-05, I-06, I-07, I-08, I-09, I-10, I-11, I-12, I-13, I-14, I-15, I-16, I-17, I-18</li><li>brand/model not visible; interquartile range of similar new items: I-01, I-02, I-03, I-04, I-05, I-06, I-08, I-09, I-10, I-11, I-12, I-13, I-14, I-15, I-16, I-17, I-18</li></ul></details></div>
+  
+</section>
+
+<section>
+  <div class="head"><h2>Books</h2><span class="note">prices are medians of live listings; each links to its search</span></div>
+  <div class="tools" data-table="books">
+    <button class="f on" data-f="all">All<b>36</b></button>
+    <button class="f" data-f="identified">Identified<b>29</b></button>
+    <button class="f" data-f="needs_appraisal">Appraisal<b>0</b></button>
+    <button class="f" data-f="unidentified">Unidentified<b>7</b></button>
+    <input class="search" type="search" placeholder="Search title, author, line" aria-label="Search books">
+  </div>
+  <div class="scroll"><table id="books" class="cards">
+    <tr><th></th><th>Line</th><th>Book</th><th>Status</th><th class="n">H × T cm</th><th>Match</th><th class="n">Replacement</th><th class="n">Used</th></tr>
+    <tr data-s="identified" data-q="a2-01 theodore boone: the accused john grisham">
+      <td><a href="out/rows/A2.jpg#xyxy=239,511,327,1062" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-01.jpg" alt=""></a></td>
+      <td class="lid">A2-01</td>
+      <td><div class="ttl">Theodore Boone: The Accused</div><div class="sub">John Grisham</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">20 × 2.8 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:94%"></i></span><span class="lid">0.94</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 9.00</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Theodore+Boone+John+Grisham&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 4.16</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Theodore+Boone+John+Grisham&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a2-02 theodore boone: kid lawyer john grisham">
+      <td><a href="out/rows/A2.jpg#xyxy=305,515,379,1060" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-02.jpg" alt=""></a></td>
+      <td class="lid">A2-02</td>
+      <td><div class="ttl">Theodore Boone: Kid Lawyer</div><div class="sub">John Grisham</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">19.9 × 1.86 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 9.00</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Theodore+Boone+John+Grisham&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 4.16</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Theodore+Boone+John+Grisham&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a2-03 prisoner b-3087 alan gratz, ruth gruener, jack gruener">
+      <td><a href="out/rows/A2.jpg#xyxy=356,527,422,1060" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-03.jpg" alt=""></a></td>
+      <td class="lid">A2-03</td>
+      <td><div class="ttl">Prisoner B-3087</div><div class="sub">Alan Gratz, Ruth Gruener, Jack Gruener</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">19.4 × 1.71 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:95%"></i></span><span class="lid">0.95</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 16.67</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Prisoner+B-3087+Alan+Gratz&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 5.14</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Prisoner+B-3087+Alan+Gratz&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a2-04 narrative of the life of frederick douglass, an american slave frederick douglass">
+      <td><a href="out/rows/A2.jpg#xyxy=406,507,470,1060" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-04.jpg" alt=""></a></td>
+      <td class="lid">A2-04</td>
+      <td><div class="ttl">Narrative of the Life of Frederick Douglass, an American Slave</div><div class="sub">Frederick Douglass</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">20.1 × 1.64 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:98%"></i></span><span class="lid">0.98</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 11.29</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Narrative+of+the+Life+of+Frederick+Douglass%2C+an+American+Slave+Frederick+Douglass&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 5.11</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Narrative+of+the+Life+of+Frederick+Douglass%2C+an+American+Slave+Frederick+Douglass&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a2-05 the alchemist: a graphic novel paulo coelho">
+      <td><a href="out/rows/A2.jpg#xyxy=448,452,524,1066" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-05.jpg" alt=""></a></td>
+      <td class="lid">A2-05</td>
+      <td><div class="ttl">The Alchemist: A Graphic Novel</div><div class="sub">Paulo Coelho</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">22.2 × 2.03 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 11.82</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=The+Alchemist+Paulo+Coelho&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 6.07</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=The+Alchemist+Paulo+Coelho&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a2-06 influencer: the power to change anything, first edition kerry patterson, joseph grenny, david maxfield">
+      <td><a href="out/rows/A2.jpg#xyxy=506,424,573,1062" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-06.jpg" alt=""></a></td>
+      <td class="lid">A2-06</td>
+      <td><div class="ttl">Influencer: The Power to Change Anything, First Edition</div><div class="sub">Kerry Patterson, Joseph Grenny, David Maxfield · McGraw Hill edition · ISBN 9780071592451</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">23.1 × 1.92 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:94%"></i></span><span class="lid">0.94</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 15.00</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Influencer+Kerry+Patterson&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 4.96</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Influencer+Kerry+Patterson&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a2-07 bfg roald dahl">
+      <td><a href="out/rows/A2.jpg#xyxy=564,521,616,1062" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-07.jpg" alt=""></a></td>
+      <td class="lid">A2-07</td>
+      <td><div class="ttl">Bfg</div><div class="sub">Roald Dahl</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">19.7 × 1.57 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 8.05</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Bfg+Roald+Dahl&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 4.16</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Bfg+Roald+Dahl&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a2-08 the full monty wendy holden">
+      <td><a href="out/rows/A2.jpg#xyxy=606,505,652,1062" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-08.jpg" alt=""></a></td>
+      <td class="lid">A2-08</td>
+      <td><div class="ttl">The Full Monty</div><div class="sub">Wendy Holden · Harper Entertainment</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">20.3 × 1.46 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 20.85</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=The+Full+Monty+Wendy+Holden&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 7.84</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=The+Full+Monty+Wendy+Holden&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a2-09 counterfeit prince of old texas, the: swindling slaver monroe edwards lora-marie bernard">
+      <td><a href="out/rows/A2.jpg#xyxy=651,430,688,1060" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-09.jpg" alt=""></a></td>
+      <td class="lid">A2-09</td>
+      <td><div class="ttl">Counterfeit Prince of Old Texas, The: Swindling Slaver Monroe Edwards</div><div class="sub">Lora-Marie Bernard</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">22.7 × 1.19 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:91%"></i></span><span class="lid">0.91</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 22.66</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Counterfeit+Prince+of+Old+Texas%2C+The+Lora-Marie+Bernard&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 9.61</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Counterfeit+Prince+of+Old+Texas%2C+The+Lora-Marie+Bernard&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a2-10 when to speak up and when to shut up dr. michael d. sedler">
+      <td><a href="out/rows/A2.jpg#xyxy=679,579,720,1066" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-10.jpg" alt=""></a></td>
+      <td class="lid">A2-10</td>
+      <td><div class="ttl">When to Speak Up and When To Shut Up</div><div class="sub">Dr. Michael D. Sedler · SPIRE</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">17.8 × 1.17 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 9.96</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=When+to+Speak+Up+and+When+To+Shut+Up+Dr.+Michael+D.+Sedler&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 5.63</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=When+to+Speak+Up+and+When+To+Shut+Up+Dr.+Michael+D.+Sedler&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a2-11 bhagavad-gita as it is prabhupada a. c. bhaktivedanta swami">
+      <td><a href="out/rows/A2.jpg#xyxy=712,583,812,1068" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-11.jpg" alt=""></a></td>
+      <td class="lid">A2-11</td>
+      <td><div class="ttl">Bhagavad-Gita As It Is</div><div class="sub">Prabhupada A. C. Bhaktivedanta Swami · THE BHAKTIVEDANTA BOOK TRUST</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">17.7 × 3.18 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 15.00</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Bhagavad-Gita+As+It+Is+Prabhupada+A.+C.+Bhaktivedanta+Swami&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 6.50</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Bhagavad-Gita+As+It+Is+Prabhupada+A.+C.+Bhaktivedanta+Swami&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a2-12 coming back : the science of reincarnation ">
+      <td><a href="out/rows/A2.jpg#xyxy=795,583,834,1068" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-12.jpg" alt=""></a></td>
+      <td class="lid">A2-12</td>
+      <td><div class="ttl">Coming Back : the Science of Reincarnation</div><div class="sub"></div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">17.8 × 0.77 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:92%"></i></span><span class="lid">0.92</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 17.04</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Coming+Back&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 4.97</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Coming+Back&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a2-13 the science of self realization a. c. bhaktivedanta swami prabhupāda">
+      <td><a href="out/rows/A2.jpg#xyxy=813,476,878,1066" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-13.jpg" alt=""></a></td>
+      <td class="lid">A2-13</td>
+      <td><div class="ttl">The Science of Self Realization</div><div class="sub">A. C. Bhaktivedanta Swami Prabhupāda</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">21.5 × 1.6 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 9.00</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=The+Science+of+Self+Realization+A.+C.+Bhaktivedanta+Swami+Prabhup%C4%81da&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 6.99</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=The+Science+of+Self+Realization+A.+C.+Bhaktivedanta+Swami+Prabhup%C4%81da&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a2-14 catholic home schooling mary kay clark">
+      <td><a href="out/rows/A2.jpg#xyxy=858,470,932,1066" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-14.jpg" alt=""></a></td>
+      <td class="lid">A2-14</td>
+      <td><div class="ttl">Catholic Home Schooling</div><div class="sub">Mary Kay Clark · SP</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">21.8 × 1.9 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 6.05</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Catholic+Home+Schooling+Mary+Kay+Clark&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a2-15 be a people person john c. maxwell">
+      <td><a href="out/rows/A2.jpg#xyxy=908,527,965,1062" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-15.jpg" alt=""></a></td>
+      <td class="lid">A2-15</td>
+      <td><div class="ttl">Be a People Person</div><div class="sub">John C. Maxwell</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">19.8 × 1.37 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 20.75</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Be+a+People+Person+John+C.+Maxwell&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 6.00</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Be+a+People+Person+John+C.+Maxwell&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a2-16 breath of the dragon a.l. tait">
+      <td><a href="out/rows/A2.jpg#xyxy=949,547,1022,1068" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-16.jpg" alt=""></a></td>
+      <td class="lid">A2-16</td>
+      <td><div class="ttl">Breath of the Dragon</div><div class="sub">A.L. Tait · Kane Miller</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">19.3 × 2.18 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 27.50</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Breath+of+the+Dragon+A.L.+Tait&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 5.63</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Breath+of+the+Dragon+A.L.+Tait&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="unidentified" data-q="a2-17  ">
+      <td><a href="out/rows/A2.jpg#xyxy=1010,685,1334,1084" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-17.jpg" alt=""></a></td>
+      <td class="lid">A2-17</td>
+      <td><div class="sub">Spine not identified</div></td>
+      <td><span class="tag t-unidentified">unidentified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">— × — cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:64%"></i></span><span class="lid">0.64</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td><td class="n" data-l="Used"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr data-s="identified" data-q="a2-18 how i stayed catholic at harvard aurora griffin">
+      <td><a href="out/rows/A2.jpg#xyxy=1343,575,1448,1086" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-18.jpg" alt=""></a></td>
+      <td class="lid">A2-18</td>
+      <td><div class="ttl">How I Stayed Catholic at Harvard</div><div class="sub">Aurora Griffin · Ignatius edition · ISBN 9781621641285</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">19.3 × 2.79 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 18.75</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=9781621641285&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 5.27</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=9781621641285&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="unidentified" data-q="a2-19  ">
+      <td><a href="out/rows/A2.jpg#xyxy=1386,583,1460,1086" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A2-19.jpg" alt=""></a></td>
+      <td class="lid">A2-19</td>
+      <td><div class="sub">Spine not identified</div></td>
+      <td><span class="tag t-unidentified">unidentified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">18.7 × 1.6 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:92%"></i></span><span class="lid">0.92</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td><td class="n" data-l="Used"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr data-s="identified" data-q="a3-01 the witchwood crown tad williams">
+      <td><a href="out/rows/A3.jpg#xyxy=336,537,558,1214" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A3-01.jpg" alt=""></a></td>
+      <td class="lid">A3-01</td>
+      <td><div class="ttl">The Witchwood Crown</div><div class="sub">Tad Williams · DAW</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">23.3 × 6.68 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 21.57</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=The+Witchwood+Crown+Tad+Williams&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 14.93</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=The+Witchwood+Crown+Tad+Williams&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a3-02 the jungle pyramid franklin w. dixon">
+      <td><a href="out/rows/A3.jpg#xyxy=501,659,585,1218" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A3-02.jpg" alt=""></a></td>
+      <td class="lid">A3-02</td>
+      <td><div class="ttl">The Jungle Pyramid</div><div class="sub">Franklin W. Dixon · Grosset &amp; Dunlap</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">19.3 × 1.35 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 14.51</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=The+Jungle+Pyramid+Franklin+W.+Dixon&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 6.11</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=The+Jungle+Pyramid+Franklin+W.+Dixon&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a3-03 the summer of riley eve bunting">
+      <td><a href="out/rows/A3.jpg#xyxy=552,661,623,1216" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A3-03.jpg" alt=""></a></td>
+      <td class="lid">A3-03</td>
+      <td><div class="ttl">The Summer of Riley</div><div class="sub">Eve Bunting</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">19.2 × 1.24 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 12.24</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=The+Summer+of+Riley+Eve+Bunting&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 5.40</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=The+Summer+of+Riley+Eve+Bunting&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a3-04 bad kitty vs. uncle murray nick bruel">
+      <td><a href="out/rows/A3.jpg#xyxy=588,641,668,1223" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A3-04.jpg" alt=""></a></td>
+      <td class="lid">A3-04</td>
+      <td><div class="ttl">Bad Kitty Vs. Uncle Murray</div><div class="sub">Nick Bruel</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">20.1 × 1.52 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 16.05</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Bad+Kitty+Vs.+Uncle+Murray+Nick+Bruel&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 4.16</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Bad+Kitty+Vs.+Uncle+Murray+Nick+Bruel&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a3-05 high school algebra i unlocked the princeton review">
+      <td><a href="out/rows/A3.jpg#xyxy=630,577,767,1238" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A3-05.jpg" alt=""></a></td>
+      <td class="lid">A3-05</td>
+      <td><div class="ttl">High School Algebra I Unlocked</div><div class="sub">The Princeton Review · The Princeton Review edition · ISBN 9781101882191</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">22.7 × 2.78 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 18.20</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=9781101882191&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 5.58</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=9781101882191&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="a3-06 thanksgiving on thursday mary pope osborne">
+      <td><a href="out/rows/A3.jpg#xyxy=692,672,822,1240" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/A3-06.jpg" alt=""></a></td>
+      <td class="lid">A3-06</td>
+      <td><div class="ttl">Thanksgiving on Thursday</div><div class="sub">Mary Pope Osborne</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">19.6 × 3.17 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 11.38</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Thanksgiving+on+Thursday+Mary+Pope+Osborne&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 5.46</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Thanksgiving+on+Thursday+Mary+Pope+Osborne&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="unidentified" data-q="b1-01  ">
+      <td><a href="out/rows/B1.jpg#xyxy=150,679,226,1259" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/B1-01.jpg" alt=""></a></td>
+      <td class="lid">B1-01</td>
+      <td><div class="sub">Spine not identified</div></td>
+      <td><span class="tag t-unidentified">unidentified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">21.9 × 2.68 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td><td class="n" data-l="Used"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr data-s="identified" data-q="b1-02 stormbreaker anthony horowitz">
+      <td><a href="out/rows/B1.jpg#xyxy=216,666,294,1245" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/B1-02.jpg" alt=""></a></td>
+      <td class="lid">B1-02</td>
+      <td><div class="ttl">Stormbreaker</div><div class="sub">Anthony Horowitz · speak</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">21.8 × 2.74 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 14.32</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Stormbreaker+Anthony+Horowitz&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 4.88</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Stormbreaker+Anthony+Horowitz&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="unidentified" data-q="b1-03  ">
+      <td><a href="out/rows/B1.jpg#xyxy=297,726,350,1239" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/B1-03.jpg" alt=""></a></td>
+      <td class="lid">B1-03</td>
+      <td><div class="sub">Spine not identified</div></td>
+      <td><span class="tag t-unidentified">unidentified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">19.3 × 1.73 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td><td class="n" data-l="Used"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr data-s="identified" data-q="b1-04 a boy at war harry mazer">
+      <td><a href="out/rows/B1.jpg#xyxy=337,679,380,1239" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/B1-04.jpg" alt=""></a></td>
+      <td class="lid">B1-04</td>
+      <td><div class="ttl">A Boy at War</div><div class="sub">Harry Mazer</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">21 × 1.12 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 93.55</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=A+Boy+at+War+Harry+Mazer&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 4.26</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=A+Boy+at+War+Harry+Mazer&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="b1-05 a boy no more harry mazer">
+      <td><a href="out/rows/B1.jpg#xyxy=366,676,416,1249" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/B1-05.jpg" alt=""></a></td>
+      <td class="lid">B1-05</td>
+      <td><div class="ttl">A Boy No More</div><div class="sub">Harry Mazer</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">21.4 × 1.42 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 14.00</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=A+Boy+No+More+Harry+Mazer&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 5.88</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=A+Boy+No+More+Harry+Mazer&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="unidentified" data-q="b1-06  ">
+      <td><a href="out/rows/B1.jpg#xyxy=406,609,479,1249" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/B1-06.jpg" alt=""></a></td>
+      <td class="lid">B1-06</td>
+      <td><div class="sub">Spine not identified</div></td>
+      <td><span class="tag t-unidentified">unidentified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">23.8 × 1.67 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:77%"></i></span><span class="lid">0.77</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td><td class="n" data-l="Used"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr data-s="identified" data-q="b1-07 johnny tremain esther forbes">
+      <td><a href="out/rows/B1.jpg#xyxy=433,736,489,1245" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/B1-07.jpg" alt=""></a></td>
+      <td class="lid">B1-07</td>
+      <td><div class="ttl">Johnny Tremain</div><div class="sub">Esther Forbes · LAUREL-LEAF NEWBERY</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">19 × 1.23 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 13.56</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Johnny+Tremain+Esther+Forbes&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 5.44</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Johnny+Tremain+Esther+Forbes&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="unidentified" data-q="b1-08  ">
+      <td><a href="out/rows/B1.jpg#xyxy=492,800,558,1252" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/B1-08.jpg" alt=""></a></td>
+      <td class="lid">B1-08</td>
+      <td><div class="sub">Spine not identified</div></td>
+      <td><span class="tag t-unidentified">unidentified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">16.9 × 2.47 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:70%"></i></span><span class="lid">0.70</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td><td class="n" data-l="Used"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr data-s="identified" data-q="b1-09 leprechaun in late winter (magic tree house 43)(cd1장포함) mary pope osborne">
+      <td><a href="out/rows/B1.jpg#xyxy=560,676,652,1259" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/B1-09.jpg" alt=""></a></td>
+      <td class="lid">B1-09</td>
+      <td><div class="ttl">LEPRECHAUN IN LATE WINTER (MAGIC TREE HOUSE 43)(CD1장포함)</div><div class="sub">MARY POPE OSBORNE</div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">21.7 × 2.2 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:100%"></i></span><span class="lid">1.00</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 9.95</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=LEPRECHAUN+IN+LATE+WINTER+MARY+POPE+OSBORNE&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td><td class="n" data-l="Used"><span class="v"><span class="amt">USD 5.04</span>
+<a class="src" href="https://www.ebay.com/sch/i.html?_nkw=LEPRECHAUN+IN+LATE+WINTER+MARY+POPE+OSBORNE&amp;LH_ItemCondition=3000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr data-s="identified" data-q="b1-10 pam muñoz ryan collection ">
+      <td><a href="out/rows/B1.jpg#xyxy=586,646,674,1259" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/B1-10.jpg" alt=""></a></td>
+      <td class="lid">B1-10</td>
+      <td><div class="ttl">Pam Muñoz Ryan Collection</div><div class="sub"></div></td>
+      <td><span class="tag t-identified">identified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">22.8 × 0.89 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:90%"></i></span><span class="lid">0.90</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td><td class="n" data-l="Used"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr data-s="unidentified" data-q="b1-11  ">
+      <td><a href="out/rows/B1.jpg#xyxy=611,683,757,1262" target="_blank" rel="noopener"><img class="thumb" loading="lazy" src="out/crops/B1-11.jpg" alt=""></a></td>
+      <td class="lid">B1-11</td>
+      <td><div class="sub">Spine not identified</div></td>
+      <td><span class="tag t-unidentified">unidentified</span></td>
+      <td class="n" data-l="Height × thickness"><span class="v">21.5 × 4.23 cm</span></td>
+      <td data-l="Match"><span class="v"><span class="conf"><i style="width:77%"></i></span><span class="lid">0.77</span></span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td><td class="n" data-l="Used"><span class="v"><span class="nil">—</span></span></td>
+    </tr>
+  </table></div>
+</section>
+
+
+
+<section>
+  <div class="head"><h2>Other contents</h2><span class="note">sizes are the front face, from depth; art waits for appraisal unless it is a print</span></div>
+  <div class="scroll"><table class="cards">
+    <tr><th>Line</th><th>Item</th><th>Category</th><th class="n">W × H cm</th><th>Status</th><th class="n">Replacement</th></tr>
+    <tr>
+      <td class="lid"><a href="frames/00008.jpg#xyxy=0,314,1076,1480" target="_blank" rel="noopener">I-01</a></td>
+      <td><div class="ttl">Black LG computer monitor on a stand displaying an ArUco marker</div><div class="sub">LG</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">62 × 68</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 137.50 – USD 272.28</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=LG+monitor&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00008.jpg#xyxy=2,1271,1074,1912" target="_blank" rel="noopener">I-02</a></td>
+      <td><div class="ttl">Light wood desk with black desk mat</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">53 × 31</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 65.36 – USD 149.49</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=desk&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00060.jpg#xyxy=0,1274,131,1449" target="_blank" rel="noopener">I-03</a></td>
+      <td><div class="ttl">White digital clock with blue LED numbers</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">8 × 11</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 8.99 – USD 18.82</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=alarm+clock&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00065.jpg#xyxy=0,1626,952,1918" target="_blank" rel="noopener">I-04</a></td>
+      <td><div class="ttl">Silver laptop partly open on desk</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">44 × 14</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 229.00 – USD 449.00</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=laptop&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00078.jpg#xyxy=8,0,1080,1920" target="_blank" rel="noopener">I-05</a></td>
+      <td><div class="ttl">White multi-tiered bookcase holding books</div></td>
+      <td class="sub" data-l="Category"><span class="v">shelving</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">52 × 92</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 37.48 – USD 81.15</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=bookcase&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00228.jpg#xyxy=623,1726,879,1918" target="_blank" rel="noopener">I-06</a></td>
+      <td><div class="ttl">Mechanical computer keyboard visible on lower shelf</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">13 × 10</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 18.02 – USD 31.99</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=keyboard&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00307.jpg#xyxy=568,574,671,731" target="_blank" rel="noopener">I-07</a></td>
+      <td><div class="ttl">small framed religious or cultural art hanging on the wall</div></td>
+      <td class="sub" data-l="Category"><span class="v">art</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">14 × 21</span></td>
+      <td><span class="tag t-needs_appraisal">needs appraisal</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="nil">—</span></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00307.jpg#xyxy=410,1013,659,1920" target="_blank" rel="noopener">I-08</a></td>
+      <td><div class="ttl">full-length rectangular mirror with black frame leaning against the wall</div></td>
+      <td class="sub" data-l="Category"><span class="v">decor</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">34 × 124</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 40.22 – USD 84.35</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=mirror&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00321.jpg#xyxy=521,1726,1080,1916" target="_blank" rel="noopener">I-09</a></td>
+      <td><div class="ttl">white surface of furniture or cabinet corner visible at the bottom</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">36 × 13</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 69.99 – USD 140.23</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=cabinet&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00330.jpg#xyxy=427,892,1080,1503" target="_blank" rel="noopener">I-10</a></td>
+      <td><div class="ttl">Black desktop monitor display showing geometric shape</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">61 × 57</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 80.50 – USD 168.37</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=monitor&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00336.jpg#xyxy=141,1159,1080,1914" target="_blank" rel="noopener">I-11</a></td>
+      <td><div class="ttl">teal upholstered tufted headboard and bed frame</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">89 × 72</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 81.27 – USD 217.22</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=bed&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00360.jpg#xyxy=0,0,1068,1015" target="_blank" rel="noopener">I-12</a></td>
+      <td><div class="ttl">Ceiling fan with light fixture and light wood-tone blades</div></td>
+      <td class="sub" data-l="Category"><span class="v">lighting</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">137 × 130</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 41.97 – USD 70.72</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=ceiling+fan&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00394.jpg#xyxy=0,533,315,1562" target="_blank" rel="noopener">I-13</a></td>
+      <td><div class="ttl">black faux leather gaming or office chair on casters</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">36 × 119</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 86.61 – USD 189.99</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=office+chair&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00402.jpg#xyxy=0,1032,430,1920" target="_blank" rel="noopener">I-14</a></td>
+      <td><div class="ttl">bed with grey patterned duvet</div></td>
+      <td class="sub" data-l="Category"><span class="v">furniture</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">32 × 67</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 81.27 – USD 217.22</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=bed&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00432.jpg#xyxy=0,835,1080,1714" target="_blank" rel="noopener">I-15</a></td>
+      <td><div class="ttl">blue/silver metallic Apple MacBook lid with black Apple logo</div><div class="sub">Apple</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">41 × 33</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 655.00 – USD 1,170.00</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=Apple+laptop&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00432.jpg#xyxy=748,380,1078,808" target="_blank" rel="noopener">I-16</a></td>
+      <td><div class="ttl">closed dark/black laptop or tablet device on desk</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">18 × 22</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 229.00 – USD 449.00</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=laptop&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00502.jpg#xyxy=231,808,504,1637" target="_blank" rel="noopener">I-17</a></td>
+      <td><div class="ttl">Apple watch style smartwatch with dark screen and woven gray strap</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">10 × 28</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 22.99 – USD 39.75</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=smartwatch&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr><tr>
+      <td class="lid"><a href="frames/00502.jpg#xyxy=213,389,671,643" target="_blank" rel="noopener">I-18</a></td>
+      <td><div class="ttl">wireless earbuds case in a black silicone protective cover with carabiner</div></td>
+      <td class="sub" data-l="Category"><span class="v">electronics</span></td>
+      <td class="n" data-l="Front, W × H"><span class="v">20 × 12</span></td>
+      <td><span class="tag t-range">range</span></td>
+      <td class="n" data-l="Replacement"><span class="v"><span class="amt">USD 13.81 – USD 45.00</span>
+        <a class="src" href="https://www.ebay.com/sch/i.html?_nkw=earbuds&amp;LH_ItemCondition=1000&amp;LH_BIN=1" target="_blank" rel="noopener">source</a></span></td>
+    </tr>
+  </table></div>
+</section>
+
+<footer>
+  <span>Totals are computed from the lines above. A line without a price source, link and retrieval date carries no price.</span>
+  <span>Each book and item links to the saved frame it was seen in; retrieval dates are in claim_packet.json.</span>
+</footer>
+</div>
+<script>
+document.querySelectorAll(".tools").forEach(function (bar) {
+  var table = document.getElementById(bar.dataset.table), filter = "all", q = "";
+  function apply() {
+    table.querySelectorAll("tr[data-s]").forEach(function (tr) {
+      var ok = (filter === "all" || tr.dataset.s === filter) && (!q || tr.dataset.q.indexOf(q) !== -1);
+      tr.classList.toggle("hide", !ok);
+    });
+  }
+  bar.querySelectorAll(".f").forEach(function (b) {
+    b.onclick = function () { bar.querySelectorAll(".f").forEach(function (x) { x.classList.remove("on"); }); b.classList.add("on"); filter = b.dataset.f; apply(); };
+  });
+  bar.querySelector(".search").oninput = function (e) { q = e.target.value.trim().toLowerCase(); apply(); };
+});
+</script>
+</body></html>

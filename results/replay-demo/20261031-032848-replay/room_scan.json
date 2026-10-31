@@ -1,0 +1,33 @@
+{
+  "corners": [
+    [
+      -2.095,
+      2.248
+    ],
+    [
+      -2.173,
+      -2.201
+    ],
+    [
+      2.277,
+      -2.279
+    ],
+    [
+      2.354,
+      2.171
+    ]
+  ],
+  "height_m": 3.23,
+  "shelving": [
+    [
+      0.55,
+      0.98
+    ]
+  ],
+  "scale_method": "turn-around scan: Depth Pro metric depth on 21 frames, phone orientation, scale corrected x1.067 from the printed marker",
+  "confidence": 0.85,
+  "notes": [
+    "the floor was not seen consistently in the frames tilted down; camera-height check skipped",
+    "rectangle fitted to the scanned outline"
+  ]
+}

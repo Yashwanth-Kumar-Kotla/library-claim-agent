@@ -31,7 +31,7 @@ of goes to the review queue instead of being guessed.
 | # | Item | Where |
 |---|---|---|
 | 1 | Repository | this repo; `.env.example` lists every key, no secrets are committed |
-| 2 | Demo video | linked in the submission email (one unedited take) |
+| 2 | Demo video | linked in the submission email: one unedited take, 3 min 49 s. Filmed with a second phone, because iPhone Screen Recording drops a web page's call audio, which would leave the agent's voice out |
 | 3 | Claim packet, report and frames from the demo sweep | [`submission/`](submission/): `claim_packet.json`, `report.html`, `frames/`, `out/crops/` |
 | 4 | Ground truth and results | `submission/ground_truth_results.xlsx` (hand counts and measurements, with the system's numbers and pass bars beside them) and `submission/eval.md` |
 | 5 | Architecture note | [ARCHITECTURE.md](ARCHITECTURE.md) |
@@ -212,10 +212,11 @@ Measured on real runs at Gemini paid-tier prices, October 2026:
 
 | | |
 |---|---|
+| Demo sweep, all in | $0.42: voice agent $0.32 for 3.5 minutes, vision $0.10 (34 Flash calls, 1 Pro) |
 | Voice agent | $0.14 for a 6-minute session (`tools/live_cost_probe.py`). It was $0.29 before its context was capped at 20k tokens and frames were cut to one every 2 s |
 | Vision calls, short live sweep | about $0.02 to $0.04 |
 | Vision calls, 6-shelf batch run | about $0.22 (43 Flash calls, 22 Pro calls) |
-| Packet ready after the sweep ends | 4 to 11 s on the recorded sweeps |
+| Packet ready after the sweep ends | 15 s on the demo sweep (most work runs during the walk) |
 | Spine detection and reading | about 10 s per shelf, in the background during the sweep |
 | Depth model | about 2.3 s per frame on an M5 MacBook, in the background |
 

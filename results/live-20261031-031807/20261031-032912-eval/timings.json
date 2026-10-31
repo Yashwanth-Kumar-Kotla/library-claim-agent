@@ -1,0 +1,49 @@
+{
+  "seconds": {
+    "items_detect": 84.882,
+    "depth": 52.279,
+    "items_price": 4.274,
+    "segment": 1.283,
+    "detect_read": 34.706,
+    "read": 0.092,
+    "resolve": 17.661,
+    "price": 0.479,
+    "room_scan": 53.764,
+    "after_sweep": 15.448,
+    "total": 181.637
+  },
+  "slowest_job": {
+    "items_detect": 4.717,
+    "depth": 21.48,
+    "items_price": 4.241,
+    "segment": 0.765,
+    "detect_read": 21.673,
+    "read": 0.007,
+    "resolve": 3.419,
+    "price": 0.026,
+    "room_scan": 53.764
+  },
+  "model_calls": {
+    "vision": 34,
+    "vision_escalation": 1
+  },
+  "cost": {
+    "usd": 0.1028,
+    "by_model": {
+      "gemini-3.8-flash": {
+        "calls": 34,
+        "input_tokens": 48456,
+        "output_tokens": 16941,
+        "usd": 0.0999,
+        "priced": true
+      },
+      "gemini-3.1-pro-preview": {
+        "calls": 1,
+        "input_tokens": 1237,
+        "output_tokens": 39,
+        "usd": 0.0029,
+        "priced": true
+      }
+    }
+  }
+}

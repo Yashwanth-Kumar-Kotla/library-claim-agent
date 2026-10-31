@@ -299,10 +299,13 @@ def test_same_book_seen_twice_is_counted_once(tmp_path):
     books = [mk(1, 1474, 1518, "Lament"), mk(2, 1494, 1549, "Shiver", 0.8), mk(3, 1526, 1551, "Shiver", 0.95),
              mk(4, 1600, 1640, "Shiver"),                      # a second copy beside it: only touches -> kept
              mk(5, 1700, 1740, ""), mk(6, 1710, 1750, ""),     # unidentified overlaps: no evidence -> kept
-             mk(1, 1494, 1549, "Shiver", shelf="A2")]          # same title, other shelf -> kept
+             mk(1, 1494, 1549, "Shiver", shelf="A3"),          # same title two shelves down -> kept
+             mk(1, 1494, 1549, "Shiver", shelf="B2"),          # same title in another bookcase -> kept
+             mk(2, 900, 940, "Lament", 0.7, shelf="A2")]       # next shelf down: one frame held both -> dropped
     out = run._drop_double_sightings(books)
-    assert [b.id for b in out] == ["A1-01", "A1-03", "A1-04", "A1-05", "A1-06", "A2-01"]
+    assert [b.id for b in out] == ["A1-01", "A1-03", "A1-04", "A1-05", "A1-06", "A3-01", "B2-01"]
     assert any(r.ref_id == "A1-02" and "seen twice" in r.reason for r in run.review)
+    assert any(r.ref_id == "A2-02" and "next shelf" in r.reason for r in run.review)
 
 
 def live_run(root, **kw):

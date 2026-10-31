@@ -44,18 +44,18 @@
 | Review queue with reasons | ✅ | |
 | Totals add up from lines; any figure traceable to frame + source | ✅ | `compute_totals` in code; frame_ref + URL + date on every line |
 
-## Pass bars (need the demo sweep's ground truth)
+## Pass bars (demo sweep `live-20261031-031807`, scored against the hand-made ground truth)
 
-| Measure | Bar | Status |
+| Measure | Bar | Result |
 |---|---|---|
-| Book count | within 5% | ⏳ |
-| Title identification | ≥70% of legible, ≤3% confidently wrong | ⏳ (6/6 at home) |
-| Spine dimensions | within 15% on 20 | ⏳ |
-| Book prices | within 25% on 15 | ⏳ |
-| Non-book items | ≥80% found, right category | ⏳ |
-| Floor area | within 10% | ⏳ needs the wall marker in the turn ("marker ✓"); without it, Depth Pro's own scale (two home turns agreed within 10% but likely read the room too large) |
-| Wall area | within 15% | ⏳ |
-| Time to packet | under 5 min | ✅ 40.6 s |
+| Book count | within 5% | ❌ 49 vs 40 (replay with the duplicate fix: 44) |
+| Title identification | ≥70% of legible, ≤3% confidently wrong | ✅ 75%, 2.7% |
+| Spine dimensions | within 15% on 20 | ❌ 24% mean, 10 of 36 not produced |
+| Book prices | within 25% on 15 | 👤 needs the 15 hand-checked prices |
+| Non-book items | ≥80% found, right category | ✅ 93% |
+| Floor area | within 10% | ❌ 19.8 vs 10.7 m² |
+| Wall area | within 15% | ❌ 57.5 vs 43.8 m² |
+| Time to packet | under 5 min after the sweep | ✅ 15 s |
 
 ## Do / do not
 
@@ -81,11 +81,11 @@
 | # | Item | Status |
 |---|---|---|
 | 1 | Private repo, runs from README in < 15 min, `.env.example`, no secrets | ✅ fresh clone: install + offline demo + 361 tests in under a minute (cached); 👤 share the private repo with the reviewers |
-| 2 | Demo video, one take, ≤ 6 min, agent voice audible | 👤 ⏳ film over the shoulder (iOS screen recording drops the agent's voice) |
-| 3 | Packet + report + frames from the demo sweep | ⏳ `tools/package_submission.py data/sweeps/<demo sweep>` |
-| 4 | Ground truth + results side by side | ⏳ `uv run python -m libraryclaim.evaluate data/sweeps/<demo sweep> ground_truth/ground_truth.xlsx` |
+| 2 | Demo video, one take, ≤ 6 min, agent voice audible | ✅ recorded (3:49, second phone); 👤 upload unlisted and put the link in the email |
+| 3 | Packet + report + frames from the demo sweep | ✅ `submission/` |
+| 4 | Ground truth + results side by side | ✅ `submission/ground_truth_results.xlsx`, `submission/eval.md`; 👤 add 15 hand-checked prices |
 | 5 | Architecture note, 1 page | ✅ ARCHITECTURE.md |
-| 6 | Failure log, 1 page | ✅ FAILURE_LOG.md (home runs); refresh the three errors from the demo sweep |
+| 6 | Failure log, 1 page | ✅ FAILURE_LOG.md, from the demo sweep |
 | — | Reply to the brief's email with repo link, video link, four documents | 👤 |
 
 ## After the demo sweep (about 20 minutes)

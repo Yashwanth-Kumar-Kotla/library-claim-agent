@@ -1,0 +1,65 @@
+[
+  {
+    "measure": "Book count",
+    "value": "49 vs 40 (22.5% off)",
+    "bar": "within 5%",
+    "passed": false,
+    "detail": ""
+  },
+  {
+    "measure": "Title identification",
+    "value": "30/40 legible spines correct (75%)",
+    "bar": "at least 70%",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "measure": "Confidently wrong",
+    "value": "1/37 identified titles not on the shelf (2.7%)",
+    "bar": "no more than 3%",
+    "passed": true,
+    "detail": "denominator: books the system marked identified; Theodore Boone: The Activist"
+  },
+  {
+    "measure": "Spine dimensions",
+    "value": "mean error 24.1%; 62% of values within 15%; 10/36 not produced",
+    "bar": "within 15%",
+    "passed": false,
+    "detail": "pass = mean absolute % error within the bar AND every sample line produced"
+  },
+  {
+    "measure": "Book prices",
+    "value": "no ground truth",
+    "bar": "within 25%",
+    "passed": null,
+    "detail": ""
+  },
+  {
+    "measure": "Non-book items",
+    "value": "14/15 found with correct category (93%)",
+    "bar": "at least 80%",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "measure": "Floor area",
+    "value": "19.8 vs 10.73 m2 (84.5% off)",
+    "bar": "within 10%",
+    "passed": false,
+    "detail": ""
+  },
+  {
+    "measure": "Wall area",
+    "value": "57.5 vs 43.82 m2 (31.2% off)",
+    "bar": "within 15%",
+    "passed": false,
+    "detail": "gross wall area from tape, including the box-out's sides"
+  },
+  {
+    "measure": "Time to packet",
+    "value": "15 s after the sweep ended",
+    "bar": "under 5 minutes",
+    "passed": true,
+    "detail": ""
+  }
+]
