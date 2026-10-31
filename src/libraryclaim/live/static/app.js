@@ -37,11 +37,8 @@ async function start() {
   try {
     ctx = new AudioContext();             // created inside the tap so iOS lets it play
     await ctx.resume();
-    // ?rec: without echo cancellation iOS does not switch to call audio, which Screen Recording
-    // leaves out; the agent's voice can then be recorded. Use earbuds so the agent does not hear itself.
-    const rec = new URLSearchParams(location.search).has("rec");
     stream = await navigator.mediaDevices.getUserMedia({
-      audio: { echoCancellation: !rec, noiseSuppression: !rec, autoGainControl: true },
+      audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
       video: { facingMode: "environment", width: { ideal: 1920 }, height: { ideal: 1080 } },
     });
   } catch (e) {
