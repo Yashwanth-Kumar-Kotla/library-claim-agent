@@ -202,3 +202,16 @@ def test_overlapping_leaning_books_with_different_titles_kept():
     b = Box(150, 0, 250, 400, extra={"title": "Muse of Nightmares"})
     c = Box(160, 0, 260, 400, extra={})  # unread spine overlapping both: never merged on no evidence
     assert len(dedupe_reads([a, b, c])) == 3
+
+
+def test_packed_spans_narrow_loose_boxes_to_neighbour_spacing():
+    from libraryclaim.boxes import Box, packed_spans
+    # three upright spines 20 px apart, boxed 60 px wide; a flat book keeps its own width
+    boxes = [Box(80, 0, 140, 300), Box(100, 0, 160, 300), Box(120, 0, 180, 300), Box(300, 250, 500, 290, lying_flat=True)]
+    spans = packed_spans(boxes)
+    assert round(spans[1][2] - spans[1][0]) == 20                       # the middle one, overlapped on both sides
+    assert spans[0][0] == 80 and spans[2][2] == 180                     # outer edges are not touched
+    assert spans[3] == boxes[3].as_tuple()
+    assert packed_spans([Box(0, 0, 30, 300)]) == [(0, 0, 30, 300)]   # alone on the shelf: unchanged
+    thick_thin = [Box(0, 0, 50, 300), Box(50, 0, 60, 300)]             # touching, not overlapping
+    assert packed_spans(thick_thin) == [b.as_tuple() for b in thick_thin]

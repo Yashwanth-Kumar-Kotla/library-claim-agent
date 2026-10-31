@@ -119,3 +119,20 @@ def test_results_written_next_to_ground_truth_in_a_copy(truth_file, tmp_path):
     assert any(r[7] == "Twilight" and "confidently wrong" in r[8] for r in cmp)
     write_workbook(out, out, score(p, truth), p, truth)                # re-running replaces, not duplicates
     assert load_workbook(out).sheetnames.count("results") == 1
+
+
+@pytest.mark.parametrize("a,b,same", [
+    ("Bfg", "The BFG", True),
+    ("Counterfeit Prince of Old Texas, The: Swindling Slaver Monroe Edwards", "The Counterfeit Prince of Old Texas", True),
+    ("Breath of the Dragon", "The Mapmaker Chronicles: Breath of the Dragon", True),
+    ("When Will This Cruel War Be Over The Diary Of Emma Simpson", "When Will This Cruel War Be Over?", True),
+    ("The Red Pyramid (The Kane Chronicles Book 1)", "The Red Pyramid", True),
+    ("Unbroken: A World War II Story", "Unbroken", True),
+    ("Theodore Boone: The Abduction", "Theodore Boone: The Accused", False),
+    ("Theodore Boone: Kid Lawyer", "Theodore Boone: The Accused", False),
+    ("The Hobbit", "The Hunger Games", False),
+    ("Dune", "Dune Messiah", False),
+])
+def test_same_title_variants(a, b, same):
+    from libraryclaim.evaluate import same_title
+    assert same_title(a, b) is same

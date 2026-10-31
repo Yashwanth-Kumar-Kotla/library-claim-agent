@@ -157,8 +157,15 @@ def identify(read: SpineText, get_json: GetJson, google_key: str = "",
     return res, notes
 
 
+YEAR = re.compile(r"\b(1[89]\d\d|20\d\d)\b")
+
+
 def score(read: SpineText, c: Candidate) -> float:
     """0..1. Title evidence dominates; author agreement confirms; a clear author mismatch vetoes."""
+    # An annual edition printed on the spine ("Sunday Missal ... for 2019") is not the 2026 record.
+    spine_years, cand_years = set(YEAR.findall(f"{read.text} {read.title}")), set(YEAR.findall(c.title))
+    if spine_years and cand_years and not spine_years & cand_years:
+        return 0.0
     spine_title = norm(read.title or read.text)
     cand = norm(main_title(c.title))
     full = norm(c.title)
@@ -252,6 +259,26 @@ def same_work(a: Candidate, b: Candidate) -> bool:
     return bool(keys(a.authors) & words(b.authors) or keys(b.authors) & words(a.authors))
 
 
+def series_rival(read: SpineText, best: Candidate, candidates: list[Candidate]) -> Candidate | None:
+    """Another book of the same series that the spine cannot tell apart from the best match.
+    Seen live: the spine read "THEODORE BOONE" and the catalogue's "Theodore Boone: The Abduction" was
+    taken, but the book was "The Accused". Two editions of one book keep subtitle words in common
+    ("Influencer: The Power to Change Anything" / "... of Leading Change"); books of a series don't."""
+    _, _, best_sub = best.title.partition(":")
+    best_words = set(significant_words(best_sub))
+    spine = set(norm(f"{read.title} {read.text}").split())
+    if not best_words or best_words & spine:
+        return None
+    main = norm(main_title(best.title))
+    for c in candidates:
+        _, _, sub = c.title.partition(":")
+        words = set(significant_words(sub))
+        if (c is not best and words and not words & best_words and same_work(best, c)
+                and fuzz.ratio(norm(main_title(c.title)), main) >= 90):
+            return c
+    return None
+
+
 def resolve(read: SpineText, candidates: list[Candidate], threshold: float = DEFAULT_THRESHOLD) -> Resolution:
     if not read.readable:
         return Resolution("unidentified", 0.0, reason="spine not legible")
@@ -276,6 +303,11 @@ def resolve(read: SpineText, candidates: list[Candidate], threshold: float = DEF
     if rival and best_s - rival[0] < MIN_MARGIN:
         return Resolution("unidentified", confidence, best, runner_up=rival[1],
                           reason=f"ambiguous: '{best.title}' vs '{rival[1].title}'")
+    other = series_rival(read, best, [c for _, _, c in scored])
+    if other:
+        return Resolution("unidentified", confidence, best, runner_up=other,
+                          reason=f"the spine shows only '{main_title(best.title)}', a name shared by several books "
+                                 f"('{best.title}', '{other.title}')")
     # Edition only when the spine names a publisher that the record also lists.
     edition = ""
     if read.publisher and any(fuzz.partial_ratio(norm(read.publisher), norm(p)) >= 85 for p in best.publishers):

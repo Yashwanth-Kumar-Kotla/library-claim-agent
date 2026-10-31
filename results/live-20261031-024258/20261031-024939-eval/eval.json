@@ -1,0 +1,65 @@
+[
+  {
+    "measure": "Book count",
+    "value": "37 vs 40 (7.5% off)",
+    "bar": "within 5%",
+    "passed": false,
+    "detail": ""
+  },
+  {
+    "measure": "Title identification",
+    "value": "25/40 legible spines correct (62%)",
+    "bar": "at least 70%",
+    "passed": false,
+    "detail": ""
+  },
+  {
+    "measure": "Confidently wrong",
+    "value": "5/29 identified titles not on the shelf (17.2%)",
+    "bar": "no more than 3%",
+    "passed": false,
+    "detail": "denominator: books the system marked identified; Bfg, Counterfeit Prince of Old Texas, The: Swindling Slaver Monroe Edwards, Breath of the Dragon, When Will This Cruel War Be Over The Diary Of Emma Simpson, St. Joseph Sunday Missal Prayerbook and Hymnal for 2026 [Paperback] Catholic Book Publishing Corp"
+  },
+  {
+    "measure": "Spine dimensions",
+    "value": "mean error 85.6%; 52% of values within 15%; 17/36 not produced",
+    "bar": "within 15%",
+    "passed": false,
+    "detail": "pass = mean absolute % error within the bar AND every sample line produced"
+  },
+  {
+    "measure": "Book prices",
+    "value": "no ground truth",
+    "bar": "within 25%",
+    "passed": null,
+    "detail": ""
+  },
+  {
+    "measure": "Non-book items",
+    "value": "13/15 found with correct category (87%)",
+    "bar": "at least 80%",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "measure": "Floor area",
+    "value": "20.02 vs 10.73 m2 (86.6% off)",
+    "bar": "within 10%",
+    "passed": false,
+    "detail": ""
+  },
+  {
+    "measure": "Wall area",
+    "value": "60.68 vs 43.82 m2 (38.5% off)",
+    "bar": "within 15%",
+    "passed": false,
+    "detail": "gross wall area from tape, including the box-out's sides"
+  },
+  {
+    "measure": "Time to packet",
+    "value": "172 s",
+    "bar": "under 5 minutes",
+    "passed": true,
+    "detail": ""
+  }
+]

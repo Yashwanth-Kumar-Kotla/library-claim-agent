@@ -267,3 +267,23 @@ def dedupe_reads(boxes: list[Box], min_overlap: float = 0.3) -> list[Box]:
         elif legibility(b) > legibility(twin):
             out[out.index(twin)] = b
     return out
+
+
+def packed_spans(boxes: list[Box]) -> list[tuple[float, float, float, float]]:
+    """Each upright spine's box with any overlap with its neighbours split down the middle. The
+    model's boxes around thin or leaning spines are loose and overlap (seen: a 1.6 cm paperback
+    boxed 11 cm wide); spines on a shelf cannot overlap, so the overlap is not part of either.
+    Boxes that don't overlap, and flat books, keep their own width."""
+    upright = sorted((i for i, b in enumerate(boxes) if not b.lying_flat and b.h >= b.w),
+                     key=lambda i: boxes[i].x0 + boxes[i].x1)
+    out = [b.as_tuple() for b in boxes]
+    for k, i in enumerate(upright):
+        b = boxes[i]
+        x0, x1 = b.x0, b.x1
+        if k > 0 and boxes[upright[k - 1]].x1 > x0:
+            x0 = max(x0, (boxes[upright[k - 1]].x1 + b.x0) / 2)
+        if k + 1 < len(upright) and boxes[upright[k + 1]].x0 < x1:
+            x1 = min(x1, (b.x1 + boxes[upright[k + 1]].x0) / 2)
+        if x1 > x0:
+            out[i] = (x0, b.y0, x1, b.y1)
+    return out

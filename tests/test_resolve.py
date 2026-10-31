@@ -242,3 +242,35 @@ def test_real_short_surname_with_narrator_record_is_same_work():
 def test_shared_first_name_is_still_a_different_author():
     from libraryclaim.resolve import same_work
     assert not same_work(cand("Emma", ["Jane Austen"]), cand("Emma", ["Jane Ellison"]))
+
+
+GRISHAM = ("John Grisham",)
+
+
+def test_series_name_alone_is_not_a_specific_book():
+    """Spine read "THEODORE BOONE": the catalogue offers several books of the series."""
+    r = resolve(read("JOHN GRISHAM THEODORE BOONE", "THEODORE BOONE", "JOHN GRISHAM"),
+                [cand("Theodore Boone: The Abduction", GRISHAM), cand("Theodore Boone: Kid Lawyer", GRISHAM),
+                 cand("Theodore Boone: The Accused", GRISHAM)])
+    assert r.status == "unidentified" and "shared by several books" in r.reason
+
+
+def test_series_book_named_on_the_spine_is_identified():
+    r = resolve(read("JOHN GRISHAM THEODORE BOONE the accused", "THEODORE BOONE the accused", "JOHN GRISHAM"),
+                [cand("Theodore Boone: The Abduction", GRISHAM), cand("Theodore Boone: The Accused", GRISHAM)])
+    assert r.status == "identified" and r.candidate.title == "Theodore Boone: The Accused"
+
+
+def test_two_editions_of_one_book_are_not_a_series():
+    authors = ("Joseph Grenny", "Kerry Patterson")
+    r = resolve(read("INFLUENCER GRENNY PATTERSON", "Influencer", "Grenny"),
+                [cand("Influencer: The Power to Change Anything", authors),
+                 cand("Influencer: The New Science of Leading Change", authors)])
+    assert r.status == "identified"
+
+
+def test_year_on_the_spine_rules_out_another_annual_edition():
+    spine = read("Sunday Missal - Prayerbook and Hymnal for 2019", "Sunday Missal - Prayerbook and Hymnal for 2019")
+    wrong = cand("St. Joseph Sunday Missal Prayerbook and Hymnal for 2026", ("Catholic Book Publishing",))
+    assert score(spine, wrong) == 0.0
+    assert resolve(spine, [wrong]).status == "unidentified"

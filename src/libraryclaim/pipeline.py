@@ -40,6 +40,7 @@ import cv2
 from rapidfuzz import fuzz
 
 from . import report
+from .boxes import packed_spans
 from .config import Locale, Settings
 from .fetch import GetJson
 from .packet import finalize
@@ -314,19 +315,20 @@ class SweepRun:
             t1 = time.perf_counter()
             depth = self.deps.depth(ri.image)   # no marker: measure now, settle the scale from known books later
             self.stats.add("depth", time.perf_counter() - t1)
-        for pos, box in enumerate(boxes, start=1):
+        spans = packed_spans(boxes)   # thickness from neighbour spacing, not the loose box width
+        for pos, (box, span) in enumerate(zip(boxes, spans), start=1):
             bid = f"{shelf}-{pos:02d}" if take == 0 else f"{shelf}-{pos:02d}t{take}"
             b = Book(id=bid, shelf=shelf, position=pos,
                      frame_ref=f"{ref}#xyxy={int(box.x0)},{int(box.y0)},{int(box.x1)},{int(box.y1)}")
             if scale is not None:
-                size = spine_size(scale, box.as_tuple(), box.lying_flat)
+                size = spine_size(scale, span, box.lying_flat)
                 if size.plausible:
                     b.spine_height_cm, b.spine_thickness_cm = size.height_cm, size.thickness_cm
                 else:
                     self.note(bid, f"implausible spine size {size.height_cm} x {size.thickness_cm} cm; not reported")
             job = BookJob(b, Future(), take)
             if depth is not None:
-                face = front_size_cm(box.as_tuple(), depth[0], depth[1])
+                face = front_size_cm(span, depth[0], depth[1])
                 if face:
                     flat = box.lying_flat if box.lying_flat is not None else face[0] > face[1]
                     job.raw_spine = (face[0], face[1]) if flat else (face[1], face[0])

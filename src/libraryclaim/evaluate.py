@@ -9,6 +9,7 @@ exact definition open, the choice is written next to the number.
 from __future__ import annotations
 
 import json
+import re
 import statistics
 import sys
 from dataclasses import asdict, dataclass
@@ -18,7 +19,7 @@ from openpyxl import load_workbook
 from rapidfuzz import fuzz
 
 from .archive import archive_run
-from .resolve import main_title, norm
+from .resolve import norm
 from .schema import ClaimPacket
 
 TITLE_MATCH = 90
@@ -60,9 +61,34 @@ def load_truth(path: Path) -> dict:
     }
 
 
+def title_parts(title: str) -> tuple[str, str]:
+    """(main title, subtitle), normalised, without catalogue notes or a leading or trailing article:
+    "Counterfeit Prince of Old Texas, The: Swindling Slaver" -> ("counterfeit prince of old texas", "swindling slaver")."""
+    title = re.sub(r"[(\[].*?[)\]]", " ", title or "")
+    main, _, sub = title.partition(":")
+    def clean(s: str) -> str:
+        s = norm(s)
+        s = re.sub(r"^(the|a|an) ", "", s)
+        return re.sub(r" (the|a|an)$", "", s)
+    return clean(main), clean(sub)
+
+
 def same_title(a: str, b: str) -> bool:
-    a, b = norm(main_title(a)), norm(main_title(b))
-    return bool(a and b) and fuzz.ratio(a, b) >= TITLE_MATCH
+    """One book under catalogue and hand-written names. Series and subtitles go either way ("Breath of
+    the Dragon" is "The Mapmaker Chronicles: Breath of the Dragon"; "Unbroken" is "Unbroken: A World
+    War II Story"), but two different subtitles under one series name are two books ("Theodore Boone:
+    The Abduction" is not "Theodore Boone: The Accused")."""
+    (am, asub), (bm, bsub) = title_parts(a), title_parts(b)
+    if not (am and bm):
+        return False
+    close = lambda x, y: bool(x and y) and fuzz.ratio(x, y) >= TITLE_MATCH
+    if asub and bsub:
+        return close(am, bm) and close(asub, bsub)
+    if close(am, bm) or close(am, bsub) or close(asub, bm):
+        return True
+    # A subtitle run on without a colon: "When Will This Cruel War Be Over The Diary Of Emma Simpson".
+    short, long_ = sorted((am, bm), key=len)
+    return len(short.split()) >= 3 and long_.startswith(short + " ")
 
 
 def pct_err(got, want) -> float | None:
