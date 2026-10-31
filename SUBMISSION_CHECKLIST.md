@@ -53,7 +53,7 @@
 | Spine dimensions | within 15% on 20 | ⏳ |
 | Book prices | within 25% on 15 | ⏳ |
 | Non-book items | ≥80% found, right category | ⏳ |
-| Floor area | within 10% | ⏳ — room height looked wrong at home (4.34 m); being reworked |
+| Floor area | within 10% | ⏳ needs the wall marker in the turn ("marker ✓"); without it, Depth Pro's own scale (two home turns agreed within 10% but likely read the room too large) |
 | Wall area | within 15% | ⏳ |
 | Time to packet | under 5 min | ✅ 40.6 s |
 

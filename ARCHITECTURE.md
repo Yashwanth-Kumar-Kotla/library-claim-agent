@@ -47,9 +47,14 @@ flowchart TD
    their printed editions (Google Books); the scale is the one factor most books agree on within 4%. Set per
    shelf, because the depth model's scale error varied from -25% to +40% between images. Too few known heights:
    a typical book height, flagged approximate. Shelf run is then the sum of the scaled spine thicknesses.
-3. **Room:** a turn-around scan. Phone orientation (deviceorientation) plus Depth Pro place every pixel in one
-   room frame; floor and ceiling are the extreme horizontal layers (from surface normals); walls are the far
-   cluster in each direction. A marker seen during the turn or on a shelf corrects the depth scale.
+3. **Room:** a turn-around scan. The camera's true heading and pitch come from the full orientation (with the
+   phone upright, the browser's alpha/gamma are in gimbal lock), and Depth Pro places every pixel in one room
+   frame. Walls are the far cluster in each direction; the outline is cleaned under the Manhattan assumption
+   into a rectangle unless one large notch shows a real L-shape. Depth Pro's scale differs per image, so each
+   tilted frame is rescaled until its walls match the level frames, then floor and ceiling are measured
+   frame by frame and the median kept. Metric scale: the wall marker, found in any frame of the turn (the ring
+   shows "marker ✓"); without it, the phone's height above the floor (as HorizonNet fixes camera height) when
+   two or more floor views agree; otherwise Depth Pro's own scale, flagged.
 
 ## Where prices come from
 

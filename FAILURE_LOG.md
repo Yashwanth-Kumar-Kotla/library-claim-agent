@@ -6,32 +6,28 @@ session log per run). Home rehearsals: `live-20261029-192400` (before the fixes)
 
 ## The three worst errors
 
-**1. Non-book items over-counted 3-4x, which inflated the contents value.**
-The 19:24 home sweep listed 62 items worth USD 3,359–7,205 in one small room. The list had the same mirror, keyboard and trash
-can twice each, a fridge and dishwasher from the next room, packaging boxes, a curtain rod and a wall hook.
-*Root cause:* items were detected per view and merged only when their boxes overlapped in the same frame,
-so every new angle made a new item. The prompt also accepted fittings, packaging, other rooms and objects cut off by the frame.
-*Change:* the prompt asks for insurable contents (about $25 and up) with a plain one- or two-word name, and
-excludes fittings, packaging, other rooms and partial views. A detection is the same item as an earlier one when the name and
-brand match within 3 views, or the colours agree. Measured below.
+**1. Non-book items over-counted 3-4×, inflating the contents value.** The 19:24 sweep listed 62 items
+(USD 3,359–7,205) in one small room: the same mirror, keyboard and bin twice each, a fridge from the next
+room, packaging, a curtain rod. *Root cause:* detections were merged only on box overlap within one frame, so
+each new angle made a new item, and the prompt accepted fittings, packaging and objects cut off by the frame.
+*Change:* the prompt asks for insurable contents (about $25+) with a plain short name and excludes those; a
+detection is an earlier item when name and brand match within 3 views or the colours agree. Measured below.
 
-**2. The packet took 111 s after the user pressed End, while the phone kept recording.**
-*Root cause:* the item detection, depth and pricing work for the room ran only after End, and End did not stop the
-camera or the agent session. In the 19:24 log the agent was still talking 33 s after the packet was done,
-and the session stayed open 78 s past it.
-*Change:* items are detected and priced while the user is still walking, on a worker pool. End stops capture,
-waits for the agent's summary, then hangs up. The phone shows a finishing screen with live progress.
-*Result:* 111.0 s → 40.6 s (23:08 run). What remains is the room scan (59.7 s of Depth Pro on the turn frames,
-partly overlapped with the sweep). Next step: run depth on each turn frame as it arrives, during the turn.
+**2. Packet 111 s after End, and the phone kept recording.** *Root cause:* the item, depth and pricing work
+started only at End, and End did not stop the camera or the agent (the session stayed open 78 s past the packet).
+*Change:* items are detected and priced during the walk; End stops capture, the agent reads the summary and hangs
+up. *Result:* 111.0 s → 40.6 s. The rest is the room scan (Depth Pro on the turn frames); next, run it during the turn.
 
-**3. Room height read as 4.34 m in a normal house.**
-The 23:08 sweep measured the floor at 6.36 × 4.36 m (20.62 m²), but the height at 4.34 m. A typical house
-ceiling is about 2.4–2.7 m.
-*Root cause (likely):* floor and ceiling are taken as the extreme horizontal layers. One mis-scaled depth frame
-looking up during the turn pushes the ceiling layer too high, and the marker that corrects the depth scale was
-not in view during the turn.
-*What I would change:* take a robust percentile of the ceiling points rather than the extreme, and require
-the wall marker to be seen in the turn before reporting a height. Until then, the height is flagged in the report.
+**3. Room read as 6.36 × 4.36 m and 4.34 m high for a small bedroom.** *Root causes, from replaying the turn:*
+with the phone upright the browser's angles are in gimbal lock (gamma -55° to +84° on level frames), so frames
+were filed under the wrong heading and the outline had 20 corners; Depth Pro's scale differs per image (the one
+frame tilted up read about 2× deeper than the one tilted down) and the height came from that one frame; no marker
+was in view. *Changes:* heading and pitch from the full rotation (ring, coverage, measurement); each tilted frame
+rescaled to the level frames' walls, ceiling as the median over frames; a Manhattan rectangle unless one large notch
+shows an L; the marker searched in every turn frame, with "marker ✓" on the ring and the agent asking once.
+*Measured on two recorded turns of the room:* clean rectangles of 22.8 and 25.0 m² (within 10% of each other), heights
+3.46 and 3.11 m. Floor and height are off by the same factor, about 1.45 if the ceiling is a standard 2.44 m:
+Depth Pro's own scale, which the wall marker removes.
 
 ## Measured fix (error 1), same frames replayed
 
@@ -64,7 +60,6 @@ for 22 Flash vision calls. Depth Pro runs locally at no cost. Prices use about o
 
 ## Also found and fixed earlier (measured on real runs)
 
-- **Book reading too slow:** 620 s per sweep → 23 s. One model call per spine became one detect-and-read
-  call per tile, with low thinking, streamed per shelf.
+- **Book reading too slow:** 620 s per sweep → 23 s (one detect-and-read call per tile, streamed per shelf).
 - **Venue Wi-Fi blocked phone-to-laptop traffic** (a store guest network on the day). The phone's own
   hotspot avoids it; the setup checklist says so.
