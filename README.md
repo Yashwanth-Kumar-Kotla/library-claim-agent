@@ -66,8 +66,7 @@ cp .env.example .env    # then fill in the keys below
 |---|---|---|
 | `GOOGLE_API_KEY` | Gemini: the voice agent, reading spines, finding objects | Google AI Studio |
 | `GOOGLE_BOOKS_API_KEY` | Matching spine text to a specific book | Google Cloud console, Books API |
-| `SERPAPI_API_KEY` | Prices: eBay searches through SerpApi | serpapi.com (free tier: 250 searches a month) |
-| `EBAY_CLIENT_ID`, `EBAY_CLIENT_SECRET` | Prices from eBay's own API, instead of SerpApi | developer.ebay.com |
+| `SERPAPI_API_KEY` | Prices: eBay searches through SerpApi (used for every run, including the demo) | serpapi.com (free tier: 250 searches a month) |
 
 With no price source everything still runs. Each line is marked "price source not configured";
 nothing is guessed. `COUNTRY` and `CURRENCY` in `.env` set the policyholder's market (default US, USD).
@@ -183,7 +182,8 @@ compared side by side.
 - **Depth Pro** (Apple, pretrained, run locally): metric depth for room size and item sizes. The
   weights (about 1.9 GB) download from Hugging Face the first time a sweep needs them.
 - **Google Books API** and **Open Library**: catalogue matching.
-- **eBay listings**, through **SerpApi** or eBay's Browse API: prices.
+- **eBay listings**, through **SerpApi**: prices. (`pricing.py` can also call eBay's own Browse API with
+  `EBAY_CLIENT_ID`/`EBAY_CLIENT_SECRET`; that path is tested but was not used for these runs.)
 - **Frankfurter** (ECB reference rates): currency conversion.
 - **OpenCV** (ArUco markers, stitching, image quality), **rapidfuzz**, **FastAPI**, **PyTorch** and
   **transformers**, **openpyxl**, **Jinja2**.
