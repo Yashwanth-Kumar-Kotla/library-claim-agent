@@ -99,6 +99,7 @@ class LiveSweep:
         self.last_nudge = -1e9
         self.scan_said: set[str] = set()     # "complete", "stalled": each said at most once per scan
         self.scan_marker = False             # the printed marker was in view during the turn: exact room scale
+        self.room_turned = False             # the turn is done: what follows is the rest of the room, not shelves
         self.scan_progress = (0, False, False)
         self.scan_progress_at = self.scan_started_at = 0.0
 
@@ -163,7 +164,9 @@ class LiveSweep:
         real sweep the agent once left shelves unopened for a minute, so the books were never
         counted. Only after the first shelf and before the end, and not too often."""
         with self.lock:
-            if self.row is not None or self.scanning or not self.rows_done or self.ended:
+            # After the room turn they are showing furniture, not shelves (seen: the reminder fired then,
+            # and the agent repeated its instruction after every item they named).
+            if self.row is not None or self.scanning or not self.rows_done or self.ended or self.room_turned:
                 return None
             now = self.clock()
             if now - self.row_closed_at < NUDGE_AFTER_S or now - self.last_nudge < NUDGE_REPEAT_S:
@@ -348,6 +351,7 @@ class LiveSweep:
             self.on_event("scan_rejected", {"advice": msg})
             return {"ok": False, "advice": msg}
         n = self._measure(entries)
+        self.room_turned = True
         self.on_event("scan_closed", {"covered_deg": covered})
         return {"ok": True, "covered_deg": covered, "frames": n, "note": "room size is being measured"}
 

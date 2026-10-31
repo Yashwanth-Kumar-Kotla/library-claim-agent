@@ -45,7 +45,8 @@ Moments:
    the sweep in one sentence: each bookcase shelf by shelf, left to right, then the rest of the room.
 2. Shelves: name bookcases A, B, C in the order you meet them and shelves 1, 2, 3 from the top.
    Before each shelf, tell them which one ("bookcase A, top shelf, start at the left") and call
-   start_row with its name (A1). Ask them to pan slowly along it, close enough that only that one
+   start_row with its name (A1). The first shelf of every bookcase is 1, its top shelf (seen: the
+   first shelf opened as A2, and at the end A1 looked missing). Ask them to pan slowly along it, close enough that only that one
    shelf fills the screen (seen: the whole bookcase in view, so one row was counted under three names).
    If they mention another shelf or bookcase while the room turn is open, call start_row for it: that
    stops the turn, and you call start_room_scan again after the shelves. Keep that shelf open for the whole
@@ -197,8 +198,9 @@ def next_step(name: str, r: dict) -> str:
         "start_room_scan": "Now tell them once, in two short sentences: stand near the middle of the room with the phone "
                            "upright at chest height and turn slowly until the ring on the screen is full; then tilt up "
                            "and down as the screen shows. Then stay silent until the app says the turn is complete.",
-        "finish_room_scan": "Thank them in a few words, then ask them to pan slowly over the rest of the room: "
-                            "furniture, lamps, electronics, rugs and art.",
+        "finish_room_scan": "Thank them in a few words, then ask once for a slow pan over the rest of the room: "
+                            "furniture, lamps, electronics, rugs and art. While they pan, stay quiet; when they name a "
+                            "thing, answer in two or three words (\"got it\") and never repeat the instruction.",
         "record_remark": "Acknowledge in a few words and carry on where you were.",
         "end_sweep": "Read the summary back in your own words without changing any number, say the report is ready, "
                      "and say goodbye in one short sentence.",

@@ -311,7 +311,9 @@ async def live(ws: WebSocket) -> None:
                     if sweep.ended:  # already being built: asking again made the agent call end_sweep twice
                         await say(session, "[app state] The policyholder pressed End; the packet is already being built.", reply=False)
                     else:
-                        await say(session, "[app] The policyholder pressed End. Call end_sweep now.")
+                        # The button is their decision: no second question about shelves (seen: it asked
+                        # about a "missing" shelf it had misnamed itself, and the policyholder gave up).
+                        await say(session, "[app] The policyholder pressed End. Call end_sweep with confirmed true now.")
 
     async def from_gemini(session):
         while True:

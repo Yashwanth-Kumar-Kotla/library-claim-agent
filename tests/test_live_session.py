@@ -501,4 +501,4 @@ def test_no_shelf_nudge_right_after_the_room_scan_closes(live):
     pan(s, clock, textured(480, 4000, seed=3), steps=4, step_px=200)
     assert s.nudge() is None  # seen live: a shelf nudge 0.3 s after the turn finished
     clock.t += 31
-    assert s.nudge()
+    assert s.nudge() is None  # and later: the rest of the room is furniture, the agent repeated itself
