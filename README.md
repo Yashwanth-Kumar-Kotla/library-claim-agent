@@ -226,8 +226,6 @@ is in its session log and in [`results/index.md`](results/index.md).
 
 ## Assumptions
 
-- **Confidently wrong** = books marked identified whose title is not on the shelf, divided by books
-  marked identified.
 - **Dimension and price bars:** pass when the mean absolute percentage error is within the bar and
   every sample line was produced.
 - **Wall area** is gross: perimeter times height. Net of known doors and windows is computed too.
