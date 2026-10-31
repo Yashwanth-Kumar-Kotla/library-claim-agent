@@ -153,17 +153,24 @@ def score(packet: ClaimPacket, truth: dict, timings: dict | None = None) -> list
     floor = truth["room"].get("room_floor", {})
     ceiling = truth["room"].get("ceiling", {})
     L, W, H = floor.get("length_m"), floor.get("width_m"), ceiling.get("height_m")
+    # A wall box-out (a chase or closet corner standing into the room) takes its footprint off the
+    # floor and adds its two sides to the walls: length_m = width of its face, width_m = how far it sticks out.
+    boxes = [r for k, r in truth["room"].items() if k.startswith("box_out") and r.get("length_m") and r.get("width_m")]
+    notch = sum(b["length_m"] * b["width_m"] for b in boxes)
+    sides = sum(2 * b["width_m"] for b in boxes)
     if L and W:
-        e = pct_err(packet.room.floor_area_m2, L * W)
-        out.append(Result("Floor area", f"{packet.room.floor_area_m2} vs {L * W:.2f} m2" + (f" ({e:.1%} off)" if e is not None else ""),
+        area = L * W - notch
+        e = pct_err(packet.room.floor_area_m2, area)
+        out.append(Result("Floor area", f"{packet.room.floor_area_m2} vs {area:.2f} m2" + (f" ({e:.1%} off)" if e is not None else ""),
                           "within 10%", None if e is None else e <= 0.10))
     else:
         out.append(Result("Floor area", "no ground truth", "within 10%", None))
     if L and W and H:
-        want = 2 * (L + W) * H
+        want = (2 * (L + W) + sides) * H
         e = pct_err(packet.room.wall_area_m2, want)
         out.append(Result("Wall area", f"{packet.room.wall_area_m2} vs {want:.2f} m2" + (f" ({e:.1%} off)" if e is not None else ""),
-                          "within 15%", None if e is None else e <= 0.15, "gross wall area, rectangular room from tape"))
+                          "within 15%", None if e is None else e <= 0.15,
+                          "gross wall area from tape" + (", including the box-out's sides" if boxes else ", rectangular room")))
     else:
         out.append(Result("Wall area", "no ground truth", "within 15%", None))
 

@@ -83,6 +83,15 @@ def test_wrong_count_and_room(truth_file):
     assert r["Wall area"].passed is None
 
 
+def test_box_out_comes_off_the_floor_and_adds_to_the_walls(truth_file):
+    wb = load_workbook(truth_file)
+    wb["room"].append(["box_out_1", 1.0, 0.5, None, "chase beside the door"])
+    wb.save(truth_file)
+    r = by_name(score(packet(room=Room(floor_area_m2=11.5, wall_area_m2=37.5)), load_truth(truth_file)))
+    assert "vs 11.50 m2" in r["Floor area"].value and r["Floor area"].passed     # 4 x 3 - 1 x 0.5
+    assert "vs 37.50 m2" in r["Wall area"].value and "box-out" in r["Wall area"].detail   # (14 + 2 x 0.5) x 2.5
+
+
 def test_empty_ground_truth_reports_na_not_pass(tmp_path):
     path = tmp_path / "empty.xlsx"
     subprocess.run([sys.executable, str(ROOT / "tools/make_ground_truth_template.py"), "--out", str(path)], check=True)
