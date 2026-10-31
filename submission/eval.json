@@ -29,10 +29,10 @@
   },
   {
     "measure": "Book prices",
-    "value": "no ground truth",
+    "value": "mean error 23.2%; 80% of values within 25%; 0/15 not produced",
     "bar": "within 25%",
-    "passed": null,
-    "detail": ""
+    "passed": true,
+    "detail": "pass = mean absolute % error within the bar AND every sample line produced"
   },
   {
     "measure": "Non-book items",

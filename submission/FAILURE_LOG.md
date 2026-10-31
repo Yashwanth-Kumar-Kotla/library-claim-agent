@@ -10,6 +10,7 @@ runs the same frames through newer code and is listed as `replay-demo` in [`resu
 | Titles correct | 30/40 legible (75%) | pass |
 | Confidently wrong | 1/37 (2.7%): "Theodore Boone: The Activist" | pass |
 | Spine size | 24% mean error, 10 of 36 samples not produced | fail |
+| Book prices (15 checked by hand on eBay) | 23.2% mean error | pass |
 | Items found | 14/15 (93%) | pass |
 | Floor / wall area | 19.8 vs 10.7 m² / 57.5 vs 43.8 m² | fail |
 | Packet after End | 15 s | pass |

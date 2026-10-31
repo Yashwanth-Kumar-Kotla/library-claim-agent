@@ -51,7 +51,7 @@
 | Book count | within 5% | ❌ 49 vs 40 (replay with the duplicate fix: 44) |
 | Title identification | ≥70% of legible, ≤3% confidently wrong | ✅ 75%, 2.7% |
 | Spine dimensions | within 15% on 20 | ❌ 24% mean, 10 of 36 not produced |
-| Book prices | within 25% on 15 | 👤 needs the 15 hand-checked prices |
+| Book prices | within 25% on 15 | ✅ 23.2% mean error, 15 checked by hand on eBay |
 | Non-book items | ≥80% found, right category | ✅ 93% |
 | Floor area | within 10% | ❌ 19.8 vs 10.7 m² |
 | Wall area | within 15% | ❌ 57.5 vs 43.8 m² |
@@ -83,7 +83,7 @@
 | 1 | Private repo, runs from README in < 15 min, `.env.example`, no secrets | ✅ fresh clone: install + offline demo + 361 tests in under a minute (cached); 👤 share the private repo with the reviewers |
 | 2 | Demo video, one take, ≤ 6 min, agent voice audible | ✅ recorded (3:49, second phone); 👤 upload unlisted and put the link in the email |
 | 3 | Packet + report + frames from the demo sweep | ✅ `submission/` |
-| 4 | Ground truth + results side by side | ✅ `submission/ground_truth_results.xlsx`, `submission/eval.md`; 👤 add 15 hand-checked prices |
+| 4 | Ground truth + results side by side | ✅ `submission/ground_truth_results.xlsx`, `submission/eval.md` |
 | 5 | Architecture note, 1 page | ✅ ARCHITECTURE.md |
 | 6 | Failure log, 1 page | ✅ FAILURE_LOG.md, from the demo sweep |
 | — | Reply to the brief's email with repo link, video link, four documents | 👤 |
