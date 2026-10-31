@@ -81,7 +81,7 @@
 | # | Item | Status |
 |---|---|---|
 | 1 | Private repo, runs from README in < 15 min, `.env.example`, no secrets | ✅ fresh clone: install + offline demo + 361 tests in under a minute (cached); 👤 share the private repo with the reviewers |
-| 2 | Demo video, one take, ≤ 6 min, agent voice audible | ✅ recorded (3:49, second phone); 👤 upload unlisted and put the link in the email |
+| 2 | Demo video, one take, ≤ 6 min, agent voice audible | ✅ [youtu.be/I9TRdhfWdEc](https://youtu.be/I9TRdhfWdEc) (unlisted, 3:49, second phone) |
 | 3 | Packet + report + frames from the demo sweep | ✅ `submission/` |
 | 4 | Ground truth + results side by side | ✅ `submission/ground_truth_results.xlsx`, `submission/eval.md` |
 | 5 | Architecture note, 1 page | ✅ ARCHITECTURE.md |

@@ -31,7 +31,7 @@ of goes to the review queue instead of being guessed.
 | # | Item | Where |
 |---|---|---|
 | 1 | Repository | this repo; `.env.example` lists every key, no secrets are committed |
-| 2 | Demo video | linked in the submission email: one unedited take, 3 min 49 s. Filmed with a second phone, because iPhone Screen Recording drops a web page's call audio, which would leave the agent's voice out |
+| 2 | Demo video | [youtu.be/I9TRdhfWdEc](https://youtu.be/I9TRdhfWdEc) (unlisted): one unedited take, 3 min 49 s. Filmed with a second phone, because iPhone Screen Recording drops a web page's call audio, which would leave the agent's voice out |
 | 3 | Claim packet, report and frames from the demo sweep | [`submission/`](submission/): `claim_packet.json`, `report.html`, `frames/`, `out/crops/` |
 | 4 | Ground truth and results | `submission/ground_truth_results.xlsx` (hand counts and measurements, with the system's numbers and pass bars beside them) and `submission/eval.md` |
 | 5 | Architecture note | [ARCHITECTURE.md](ARCHITECTURE.md) |
