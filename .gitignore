@@ -8,3 +8,4 @@ data/cache/
 reference/
 .DS_Store
 data/certs/
+data/cost_probe/
